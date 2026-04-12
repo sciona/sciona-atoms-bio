@@ -1,0 +1,398 @@
+[
+  {
+    "pdg_node": {
+      "predicate_id": "pair_distance_compatibility_check",
+      "statement": "(L_feature_min_max: array-like numeric bounds, R_features_distance: array-like numeric, interaction_distance: float) -> bool",
+      "informal_desc": "Evaluates whether a candidate left/right feature pair satisfies interaction-distance constraints.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "pair_distance_compatibility_check",
+          "type_signature": "(L_feature_min_max: array-like numeric bounds, R_features_distance: array-like numeric, interaction_distance: float) -> bool",
+          "docstring": "Evaluates whether a candidate left/right feature pair satisfies interaction-distance constraints.",
+          "conceptual_summary": "Interval-Constrained Pairwise Metric Predicate. This operation performs a feasibility test over pairwise metric relationships by comparing candidate distance values against a bounded admissible interval and a non-negative reference distance. It maps numeric distance descriptors from two entities into a single Boolean decision indicating whether the pair is geometrically compatible under the specified constraints. Conceptually, it is a constraint-satisfaction projection from continuous metric space to a binary validity state.. Applications: Robotics: validating whether two manipulator waypoints can be connected under kinematic separation bounds, Computational biology: checking whether candidate residue pairs satisfy allowable spatial separation ranges in structural modeling, Wireless systems: testing whether transmitter-receiver candidate links meet admissible range constraints for connectivity, 3D computer vision: screening feature correspondences by verifying epipolar or depth-consistent distance envelopes",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "pair_distance_compatibility_check",
+          "type_signature": "(L_feature_min_max: array-like numeric bounds, R_features_distance: array-like numeric, interaction_distance: float) -> bool",
+          "docstring": "Evaluates whether a candidate left/right feature pair satisfies interaction-distance constraints.",
+          "conceptual_summary": "Interval-Constrained Pairwise Metric Predicate. This operation performs a feasibility test over pairwise metric relationships by comparing candidate distance values against a bounded admissible interval and a non-negative reference distance. It maps numeric distance descriptors from two entities into a single Boolean decision indicating whether the pair is geometrically compatible under the specified constraints. Conceptually, it is a constraint-satisfaction projection from continuous metric space to a binary validity state.. Applications: Robotics: validating whether two manipulator waypoints can be connected under kinematic separation bounds, Computational biology: checking whether candidate residue pairs satisfy allowable spatial separation ranges in structural modeling, Wireless systems: testing whether transmitter-receiver candidate links meet admissible range constraints for connectivity, 3D computer vision: screening feature correspondences by verifying epipolar or depth-consistent distance envelopes",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "pair_distance_compatibility_check",
+            "type_signature": "(L_feature_min_max: array-like numeric bounds, R_features_distance: array-like numeric, interaction_distance: float) -> bool",
+            "docstring": "Evaluates whether a candidate left/right feature pair satisfies interaction-distance constraints.",
+            "conceptual_summary": "Interval-Constrained Pairwise Metric Predicate. This operation performs a feasibility test over pairwise metric relationships by comparing candidate distance values against a bounded admissible interval and a non-negative reference distance. It maps numeric distance descriptors from two entities into a single Boolean decision indicating whether the pair is geometrically compatible under the specified constraints. Conceptually, it is a constraint-satisfaction projection from continuous metric space to a binary validity state.. Applications: Robotics: validating whether two manipulator waypoints can be connected under kinematic separation bounds, Computational biology: checking whether candidate residue pairs satisfy allowable spatial separation ranges in structural modeling, Wireless systems: testing whether transmitter-receiver candidate links meet admissible range constraints for connectivity, 3D computer vision: screening feature correspondences by verifying epipolar or depth-consistent distance envelopes",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "resolve_interaction_distance_threshold",
+      "statement": "(interaction_distance: float | None, INTERACTION_DISTANCE_EPSILON: float) -> float",
+      "informal_desc": "Determine the effective interaction-distance tolerance by replacing a missing input threshold with the configured epsilon default.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "resolve_interaction_distance_threshold",
+          "type_signature": "(interaction_distance: float | None, INTERACTION_DISTANCE_EPSILON: float) -> float",
+          "docstring": "Determine the effective interaction-distance tolerance by replacing a missing input threshold with the configured epsilon default.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "resolve_interaction_distance_threshold",
+          "type_signature": "(interaction_distance: float | None, INTERACTION_DISTANCE_EPSILON: float) -> float",
+          "docstring": "Determine the effective interaction-distance tolerance by replacing a missing input threshold with the configured epsilon default.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "resolve_interaction_distance_threshold",
+            "type_signature": "(interaction_distance: float | None, INTERACTION_DISTANCE_EPSILON: float) -> float",
+            "docstring": "Determine the effective interaction-distance tolerance by replacing a missing input threshold with the configured epsilon default.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "construct_weighted_interaction_nodes",
+      "statement": "(L_features: sequence of left feature objects, R_features: sequence of right feature objects, POTENTIAL_FUNCTION: mapping[(str, str) -> float]) -> list[InteractionNode]",
+      "informal_desc": "Create all candidate interaction nodes as the Cartesian product of left/right features, assigning each node a potential-based weight from feature-family abbreviations.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "construct_weighted_interaction_nodes",
+          "type_signature": "(L_features: sequence of left feature objects, R_features: sequence of right feature objects, POTENTIAL_FUNCTION: mapping[(str, str) -> float]) -> list[InteractionNode]",
+          "docstring": "Create all candidate interaction nodes as the Cartesian product of left/right features, assigning each node a potential-based weight from feature-family abbreviations.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "construct_weighted_interaction_nodes",
+          "type_signature": "(L_features: sequence of left feature objects, R_features: sequence of right feature objects, POTENTIAL_FUNCTION: mapping[(str, str) -> float]) -> list[InteractionNode]",
+          "docstring": "Create all candidate interaction nodes as the Cartesian product of left/right features, assigning each node a potential-based weight from feature-family abbreviations.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "construct_weighted_interaction_nodes",
+            "type_signature": "(L_features: sequence of left feature objects, R_features: sequence of right feature objects, POTENTIAL_FUNCTION: mapping[(str, str) -> float]) -> list[InteractionNode]",
+            "docstring": "Create all candidate interaction nodes as the Cartesian product of left/right features, assigning each node a potential-based weight from feature-family abbreviations.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "derive_compatible_node_pair_edges",
+      "statement": "(nodes: list[InteractionNode], L_distance_matrix: OrderedTupleDict[MinMaxDistance], R_distance_matrix: OrderedTupleDict[float], effective_interaction_distance: float) -> tuple[set[tuple[InteractionNode, InteractionNode]], set[tuple[InteractionNode, InteractionNode]]]",
+      "informal_desc": "Enumerate unique unordered node pairs, fetch corresponding left min-max and right scalar distances, and retain only pairs whose distances satisfy the interaction-matching criterion.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "derive_compatible_node_pair_edges",
+          "type_signature": "(nodes: list[InteractionNode], L_distance_matrix: OrderedTupleDict[MinMaxDistance], R_distance_matrix: OrderedTupleDict[float], effective_interaction_distance: float) -> tuple[set[tuple[InteractionNode, InteractionNode]], set[tuple[InteractionNode, InteractionNode]]]",
+          "docstring": "Enumerate unique unordered node pairs, fetch corresponding left min-max and right scalar distances, and retain only pairs whose distances satisfy the interaction-matching criterion.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "derive_compatible_node_pair_edges",
+          "type_signature": "(nodes: list[InteractionNode], L_distance_matrix: OrderedTupleDict[MinMaxDistance], R_distance_matrix: OrderedTupleDict[float], effective_interaction_distance: float) -> tuple[set[tuple[InteractionNode, InteractionNode]], set[tuple[InteractionNode, InteractionNode]]]",
+          "docstring": "Enumerate unique unordered node pairs, fetch corresponding left min-max and right scalar distances, and retain only pairs whose distances satisfy the interaction-matching criterion.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "derive_compatible_node_pair_edges",
+            "type_signature": "(nodes: list[InteractionNode], L_distance_matrix: OrderedTupleDict[MinMaxDistance], R_distance_matrix: OrderedTupleDict[float], effective_interaction_distance: float) -> tuple[set[tuple[InteractionNode, InteractionNode]], set[tuple[InteractionNode, InteractionNode]]]",
+            "docstring": "Enumerate unique unordered node pairs, fetch corresponding left min-max and right scalar distances, and retain only pairs whose distances satisfy the interaction-matching criterion.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "assemble_weighted_interaction_graph",
+      "statement": "(compatible_edges: set[tuple[InteractionNode, InteractionNode]], nodes: list[InteractionNode]) -> nx.Graph",
+      "informal_desc": "Build the final weighted NetworkX graph from the compatible edges and full node list.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "assemble_weighted_interaction_graph",
+          "type_signature": "(compatible_edges: set[tuple[InteractionNode, InteractionNode]], nodes: list[InteractionNode]) -> nx.Graph",
+          "docstring": "Build the final weighted NetworkX graph from the compatible edges and full node list.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "assemble_weighted_interaction_graph",
+          "type_signature": "(compatible_edges: set[tuple[InteractionNode, InteractionNode]], nodes: list[InteractionNode]) -> nx.Graph",
+          "docstring": "Build the final weighted NetworkX graph from the compatible edges and full node list.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "assemble_weighted_interaction_graph",
+            "type_signature": "(compatible_edges: set[tuple[InteractionNode, InteractionNode]], nodes: list[InteractionNode]) -> nx.Graph",
+            "docstring": "Build the final weighted NetworkX graph from the compatible edges and full node list.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "networkx_weighted_graph_materialization",
+      "statement": "(edges: list of weighted edge tuples, nodes: list/set of node identifiers) -> networkx.Graph or networkx.DiGraph",
+      "informal_desc": "Constructs the final weighted NetworkX graph from derived nodes and edges.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "networkx_weighted_graph_materialization",
+          "type_signature": "(edges: list of weighted edge tuples, nodes: list/set of node identifiers) -> networkx.Graph or networkx.DiGraph",
+          "docstring": "Constructs the final weighted NetworkX graph from derived nodes and edges.",
+          "conceptual_summary": "Weighted Relational Topology Materialization. Transforms two finite collections\u2014entity identifiers and weighted pairwise relations\u2014into an explicit adjacency-based topology object. The procedure first materializes the vertex set, then inserts each relation as an edge annotated by a scalar weight, preserving the provided connectivity pattern. It performs structural encoding rather than optimization or inference, yielding a directly queryable weighted graph representation.. Applications: Neuroscience: materializing weighted synaptic connectivity maps between recorded neural units, Infrastructure engineering: constructing weighted utility or transport connectivity networks from link measurements, Computational biology: encoding weighted interaction topologies among molecular entities, Distributed systems: representing weighted communication latency graphs between compute nodes",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "networkx_weighted_graph_materialization",
+          "type_signature": "(edges: list of weighted edge tuples, nodes: list/set of node identifiers) -> networkx.Graph or networkx.DiGraph",
+          "docstring": "Constructs the final weighted NetworkX graph from derived nodes and edges.",
+          "conceptual_summary": "Weighted Relational Topology Materialization. Transforms two finite collections\u2014entity identifiers and weighted pairwise relations\u2014into an explicit adjacency-based topology object. The procedure first materializes the vertex set, then inserts each relation as an edge annotated by a scalar weight, preserving the provided connectivity pattern. It performs structural encoding rather than optimization or inference, yielding a directly queryable weighted graph representation.. Applications: Neuroscience: materializing weighted synaptic connectivity maps between recorded neural units, Infrastructure engineering: constructing weighted utility or transport connectivity networks from link measurements, Computational biology: encoding weighted interaction topologies among molecular entities, Distributed systems: representing weighted communication latency graphs between compute nodes",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "networkx_weighted_graph_materialization",
+            "type_signature": "(edges: list of weighted edge tuples, nodes: list/set of node identifiers) -> networkx.Graph or networkx.DiGraph",
+            "docstring": "Constructs the final weighted NetworkX graph from derived nodes and edges.",
+            "conceptual_summary": "Weighted Relational Topology Materialization. Transforms two finite collections\u2014entity identifiers and weighted pairwise relations\u2014into an explicit adjacency-based topology object. The procedure first materializes the vertex set, then inserts each relation as an edge annotated by a scalar weight, preserving the provided connectivity pattern. It performs structural encoding rather than optimization or inference, yielding a directly queryable weighted graph representation.. Applications: Neuroscience: materializing weighted synaptic connectivity maps between recorded neural units, Infrastructure engineering: constructing weighted utility or transport connectivity networks from link measurements, Computational biology: encoding weighted interaction topologies among molecular entities, Distributed systems: representing weighted communication latency graphs between compute nodes",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  }
+]

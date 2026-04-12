@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.1",
+  "atoms": {
+    "ageoa.mint.fasta_dataset.dataset_item_retrieval@ageoa/mint/fasta_dataset/atoms.py:85": {
+      "references": [
+        {
+          "ref_id": "mint2026",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Primary mint paper cited by the upstream repository."
+          }
+        },
+        {
+          "ref_id": "repo_mint",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Upstream implementation is mapped to the vendored mint repository."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "ageoa.mint.fasta_dataset.dataset_length_query@ageoa/mint/fasta_dataset/atoms.py:70": {
+      "references": [
+        {
+          "ref_id": "mint2026",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Primary mint paper cited by the upstream repository."
+          }
+        },
+        {
+          "ref_id": "repo_mint",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Upstream implementation is mapped to the vendored mint repository."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "ageoa.mint.fasta_dataset.dataset_state_initialization@ageoa/mint/fasta_dataset/atoms.py:25": {
+      "references": [
+        {
+          "ref_id": "mint2026",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Primary mint paper cited by the upstream repository."
+          }
+        },
+        {
+          "ref_id": "repo_mint",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Upstream implementation is mapped to the vendored mint repository."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "ageoa.mint.fasta_dataset.token_budget_batch_planning@ageoa/mint/fasta_dataset/atoms.py:102": {
+      "references": [
+        {
+          "ref_id": "mint2026",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Primary mint paper cited by the upstream repository."
+          }
+        },
+        {
+          "ref_id": "repo_mint",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Upstream implementation is mapped to the vendored mint repository."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "nodes": [
+    {
+      "node_id": "greedy_subgraph_root",
+      "parent_id": null,
+      "name": "ageoa.molecular_docking.greedy_subgraph",
+      "description": "Consolidated module for ageoa.molecular_docking.greedy_subgraph.",
+      "concept_type": "custom",
+      "inputs": [],
+      "outputs": [],
+      "status": "decomposed",
+      "children": [
+        "greedy_maximum_subgraph"
+      ],
+      "depth": 0,
+      "type_signature": "module",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "Grouped atoms sharing an upstream family or module.",
+      "critic_notes": "Auto-generated module CDG for consolidation.",
+      "decomposition_rationale": "Replaces singleton atom subpackages with a flat module layout."
+    },
+    {
+      "node_id": "greedy_maximum_subgraph",
+      "parent_id": "greedy_subgraph_root",
+      "name": "greedy_maximum_subgraph",
+      "description": "Greedily selects a maximum-weight subgraph from a molecular interaction graph by iteratively adding the highest-scoring connected node.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "adjacency",
+          "type_desc": "np.ndarray",
+          "constraints": "required argument"
+        },
+        {
+          "name": "scores",
+          "type_desc": "np.ndarray",
+          "constraints": "required argument"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type_desc": "np.ndarray",
+          "constraints": "function return value"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 1,
+      "type_signature": "(adjacency: np.ndarray, scores: np.ndarray) -> np.ndarray",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "Direct callable atom in the consolidated module.",
+      "critic_notes": "Signature derived from the Python wrapper definition.",
+      "decomposition_rationale": "Leaf atom."
+    }
+  ],
+  "edges": []
+}

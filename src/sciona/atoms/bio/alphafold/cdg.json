@@ -1,0 +1,202 @@
+{
+  "nodes": [
+    {
+      "node_id": "AlphaFold_root",
+      "parent_id": null,
+      "name": "AlphaFold",
+      "description": "Ingested pipeline from AlphaFold",
+      "concept_type": "custom",
+      "inputs": [],
+      "outputs": [],
+      "status": "decomposed",
+      "children": [
+        "invariant_point_attention",
+        "equivariant_frame_update",
+        "coordinate_reconstruction"
+      ],
+      "depth": 0,
+      "type_signature": "",
+      "matched_primitive": null,
+      "primitive_binding_confidence": 0.0,
+      "primitive_binding_source": "",
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "invariant_point_attention",
+      "parent_id": "AlphaFold_root",
+      "name": "invariant_point_attention",
+      "description": "Equivariant (i.e., the output transforms consistently under rotations and translations of the input) attention mechanism over structured 3D point sets.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "nodes",
+          "type_desc": "object",
+          "constraints": "valid input",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "pairs",
+          "type_desc": "object",
+          "constraints": "valid input",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "frames",
+          "type_desc": "object",
+          "constraints": "valid input",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "state",
+          "type_desc": "object",
+          "constraints": "valid input",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type_desc": "object",
+          "constraints": "valid output",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 1,
+      "type_signature": "(...) -> object",
+      "matched_primitive": null,
+      "primitive_binding_confidence": 0.0,
+      "primitive_binding_source": "",
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "equivariant_frame_update",
+      "parent_id": "AlphaFold_root",
+      "name": "equivariant_frame_update",
+      "description": "Updates 3D rigid frames using predicted gradients.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "frames",
+          "type_desc": "object",
+          "constraints": "valid input",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "nodes",
+          "type_desc": "object",
+          "constraints": "valid input",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "state",
+          "type_desc": "object",
+          "constraints": "valid input",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type_desc": "object",
+          "constraints": "valid output",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 1,
+      "type_signature": "(...) -> object",
+      "matched_primitive": null,
+      "primitive_binding_confidence": 0.0,
+      "primitive_binding_source": "",
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "coordinate_reconstruction",
+      "parent_id": "AlphaFold_root",
+      "name": "coordinate_reconstruction",
+      "description": "Converts rigid frames and torsion angles (dihedral angles between four consecutive atoms that define the protein backbone geometry) into full 3D coordinates.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "frames",
+          "type_desc": "object",
+          "constraints": "valid input",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "torsions",
+          "type_desc": "object",
+          "constraints": "valid input",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "state",
+          "type_desc": "object",
+          "constraints": "valid input",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type_desc": "object",
+          "constraints": "valid output",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 1,
+      "type_signature": "(...) -> object",
+      "matched_primitive": null,
+      "primitive_binding_confidence": 0.0,
+      "primitive_binding_source": "",
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    }
+  ],
+  "edges": [],
+  "metadata": {
+    "source": "ingester",
+    "class_name": "AlphaFold"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "nodes": [
+    {
+      "node_id": "incremental_attention_root",
+      "parent_id": null,
+      "name": "ageoa.mint.incremental_attention",
+      "description": "Consolidated module for ageoa.mint.incremental_attention.",
+      "concept_type": "custom",
+      "inputs": [],
+      "outputs": [],
+      "status": "decomposed",
+      "children": [
+        "enable_incremental_state_configuration"
+      ],
+      "depth": 0,
+      "type_signature": "module",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "Grouped atoms sharing an upstream family or module.",
+      "critic_notes": "Auto-generated module CDG for consolidation.",
+      "decomposition_rationale": "Replaces singleton atom subpackages with a flat module layout."
+    },
+    {
+      "node_id": "enable_incremental_state_configuration",
+      "parent_id": "incremental_attention_root",
+      "name": "enable_incremental_state_configuration",
+      "description": "Produces an incremental-state-enabled class/configuration as a pure class-level transformation.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "cls",
+          "type_desc": "type",
+          "constraints": "required class object argument"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type_desc": "type",
+          "constraints": "function return value"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 1,
+      "type_signature": "(cls: type) -> type",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "Direct callable atom in the consolidated module.",
+      "critic_notes": "Signature derived from the Python wrapper definition.",
+      "decomposition_rationale": "Leaf atom."
+    }
+  ],
+  "edges": []
+}

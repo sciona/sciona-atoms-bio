@@ -1,0 +1,113 @@
+{
+  "nodes": [
+    {
+      "node_id": "hPDBIterable_root",
+      "parent_id": null,
+      "name": "hPDBIterable",
+      "description": "Ingested pipeline from hPDBIterable",
+      "concept_type": "custom",
+      "inputs": [],
+      "outputs": [],
+      "status": "decomposed",
+      "children": [
+        "iterate_pdb_atoms",
+        "iterate_pdb_residues"
+      ],
+      "depth": 0,
+      "type_signature": "",
+      "matched_primitive": null,
+      "primitive_binding_confidence": 0.0,
+      "primitive_binding_source": "",
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "iterate_pdb_atoms",
+      "parent_id": "hPDBIterable_root",
+      "name": "iterate_pdb_atoms",
+      "description": "Iterates over all atoms in the PDB structure, optionally filtering by a specific chemical element.",
+      "concept_type": "data_extraction",
+      "inputs": [
+        {
+          "name": "element",
+          "type_desc": "Optional[str]",
+          "constraints": "If provided, only atoms of this element are yielded.",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "outputs": [
+        {
+          "name": "atom_iterator",
+          "type_desc": "Iterator[Atom]",
+          "constraints": "An iterator yielding atom objects from the PDB structure.",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 1,
+      "type_signature": "(element: Optional[str]) -> Iterator[Atom]",
+      "matched_primitive": null,
+      "primitive_binding_confidence": 0.0,
+      "primitive_binding_source": "",
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "filtered_collection_iterator. Sequentially traverses a structured collection of records, yielding a stateful iterator over the entire set. An optional filtering parameter allows for the selective retrieval of records where a specific categorical attribute matches a given value. This provides a memory-efficient mechanism for processing either the entire dataset or a specific subset without loading the full collection into memory.. Applications: In computer graphics, iterating through all nodes in a scene graph, with an option to filter for nodes of a certain type, like 'light', 'mesh', or 'camera'., In social network analysis, streaming through a dataset of user profiles, selectively yielding only users who match a specific demographic attribute (e.g., city or listed interest)., In financial data processing, scanning a large ledger of transactions and yielding only those associated with a particular transaction type or currency., In astronomical surveys, iterating through a catalog of celestial objects and filtering to return only objects of a specific class, such as 'galaxy' or 'quasar'.",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "iterate_pdb_residues",
+      "parent_id": "hPDBIterable_root",
+      "name": "iterate_pdb_residues",
+      "description": "Iterates over all residues in the PDB structure. An optional filter can be applied to return only residues that contain a specified chemical element.",
+      "concept_type": "data_extraction",
+      "inputs": [
+        {
+          "name": "element",
+          "type_desc": "Optional[str]",
+          "constraints": "If provided, only residues containing an atom of this element are yielded.",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "outputs": [
+        {
+          "name": "residue_iterator",
+          "type_desc": "Iterator[Residue]",
+          "constraints": "An iterator yielding residue objects from the PDB structure.",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 1,
+      "type_signature": "(element: Optional[str]) -> Iterator[Residue]",
+      "matched_primitive": null,
+      "primitive_binding_confidence": 0.0,
+      "primitive_binding_source": "",
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "query_substructures_by_component_property. Traverses a hierarchical data structure composed of nested substructures, which in turn contain primitive components. It generates a sequential, lazy iterator over the substructures, with an optional filter to include only those that contain a primitive component matching a specific categorical property.. Applications: In a 3D scene graph, iterating over all mesh groups that contain a specific primitive type, like a light source or a collision object., In a file system representation, finding all directories that contain a file with a specific extension (e.g., '.log')., In a parsed XML/HTML document, yielding all parent nodes (e.g., '<div>' tags) that contain a child node with a specific attribute., In a logistics database, iterating through all shipping containers that are registered to be carrying a specific class of item (e.g., 'refrigerated goods').",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    }
+  ],
+  "edges": [],
+  "metadata": {
+    "source": "ingester",
+    "class_name": "hPDBIterable"
+  }
+}

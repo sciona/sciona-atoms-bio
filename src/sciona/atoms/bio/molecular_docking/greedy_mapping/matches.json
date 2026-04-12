@@ -1,0 +1,794 @@
+[
+  {
+    "pdg_node": {
+      "predicate_id": "assemblestaticmappingcontext",
+      "statement": "(graph: Graph, lattice_instance: LatticeInstance, previously_generated_subgraphs: Collection[Subgraph], seed: int|None) -> MappingContext",
+      "informal_desc": "Construct immutable algorithm context from constructor inputs so all later stages consume explicit state instead of hidden class fields.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "assemblestaticmappingcontext",
+          "type_signature": "(graph: Graph, lattice_instance: LatticeInstance, previously_generated_subgraphs: Collection[Subgraph], seed: int|None) -> MappingContext",
+          "docstring": "Construct immutable algorithm context from constructor inputs so all later stages consume explicit state instead of hidden class fields.",
+          "conceptual_summary": "ImmutableCompositeStateAssembler. Aggregates multiple externally supplied data structures and an optional deterministic control scalar into a single explicit state record. The transform is structural: it preserves each input by reference/value while reifying them as immutable fields, eliminating implicit ambient state. The result is a canonical context object that downstream procedures can consume with fixed, reproducible access semantics.. Applications: Computational biology: package interaction network, folding-topology constraints, prior motif candidates, and optional randomization seed into a reproducible experiment context, Robotics planning: package environment connectivity map, kinematic constraint manifold, prior trajectory fragments, and tie-break seed into a fixed planning context, Distributed systems optimization: package service dependency graph, resource-topology model, prior allocation subplans, and deterministic seed into an immutable scheduling context, Materials simulation: package atomic connectivity structure, lattice/mesh topology instance, previously sampled local configurations, and seed into a reproducible simulation context",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "assemblestaticmappingcontext",
+          "type_signature": "(graph: Graph, lattice_instance: LatticeInstance, previously_generated_subgraphs: Collection[Subgraph], seed: int|None) -> MappingContext",
+          "docstring": "Construct immutable algorithm context from constructor inputs so all later stages consume explicit state instead of hidden class fields.",
+          "conceptual_summary": "ImmutableCompositeStateAssembler. Aggregates multiple externally supplied data structures and an optional deterministic control scalar into a single explicit state record. The transform is structural: it preserves each input by reference/value while reifying them as immutable fields, eliminating implicit ambient state. The result is a canonical context object that downstream procedures can consume with fixed, reproducible access semantics.. Applications: Computational biology: package interaction network, folding-topology constraints, prior motif candidates, and optional randomization seed into a reproducible experiment context, Robotics planning: package environment connectivity map, kinematic constraint manifold, prior trajectory fragments, and tie-break seed into a fixed planning context, Distributed systems optimization: package service dependency graph, resource-topology model, prior allocation subplans, and deterministic seed into an immutable scheduling context, Materials simulation: package atomic connectivity structure, lattice/mesh topology instance, previously sampled local configurations, and seed into a reproducible simulation context",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "assemblestaticmappingcontext",
+            "type_signature": "(graph: Graph, lattice_instance: LatticeInstance, previously_generated_subgraphs: Collection[Subgraph], seed: int|None) -> MappingContext",
+            "docstring": "Construct immutable algorithm context from constructor inputs so all later stages consume explicit state instead of hidden class fields.",
+            "conceptual_summary": "ImmutableCompositeStateAssembler. Aggregates multiple externally supplied data structures and an optional deterministic control scalar into a single explicit state record. The transform is structural: it preserves each input by reference/value while reifying them as immutable fields, eliminating implicit ambient state. The result is a canonical context object that downstream procedures can consume with fixed, reproducible access semantics.. Applications: Computational biology: package interaction network, folding-topology constraints, prior motif candidates, and optional randomization seed into a reproducible experiment context, Robotics planning: package environment connectivity map, kinematic constraint manifold, prior trajectory fragments, and tie-break seed into a fixed planning context, Distributed systems optimization: package service dependency graph, resource-topology model, prior allocation subplans, and deterministic seed into an immutable scheduling context, Materials simulation: package atomic connectivity structure, lattice/mesh topology instance, previously sampled local configurations, and seed into a reproducible simulation context",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "initializefrontierfromstartnode",
+      "statement": "(mapping_context: MappingContext, starting_node: NodeId, mapping: Map[GraphNode,LatticeNode], unmapping: Map[LatticeNode,GraphNode], unexpanded_nodes: Set[GraphNode]) -> MappingState",
+      "informal_desc": "Create initial mapping/unmapping frontier state from a selected starting node.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "initializefrontierfromstartnode",
+          "type_signature": "(mapping_context: MappingContext, starting_node: NodeId, mapping: Map[GraphNode,LatticeNode], unmapping: Map[LatticeNode,GraphNode], unexpanded_nodes: Set[GraphNode]) -> MappingState",
+          "docstring": "Create initial mapping/unmapping frontier state from a selected starting node.",
+          "conceptual_summary": "SeedBidirectionalCorrespondenceFrontier. Initializes a search state by anchoring a partial correspondence between two relational structures at a selected source element. It takes an existing forward map, its inverse map, and a set of unexpanded source elements, then returns a new immutable state where correspondence consistency constraints are preserved. The result is a frontier-ready state for subsequent expansion steps in a correspondence-construction process.. Applications: Bootstrapping residue-contact-graph to template-topology alignment in computational biology, Seeding component-netlist to physical-layout correspondence in electronic design automation, Initializing landmark-topology matching between sensed environment graphs and prior maps in robotics, Starting entity-alignment search between heterogeneous knowledge graphs in information systems",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "initializefrontierfromstartnode",
+          "type_signature": "(mapping_context: MappingContext, starting_node: NodeId, mapping: Map[GraphNode,LatticeNode], unmapping: Map[LatticeNode,GraphNode], unexpanded_nodes: Set[GraphNode]) -> MappingState",
+          "docstring": "Create initial mapping/unmapping frontier state from a selected starting node.",
+          "conceptual_summary": "SeedBidirectionalCorrespondenceFrontier. Initializes a search state by anchoring a partial correspondence between two relational structures at a selected source element. It takes an existing forward map, its inverse map, and a set of unexpanded source elements, then returns a new immutable state where correspondence consistency constraints are preserved. The result is a frontier-ready state for subsequent expansion steps in a correspondence-construction process.. Applications: Bootstrapping residue-contact-graph to template-topology alignment in computational biology, Seeding component-netlist to physical-layout correspondence in electronic design automation, Initializing landmark-topology matching between sensed environment graphs and prior maps in robotics, Starting entity-alignment search between heterogeneous knowledge graphs in information systems",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "initializefrontierfromstartnode",
+            "type_signature": "(mapping_context: MappingContext, starting_node: NodeId, mapping: Map[GraphNode,LatticeNode], unmapping: Map[LatticeNode,GraphNode], unexpanded_nodes: Set[GraphNode]) -> MappingState",
+            "docstring": "Create initial mapping/unmapping frontier state from a selected starting node.",
+            "conceptual_summary": "SeedBidirectionalCorrespondenceFrontier. Initializes a search state by anchoring a partial correspondence between two relational structures at a selected source element. It takes an existing forward map, its inverse map, and a set of unexpanded source elements, then returns a new immutable state where correspondence consistency constraints are preserved. The result is a frontier-ready state for subsequent expansion steps in a correspondence-construction process.. Applications: Bootstrapping residue-contact-graph to template-topology alignment in computational biology, Seeding component-netlist to physical-layout correspondence in electronic design automation, Initializing landmark-topology matching between sensed environment graphs and prior maps in robotics, Starting entity-alignment search between heterogeneous knowledge graphs in information systems",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "deriveplacementfrontierinputs",
+      "statement": "(considered_nodes: List[GraphNode], mapping: Map[GraphNode,LatticeNode]) -> tuple[Set[GraphNode], List[GraphNode]]",
+      "informal_desc": "Partition considered graph nodes into already-placed and currently-unplaced candidates to define the extension frontier.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "deriveplacementfrontierinputs",
+          "type_signature": "(considered_nodes: List[GraphNode], mapping: Map[GraphNode,LatticeNode]) -> tuple[Set[GraphNode], List[GraphNode]]",
+          "docstring": "Partition considered graph nodes into already-placed and currently-unplaced candidates to define the extension frontier.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "deriveplacementfrontierinputs",
+          "type_signature": "(considered_nodes: List[GraphNode], mapping: Map[GraphNode,LatticeNode]) -> tuple[Set[GraphNode], List[GraphNode]]",
+          "docstring": "Partition considered graph nodes into already-placed and currently-unplaced candidates to define the extension frontier.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "deriveplacementfrontierinputs",
+            "type_signature": "(considered_nodes: List[GraphNode], mapping: Map[GraphNode,LatticeNode]) -> tuple[Set[GraphNode], List[GraphNode]]",
+            "docstring": "Partition considered graph nodes into already-placed and currently-unplaced candidates to define the extension frontier.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "computegreedycandidatescores",
+      "statement": "(mapping_context: MappingContext, unplaced_nodes: List[GraphNode], mapping: Map[GraphNode,LatticeNode], remove_invalid_placement_nodes: bool, rank_nodes: bool) -> tuple[Map[GraphNode,Tuple[float,float]], Map[GraphNode,float]]",
+      "informal_desc": "Optionally invoke the greedy scoring heuristic for unplaced nodes and expose deterministic candidate scores for downstream ranking/reporting.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "computegreedycandidatescores",
+          "type_signature": "(mapping_context: MappingContext, unplaced_nodes: List[GraphNode], mapping: Map[GraphNode,LatticeNode], remove_invalid_placement_nodes: bool, rank_nodes: bool) -> tuple[Map[GraphNode,Tuple[float,float]], Map[GraphNode,float]]",
+          "docstring": "Optionally invoke the greedy scoring heuristic for unplaced nodes and expose deterministic candidate scores for downstream ranking/reporting.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "computegreedycandidatescores",
+          "type_signature": "(mapping_context: MappingContext, unplaced_nodes: List[GraphNode], mapping: Map[GraphNode,LatticeNode], remove_invalid_placement_nodes: bool, rank_nodes: bool) -> tuple[Map[GraphNode,Tuple[float,float]], Map[GraphNode,float]]",
+          "docstring": "Optionally invoke the greedy scoring heuristic for unplaced nodes and expose deterministic candidate scores for downstream ranking/reporting.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "computegreedycandidatescores",
+            "type_signature": "(mapping_context: MappingContext, unplaced_nodes: List[GraphNode], mapping: Map[GraphNode,LatticeNode], remove_invalid_placement_nodes: bool, rank_nodes: bool) -> tuple[Map[GraphNode,Tuple[float,float]], Map[GraphNode,float]]",
+            "docstring": "Optionally invoke the greedy scoring heuristic for unplaced nodes and expose deterministic candidate scores for downstream ranking/reporting.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "prioritizeunplacednodes",
+      "statement": "(unplaced_nodes: List[GraphNode], ranking_scores: Map[GraphNode,Tuple[float,float]], rank_nodes: bool) -> List[GraphNode]",
+      "informal_desc": "Choose candidate traversal order by sorting on heuristic ranking scores when enabled, otherwise keep original order.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "prioritizeunplacednodes",
+          "type_signature": "(unplaced_nodes: List[GraphNode], ranking_scores: Map[GraphNode,Tuple[float,float]], rank_nodes: bool) -> List[GraphNode]",
+          "docstring": "Choose candidate traversal order by sorting on heuristic ranking scores when enabled, otherwise keep original order.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "prioritizeunplacednodes",
+          "type_signature": "(unplaced_nodes: List[GraphNode], ranking_scores: Map[GraphNode,Tuple[float,float]], rank_nodes: bool) -> List[GraphNode]",
+          "docstring": "Choose candidate traversal order by sorting on heuristic ranking scores when enabled, otherwise keep original order.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "prioritizeunplacednodes",
+            "type_signature": "(unplaced_nodes: List[GraphNode], ranking_scores: Map[GraphNode,Tuple[float,float]], rank_nodes: bool) -> List[GraphNode]",
+            "docstring": "Choose candidate traversal order by sorting on heuristic ranking scores when enabled, otherwise keep original order.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "greedyassignfrontierplacements",
+      "statement": "(mapping_context: MappingContext, free_lattice_neighbors: Set[LatticeNode], prioritized_unplaced_nodes: List[GraphNode], already_placed_nodes: Set[GraphNode], mapping: Map[GraphNode,LatticeNode], unmapping: Map[LatticeNode,GraphNode], unexpanded_nodes: Set[GraphNode]) -> tuple[Map[GraphNode,LatticeNode], Map[LatticeNode,GraphNode], Set[GraphNode], Set[GraphNode], List[GraphNode]]",
+      "informal_desc": "Greedily iterate free lattice neighbors and assign the first candidate node that passes both mapped-lattice-neighbor and mapped-graph-neighbor edge-consistency checks.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "greedyassignfrontierplacements",
+          "type_signature": "(mapping_context: MappingContext, free_lattice_neighbors: Set[LatticeNode], prioritized_unplaced_nodes: List[GraphNode], already_placed_nodes: Set[GraphNode], mapping: Map[GraphNode,LatticeNode], unmapping: Map[LatticeNode,GraphNode], unexpanded_nodes: Set[GraphNode]) -> tuple[Map[GraphNode,LatticeNode], Map[LatticeNode,GraphNode], Set[GraphNode], Set[GraphNode], List[GraphNode]]",
+          "docstring": "Greedily iterate free lattice neighbors and assign the first candidate node that passes both mapped-lattice-neighbor and mapped-graph-neighbor edge-consistency checks.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "greedyassignfrontierplacements",
+          "type_signature": "(mapping_context: MappingContext, free_lattice_neighbors: Set[LatticeNode], prioritized_unplaced_nodes: List[GraphNode], already_placed_nodes: Set[GraphNode], mapping: Map[GraphNode,LatticeNode], unmapping: Map[LatticeNode,GraphNode], unexpanded_nodes: Set[GraphNode]) -> tuple[Map[GraphNode,LatticeNode], Map[LatticeNode,GraphNode], Set[GraphNode], Set[GraphNode], List[GraphNode]]",
+          "docstring": "Greedily iterate free lattice neighbors and assign the first candidate node that passes both mapped-lattice-neighbor and mapped-graph-neighbor edge-consistency checks.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "greedyassignfrontierplacements",
+            "type_signature": "(mapping_context: MappingContext, free_lattice_neighbors: Set[LatticeNode], prioritized_unplaced_nodes: List[GraphNode], already_placed_nodes: Set[GraphNode], mapping: Map[GraphNode,LatticeNode], unmapping: Map[LatticeNode,GraphNode], unexpanded_nodes: Set[GraphNode]) -> tuple[Map[GraphNode,LatticeNode], Map[LatticeNode,GraphNode], Set[GraphNode], Set[GraphNode], List[GraphNode]]",
+            "docstring": "Greedily iterate free lattice neighbors and assign the first candidate node that passes both mapped-lattice-neighbor and mapped-graph-neighbor edge-consistency checks.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "buildextendedmappingstatewithpruningpolicy",
+      "statement": "(mapping_context: MappingContext, updated_mapping: Map[GraphNode,LatticeNode], updated_unmapping: Map[LatticeNode,GraphNode], updated_unexpanded_nodes: Set[GraphNode], updated_already_placed_nodes: Set[GraphNode], remaining_unplaced_nodes: List[GraphNode], remove_invalid_placement_nodes: bool, candidate_scores: Map[GraphNode,float]) -> tuple[MappingState, Map[GraphNode,float]]",
+      "informal_desc": "Apply invalid-placement pruning policy to residual unplaced nodes and construct the final extended mapping state while carrying candidate scores.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "buildextendedmappingstatewithpruningpolicy",
+          "type_signature": "(mapping_context: MappingContext, updated_mapping: Map[GraphNode,LatticeNode], updated_unmapping: Map[LatticeNode,GraphNode], updated_unexpanded_nodes: Set[GraphNode], updated_already_placed_nodes: Set[GraphNode], remaining_unplaced_nodes: List[GraphNode], remove_invalid_placement_nodes: bool, candidate_scores: Map[GraphNode,float]) -> tuple[MappingState, Map[GraphNode,float]]",
+          "docstring": "Apply invalid-placement pruning policy to residual unplaced nodes and construct the final extended mapping state while carrying candidate scores.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "buildextendedmappingstatewithpruningpolicy",
+          "type_signature": "(mapping_context: MappingContext, updated_mapping: Map[GraphNode,LatticeNode], updated_unmapping: Map[LatticeNode,GraphNode], updated_unexpanded_nodes: Set[GraphNode], updated_already_placed_nodes: Set[GraphNode], remaining_unplaced_nodes: List[GraphNode], remove_invalid_placement_nodes: bool, candidate_scores: Map[GraphNode,float]) -> tuple[MappingState, Map[GraphNode,float]]",
+          "docstring": "Apply invalid-placement pruning policy to residual unplaced nodes and construct the final extended mapping state while carrying candidate scores.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "buildextendedmappingstatewithpruningpolicy",
+            "type_signature": "(mapping_context: MappingContext, updated_mapping: Map[GraphNode,LatticeNode], updated_unmapping: Map[LatticeNode,GraphNode], updated_unexpanded_nodes: Set[GraphNode], updated_already_placed_nodes: Set[GraphNode], remaining_unplaced_nodes: List[GraphNode], remove_invalid_placement_nodes: bool, candidate_scores: Map[GraphNode,float]) -> tuple[MappingState, Map[GraphNode,float]]",
+            "docstring": "Apply invalid-placement pruning policy to residual unplaced nodes and construct the final extended mapping state while carrying candidate scores.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "validatecurrentmapping",
+      "statement": "(mapping_context: MappingContext, mapping: Map[GraphNode,LatticeNode], unmapping: Map[LatticeNode,GraphNode]) -> bool",
+      "informal_desc": "Evaluate whether the current mapping/unmapping pair satisfies graph-lattice consistency constraints.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "validatecurrentmapping",
+          "type_signature": "(mapping_context: MappingContext, mapping: Map[GraphNode,LatticeNode], unmapping: Map[LatticeNode,GraphNode]) -> bool",
+          "docstring": "Evaluate whether the current mapping/unmapping pair satisfies graph-lattice consistency constraints.",
+          "conceptual_summary": "Bidirectional Relation Consistency Validator. Consumes a candidate pair of forward and reverse mappings between two discrete relational structures and tests whether they satisfy a shared constraint system. It verifies inverse coherence (round-trip consistency) and structural admissibility against topology/order constraints encoded in the context object. The result is a single feasibility predicate indicating whether the mapping pair is a valid structure-preserving correspondence.. Applications: Verifying correspondence between segmented regions in multimodal medical images under anatomical adjacency constraints, Checking consistency of symbol-to-state alignments in compiler intermediate-representation lowering with reverse traceability guarantees, Validating entity alignment between heterogeneous knowledge graphs while preserving ontology hierarchy relations, Confirming mesh-to-skeleton attachment maps in computational biomechanics with inverse lookup and topology constraints",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "validatecurrentmapping",
+          "type_signature": "(mapping_context: MappingContext, mapping: Map[GraphNode,LatticeNode], unmapping: Map[LatticeNode,GraphNode]) -> bool",
+          "docstring": "Evaluate whether the current mapping/unmapping pair satisfies graph-lattice consistency constraints.",
+          "conceptual_summary": "Bidirectional Relation Consistency Validator. Consumes a candidate pair of forward and reverse mappings between two discrete relational structures and tests whether they satisfy a shared constraint system. It verifies inverse coherence (round-trip consistency) and structural admissibility against topology/order constraints encoded in the context object. The result is a single feasibility predicate indicating whether the mapping pair is a valid structure-preserving correspondence.. Applications: Verifying correspondence between segmented regions in multimodal medical images under anatomical adjacency constraints, Checking consistency of symbol-to-state alignments in compiler intermediate-representation lowering with reverse traceability guarantees, Validating entity alignment between heterogeneous knowledge graphs while preserving ontology hierarchy relations, Confirming mesh-to-skeleton attachment maps in computational biomechanics with inverse lookup and topology constraints",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "validatecurrentmapping",
+            "type_signature": "(mapping_context: MappingContext, mapping: Map[GraphNode,LatticeNode], unmapping: Map[LatticeNode,GraphNode]) -> bool",
+            "docstring": "Evaluate whether the current mapping/unmapping pair satisfies graph-lattice consistency constraints.",
+            "conceptual_summary": "Bidirectional Relation Consistency Validator. Consumes a candidate pair of forward and reverse mappings between two discrete relational structures and tests whether they satisfy a shared constraint system. It verifies inverse coherence (round-trip consistency) and structural admissibility against topology/order constraints encoded in the context object. The result is a single feasibility predicate indicating whether the mapping pair is a valid structure-preserving correspondence.. Applications: Verifying correspondence between segmented regions in multimodal medical images under anatomical adjacency constraints, Checking consistency of symbol-to-state alignments in compiler intermediate-representation lowering with reverse traceability guarantees, Validating entity alignment between heterogeneous knowledge graphs while preserving ontology hierarchy relations, Confirming mesh-to-skeleton attachment maps in computational biomechanics with inverse lookup and topology constraints",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "initializeseedplacement",
+      "statement": "(mapping_context: MappingContext, starting_node: NodeId) -> tuple[MappingState, NodeId, NodeId]",
+      "informal_desc": "Create empty bidirectional mapping state and place the starting graph node on its initial lattice node via initialization logic.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "initializeseedplacement",
+          "type_signature": "(mapping_context: MappingContext, starting_node: NodeId) -> tuple[MappingState, NodeId, NodeId]",
+          "docstring": "Create empty bidirectional mapping state and place the starting graph node on its initial lattice node via initialization logic.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "initializeseedplacement",
+          "type_signature": "(mapping_context: MappingContext, starting_node: NodeId) -> tuple[MappingState, NodeId, NodeId]",
+          "docstring": "Create empty bidirectional mapping state and place the starting graph node on its initial lattice node via initialization logic.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "initializeseedplacement",
+            "type_signature": "(mapping_context: MappingContext, starting_node: NodeId) -> tuple[MappingState, NodeId, NodeId]",
+            "docstring": "Create empty bidirectional mapping state and place the starting graph node on its initial lattice node via initialization logic.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "rungreedyfrontierexpansion",
+      "statement": "(mapping_context: MappingContext, initialized_mapping_state: MappingState, current_node: NodeId, current_lattice_node: NodeId, remove_invalid_placement_nodes: bool, rank_nodes: bool) -> MappingState",
+      "informal_desc": "Iteratively consume unexpanded nodes, derive free lattice neighbors and graph neighbors, invoke greedy extension, and advance cursor until no frontier nodes remain.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "rungreedyfrontierexpansion",
+          "type_signature": "(mapping_context: MappingContext, initialized_mapping_state: MappingState, current_node: NodeId, current_lattice_node: NodeId, remove_invalid_placement_nodes: bool, rank_nodes: bool) -> MappingState",
+          "docstring": "Iteratively consume unexpanded nodes, derive free lattice neighbors and graph neighbors, invoke greedy extension, and advance cursor until no frontier nodes remain.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "rungreedyfrontierexpansion",
+          "type_signature": "(mapping_context: MappingContext, initialized_mapping_state: MappingState, current_node: NodeId, current_lattice_node: NodeId, remove_invalid_placement_nodes: bool, rank_nodes: bool) -> MappingState",
+          "docstring": "Iteratively consume unexpanded nodes, derive free lattice neighbors and graph neighbors, invoke greedy extension, and advance cursor until no frontier nodes remain.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "rungreedyfrontierexpansion",
+            "type_signature": "(mapping_context: MappingContext, initialized_mapping_state: MappingState, current_node: NodeId, current_lattice_node: NodeId, remove_invalid_placement_nodes: bool, rank_nodes: bool) -> MappingState",
+            "docstring": "Iteratively consume unexpanded nodes, derive free lattice neighbors and graph neighbors, invoke greedy extension, and advance cursor until no frontier nodes remain.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "evaluatefinalmappingvalidity",
+      "statement": "(mapping_context: MappingContext, extended_mapping_state: MappingState) -> bool",
+      "informal_desc": "Check whether the final bidirectional mapping state is globally consistent.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "evaluatefinalmappingvalidity",
+          "type_signature": "(mapping_context: MappingContext, extended_mapping_state: MappingState) -> bool",
+          "docstring": "Check whether the final bidirectional mapping state is globally consistent.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "evaluatefinalmappingvalidity",
+          "type_signature": "(mapping_context: MappingContext, extended_mapping_state: MappingState) -> bool",
+          "docstring": "Check whether the final bidirectional mapping state is globally consistent.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "evaluatefinalmappingvalidity",
+            "type_signature": "(mapping_context: MappingContext, extended_mapping_state: MappingState) -> bool",
+            "docstring": "Check whether the final bidirectional mapping state is globally consistent.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "buildgreedysubgraphresult",
+      "statement": "(extended_mapping_state: MappingState, mapping_is_valid: bool) -> tuple[Subgraph, MappingState]",
+      "informal_desc": "Materialize pipeline outputs from the validated state, producing the greedy subgraph mapping and final state.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "buildgreedysubgraphresult",
+          "type_signature": "(extended_mapping_state: MappingState, mapping_is_valid: bool) -> tuple[Subgraph, MappingState]",
+          "docstring": "Materialize pipeline outputs from the validated state, producing the greedy subgraph mapping and final state.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "buildgreedysubgraphresult",
+          "type_signature": "(extended_mapping_state: MappingState, mapping_is_valid: bool) -> tuple[Subgraph, MappingState]",
+          "docstring": "Materialize pipeline outputs from the validated state, producing the greedy subgraph mapping and final state.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "buildgreedysubgraphresult",
+            "type_signature": "(extended_mapping_state: MappingState, mapping_is_valid: bool) -> tuple[Subgraph, MappingState]",
+            "docstring": "Materialize pipeline outputs from the validated state, producing the greedy subgraph mapping and final state.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  }
+]

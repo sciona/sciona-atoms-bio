@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.1",
+  "atoms": {
+    "ageoa.alphafold.coordinate_reconstruction@ageoa/alphafold/atoms.py:109": {
+      "references": [
+        {
+          "ref_id": "alphafold2021",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Exact AlphaFold attribution."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "ageoa.alphafold.equivariant_frame_update@ageoa/alphafold/atoms.py:74": {
+      "references": [
+        {
+          "ref_id": "alphafold2021",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Exact AlphaFold attribution."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "ageoa.alphafold.invariant_point_attention@ageoa/alphafold/atoms.py:22": {
+      "references": [
+        {
+          "ref_id": "alphafold2021",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Exact AlphaFold attribution."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    }
+  }
+}

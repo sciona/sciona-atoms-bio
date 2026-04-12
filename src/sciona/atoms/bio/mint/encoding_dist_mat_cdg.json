@@ -1,0 +1,71 @@
+{
+  "nodes": [
+    {
+      "node_id": "encoding_dist_mat_root",
+      "parent_id": null,
+      "name": "ageoa.mint.encoding_dist_mat",
+      "description": "Consolidated module for ageoa.mint.encoding_dist_mat.",
+      "concept_type": "custom",
+      "inputs": [],
+      "outputs": [],
+      "status": "decomposed",
+      "children": [
+        "encodedistancematrix"
+      ],
+      "depth": 0,
+      "type_signature": "module",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "Grouped atoms sharing an upstream family or module.",
+      "critic_notes": "Auto-generated module CDG for consolidation.",
+      "decomposition_rationale": "Replaces singleton atom subpackages with a flat module layout."
+    },
+    {
+      "node_id": "encodedistancematrix",
+      "parent_id": "encoding_dist_mat_root",
+      "name": "encodedistancematrix",
+      "description": "Takes a list of matrices and pads them to a specified maximum dimension, effectively creating a batched and padded distance matrix representation.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "mat_list",
+          "type_desc": "List[np.ndarray]",
+          "constraints": "required argument"
+        },
+        {
+          "name": "max_cdr3",
+          "type_desc": "int",
+          "constraints": "required argument"
+        },
+        {
+          "name": "max_epi",
+          "type_desc": "int",
+          "constraints": "required argument"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type_desc": "np.ndarray",
+          "constraints": "function return value"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 1,
+      "type_signature": "(mat_list: List[np.ndarray], max_cdr3: int, max_epi: int) -> np.ndarray",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "Direct callable atom in the consolidated module.",
+      "critic_notes": "Signature derived from the Python wrapper definition.",
+      "decomposition_rationale": "Leaf atom."
+    }
+  ],
+  "edges": []
+}

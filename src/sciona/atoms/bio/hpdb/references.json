@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.1",
+  "atoms": {
+    "ageoa.hPDB.iterate_pdb_atoms@ageoa/hPDB/atoms.py:24": {
+      "references": [
+        {
+          "ref_id": "berman2000pdb",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Canonical Protein Data Bank attribution."
+          }
+        },
+        {
+          "ref_id": "repo_hpdb",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Upstream implementation is mapped to the vendored hPDB repository."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "ageoa.hPDB.iterate_pdb_residues@ageoa/hPDB/atoms.py:39": {
+      "references": [
+        {
+          "ref_id": "berman2000pdb",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Canonical Protein Data Bank attribution."
+          }
+        },
+        {
+          "ref_id": "repo_hpdb",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Upstream implementation is mapped to the vendored hPDB repository."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    }
+  }
+}

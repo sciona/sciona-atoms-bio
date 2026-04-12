@@ -1,0 +1,134 @@
+[
+  {
+    "pdg_node": {
+      "predicate_id": "iterate_pdb_atoms",
+      "statement": "(element: Optional[str]) -> Iterator[Atom]",
+      "informal_desc": "Iterates over all atoms in the PDB structure, optionally filtering by a specific chemical element.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "iterate_pdb_atoms",
+          "type_signature": "(element: Optional[str]) -> Iterator[Atom]",
+          "docstring": "Iterates over all atoms in the PDB structure, optionally filtering by a specific chemical element.",
+          "conceptual_summary": "filtered_collection_iterator. Sequentially traverses a structured collection of records, yielding a stateful iterator over the entire set. An optional filtering parameter allows for the selective retrieval of records where a specific categorical attribute matches a given value. This provides a memory-efficient mechanism for processing either the entire dataset or a specific subset without loading the full collection into memory.. Applications: In computer graphics, iterating through all nodes in a scene graph, with an option to filter for nodes of a certain type, like 'light', 'mesh', or 'camera'., In social network analysis, streaming through a dataset of user profiles, selectively yielding only users who match a specific demographic attribute (e.g., city or listed interest)., In financial data processing, scanning a large ledger of transactions and yielding only those associated with a particular transaction type or currency., In astronomical surveys, iterating through a catalog of celestial objects and filtering to return only objects of a specific class, such as 'galaxy' or 'quasar'.",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "iterate_pdb_atoms",
+          "type_signature": "(element: Optional[str]) -> Iterator[Atom]",
+          "docstring": "Iterates over all atoms in the PDB structure, optionally filtering by a specific chemical element.",
+          "conceptual_summary": "filtered_collection_iterator. Sequentially traverses a structured collection of records, yielding a stateful iterator over the entire set. An optional filtering parameter allows for the selective retrieval of records where a specific categorical attribute matches a given value. This provides a memory-efficient mechanism for processing either the entire dataset or a specific subset without loading the full collection into memory.. Applications: In computer graphics, iterating through all nodes in a scene graph, with an option to filter for nodes of a certain type, like 'light', 'mesh', or 'camera'., In social network analysis, streaming through a dataset of user profiles, selectively yielding only users who match a specific demographic attribute (e.g., city or listed interest)., In financial data processing, scanning a large ledger of transactions and yielding only those associated with a particular transaction type or currency., In astronomical surveys, iterating through a catalog of celestial objects and filtering to return only objects of a specific class, such as 'galaxy' or 'quasar'.",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "iterate_pdb_atoms",
+            "type_signature": "(element: Optional[str]) -> Iterator[Atom]",
+            "docstring": "Iterates over all atoms in the PDB structure, optionally filtering by a specific chemical element.",
+            "conceptual_summary": "filtered_collection_iterator. Sequentially traverses a structured collection of records, yielding a stateful iterator over the entire set. An optional filtering parameter allows for the selective retrieval of records where a specific categorical attribute matches a given value. This provides a memory-efficient mechanism for processing either the entire dataset or a specific subset without loading the full collection into memory.. Applications: In computer graphics, iterating through all nodes in a scene graph, with an option to filter for nodes of a certain type, like 'light', 'mesh', or 'camera'., In social network analysis, streaming through a dataset of user profiles, selectively yielding only users who match a specific demographic attribute (e.g., city or listed interest)., In financial data processing, scanning a large ledger of transactions and yielding only those associated with a particular transaction type or currency., In astronomical surveys, iterating through a catalog of celestial objects and filtering to return only objects of a specific class, such as 'galaxy' or 'quasar'.",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "iterate_pdb_residues",
+      "statement": "(element: Optional[str]) -> Iterator[Residue]",
+      "informal_desc": "Iterates over all residues in the PDB structure. An optional filter can be applied to return only residues that contain a specified chemical element.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "iterate_pdb_residues",
+          "type_signature": "(element: Optional[str]) -> Iterator[Residue]",
+          "docstring": "Iterates over all residues in the PDB structure. An optional filter can be applied to return only residues that contain a specified chemical element.",
+          "conceptual_summary": "query_substructures_by_component_property. Traverses a hierarchical data structure composed of nested substructures, which in turn contain primitive components. It generates a sequential, lazy iterator over the substructures, with an optional filter to include only those that contain a primitive component matching a specific categorical property.. Applications: In a 3D scene graph, iterating over all mesh groups that contain a specific primitive type, like a light source or a collision object., In a file system representation, finding all directories that contain a file with a specific extension (e.g., '.log')., In a parsed XML/HTML document, yielding all parent nodes (e.g., '<div>' tags) that contain a child node with a specific attribute., In a logistics database, iterating through all shipping containers that are registered to be carrying a specific class of item (e.g., 'refrigerated goods').",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "iterate_pdb_residues",
+          "type_signature": "(element: Optional[str]) -> Iterator[Residue]",
+          "docstring": "Iterates over all residues in the PDB structure. An optional filter can be applied to return only residues that contain a specified chemical element.",
+          "conceptual_summary": "query_substructures_by_component_property. Traverses a hierarchical data structure composed of nested substructures, which in turn contain primitive components. It generates a sequential, lazy iterator over the substructures, with an optional filter to include only those that contain a primitive component matching a specific categorical property.. Applications: In a 3D scene graph, iterating over all mesh groups that contain a specific primitive type, like a light source or a collision object., In a file system representation, finding all directories that contain a file with a specific extension (e.g., '.log')., In a parsed XML/HTML document, yielding all parent nodes (e.g., '<div>' tags) that contain a child node with a specific attribute., In a logistics database, iterating through all shipping containers that are registered to be carrying a specific class of item (e.g., 'refrigerated goods').",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "iterate_pdb_residues",
+            "type_signature": "(element: Optional[str]) -> Iterator[Residue]",
+            "docstring": "Iterates over all residues in the PDB structure. An optional filter can be applied to return only residues that contain a specified chemical element.",
+            "conceptual_summary": "query_substructures_by_component_property. Traverses a hierarchical data structure composed of nested substructures, which in turn contain primitive components. It generates a sequential, lazy iterator over the substructures, with an optional filter to include only those that contain a primitive component matching a specific categorical property.. Applications: In a 3D scene graph, iterating over all mesh groups that contain a specific primitive type, like a light source or a collision object., In a file system representation, finding all directories that contain a file with a specific extension (e.g., '.log')., In a parsed XML/HTML document, yielding all parent nodes (e.g., '<div>' tags) that contain a child node with a specific attribute., In a logistics database, iterating through all shipping containers that are registered to be carrying a specific class of item (e.g., 'refrigerated goods').",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  }
+]

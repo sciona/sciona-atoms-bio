@@ -1,0 +1,115 @@
+{
+  "nodes": [
+    {
+      "node_id": "axial_attention_root",
+      "parent_id": null,
+      "name": "ageoa.mint.axial_attention",
+      "description": "Consolidated module for ageoa.mint.axial_attention.",
+      "concept_type": "custom",
+      "inputs": [],
+      "outputs": [],
+      "status": "decomposed",
+      "children": [
+        "rowselfattention",
+        "row_self_attention"
+      ],
+      "depth": 0,
+      "type_signature": "module",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "Grouped atoms sharing an upstream family or module.",
+      "critic_notes": "Auto-generated module CDG for consolidation.",
+      "decomposition_rationale": "Replaces singleton atom subpackages with a flat module layout."
+    },
+    {
+      "node_id": "rowselfattention",
+      "parent_id": "axial_attention_root",
+      "name": "rowselfattention",
+      "description": "Applies row-wise self-attention, a mechanism that computes pairwise similarity scores across row positions to produce context-aware representations. Each row attends to all other rows, weighted by learned relevance.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "x",
+          "type_desc": "np.ndarray",
+          "constraints": "required argument"
+        },
+        {
+          "name": "self_attn_mask",
+          "type_desc": "np.ndarray",
+          "constraints": "required argument"
+        },
+        {
+          "name": "self_attn_padding_mask",
+          "type_desc": "np.ndarray",
+          "constraints": "required argument"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type_desc": "np.ndarray",
+          "constraints": "function return value"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 1,
+      "type_signature": "(x: np.ndarray, self_attn_mask: np.ndarray, self_attn_padding_mask: np.ndarray) -> np.ndarray",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "Direct callable atom in the consolidated module.",
+      "critic_notes": "Signature derived from the Python wrapper definition.",
+      "decomposition_rationale": "Leaf atom."
+    },
+    {
+      "node_id": "row_self_attention",
+      "parent_id": "axial_attention_root",
+      "name": "row_self_attention",
+      "description": "Applies row-wise self-attention, a mechanism that computes pairwise similarity scores across row positions to produce context-aware representations. Each row attends to all other rows, weighted by learned relevance.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "x",
+          "type_desc": "torch.Tensor",
+          "constraints": "required argument"
+        },
+        {
+          "name": "self_attn_mask",
+          "type_desc": "torch.Tensor | None",
+          "constraints": "required argument"
+        },
+        {
+          "name": "self_attn_padding_mask",
+          "type_desc": "torch.Tensor | None",
+          "constraints": "required argument"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type_desc": "tuple[torch.Tensor, torch.Tensor]",
+          "constraints": "function return value"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 1,
+      "type_signature": "(x: torch.Tensor, self_attn_mask: torch.Tensor | None, self_attn_padding_mask: torch.Tensor | None) -> tuple[torch.Tensor, torch.Tensor]",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "Direct callable atom in the consolidated module.",
+      "critic_notes": "Signature derived from the Python wrapper definition.",
+      "decomposition_rationale": "Leaf atom."
+    }
+  ],
+  "edges": []
+}

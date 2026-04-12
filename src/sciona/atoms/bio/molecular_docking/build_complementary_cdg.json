@@ -1,0 +1,61 @@
+{
+  "nodes": [
+    {
+      "node_id": "build_complementary_root",
+      "parent_id": null,
+      "name": "ageoa.molecular_docking.build_complementary",
+      "description": "Consolidated module for ageoa.molecular_docking.build_complementary.",
+      "concept_type": "custom",
+      "inputs": [],
+      "outputs": [],
+      "status": "decomposed",
+      "children": [
+        "constructcomplementarygraph"
+      ],
+      "depth": 0,
+      "type_signature": "module",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "Grouped atoms sharing an upstream family or module.",
+      "critic_notes": "Auto-generated module CDG for consolidation.",
+      "decomposition_rationale": "Replaces singleton atom subpackages with a flat module layout."
+    },
+    {
+      "node_id": "constructcomplementarygraph",
+      "parent_id": "build_complementary_root",
+      "name": "constructcomplementarygraph",
+      "description": "Builds the complementary graph by deriving the inverse edge set relative to the input graph's node set.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "graph",
+          "type_desc": "nx.Graph",
+          "constraints": "required argument"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type_desc": "nx.Graph",
+          "constraints": "function return value"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 1,
+      "type_signature": "(graph: nx.Graph) -> nx.Graph",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "Direct callable atom in the consolidated module.",
+      "critic_notes": "Signature derived from the Python wrapper definition.",
+      "decomposition_rationale": "Leaf atom."
+    }
+  ],
+  "edges": []
+}

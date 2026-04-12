@@ -1,0 +1,419 @@
+{
+  "nodes": [
+    {
+      "node_id": "build_weighted_binding_interaction_graph_root",
+      "parent_id": null,
+      "name": "build_weighted_binding_interaction_graph",
+      "description": "Ingested pipeline from build_weighted_binding_interaction_graph",
+      "concept_type": "custom",
+      "inputs": [],
+      "outputs": [],
+      "status": "decomposed",
+      "children": [
+        "pair_distance_compatibility_check",
+        "weighted_interaction_edge_derivation",
+        "networkx_weighted_graph_materialization"
+      ],
+      "depth": 0,
+      "type_signature": "",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "pair_distance_compatibility_check",
+      "parent_id": "build_weighted_binding_interaction_graph_root",
+      "name": "Pair Distance Compatibility Check",
+      "description": "Evaluates whether a candidate left/right feature pair satisfies interaction-distance constraints.",
+      "concept_type": "geometry",
+      "inputs": [
+        {
+          "name": "L_feature_min_max",
+          "type_desc": "np.ndarray",
+          "constraints": "Expected to encode min/max distance envelope for left feature context."
+        },
+        {
+          "name": "R_features_distance",
+          "type_desc": "np.ndarray",
+          "constraints": "Distance values for right-side feature candidates."
+        },
+        {
+          "name": "interaction_distance",
+          "type_desc": "float",
+          "constraints": "Non-negative interaction threshold/target distance."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "distance_match",
+          "type_desc": "bool",
+          "constraints": "True when pair satisfies distance constraints."
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 1,
+      "type_signature": "(L_feature_min_max: array-like numeric bounds, R_features_distance: array-like numeric, interaction_distance: float) -> bool",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "Interval-Constrained Pairwise Metric Predicate. This operation performs a feasibility test over pairwise metric relationships by comparing candidate distance values against a bounded admissible interval and a non-negative reference distance. It maps numeric distance descriptors from two entities into a single Boolean decision indicating whether the pair is geometrically compatible under the specified constraints. Conceptually, it is a constraint-satisfaction projection from continuous metric space to a binary validity state.. Applications: Robotics: validating whether two manipulator waypoints can be connected under kinematic separation bounds, Computational biology: checking whether candidate residue pairs satisfy allowable spatial separation ranges in structural modeling, Wireless systems: testing whether transmitter-receiver candidate links meet admissible range constraints for connectivity, 3D computer vision: screening feature correspondences by verifying epipolar or depth-consistent distance envelopes",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "weighted_interaction_edge_derivation",
+      "parent_id": "build_weighted_binding_interaction_graph_root",
+      "name": "Weighted Interaction Edge Derivation",
+      "description": "Builds candidate binding interactions and computes weighted graph components from feature and distance matrices.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "L_features",
+          "type_desc": "np.ndarray",
+          "constraints": "Left-side feature set."
+        },
+        {
+          "name": "R_features",
+          "type_desc": "np.ndarray",
+          "constraints": "Right-side feature set."
+        },
+        {
+          "name": "L_distance_matrix",
+          "type_desc": "np.ndarray",
+          "constraints": "Pairwise distances among left-side features."
+        },
+        {
+          "name": "R_distance_matrix",
+          "type_desc": "np.ndarray",
+          "constraints": "Pairwise distances among right-side features."
+        },
+        {
+          "name": "interaction_distance",
+          "type_desc": "float",
+          "constraints": "Distance criterion used for matching/scoring."
+        },
+        {
+          "name": "distance_match",
+          "type_desc": "bool",
+          "constraints": "Compatibility signal from pair distance check."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "edges",
+          "type_desc": "list[tuple]",
+          "constraints": "Each edge contains endpoints and associated weight."
+        },
+        {
+          "name": "nodes",
+          "type_desc": "list[int]",
+          "constraints": "Unique nodes participating in edges."
+        }
+      ],
+      "status": "decomposed",
+      "children": [
+        "resolve_interaction_distance_threshold",
+        "construct_weighted_interaction_nodes",
+        "derive_compatible_node_pair_edges",
+        "assemble_weighted_interaction_graph"
+      ],
+      "depth": 1,
+      "type_signature": "(L_features: array-like or sequence, R_features: array-like or sequence, L_distance_matrix: 2D numeric matrix, R_distance_matrix: 2D numeric matrix, interaction_distance: float, distance_match: bool) -> tuple[list of weighted edge tuples, list/set of node identifiers]",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "Compatibility-Gated Weighted Bipartite Graph Induction. Constructs a weighted bipartite graph between two entity sets by proposing cross-set links and assigning each link a scalar weight from distance-derived consistency signals. Intra-set distance matrices provide local geometric context, while a cross-set distance criterion and a compatibility gate determine whether a candidate link is retained and how strongly it is scored. The output is the induced subgraph defined by retained weighted edges and their participating vertices.. Applications: Robotics and autonomous systems: associate observations from two sensor modalities by constructing compatibility-weighted correspondence graphs., Neuroscience/connectomics: infer cross-region functional correspondences between two node populations using intra-population distance structure., Materials science: link microstructural elements from two characterization spaces via geometry-consistent weighted matching., Cyber-physical monitoring: align event signatures from two distributed subsystems using distance-constrained interaction edges.",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "resolve_interaction_distance_threshold",
+      "parent_id": "weighted_interaction_edge_derivation",
+      "name": "resolve_interaction_distance_threshold",
+      "description": "Determine the effective interaction-distance tolerance by replacing a missing input threshold with the configured epsilon default.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "interaction_distance",
+          "type_desc": "Optional[float]",
+          "constraints": "If None, must be replaced with default epsilon"
+        },
+        {
+          "name": "INTERACTION_DISTANCE_EPSILON",
+          "type_desc": "float",
+          "constraints": "Positive fallback threshold"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "effective_interaction_distance",
+          "type_desc": "float",
+          "constraints": "Always non-None"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(interaction_distance: float | None, INTERACTION_DISTANCE_EPSILON: float) -> float",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "construct_weighted_interaction_nodes",
+      "parent_id": "weighted_interaction_edge_derivation",
+      "name": "construct_weighted_interaction_nodes",
+      "description": "Create all candidate interaction nodes as the Cartesian product of left/right features, assigning each node a potential-based weight from feature-family abbreviations.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "L_features",
+          "type_desc": "list[object]",
+          "constraints": "Each feature exposes family.abbreviation"
+        },
+        {
+          "name": "R_features",
+          "type_desc": "list[object]",
+          "constraints": "Each feature exposes family.abbreviation"
+        },
+        {
+          "name": "POTENTIAL_FUNCTION",
+          "type_desc": "dict",
+          "constraints": "Must contain keys for all family abbreviation pairs"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "nodes",
+          "type_desc": "list[InteractionNode]",
+          "constraints": "Length equals len(L_features) * len(R_features)"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(L_features: sequence of left feature objects, R_features: sequence of right feature objects, POTENTIAL_FUNCTION: mapping[(str, str) -> float]) -> list[InteractionNode]",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "derive_compatible_node_pair_edges",
+      "parent_id": "weighted_interaction_edge_derivation",
+      "name": "derive_compatible_node_pair_edges",
+      "description": "Enumerate unique unordered node pairs, fetch corresponding left min-max and right scalar distances, and retain only pairs whose distances satisfy the interaction-matching criterion.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "nodes",
+          "type_desc": "list[InteractionNode]",
+          "constraints": "Each node contains L_feature and R_feature"
+        },
+        {
+          "name": "L_distance_matrix",
+          "type_desc": "OrderedTupleDict[MinMaxDistance]",
+          "constraints": "Indexable by (L_feature, L_feature)"
+        },
+        {
+          "name": "R_distance_matrix",
+          "type_desc": "OrderedTupleDict[float]",
+          "constraints": "Indexable by (R_feature, R_feature)"
+        },
+        {
+          "name": "effective_interaction_distance",
+          "type_desc": "float",
+          "constraints": "Used as tolerance in distance matching"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "compatible_edges",
+          "type_desc": "set[tuple[InteractionNode, InteractionNode]]",
+          "constraints": "Contains only distance-compatible node pairs"
+        },
+        {
+          "name": "all_examined_pairs",
+          "type_desc": "set[tuple[InteractionNode, InteractionNode]]",
+          "constraints": "All unique unordered node pairs (diagnostic/intermediate)"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(nodes: list[InteractionNode], L_distance_matrix: OrderedTupleDict[MinMaxDistance], R_distance_matrix: OrderedTupleDict[float], effective_interaction_distance: float) -> tuple[set[tuple[InteractionNode, InteractionNode]], set[tuple[InteractionNode, InteractionNode]]]",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "assemble_weighted_interaction_graph",
+      "parent_id": "weighted_interaction_edge_derivation",
+      "name": "assemble_weighted_interaction_graph",
+      "description": "Build the final weighted NetworkX graph from the compatible edges and full node list.",
+      "concept_type": "graph_optimization",
+      "inputs": [
+        {
+          "name": "compatible_edges",
+          "type_desc": "set[tuple[InteractionNode, InteractionNode]]",
+          "constraints": "Edge endpoints must be present in nodes"
+        },
+        {
+          "name": "nodes",
+          "type_desc": "list[InteractionNode]",
+          "constraints": "Defines graph node set"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "interaction_graph",
+          "type_desc": "object",
+          "constraints": "Weighted graph representation of compatible interactions"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(compatible_edges: set[tuple[InteractionNode, InteractionNode]], nodes: list[InteractionNode]) -> nx.Graph",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "networkx_weighted_graph_materialization",
+      "parent_id": "build_weighted_binding_interaction_graph_root",
+      "name": "NetworkX Weighted Graph Materialization",
+      "description": "Constructs the final weighted NetworkX graph from derived nodes and edges.",
+      "concept_type": "graph_optimization",
+      "inputs": [
+        {
+          "name": "edges",
+          "type_desc": "list[tuple]",
+          "constraints": "Must be consistent with node identifiers."
+        },
+        {
+          "name": "nodes",
+          "type_desc": "list[int]",
+          "constraints": "Node IDs should be hashable."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "weighted_graph",
+          "type_desc": "object",
+          "constraints": "Contains all provided nodes and weighted edges."
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 1,
+      "type_signature": "(edges: list of weighted edge tuples, nodes: list/set of node identifiers) -> networkx.Graph or networkx.DiGraph",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "Weighted Relational Topology Materialization. Transforms two finite collections\u2014entity identifiers and weighted pairwise relations\u2014into an explicit adjacency-based topology object. The procedure first materializes the vertex set, then inserts each relation as an edge annotated by a scalar weight, preserving the provided connectivity pattern. It performs structural encoding rather than optimization or inference, yielding a directly queryable weighted graph representation.. Applications: Neuroscience: materializing weighted synaptic connectivity maps between recorded neural units, Infrastructure engineering: constructing weighted utility or transport connectivity networks from link measurements, Computational biology: encoding weighted interaction topologies among molecular entities, Distributed systems: representing weighted communication latency graphs between compute nodes",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "resolve_interaction_distance_threshold",
+      "target_id": "derive_compatible_node_pair_edges",
+      "output_name": "effective_interaction_distance",
+      "input_name": "effective_interaction_distance",
+      "source_type": "float",
+      "target_type": "float",
+      "requires_glue": false
+    },
+    {
+      "source_id": "construct_weighted_interaction_nodes",
+      "target_id": "derive_compatible_node_pair_edges",
+      "output_name": "nodes",
+      "input_name": "nodes",
+      "source_type": "list[InteractionNode]",
+      "target_type": "list[InteractionNode]",
+      "requires_glue": false
+    },
+    {
+      "source_id": "construct_weighted_interaction_nodes",
+      "target_id": "assemble_weighted_interaction_graph",
+      "output_name": "nodes",
+      "input_name": "nodes",
+      "source_type": "list[InteractionNode]",
+      "target_type": "list[InteractionNode]",
+      "requires_glue": false
+    },
+    {
+      "source_id": "derive_compatible_node_pair_edges",
+      "target_id": "assemble_weighted_interaction_graph",
+      "output_name": "compatible_edges",
+      "input_name": "compatible_edges",
+      "source_type": "set[tuple[InteractionNode, InteractionNode]]",
+      "target_type": "set[tuple[InteractionNode, InteractionNode]]",
+      "requires_glue": false
+    },
+    {
+      "source_id": "pair_distance_compatibility_check",
+      "target_id": "weighted_interaction_edge_derivation",
+      "output_name": "distance_match",
+      "input_name": "distance_match",
+      "source_type": "bool",
+      "target_type": "bool",
+      "requires_glue": false
+    },
+    {
+      "source_id": "weighted_interaction_edge_derivation",
+      "target_id": "networkx_weighted_graph_materialization",
+      "output_name": "edges",
+      "input_name": "edges",
+      "source_type": "list of weighted edge tuples",
+      "target_type": "list of weighted edge tuples",
+      "requires_glue": false
+    },
+    {
+      "source_id": "weighted_interaction_edge_derivation",
+      "target_id": "networkx_weighted_graph_materialization",
+      "output_name": "nodes",
+      "input_name": "nodes",
+      "source_type": "list/set of node identifiers",
+      "target_type": "list/set of node identifiers",
+      "requires_glue": false
+    }
+  ],
+  "metadata": {
+    "source": "ingester",
+    "class_name": "build_weighted_binding_interaction_graph"
+  }
+}

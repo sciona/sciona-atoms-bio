@@ -1,0 +1,66 @@
+{
+  "nodes": [
+    {
+      "node_id": "rotary_embedding_root",
+      "parent_id": null,
+      "name": "ageoa.mint.rotary_embedding",
+      "description": "Consolidated module for ageoa.mint.rotary_embedding.",
+      "concept_type": "custom",
+      "inputs": [],
+      "outputs": [],
+      "status": "decomposed",
+      "children": [
+        "rotaryembedding"
+      ],
+      "depth": 0,
+      "type_signature": "module",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "Grouped atoms sharing an upstream family or module.",
+      "critic_notes": "Auto-generated module CDG for consolidation.",
+      "decomposition_rationale": "Replaces singleton atom subpackages with a flat module layout."
+    },
+    {
+      "node_id": "rotaryembedding",
+      "parent_id": "rotary_embedding_root",
+      "name": "rotaryembedding",
+      "description": "Apply Rotary Positional Embedding (RoPE) to query and key tensors.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "q",
+          "type_desc": "np.ndarray",
+          "constraints": "required argument"
+        },
+        {
+          "name": "k",
+          "type_desc": "np.ndarray",
+          "constraints": "required argument"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type_desc": "tuple[np.ndarray, np.ndarray]",
+          "constraints": "function return value"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 1,
+      "type_signature": "(q: np.ndarray, k: np.ndarray) -> tuple[np.ndarray, np.ndarray]",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "Direct callable atom in the consolidated module.",
+      "critic_notes": "Signature derived from the Python wrapper definition.",
+      "decomposition_rationale": "Leaf atom."
+    }
+  ],
+  "edges": []
+}

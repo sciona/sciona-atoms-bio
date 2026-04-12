@@ -1,0 +1,61 @@
+{
+  "nodes": [
+    {
+      "node_id": "map_to_udg_root",
+      "parent_id": null,
+      "name": "ageoa.molecular_docking.map_to_udg",
+      "description": "Consolidated module for ageoa.molecular_docking.map_to_udg.",
+      "concept_type": "custom",
+      "inputs": [],
+      "outputs": [],
+      "status": "decomposed",
+      "children": [
+        "graphtoudgmapping"
+      ],
+      "depth": 0,
+      "type_signature": "module",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "Grouped atoms sharing an upstream family or module.",
+      "critic_notes": "Auto-generated module CDG for consolidation.",
+      "decomposition_rationale": "Replaces singleton atom subpackages with a flat module layout."
+    },
+    {
+      "node_id": "graphtoudgmapping",
+      "parent_id": "map_to_udg_root",
+      "name": "graphtoudgmapping",
+      "description": "Map a graph to a UDG mapping.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "G",
+          "type_desc": "nx.Graph",
+          "constraints": "required argument"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type_desc": "nx.Graph",
+          "constraints": "function return value"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 1,
+      "type_signature": "(G: nx.Graph) -> nx.Graph",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "Direct callable atom in the consolidated module.",
+      "critic_notes": "Signature derived from the Python wrapper definition.",
+      "decomposition_rationale": "Leaf atom."
+    }
+  ],
+  "edges": []
+}

@@ -1,0 +1,76 @@
+{
+  "nodes": [
+    {
+      "node_id": "add_quantum_link_root",
+      "parent_id": null,
+      "name": "ageoa.molecular_docking.add_quantum_link",
+      "description": "Consolidated module for ageoa.molecular_docking.add_quantum_link.",
+      "concept_type": "custom",
+      "inputs": [],
+      "outputs": [],
+      "status": "decomposed",
+      "children": [
+        "addquantumlink"
+      ],
+      "depth": 0,
+      "type_signature": "module",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "Grouped atoms sharing an upstream family or module.",
+      "critic_notes": "Auto-generated module CDG for consolidation.",
+      "decomposition_rationale": "Replaces singleton atom subpackages with a flat module layout."
+    },
+    {
+      "node_id": "addquantumlink",
+      "parent_id": "add_quantum_link_root",
+      "name": "addquantumlink",
+      "description": "Adds a specialized 'quantum link' between two nodes in a graph, potentially creating a chain of intermediate nodes based on chain_size.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "G",
+          "type_desc": "Graph",
+          "constraints": "required argument"
+        },
+        {
+          "name": "node_A",
+          "type_desc": "Node",
+          "constraints": "required argument"
+        },
+        {
+          "name": "node_B",
+          "type_desc": "Node",
+          "constraints": "required argument"
+        },
+        {
+          "name": "chain_size",
+          "type_desc": "int",
+          "constraints": "required argument"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type_desc": "Graph",
+          "constraints": "function return value"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 1,
+      "type_signature": "(G: Graph, node_A: Node, node_B: Node, chain_size: int) -> Graph",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "Direct callable atom in the consolidated module.",
+      "critic_notes": "Signature derived from the Python wrapper definition.",
+      "decomposition_rationale": "Leaf atom."
+    }
+  ],
+  "edges": []
+}
