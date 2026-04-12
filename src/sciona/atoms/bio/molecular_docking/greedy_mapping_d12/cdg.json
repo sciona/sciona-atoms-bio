@@ -1,0 +1,910 @@
+{
+  "nodes": [
+    {
+      "node_id": "GreedyMapping_root",
+      "parent_id": null,
+      "name": "GreedyMapping",
+      "description": "Ingested pipeline from GreedyMapping",
+      "concept_type": "custom",
+      "inputs": [],
+      "outputs": [],
+      "status": "decomposed",
+      "children": [
+        "init_problem_context",
+        "construct_mapping_state_via_greedy_expansion",
+        "orchestrate_generation_and_validate"
+      ],
+      "depth": 0,
+      "type_signature": "",
+      "matched_primitive": null,
+      "primitive_binding_confidence": 0.0,
+      "primitive_binding_source": "",
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "init_problem_context",
+      "parent_id": "GreedyMapping_root",
+      "name": "init_problem_context",
+      "description": "Bootstraps immutable problem context for all later kernels: graph topology, lattice abstraction, lattice instance, previously generated subgraphs, and seed.",
+      "concept_type": "state_init",
+      "inputs": [
+        {
+          "name": "graph",
+          "type_desc": "Graph",
+          "constraints": "Required; treated as immutable input state",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "lattice_instance",
+          "type_desc": "LatticeInstance",
+          "constraints": "Required; used for placement/scoring context",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "previously_generated_subgraphs",
+          "type_desc": "Collection[Subgraph]",
+          "constraints": "Required; historical constraints for scoring",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "seed",
+          "type_desc": "int",
+          "constraints": "Deterministic initialization input",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "outputs": [
+        {
+          "name": "problem_context",
+          "type_desc": "GreedyMappingContext",
+          "constraints": "Immutable state object carrying graph, lattice, lattice_instance, previously_generated_subgraphs, seed",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 1,
+      "type_signature": "(graph: Graph, lattice_instance: LatticeInstance, previously_generated_subgraphs: Collection[Subgraph], seed: int) -> GreedyMappingContext",
+      "matched_primitive": null,
+      "primitive_binding_confidence": 0.0,
+      "primitive_binding_source": "",
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "Deterministic Immutable Context Bootstrap. Aggregates multiple heterogeneous structural inputs into a single immutable state carrier that is passed unchanged across later computational kernels. The transform performs no optimization or inference; it formalizes boundary conditions by binding a read-only relational topology, a discrete embedding/placement scaffold context, historical substructure constraints, and a reproducibility token into one canonical context object. This creates a stable reference frame so downstream greedy or stochastic procedures can be evaluated consistently.. Applications: Initializing a molecular conformation search pipeline with a fixed bond graph, spatial discretization schema, prior sampled motifs, and a random seed, Bootstrapping robotic path-planning with workspace connectivity, occupancy grid instance, previously explored trajectory fragments, and deterministic rollout seed, Preparing a distributed scheduling optimizer using system dependency topology, resource-slot lattice instance, prior allocation patterns, and reproducible simulation seed",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "construct_mapping_state_via_greedy_expansion",
+      "parent_id": "GreedyMapping_root",
+      "name": "construct_mapping_state_via_greedy_expansion",
+      "description": "Builds and evolves immutable mapping state: initialize seed placement, score candidate graph nodes greedily, and extend mapping/frontier with feasible placements.",
+      "concept_type": "greedy",
+      "inputs": [
+        {
+          "name": "problem_context",
+          "type_desc": "GreedyMappingContext",
+          "constraints": "Must come from init_problem_context",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "starting_node",
+          "type_desc": "NodeId",
+          "constraints": "Used by initialization stage",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "mapping_state_in",
+          "type_desc": "MappingState",
+          "constraints": "Immutable flow state containing mapping, unmapping, unexpanded_nodes, free_lattice_neighbors",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "considered_nodes",
+          "type_desc": "Collection[NodeId]",
+          "constraints": "Nodes considered for expansion",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "remove_invalid_placement_nodes",
+          "type_desc": "bool",
+          "constraints": "Controls invalid-placement pruning",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "rank_nodes",
+          "type_desc": "bool",
+          "constraints": "Controls ranking behavior",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "outputs": [
+        {
+          "name": "mapping_state_out",
+          "type_desc": "MappingState",
+          "constraints": "New immutable state after extension",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "scored_nodes",
+          "type_desc": "Collection[ScoredNode]",
+          "constraints": "Greedy scores computed from graph/lattice context",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "status": "decomposed",
+      "children": [
+        "seed_mapping_at_lattice_center",
+        "select_unplaced_candidates",
+        "score_and_rank_candidates_greedily",
+        "greedily_place_feasible_candidates_on_frontier",
+        "finalize_mapping_state_with_optional_pruning"
+      ],
+      "depth": 1,
+      "type_signature": "(problem_context: GreedyMappingContext, starting_node: NodeId, mapping_state_in: MappingState, considered_nodes: Collection[NodeId], remove_invalid_placement_nodes: bool, rank_nodes: bool) -> tuple[MappingState, Collection[ScoredNode]]",
+      "matched_primitive": null,
+      "primitive_binding_confidence": 0.0,
+      "primitive_binding_source": "",
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "Immutable Greedy Partial-Embedding Expansion. Transforms an immutable partial assignment state by optionally seeding an initial assignment, then evaluating candidate elements with a local greedy scoring functional derived from a fixed structural context. Feasible candidates are selected and applied to produce a new immutable state with updated assigned/unassigned sets and expansion frontier. Optional pruning removes infeasible candidates, and optional ranking controls whether scored candidates are ordered for downstream selection.. Applications: Incremental assembly of molecular substructures onto admissible spatial sites using local fit scores and steric feasibility constraints., Progressive placement of software tasks onto heterogeneous compute units using heuristic utility scoring and resource-compatibility filtering., Stepwise expansion of robot exploration waypoints on a discretized workspace using frontier scoring and collision-feasibility pruning., Iterative assignment of logical components to hardware fabric positions in physical design using local cost ranking and legality checks.",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "seed_mapping_at_lattice_center",
+      "parent_id": "construct_mapping_state_via_greedy_expansion",
+      "name": "seed_mapping_at_lattice_center",
+      "description": "Compute the lattice start position from lattice size and return a new mapping state with the starting graph node placed and marked unexpanded.",
+      "concept_type": "data_assembly",
+      "inputs": [
+        {
+          "name": "problem_context",
+          "type_desc": "GreedyMappingContext",
+          "constraints": "Must expose lattice with node count.",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "starting_node",
+          "type_desc": "NodeId",
+          "constraints": "Graph node to place first.",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "mapping_state_in",
+          "type_desc": "MappingState",
+          "constraints": "Immutable input state containing mapping, unmapping, unexpanded_nodes, frontier.",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "outputs": [
+        {
+          "name": "mapping_state_seeded",
+          "type_desc": "MappingState",
+          "constraints": "Same as input state, but with starting_node placed and added to unexpanded_nodes.",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "starting_lattice_node",
+          "type_desc": "NodeId",
+          "constraints": "Computed as center-biased lattice index.",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(problem_context: GreedyMappingContext, starting_node: NodeId, mapping_state_in: MappingState) -> tuple[MappingState, NodeId]",
+      "matched_primitive": null,
+      "primitive_binding_confidence": 0.0,
+      "primitive_binding_source": "",
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "select_unplaced_candidates",
+      "parent_id": "construct_mapping_state_via_greedy_expansion",
+      "name": "select_unplaced_candidates",
+      "description": "Filter considered nodes to only those not already mapped in the seeded state.",
+      "concept_type": "set_theory",
+      "inputs": [
+        {
+          "name": "considered_nodes",
+          "type_desc": "Collection[NodeId]",
+          "constraints": "Candidate graph nodes for expansion.",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "mapping_state_seeded",
+          "type_desc": "MappingState",
+          "constraints": "Must contain current mapping keys.",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "outputs": [
+        {
+          "name": "unplaced_nodes",
+          "type_desc": "Collection[NodeId]",
+          "constraints": "Subset of considered_nodes not in mapping.",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(considered_nodes: Collection[NodeId], mapping_state_seeded: MappingState) -> Collection[NodeId]",
+      "matched_primitive": null,
+      "primitive_binding_confidence": 0.0,
+      "primitive_binding_source": "",
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "score_and_rank_candidates_greedily",
+      "parent_id": "construct_mapping_state_via_greedy_expansion",
+      "name": "score_and_rank_candidates_greedily",
+      "description": "Optionally call greedy_node_scoring and produce ranked unplaced nodes; also emit scored node records for downstream observability/output.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "problem_context",
+          "type_desc": "GreedyMappingContext",
+          "constraints": "Must provide graph, lattice_instance.avg_degree, previously_generated_subgraphs.",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "unplaced_nodes",
+          "type_desc": "Collection[NodeId]",
+          "constraints": "Nodes eligible for scoring.",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "mapping_state_seeded",
+          "type_desc": "MappingState",
+          "constraints": "Provides current mapping for feature computation.",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "remove_invalid_placement_nodes",
+          "type_desc": "bool",
+          "constraints": "Controls non-neighbor score component.",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "rank_nodes",
+          "type_desc": "bool",
+          "constraints": "If false, preserve original candidate order and emit empty/default scores.",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "outputs": [
+        {
+          "name": "ranked_unplaced_nodes",
+          "type_desc": "Collection[NodeId]",
+          "constraints": "Sorted descending by (heuristic_score, random_tiebreaker) when rank_nodes=true.",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "scored_nodes",
+          "type_desc": "Collection[ScoredNode]",
+          "constraints": "Node-level score payload derived from greedy_node_scoring.",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(problem_context: GreedyMappingContext, unplaced_nodes: Collection[NodeId], mapping_state_seeded: MappingState, remove_invalid_placement_nodes: bool, rank_nodes: bool) -> tuple[Collection[NodeId], Collection[ScoredNode]]",
+      "matched_primitive": null,
+      "primitive_binding_confidence": 0.0,
+      "primitive_binding_source": "",
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "greedily_place_feasible_candidates_on_frontier",
+      "parent_id": "construct_mapping_state_via_greedy_expansion",
+      "name": "greedily_place_feasible_candidates_on_frontier",
+      "description": "Iterate frontier lattice neighbors and greedily place the first candidate satisfying lattice/graph adjacency consistency checks, returning updated mapping state and leftovers.",
+      "concept_type": "greedy",
+      "inputs": [
+        {
+          "name": "problem_context",
+          "type_desc": "GreedyMappingContext",
+          "constraints": "Must provide graph and lattice topology.",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "mapping_state_seeded",
+          "type_desc": "MappingState",
+          "constraints": "Must include mapping, unmapping, unexpanded_nodes, and free_lattice_neighbors frontier.",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "ranked_unplaced_nodes",
+          "type_desc": "Collection[NodeId]",
+          "constraints": "Candidate nodes in greedy priority order.",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "outputs": [
+        {
+          "name": "mapping_state_extended",
+          "type_desc": "MappingState",
+          "constraints": "State after zero or more feasible placements, with unexpanded_nodes updated for placed nodes.",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "remaining_unplaced_nodes",
+          "type_desc": "Collection[NodeId]",
+          "constraints": "Candidates still not placed after frontier scan.",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(problem_context: GreedyMappingContext, mapping_state_seeded: MappingState, ranked_unplaced_nodes: Collection[NodeId]) -> tuple[MappingState, Collection[NodeId]]",
+      "matched_primitive": null,
+      "primitive_binding_confidence": 0.0,
+      "primitive_binding_source": "",
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "finalize_mapping_state_with_optional_pruning",
+      "parent_id": "construct_mapping_state_via_greedy_expansion",
+      "name": "finalize_mapping_state_with_optional_pruning",
+      "description": "Apply optional invalid-node pruning as a pure state transform and return final mapping state while forwarding scored nodes.",
+      "concept_type": "conditional_routing",
+      "inputs": [
+        {
+          "name": "mapping_state_extended",
+          "type_desc": "MappingState",
+          "constraints": "Post-placement state.",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "remaining_unplaced_nodes",
+          "type_desc": "Collection[NodeId]",
+          "constraints": "Nodes eligible for pruning when enabled.",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "remove_invalid_placement_nodes",
+          "type_desc": "bool",
+          "constraints": "If true, output state reflects graph-with-removed-nodes; if false, graph unchanged.",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "scored_nodes",
+          "type_desc": "Collection[ScoredNode]",
+          "constraints": "Pass-through from scoring stage.",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "outputs": [
+        {
+          "name": "mapping_state_out",
+          "type_desc": "MappingState",
+          "constraints": "Final immutable state including any pruning effect.",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "scored_nodes_out",
+          "type_desc": "Collection[ScoredNode]",
+          "constraints": "Same logical payload as scored_nodes input.",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(mapping_state_extended: MappingState, remaining_unplaced_nodes: Collection[NodeId], remove_invalid_placement_nodes: bool, scored_nodes: Collection[ScoredNode]) -> tuple[MappingState, Collection[ScoredNode]]",
+      "matched_primitive": null,
+      "primitive_binding_confidence": 0.0,
+      "primitive_binding_source": "",
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "orchestrate_generation_and_validate",
+      "parent_id": "GreedyMapping_root",
+      "name": "orchestrate_generation_and_validate",
+      "description": "Entry-point orchestration kernel (GreedyMapping): drives iterative expansion, invokes validity checks, and returns final generated subgraph mapping and inverse mapping.",
+      "concept_type": "conditional_routing",
+      "inputs": [
+        {
+          "name": "problem_context",
+          "type_desc": "GreedyMappingContext",
+          "constraints": "Immutable context from initialization",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "starting_node",
+          "type_desc": "NodeId",
+          "constraints": "Required entry node",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "remove_invalid_placement_nodes",
+          "type_desc": "bool",
+          "constraints": "Forwarded to expansion kernel",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "rank_nodes",
+          "type_desc": "bool",
+          "constraints": "Forwarded to expansion kernel",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "mapping_state",
+          "type_desc": "MappingState",
+          "constraints": "Threaded immutable state from expansion kernel",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "outputs": [
+        {
+          "name": "final_mapping_state",
+          "type_desc": "MappingState",
+          "constraints": "Final immutable mapping/unmapping state",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "is_valid",
+          "type_desc": "bool",
+          "constraints": "Result of final mapping validity check",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "status": "decomposed",
+      "children": [
+        "initialize_state_with_start_anchor",
+        "greedy_expand_frontier",
+        "assess_mapping_validity",
+        "emit_final_generation_result"
+      ],
+      "depth": 1,
+      "type_signature": "(problem_context: GreedyMappingContext, starting_node: NodeId, remove_invalid_placement_nodes: bool, rank_nodes: bool, mapping_state: MappingState) -> tuple[MappingState, bool]",
+      "matched_primitive": null,
+      "primitive_binding_confidence": 0.0,
+      "primitive_binding_source": "",
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "Iterative Candidate-Expansion Orchestrator with Terminal Constraint Validation. Coordinates an iterative, greedy state-transition process over a discrete relational structure, starting from a required seed index and threading an immutable state snapshot through each expansion step. Runtime control flags conditionally route execution behavior for candidate pruning and ordering during expansion. After expansion terminates, a separate constraint-evaluation routine is applied to the resulting state, returning both the terminal state and a Boolean validity indicator.. Applications: Compiler optimization: incrementally assigning intermediate-representation nodes to target instruction patterns with final legality checks, Robotics task planning: greedy assembly of action-to-resource bindings with terminal feasibility validation, Molecular design workflows: stepwise construction of interaction mappings between structural motifs followed by rule-based consistency screening, Electronic design automation: iterative netlist-to-layout element assignment with post-generation design-rule verification",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "initialize_state_with_start_anchor",
+      "parent_id": "orchestrate_generation_and_validate",
+      "name": "initialize_state_with_start_anchor",
+      "description": "Create empty mapping containers, seed the starting graph node onto the lattice via `initialize_mapping`, and establish the current expansion pointers.",
+      "concept_type": "state_init",
+      "inputs": [
+        {
+          "name": "problem_context",
+          "type_desc": "GreedyMappingContext",
+          "constraints": "Must provide graph, lattice, and initialize_mapping helper.",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "starting_node",
+          "type_desc": "NodeId (int)",
+          "constraints": "Must exist in graph.",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "outputs": [
+        {
+          "name": "mapping_state",
+          "type_desc": "MappingState",
+          "constraints": "Contains mapping, unmapping, unexpanded_nodes, current_node, current_lattice_node initialized for first iteration.",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(problem_context: GreedyMappingContext, starting_node: NodeId (int)) -> MappingState",
+      "matched_primitive": null,
+      "primitive_binding_confidence": 0.0,
+      "primitive_binding_source": "",
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "greedy_expand_frontier",
+      "parent_id": "orchestrate_generation_and_validate",
+      "name": "greedy_expand_frontier",
+      "description": "While unexpanded nodes remain, remove current node from frontier, derive free lattice neighbors and graph neighbors, call `extend_mapping_with_nodes`, and advance to the next unexpanded anchor.",
+      "concept_type": "greedy",
+      "inputs": [
+        {
+          "name": "problem_context",
+          "type_desc": "GreedyMappingContext",
+          "constraints": "Must provide graph, lattice, and extend_mapping_with_nodes helper.",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "mapping_state",
+          "type_desc": "MappingState",
+          "constraints": "Must include valid current_node/current_lattice_node and mutable mapping sets.",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "remove_invalid_placement_nodes",
+          "type_desc": "bool",
+          "constraints": "Controls candidate pruning during extension.",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "rank_nodes",
+          "type_desc": "bool",
+          "constraints": "Controls heuristic ranking during extension.",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "outputs": [
+        {
+          "name": "expanded_mapping_state",
+          "type_desc": "MappingState",
+          "constraints": "Frontier exhausted (`unexpanded_nodes` empty) with accumulated mapping/unmapping.",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(problem_context: GreedyMappingContext, mapping_state: MappingState, remove_invalid_placement_nodes: bool, rank_nodes: bool) -> MappingState",
+      "matched_primitive": null,
+      "primitive_binding_confidence": 0.0,
+      "primitive_binding_source": "",
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "assess_mapping_validity",
+      "parent_id": "orchestrate_generation_and_validate",
+      "name": "assess_mapping_validity",
+      "description": "Run `check_mapping_validity` to verify bidirectional adjacency consistency between graph and lattice projections.",
+      "concept_type": "analysis",
+      "inputs": [
+        {
+          "name": "problem_context",
+          "type_desc": "GreedyMappingContext",
+          "constraints": "Must provide check_mapping_validity helper.",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "expanded_mapping_state",
+          "type_desc": "MappingState",
+          "constraints": "Must include mapping and unmapping dictionaries.",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "outputs": [
+        {
+          "name": "is_valid",
+          "type_desc": "bool",
+          "constraints": "True only if all mapped adjacencies are consistent in both domains.",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(problem_context: GreedyMappingContext, expanded_mapping_state: MappingState) -> bool",
+      "matched_primitive": null,
+      "primitive_binding_confidence": 0.0,
+      "primitive_binding_source": "",
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "emit_final_generation_result",
+      "parent_id": "orchestrate_generation_and_validate",
+      "name": "emit_final_generation_result",
+      "description": "Package the expanded mapping state with validity status as the orchestration output contract.",
+      "concept_type": "conditional_routing",
+      "inputs": [
+        {
+          "name": "expanded_mapping_state",
+          "type_desc": "MappingState",
+          "constraints": "Candidate final state after greedy expansion.",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "is_valid",
+          "type_desc": "bool",
+          "constraints": "Validation result from consistency check.",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "outputs": [
+        {
+          "name": "final_mapping_state",
+          "type_desc": "MappingState",
+          "constraints": "Returned mapping state for downstream use.",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "is_valid",
+          "type_desc": "bool",
+          "constraints": "Returned validity flag for caller-level decision.",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(expanded_mapping_state: MappingState, is_valid: bool) -> tuple[MappingState, bool]",
+      "matched_primitive": null,
+      "primitive_binding_confidence": 0.0,
+      "primitive_binding_source": "",
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "seed_mapping_at_lattice_center",
+      "target_id": "select_unplaced_candidates",
+      "output_name": "mapping_state_seeded",
+      "input_name": "mapping_state_seeded",
+      "source_type": "MappingState",
+      "target_type": "MappingState",
+      "requires_glue": false
+    },
+    {
+      "source_id": "select_unplaced_candidates",
+      "target_id": "score_and_rank_candidates_greedily",
+      "output_name": "unplaced_nodes",
+      "input_name": "unplaced_nodes",
+      "source_type": "Collection[NodeId]",
+      "target_type": "Collection[NodeId]",
+      "requires_glue": false
+    },
+    {
+      "source_id": "seed_mapping_at_lattice_center",
+      "target_id": "score_and_rank_candidates_greedily",
+      "output_name": "mapping_state_seeded",
+      "input_name": "mapping_state_seeded",
+      "source_type": "MappingState",
+      "target_type": "MappingState",
+      "requires_glue": false
+    },
+    {
+      "source_id": "seed_mapping_at_lattice_center",
+      "target_id": "greedily_place_feasible_candidates_on_frontier",
+      "output_name": "mapping_state_seeded",
+      "input_name": "mapping_state_seeded",
+      "source_type": "MappingState",
+      "target_type": "MappingState",
+      "requires_glue": false
+    },
+    {
+      "source_id": "score_and_rank_candidates_greedily",
+      "target_id": "greedily_place_feasible_candidates_on_frontier",
+      "output_name": "ranked_unplaced_nodes",
+      "input_name": "ranked_unplaced_nodes",
+      "source_type": "Collection[NodeId]",
+      "target_type": "Collection[NodeId]",
+      "requires_glue": false
+    },
+    {
+      "source_id": "greedily_place_feasible_candidates_on_frontier",
+      "target_id": "finalize_mapping_state_with_optional_pruning",
+      "output_name": "mapping_state_extended",
+      "input_name": "mapping_state_extended",
+      "source_type": "MappingState",
+      "target_type": "MappingState",
+      "requires_glue": false
+    },
+    {
+      "source_id": "greedily_place_feasible_candidates_on_frontier",
+      "target_id": "finalize_mapping_state_with_optional_pruning",
+      "output_name": "remaining_unplaced_nodes",
+      "input_name": "remaining_unplaced_nodes",
+      "source_type": "Collection[NodeId]",
+      "target_type": "Collection[NodeId]",
+      "requires_glue": false
+    },
+    {
+      "source_id": "score_and_rank_candidates_greedily",
+      "target_id": "finalize_mapping_state_with_optional_pruning",
+      "output_name": "scored_nodes",
+      "input_name": "scored_nodes",
+      "source_type": "Collection[ScoredNode]",
+      "target_type": "Collection[ScoredNode]",
+      "requires_glue": false
+    },
+    {
+      "source_id": "initialize_state_with_start_anchor",
+      "target_id": "greedy_expand_frontier",
+      "output_name": "mapping_state",
+      "input_name": "mapping_state",
+      "source_type": "MappingState",
+      "target_type": "MappingState",
+      "requires_glue": false
+    },
+    {
+      "source_id": "greedy_expand_frontier",
+      "target_id": "assess_mapping_validity",
+      "output_name": "expanded_mapping_state",
+      "input_name": "expanded_mapping_state",
+      "source_type": "MappingState",
+      "target_type": "MappingState",
+      "requires_glue": false
+    },
+    {
+      "source_id": "greedy_expand_frontier",
+      "target_id": "emit_final_generation_result",
+      "output_name": "expanded_mapping_state",
+      "input_name": "expanded_mapping_state",
+      "source_type": "MappingState",
+      "target_type": "MappingState",
+      "requires_glue": false
+    },
+    {
+      "source_id": "assess_mapping_validity",
+      "target_id": "emit_final_generation_result",
+      "output_name": "is_valid",
+      "input_name": "is_valid",
+      "source_type": "bool",
+      "target_type": "bool",
+      "requires_glue": false
+    },
+    {
+      "source_id": "init_problem_context",
+      "target_id": "construct_mapping_state_via_greedy_expansion",
+      "output_name": "problem_context",
+      "input_name": "problem_context",
+      "source_type": "GreedyMappingContext",
+      "target_type": "GreedyMappingContext",
+      "requires_glue": false
+    },
+    {
+      "source_id": "init_problem_context",
+      "target_id": "orchestrate_generation_and_validate",
+      "output_name": "problem_context",
+      "input_name": "problem_context",
+      "source_type": "GreedyMappingContext",
+      "target_type": "GreedyMappingContext",
+      "requires_glue": false
+    },
+    {
+      "source_id": "construct_mapping_state_via_greedy_expansion",
+      "target_id": "orchestrate_generation_and_validate",
+      "output_name": "mapping_state_out",
+      "input_name": "mapping_state",
+      "source_type": "MappingState",
+      "target_type": "MappingState",
+      "requires_glue": false
+    }
+  ],
+  "metadata": {
+    "source": "ingester",
+    "class_name": "GreedyMapping"
+  }
+}

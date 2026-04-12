@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.1",
+  "atoms": {
+    "ageoa.molecular_docking.greedy_mapping_d12.construct_mapping_state_via_greedy_expansion@ageoa/molecular_docking/greedy_mapping_d12/atoms.py:57": {
+      "references": [
+        {
+          "ref_id": "moleculardocking2025",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Primary Molecular-Docking paper."
+          }
+        },
+        {
+          "ref_id": "repo_molecular_docking",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Upstream implementation is mapped to the vendored Molecular-Docking repository."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "ageoa.molecular_docking.greedy_mapping_d12.init_problem_context@ageoa/molecular_docking/greedy_mapping_d12/atoms.py:26": {
+      "references": [
+        {
+          "ref_id": "moleculardocking2025",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Primary Molecular-Docking paper."
+          }
+        },
+        {
+          "ref_id": "repo_molecular_docking",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Upstream implementation is mapped to the vendored Molecular-Docking repository."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "ageoa.molecular_docking.greedy_mapping_d12.orchestrate_generation_and_validate@ageoa/molecular_docking/greedy_mapping_d12/atoms.py:155": {
+      "references": [
+        {
+          "ref_id": "moleculardocking2025",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Primary Molecular-Docking paper."
+          }
+        },
+        {
+          "ref_id": "repo_molecular_docking",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Upstream implementation is mapped to the vendored Molecular-Docking repository."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    }
+  }
+}

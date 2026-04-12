@@ -1,0 +1,900 @@
+{
+  "nodes": [
+    {
+      "node_id": "minimize_bandwidth_root",
+      "parent_id": null,
+      "name": "minimize_bandwidth",
+      "description": "Ingested pipeline from minimize_bandwidth",
+      "concept_type": "custom",
+      "inputs": [],
+      "outputs": [],
+      "status": "decomposed",
+      "children": [
+        "bandwidthmetricevaluation",
+        "corebandwidthreduction",
+        "thresholdconstrainedbandwidthreduction",
+        "globalbandwidthoptimization"
+      ],
+      "depth": 0,
+      "type_signature": "",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "bandwidthmetricevaluation",
+      "parent_id": "minimize_bandwidth_root",
+      "name": "BandwidthMetricEvaluation",
+      "description": "Compute the bandwidth of a matrix ordering as a pure diagnostic metric.",
+      "concept_type": "analysis",
+      "inputs": [
+        {
+          "name": "mat",
+          "type_desc": "np.ndarray",
+          "constraints": "Square or rectangular matrix-like input with indexable rows/columns."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "bandwidth",
+          "type_desc": "int",
+          "constraints": "Non-negative bandwidth value."
+        }
+      ],
+      "status": "decomposed",
+      "children": [
+        "validatesquarematrixshape",
+        "computeabsoluteweightedindexdistances",
+        "aggregatemaximumdistanceasbandwidth"
+      ],
+      "depth": 1,
+      "type_signature": "(mat: 2D numeric matrix) -> integer",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "Index-Offset Span Diagnostic. The operation inspects a 2D numeric tensor as an indexed interaction map and locates all structurally active coordinates. It then computes the maximum absolute row-column index offset across those coordinates, which is the smallest diagonal-centered span that contains the active pattern under the current index ordering. The output is a single diagnostic scalar and does not modify, compress, or reorder the input.. Applications: Evaluating node-order quality in discretized partial-differential-equation systems before using banded linear solvers, Assessing linearization locality of interaction graphs in biomolecular or ecological network simulations, Measuring dependency spread in reordered Jacobian/Hessian structures for large-scale optimization pipelines, Estimating memory-locality friendliness of sparse operator layouts in hardware-accelerated scientific computing",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "validatesquarematrixshape",
+      "parent_id": "bandwidthmetricevaluation",
+      "name": "ValidateSquareMatrixShape",
+      "description": "Check that the input matrix has identical row and column counts; fail if not square.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "mat",
+          "type_desc": "np.ndarray",
+          "constraints": "must have shape (n, n)"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "square_mat",
+          "type_desc": "np.ndarray",
+          "constraints": "same data as input, guaranteed square"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(mat: 2D numeric ndarray) -> 2D numeric ndarray",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "computeabsoluteweightedindexdistances",
+      "parent_id": "bandwidthmetricevaluation",
+      "name": "ComputeAbsoluteWeightedIndexDistances",
+      "description": "Enumerate all entries and compute absolute weighted index distance for each element as abs(value * (row_index - col_index)).",
+      "concept_type": "arithmetic",
+      "inputs": [
+        {
+          "name": "square_mat",
+          "type_desc": "np.ndarray",
+          "constraints": "square matrix"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "weighted_distances",
+          "type_desc": "np.ndarray",
+          "constraints": "non-negative, one value per matrix entry"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(square_mat: 2D numeric ndarray) -> sequence of numeric values",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "aggregatemaximumdistanceasbandwidth",
+      "parent_id": "bandwidthmetricevaluation",
+      "name": "AggregateMaximumDistanceAsBandwidth",
+      "description": "Take the maximum weighted distance and convert it to float as the final bandwidth metric.",
+      "concept_type": "analysis",
+      "inputs": [
+        {
+          "name": "weighted_distances",
+          "type_desc": "np.ndarray",
+          "constraints": "non-empty if matrix has at least one element"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "bandwidth",
+          "type_desc": "float",
+          "constraints": ">= 0"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(weighted_distances: sequence of numeric values) -> float",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "corebandwidthreduction",
+      "parent_id": "minimize_bandwidth_root",
+      "name": "CoreBandwidthReduction",
+      "description": "Primary entry-point routine to reduce matrix bandwidth via deterministic reordering.",
+      "concept_type": "graph_optimization",
+      "inputs": [
+        {
+          "name": "matrix",
+          "type_desc": "np.ndarray",
+          "constraints": "Matrix-like input suitable for permutation/reordering."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "reordered_matrix",
+          "type_desc": "np.ndarray",
+          "constraints": "Same shape as input with reordered rows/columns."
+        }
+      ],
+      "status": "decomposed",
+      "children": [
+        "validatesymmetricinput",
+        "initializereductionstate",
+        "proposegreedypermutationstep",
+        "updatestatewithimprovementcriterion",
+        "extractfinalpermutation"
+      ],
+      "depth": 1,
+      "type_signature": "(matrix: 2D numeric matrix) -> 2D numeric matrix",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "Deterministic Bi-Axis Locality-Preserving Permutation. Computes a deterministic index permutation for a 2D numeric array and applies that permutation to both axes to relabel element ordering. The transform minimizes interaction distance from the main diagonal, concentrating nonzero or high-magnitude couplings into a narrower band. Numeric entries are not modified; only their coordinates are reassigned through a structure-preserving permutation.. Applications: Sparse linear-system preprocessing in computational mechanics to improve factorization efficiency, Connectivity-matrix reordering in electronic circuit simulation to reduce memory traffic in solvers, Node relabeling in large biological interaction graphs to expose near-diagonal block structure for faster iterative computation",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "validatesymmetricinput",
+      "parent_id": "corebandwidthreduction",
+      "name": "ValidateSymmetricInput",
+      "description": "Verify the matrix is numerically symmetric within tolerance before any reordering logic proceeds.",
+      "concept_type": "analysis",
+      "inputs": [
+        {
+          "name": "matrix",
+          "type_desc": "np.ndarray",
+          "constraints": "Must satisfy allclose(matrix, matrix.T, atol=1e-8)"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "symmetric_matrix",
+          "type_desc": "np.ndarray",
+          "constraints": "Same values as input; guaranteed symmetric or function fails"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(matrix: np.ndarray (2D numeric square matrix)) -> np.ndarray",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "initializereductionstate",
+      "parent_id": "corebandwidthreduction",
+      "name": "InitializeReductionState",
+      "description": "Create the sanitized working matrix and initial optimization state for greedy bandwidth descent.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "symmetric_matrix",
+          "type_desc": "np.ndarray",
+          "constraints": "Symmetric numeric matrix"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "iteration_state",
+          "type_desc": "object",
+          "constraints": "working_matrix=abs(copy), accumulated_permutation=identity permutation, bandwidth=matrix_bandwidth(working_matrix), remaining_iterations=100"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(symmetric_matrix: np.ndarray) -> object {working_matrix: np.ndarray, accumulated_permutation: list[int], bandwidth: int, remaining_iterations: int}",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "proposegreedypermutationstep",
+      "parent_id": "corebandwidthreduction",
+      "name": "ProposeGreedyPermutationStep",
+      "description": "From the current working matrix, compute one candidate permutation and its resulting matrix bandwidth.",
+      "concept_type": "greedy",
+      "inputs": [
+        {
+          "name": "iteration_state",
+          "type_desc": "object",
+          "constraints": "Contains current working_matrix and associated state"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "current_iteration_state",
+          "type_desc": "object",
+          "constraints": "Pass-through of input state for synchronized evaluation"
+        },
+        {
+          "name": "candidate_permutation",
+          "type_desc": "list[int]",
+          "constraints": "Produced by minimize_bandwidth_global on current working_matrix"
+        },
+        {
+          "name": "candidate_matrix",
+          "type_desc": "np.ndarray",
+          "constraints": "permute_matrix(current working_matrix, candidate_permutation)"
+        },
+        {
+          "name": "candidate_bandwidth",
+          "type_desc": "int",
+          "constraints": "matrix_bandwidth(candidate_matrix)"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(iteration_state: object) -> tuple[object, list[int], np.ndarray, int]",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "updatestatewithimprovementcriterion",
+      "parent_id": "corebandwidthreduction",
+      "name": "UpdateStateWithImprovementCriterion",
+      "description": "Apply iteration budget checks, compare candidate vs current bandwidth, and either accept the candidate state or terminate without update.",
+      "concept_type": "greedy",
+      "inputs": [
+        {
+          "name": "current_iteration_state",
+          "type_desc": "object",
+          "constraints": "Contains working_matrix, accumulated_permutation, bandwidth, remaining_iterations"
+        },
+        {
+          "name": "candidate_permutation",
+          "type_desc": "list[int]",
+          "constraints": "Permutation proposed for this iteration"
+        },
+        {
+          "name": "candidate_matrix",
+          "type_desc": "np.ndarray",
+          "constraints": "Permuted working matrix for this iteration"
+        },
+        {
+          "name": "candidate_bandwidth",
+          "type_desc": "int",
+          "constraints": "Bandwidth of candidate_matrix"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "next_iteration_state",
+          "type_desc": "object",
+          "constraints": "Counter decremented; if candidate improves bandwidth, state is updated, otherwise state remains effectively terminal"
+        },
+        {
+          "name": "continue_search",
+          "type_desc": "bool",
+          "constraints": "True only when candidate_bandwidth < current bandwidth and budget not exhausted"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(current_iteration_state: object, candidate_permutation: list[int], candidate_matrix: np.ndarray, candidate_bandwidth: int) -> tuple[object, bool]",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "extractfinalpermutation",
+      "parent_id": "corebandwidthreduction",
+      "name": "ExtractFinalPermutation",
+      "description": "Return the accumulated permutation from the terminal state as the function result.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "terminal_state",
+          "type_desc": "object",
+          "constraints": "State after greedy loop termination"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "acc_permutation",
+          "type_desc": "list[int]",
+          "constraints": "Final accumulated row/column reordering permutation"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(terminal_state: object) -> list[int]",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "thresholdconstrainedbandwidthreduction",
+      "parent_id": "minimize_bandwidth_root",
+      "name": "ThresholdConstrainedBandwidthReduction",
+      "description": "Reduce bandwidth only when or until a threshold-related condition is satisfied.",
+      "concept_type": "graph_optimization",
+      "inputs": [
+        {
+          "name": "mat",
+          "type_desc": "np.ndarray",
+          "constraints": "Matrix-like input suitable for reordering."
+        },
+        {
+          "name": "threshold",
+          "type_desc": "float",
+          "constraints": "Bandwidth cutoff/target used to gate optimization."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "reordered_matrix",
+          "type_desc": "np.ndarray",
+          "constraints": "Output may be unchanged if threshold condition is not met."
+        }
+      ],
+      "status": "decomposed",
+      "children": [
+        "enforcethresholdsparsity",
+        "buildsparsegraphview",
+        "computesymmetricbandwidthreducingorder"
+      ],
+      "depth": 1,
+      "type_signature": "(mat: 2D numeric matrix, threshold: numeric scalar) -> 2D numeric matrix",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "Threshold-Gated Index-Permutation Bandwidth Minimization. Applies an index reordering to a 2D numeric array to reduce its bandwidth metric (the maximum distance of significant entries from a reference diagonal) only when a scalar gate condition is active. The procedure performs constrained optimization with early stopping once the target threshold condition is met, or skips modification when activation criteria are not satisfied. The transform is lossless with respect to numeric values: it changes index order, not entry magnitudes.. Applications: Sparse linear-system preprocessing in computational physics to improve locality and reduce downstream factorization overhead only when sparsity spread exceeds a preset bound., Permutation of large interaction matrices in neuroscience simulations to cluster nonzero couplings near the diagonal for bounded-latency time stepping., Reindexing transition operators in formal verification/model checking so nonzero transitions remain near-diagonal when a complexity threshold is exceeded., Arrangement of pairwise correlation matrices in remote-sensing or imaging pipelines to keep significant coefficients near local neighborhoods under memory-bandwidth constraints.",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "enforcethresholdsparsity",
+      "parent_id": "thresholdconstrainedbandwidthreduction",
+      "name": "EnforceThresholdSparsity",
+      "description": "Create a thresholded copy of the input matrix where all entries below the threshold are set to zero, preserving the original input matrix.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "mat",
+          "type_desc": "np.ndarray",
+          "constraints": "Square, symmetric expected by downstream ordering step"
+        },
+        {
+          "name": "threshold",
+          "type_desc": "float",
+          "constraints": "Values strictly below this are zeroed"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "thresholded_matrix",
+          "type_desc": "np.ndarray",
+          "constraints": "Same shape as mat; entries < threshold replaced with 0"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(mat: 2D numeric matrix, threshold: numeric scalar) -> 2D numeric matrix",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "buildsparsegraphview",
+      "parent_id": "thresholdconstrainedbandwidthreduction",
+      "name": "BuildSparseGraphView",
+      "description": "Convert the thresholded dense matrix into a CSR sparse representation suitable for graph-based bandwidth reduction.",
+      "concept_type": "graph_optimization",
+      "inputs": [
+        {
+          "name": "thresholded_matrix",
+          "type_desc": "np.ndarray",
+          "constraints": "Numeric matrix; typically sparse after thresholding"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "sparse_matrix",
+          "type_desc": "object",
+          "constraints": "Equivalent numeric structure to thresholded_matrix"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(thresholded_matrix: 2D numeric matrix) -> CSR sparse matrix",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "computesymmetricbandwidthreducingorder",
+      "parent_id": "thresholdconstrainedbandwidthreduction",
+      "name": "ComputeSymmetricBandwidthReducingOrder",
+      "description": "Run reverse Cuthill-McKee in symmetric mode on the sparse matrix and materialize the permutation as a NumPy array.",
+      "concept_type": "graph_optimization",
+      "inputs": [
+        {
+          "name": "sparse_matrix",
+          "type_desc": "object",
+          "constraints": "Represents a symmetric graph structure"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "reordered_matrix",
+          "type_desc": "np.ndarray",
+          "constraints": "Permutation of row/column indices for reduced bandwidth"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(sparse_matrix: CSR sparse matrix) -> 1D integer permutation array",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "globalbandwidthoptimization",
+      "parent_id": "minimize_bandwidth_root",
+      "name": "GlobalBandwidthOptimization",
+      "description": "Perform a global optimization pass to minimize matrix bandwidth across the full structure.",
+      "concept_type": "graph_optimization",
+      "inputs": [
+        {
+          "name": "mat",
+          "type_desc": "np.ndarray",
+          "constraints": "Matrix-like input suitable for global reordering."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "reordered_matrix",
+          "type_desc": "np.ndarray",
+          "constraints": "Globally optimized ordering result."
+        }
+      ],
+      "status": "decomposed",
+      "children": [
+        "validate_symmetric_input",
+        "build_threshold_search_space",
+        "enumerate_threshold_based_permutations",
+        "select_minimum_bandwidth_permutation"
+      ],
+      "depth": 1,
+      "type_signature": "(mat: 2D numeric matrix) -> 2D numeric matrix",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "Global Sparse Structure Linearization. Interprets a 2D numeric array as a weighted relation graph and computes a global index permutation that concentrates significant entries near the main diagonal. The same permutation is applied consistently to structural axes, preserving algebraic equivalence while reducing matrix bandwidth and related profile metrics. The output is topologically identical in connectivity but re-embedded for improved locality in subsequent computations.. Applications: Sparse linear-system preconditioning in computational mechanics (e.g., stiffness/operator matrices)., Node reindexing for large-scale circuit or power-network simulation matrices to improve sparse factorization locality., Permutation of dependency matrices in high-performance task scheduling to cluster near-neighbor interactions., Reordering contact/interaction matrices in biological network analysis to expose near-diagonal block structure.",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "validate_symmetric_input",
+      "parent_id": "globalbandwidthoptimization",
+      "name": "validate_symmetric_input",
+      "description": "Verify the input matrix is symmetric within tolerance and fail fast if the precondition is violated.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "mat",
+          "type_desc": "np.ndarray",
+          "constraints": "square; expected symmetric"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "validated_mat",
+          "type_desc": "np.ndarray",
+          "constraints": "symmetric within atol=1e-8"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(mat: np.ndarray (2D numeric)) -> np.ndarray (2D numeric)",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "build_threshold_search_space",
+      "parent_id": "globalbandwidthoptimization",
+      "name": "build_threshold_search_space",
+      "description": "Compute matrix amplitude from absolute values and construct the truncation sweep used to explore candidate permutations.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "validated_mat",
+          "type_desc": "np.ndarray",
+          "constraints": "symmetric"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "mat_amplitude",
+          "type_desc": "float",
+          "constraints": "ptp(abs(validated_mat).ravel())"
+        },
+        {
+          "name": "truncation_values",
+          "type_desc": "np.ndarray",
+          "constraints": "range [0.1, 1.0) with step 0.01"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(validated_mat: np.ndarray (2D numeric)) -> tuple[float, np.ndarray (1D float)]",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "enumerate_threshold_based_permutations",
+      "parent_id": "globalbandwidthoptimization",
+      "name": "enumerate_threshold_based_permutations",
+      "description": "Generate candidate permutations by calling thresholded bandwidth minimization for each scaled truncation value.",
+      "concept_type": "searching",
+      "inputs": [
+        {
+          "name": "validated_mat",
+          "type_desc": "np.ndarray",
+          "constraints": "symmetric"
+        },
+        {
+          "name": "mat_amplitude",
+          "type_desc": "float",
+          "constraints": "non-negative"
+        },
+        {
+          "name": "truncation_values",
+          "type_desc": "np.ndarray",
+          "constraints": "finite values in [0.1, 1.0)"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "candidate_permutations",
+          "type_desc": "list[np.ndarray]",
+          "constraints": "each item is a valid row/column permutation"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(validated_mat: np.ndarray (2D numeric), mat_amplitude: float, truncation_values: np.ndarray (1D float)) -> iterable[np.ndarray | list[int]]",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "select_minimum_bandwidth_permutation",
+      "parent_id": "globalbandwidthoptimization",
+      "name": "select_minimum_bandwidth_permutation",
+      "description": "Evaluate each candidate by permuting the matrix and computing resulting bandwidth, then return the best permutation as a Python list.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "validated_mat",
+          "type_desc": "np.ndarray",
+          "constraints": "symmetric"
+        },
+        {
+          "name": "candidate_permutations",
+          "type_desc": "list[np.ndarray]",
+          "constraints": "non-empty iterable of valid permutations"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "optimal_permutation",
+          "type_desc": "list[int]",
+          "constraints": "argmin over matrix_bandwidth(permute_matrix(validated_mat, perm))"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(validated_mat: np.ndarray (2D numeric), candidate_permutations: iterable[np.ndarray | list[int]]) -> list[int]",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "validatesquarematrixshape",
+      "target_id": "computeabsoluteweightedindexdistances",
+      "output_name": "square_mat",
+      "input_name": "square_mat",
+      "source_type": "2D numeric ndarray",
+      "target_type": "2D numeric ndarray",
+      "requires_glue": false
+    },
+    {
+      "source_id": "computeabsoluteweightedindexdistances",
+      "target_id": "aggregatemaximumdistanceasbandwidth",
+      "output_name": "weighted_distances",
+      "input_name": "weighted_distances",
+      "source_type": "sequence of numeric values",
+      "target_type": "sequence of numeric values",
+      "requires_glue": false
+    },
+    {
+      "source_id": "validatesymmetricinput",
+      "target_id": "initializereductionstate",
+      "output_name": "symmetric_matrix",
+      "input_name": "symmetric_matrix",
+      "source_type": "np.ndarray",
+      "target_type": "np.ndarray",
+      "requires_glue": false
+    },
+    {
+      "source_id": "initializereductionstate",
+      "target_id": "proposegreedypermutationstep",
+      "output_name": "iteration_state",
+      "input_name": "iteration_state",
+      "source_type": "object",
+      "target_type": "object",
+      "requires_glue": false
+    },
+    {
+      "source_id": "proposegreedypermutationstep",
+      "target_id": "updatestatewithimprovementcriterion",
+      "output_name": "current_iteration_state",
+      "input_name": "current_iteration_state",
+      "source_type": "object",
+      "target_type": "object",
+      "requires_glue": false
+    },
+    {
+      "source_id": "proposegreedypermutationstep",
+      "target_id": "updatestatewithimprovementcriterion",
+      "output_name": "candidate_permutation",
+      "input_name": "candidate_permutation",
+      "source_type": "list[int]",
+      "target_type": "list[int]",
+      "requires_glue": false
+    },
+    {
+      "source_id": "proposegreedypermutationstep",
+      "target_id": "updatestatewithimprovementcriterion",
+      "output_name": "candidate_matrix",
+      "input_name": "candidate_matrix",
+      "source_type": "np.ndarray",
+      "target_type": "np.ndarray",
+      "requires_glue": false
+    },
+    {
+      "source_id": "proposegreedypermutationstep",
+      "target_id": "updatestatewithimprovementcriterion",
+      "output_name": "candidate_bandwidth",
+      "input_name": "candidate_bandwidth",
+      "source_type": "int",
+      "target_type": "int",
+      "requires_glue": false
+    },
+    {
+      "source_id": "updatestatewithimprovementcriterion",
+      "target_id": "extractfinalpermutation",
+      "output_name": "next_iteration_state",
+      "input_name": "terminal_state",
+      "source_type": "object",
+      "target_type": "object",
+      "requires_glue": false
+    },
+    {
+      "source_id": "enforcethresholdsparsity",
+      "target_id": "buildsparsegraphview",
+      "output_name": "thresholded_matrix",
+      "input_name": "thresholded_matrix",
+      "source_type": "2D numeric matrix",
+      "target_type": "2D numeric matrix",
+      "requires_glue": false
+    },
+    {
+      "source_id": "buildsparsegraphview",
+      "target_id": "computesymmetricbandwidthreducingorder",
+      "output_name": "sparse_matrix",
+      "input_name": "sparse_matrix",
+      "source_type": "CSR sparse matrix",
+      "target_type": "CSR sparse matrix",
+      "requires_glue": false
+    },
+    {
+      "source_id": "validate_symmetric_input",
+      "target_id": "build_threshold_search_space",
+      "output_name": "validated_mat",
+      "input_name": "validated_mat",
+      "source_type": "np.ndarray (2D numeric)",
+      "target_type": "np.ndarray (2D numeric)",
+      "requires_glue": false
+    },
+    {
+      "source_id": "validate_symmetric_input",
+      "target_id": "enumerate_threshold_based_permutations",
+      "output_name": "validated_mat",
+      "input_name": "validated_mat",
+      "source_type": "np.ndarray (2D numeric)",
+      "target_type": "np.ndarray (2D numeric)",
+      "requires_glue": false
+    },
+    {
+      "source_id": "build_threshold_search_space",
+      "target_id": "enumerate_threshold_based_permutations",
+      "output_name": "mat_amplitude",
+      "input_name": "mat_amplitude",
+      "source_type": "float",
+      "target_type": "float",
+      "requires_glue": false
+    },
+    {
+      "source_id": "build_threshold_search_space",
+      "target_id": "enumerate_threshold_based_permutations",
+      "output_name": "truncation_values",
+      "input_name": "truncation_values",
+      "source_type": "np.ndarray (1D float)",
+      "target_type": "np.ndarray (1D float)",
+      "requires_glue": false
+    },
+    {
+      "source_id": "validate_symmetric_input",
+      "target_id": "select_minimum_bandwidth_permutation",
+      "output_name": "validated_mat",
+      "input_name": "validated_mat",
+      "source_type": "np.ndarray (2D numeric)",
+      "target_type": "np.ndarray (2D numeric)",
+      "requires_glue": false
+    },
+    {
+      "source_id": "enumerate_threshold_based_permutations",
+      "target_id": "select_minimum_bandwidth_permutation",
+      "output_name": "candidate_permutations",
+      "input_name": "candidate_permutations",
+      "source_type": "iterable[np.ndarray | list[int]]",
+      "target_type": "iterable[np.ndarray | list[int]]",
+      "requires_glue": false
+    }
+  ],
+  "metadata": {
+    "source": "ingester",
+    "class_name": "minimize_bandwidth"
+  }
+}

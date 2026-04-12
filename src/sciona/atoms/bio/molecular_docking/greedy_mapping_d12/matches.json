@@ -1,0 +1,662 @@
+[
+  {
+    "pdg_node": {
+      "predicate_id": "init_problem_context",
+      "statement": "(graph: Graph, lattice_instance: LatticeInstance, previously_generated_subgraphs: Collection[Subgraph], seed: int) -> GreedyMappingContext",
+      "informal_desc": "Bootstraps immutable problem context for all later kernels: graph topology, lattice abstraction, lattice instance, previously generated subgraphs, and seed.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "init_problem_context",
+          "type_signature": "(graph: Graph, lattice_instance: LatticeInstance, previously_generated_subgraphs: Collection[Subgraph], seed: int) -> GreedyMappingContext",
+          "docstring": "Bootstraps immutable problem context for all later kernels: graph topology, lattice abstraction, lattice instance, previously generated subgraphs, and seed.",
+          "conceptual_summary": "Deterministic Immutable Context Bootstrap. Aggregates multiple heterogeneous structural inputs into a single immutable state carrier that is passed unchanged across later computational kernels. The transform performs no optimization or inference; it formalizes boundary conditions by binding a read-only relational topology, a discrete embedding/placement scaffold context, historical substructure constraints, and a reproducibility token into one canonical context object. This creates a stable reference frame so downstream greedy or stochastic procedures can be evaluated consistently.. Applications: Initializing a molecular conformation search pipeline with a fixed bond graph, spatial discretization schema, prior sampled motifs, and a random seed, Bootstrapping robotic path-planning with workspace connectivity, occupancy grid instance, previously explored trajectory fragments, and deterministic rollout seed, Preparing a distributed scheduling optimizer using system dependency topology, resource-slot lattice instance, prior allocation patterns, and reproducible simulation seed",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "init_problem_context",
+          "type_signature": "(graph: Graph, lattice_instance: LatticeInstance, previously_generated_subgraphs: Collection[Subgraph], seed: int) -> GreedyMappingContext",
+          "docstring": "Bootstraps immutable problem context for all later kernels: graph topology, lattice abstraction, lattice instance, previously generated subgraphs, and seed.",
+          "conceptual_summary": "Deterministic Immutable Context Bootstrap. Aggregates multiple heterogeneous structural inputs into a single immutable state carrier that is passed unchanged across later computational kernels. The transform performs no optimization or inference; it formalizes boundary conditions by binding a read-only relational topology, a discrete embedding/placement scaffold context, historical substructure constraints, and a reproducibility token into one canonical context object. This creates a stable reference frame so downstream greedy or stochastic procedures can be evaluated consistently.. Applications: Initializing a molecular conformation search pipeline with a fixed bond graph, spatial discretization schema, prior sampled motifs, and a random seed, Bootstrapping robotic path-planning with workspace connectivity, occupancy grid instance, previously explored trajectory fragments, and deterministic rollout seed, Preparing a distributed scheduling optimizer using system dependency topology, resource-slot lattice instance, prior allocation patterns, and reproducible simulation seed",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "init_problem_context",
+            "type_signature": "(graph: Graph, lattice_instance: LatticeInstance, previously_generated_subgraphs: Collection[Subgraph], seed: int) -> GreedyMappingContext",
+            "docstring": "Bootstraps immutable problem context for all later kernels: graph topology, lattice abstraction, lattice instance, previously generated subgraphs, and seed.",
+            "conceptual_summary": "Deterministic Immutable Context Bootstrap. Aggregates multiple heterogeneous structural inputs into a single immutable state carrier that is passed unchanged across later computational kernels. The transform performs no optimization or inference; it formalizes boundary conditions by binding a read-only relational topology, a discrete embedding/placement scaffold context, historical substructure constraints, and a reproducibility token into one canonical context object. This creates a stable reference frame so downstream greedy or stochastic procedures can be evaluated consistently.. Applications: Initializing a molecular conformation search pipeline with a fixed bond graph, spatial discretization schema, prior sampled motifs, and a random seed, Bootstrapping robotic path-planning with workspace connectivity, occupancy grid instance, previously explored trajectory fragments, and deterministic rollout seed, Preparing a distributed scheduling optimizer using system dependency topology, resource-slot lattice instance, prior allocation patterns, and reproducible simulation seed",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "seed_mapping_at_lattice_center",
+      "statement": "(problem_context: GreedyMappingContext, starting_node: NodeId, mapping_state_in: MappingState) -> tuple[MappingState, NodeId]",
+      "informal_desc": "Compute the lattice start position from lattice size and return a new mapping state with the starting graph node placed and marked unexpanded.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "seed_mapping_at_lattice_center",
+          "type_signature": "(problem_context: GreedyMappingContext, starting_node: NodeId, mapping_state_in: MappingState) -> tuple[MappingState, NodeId]",
+          "docstring": "Compute the lattice start position from lattice size and return a new mapping state with the starting graph node placed and marked unexpanded.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "seed_mapping_at_lattice_center",
+          "type_signature": "(problem_context: GreedyMappingContext, starting_node: NodeId, mapping_state_in: MappingState) -> tuple[MappingState, NodeId]",
+          "docstring": "Compute the lattice start position from lattice size and return a new mapping state with the starting graph node placed and marked unexpanded.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "seed_mapping_at_lattice_center",
+            "type_signature": "(problem_context: GreedyMappingContext, starting_node: NodeId, mapping_state_in: MappingState) -> tuple[MappingState, NodeId]",
+            "docstring": "Compute the lattice start position from lattice size and return a new mapping state with the starting graph node placed and marked unexpanded.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "select_unplaced_candidates",
+      "statement": "(considered_nodes: Collection[NodeId], mapping_state_seeded: MappingState) -> Collection[NodeId]",
+      "informal_desc": "Filter considered nodes to only those not already mapped in the seeded state.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "select_unplaced_candidates",
+          "type_signature": "(considered_nodes: Collection[NodeId], mapping_state_seeded: MappingState) -> Collection[NodeId]",
+          "docstring": "Filter considered nodes to only those not already mapped in the seeded state.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "select_unplaced_candidates",
+          "type_signature": "(considered_nodes: Collection[NodeId], mapping_state_seeded: MappingState) -> Collection[NodeId]",
+          "docstring": "Filter considered nodes to only those not already mapped in the seeded state.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "select_unplaced_candidates",
+            "type_signature": "(considered_nodes: Collection[NodeId], mapping_state_seeded: MappingState) -> Collection[NodeId]",
+            "docstring": "Filter considered nodes to only those not already mapped in the seeded state.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "score_and_rank_candidates_greedily",
+      "statement": "(problem_context: GreedyMappingContext, unplaced_nodes: Collection[NodeId], mapping_state_seeded: MappingState, remove_invalid_placement_nodes: bool, rank_nodes: bool) -> tuple[Collection[NodeId], Collection[ScoredNode]]",
+      "informal_desc": "Optionally call greedy_node_scoring and produce ranked unplaced nodes; also emit scored node records for downstream observability/output.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "score_and_rank_candidates_greedily",
+          "type_signature": "(problem_context: GreedyMappingContext, unplaced_nodes: Collection[NodeId], mapping_state_seeded: MappingState, remove_invalid_placement_nodes: bool, rank_nodes: bool) -> tuple[Collection[NodeId], Collection[ScoredNode]]",
+          "docstring": "Optionally call greedy_node_scoring and produce ranked unplaced nodes; also emit scored node records for downstream observability/output.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "score_and_rank_candidates_greedily",
+          "type_signature": "(problem_context: GreedyMappingContext, unplaced_nodes: Collection[NodeId], mapping_state_seeded: MappingState, remove_invalid_placement_nodes: bool, rank_nodes: bool) -> tuple[Collection[NodeId], Collection[ScoredNode]]",
+          "docstring": "Optionally call greedy_node_scoring and produce ranked unplaced nodes; also emit scored node records for downstream observability/output.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "score_and_rank_candidates_greedily",
+            "type_signature": "(problem_context: GreedyMappingContext, unplaced_nodes: Collection[NodeId], mapping_state_seeded: MappingState, remove_invalid_placement_nodes: bool, rank_nodes: bool) -> tuple[Collection[NodeId], Collection[ScoredNode]]",
+            "docstring": "Optionally call greedy_node_scoring and produce ranked unplaced nodes; also emit scored node records for downstream observability/output.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "greedily_place_feasible_candidates_on_frontier",
+      "statement": "(problem_context: GreedyMappingContext, mapping_state_seeded: MappingState, ranked_unplaced_nodes: Collection[NodeId]) -> tuple[MappingState, Collection[NodeId]]",
+      "informal_desc": "Iterate frontier lattice neighbors and greedily place the first candidate satisfying lattice/graph adjacency consistency checks, returning updated mapping state and leftovers.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "greedily_place_feasible_candidates_on_frontier",
+          "type_signature": "(problem_context: GreedyMappingContext, mapping_state_seeded: MappingState, ranked_unplaced_nodes: Collection[NodeId]) -> tuple[MappingState, Collection[NodeId]]",
+          "docstring": "Iterate frontier lattice neighbors and greedily place the first candidate satisfying lattice/graph adjacency consistency checks, returning updated mapping state and leftovers.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "greedily_place_feasible_candidates_on_frontier",
+          "type_signature": "(problem_context: GreedyMappingContext, mapping_state_seeded: MappingState, ranked_unplaced_nodes: Collection[NodeId]) -> tuple[MappingState, Collection[NodeId]]",
+          "docstring": "Iterate frontier lattice neighbors and greedily place the first candidate satisfying lattice/graph adjacency consistency checks, returning updated mapping state and leftovers.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "greedily_place_feasible_candidates_on_frontier",
+            "type_signature": "(problem_context: GreedyMappingContext, mapping_state_seeded: MappingState, ranked_unplaced_nodes: Collection[NodeId]) -> tuple[MappingState, Collection[NodeId]]",
+            "docstring": "Iterate frontier lattice neighbors and greedily place the first candidate satisfying lattice/graph adjacency consistency checks, returning updated mapping state and leftovers.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "finalize_mapping_state_with_optional_pruning",
+      "statement": "(mapping_state_extended: MappingState, remaining_unplaced_nodes: Collection[NodeId], remove_invalid_placement_nodes: bool, scored_nodes: Collection[ScoredNode]) -> tuple[MappingState, Collection[ScoredNode]]",
+      "informal_desc": "Apply optional invalid-node pruning as a pure state transform and return final mapping state while forwarding scored nodes.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "finalize_mapping_state_with_optional_pruning",
+          "type_signature": "(mapping_state_extended: MappingState, remaining_unplaced_nodes: Collection[NodeId], remove_invalid_placement_nodes: bool, scored_nodes: Collection[ScoredNode]) -> tuple[MappingState, Collection[ScoredNode]]",
+          "docstring": "Apply optional invalid-node pruning as a pure state transform and return final mapping state while forwarding scored nodes.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "finalize_mapping_state_with_optional_pruning",
+          "type_signature": "(mapping_state_extended: MappingState, remaining_unplaced_nodes: Collection[NodeId], remove_invalid_placement_nodes: bool, scored_nodes: Collection[ScoredNode]) -> tuple[MappingState, Collection[ScoredNode]]",
+          "docstring": "Apply optional invalid-node pruning as a pure state transform and return final mapping state while forwarding scored nodes.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "finalize_mapping_state_with_optional_pruning",
+            "type_signature": "(mapping_state_extended: MappingState, remaining_unplaced_nodes: Collection[NodeId], remove_invalid_placement_nodes: bool, scored_nodes: Collection[ScoredNode]) -> tuple[MappingState, Collection[ScoredNode]]",
+            "docstring": "Apply optional invalid-node pruning as a pure state transform and return final mapping state while forwarding scored nodes.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "initialize_state_with_start_anchor",
+      "statement": "(problem_context: GreedyMappingContext, starting_node: NodeId (int)) -> MappingState",
+      "informal_desc": "Create empty mapping containers, seed the starting graph node onto the lattice via `initialize_mapping`, and establish the current expansion pointers.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "initialize_state_with_start_anchor",
+          "type_signature": "(problem_context: GreedyMappingContext, starting_node: NodeId (int)) -> MappingState",
+          "docstring": "Create empty mapping containers, seed the starting graph node onto the lattice via `initialize_mapping`, and establish the current expansion pointers.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "initialize_state_with_start_anchor",
+          "type_signature": "(problem_context: GreedyMappingContext, starting_node: NodeId (int)) -> MappingState",
+          "docstring": "Create empty mapping containers, seed the starting graph node onto the lattice via `initialize_mapping`, and establish the current expansion pointers.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "initialize_state_with_start_anchor",
+            "type_signature": "(problem_context: GreedyMappingContext, starting_node: NodeId (int)) -> MappingState",
+            "docstring": "Create empty mapping containers, seed the starting graph node onto the lattice via `initialize_mapping`, and establish the current expansion pointers.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "greedy_expand_frontier",
+      "statement": "(problem_context: GreedyMappingContext, mapping_state: MappingState, remove_invalid_placement_nodes: bool, rank_nodes: bool) -> MappingState",
+      "informal_desc": "While unexpanded nodes remain, remove current node from frontier, derive free lattice neighbors and graph neighbors, call `extend_mapping_with_nodes`, and advance to the next unexpanded anchor.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "greedy_expand_frontier",
+          "type_signature": "(problem_context: GreedyMappingContext, mapping_state: MappingState, remove_invalid_placement_nodes: bool, rank_nodes: bool) -> MappingState",
+          "docstring": "While unexpanded nodes remain, remove current node from frontier, derive free lattice neighbors and graph neighbors, call `extend_mapping_with_nodes`, and advance to the next unexpanded anchor.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "greedy_expand_frontier",
+          "type_signature": "(problem_context: GreedyMappingContext, mapping_state: MappingState, remove_invalid_placement_nodes: bool, rank_nodes: bool) -> MappingState",
+          "docstring": "While unexpanded nodes remain, remove current node from frontier, derive free lattice neighbors and graph neighbors, call `extend_mapping_with_nodes`, and advance to the next unexpanded anchor.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "greedy_expand_frontier",
+            "type_signature": "(problem_context: GreedyMappingContext, mapping_state: MappingState, remove_invalid_placement_nodes: bool, rank_nodes: bool) -> MappingState",
+            "docstring": "While unexpanded nodes remain, remove current node from frontier, derive free lattice neighbors and graph neighbors, call `extend_mapping_with_nodes`, and advance to the next unexpanded anchor.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "assess_mapping_validity",
+      "statement": "(problem_context: GreedyMappingContext, expanded_mapping_state: MappingState) -> bool",
+      "informal_desc": "Run `check_mapping_validity` to verify bidirectional adjacency consistency between graph and lattice projections.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "assess_mapping_validity",
+          "type_signature": "(problem_context: GreedyMappingContext, expanded_mapping_state: MappingState) -> bool",
+          "docstring": "Run `check_mapping_validity` to verify bidirectional adjacency consistency between graph and lattice projections.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "assess_mapping_validity",
+          "type_signature": "(problem_context: GreedyMappingContext, expanded_mapping_state: MappingState) -> bool",
+          "docstring": "Run `check_mapping_validity` to verify bidirectional adjacency consistency between graph and lattice projections.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "assess_mapping_validity",
+            "type_signature": "(problem_context: GreedyMappingContext, expanded_mapping_state: MappingState) -> bool",
+            "docstring": "Run `check_mapping_validity` to verify bidirectional adjacency consistency between graph and lattice projections.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "emit_final_generation_result",
+      "statement": "(expanded_mapping_state: MappingState, is_valid: bool) -> tuple[MappingState, bool]",
+      "informal_desc": "Package the expanded mapping state with validity status as the orchestration output contract.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "emit_final_generation_result",
+          "type_signature": "(expanded_mapping_state: MappingState, is_valid: bool) -> tuple[MappingState, bool]",
+          "docstring": "Package the expanded mapping state with validity status as the orchestration output contract.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "emit_final_generation_result",
+          "type_signature": "(expanded_mapping_state: MappingState, is_valid: bool) -> tuple[MappingState, bool]",
+          "docstring": "Package the expanded mapping state with validity status as the orchestration output contract.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "emit_final_generation_result",
+            "type_signature": "(expanded_mapping_state: MappingState, is_valid: bool) -> tuple[MappingState, bool]",
+            "docstring": "Package the expanded mapping state with validity status as the orchestration output contract.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  }
+]

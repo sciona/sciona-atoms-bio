@@ -1,0 +1,992 @@
+[
+  {
+    "pdg_node": {
+      "predicate_id": "validatesquarematrixshape",
+      "statement": "(mat: 2D numeric ndarray) -> 2D numeric ndarray",
+      "informal_desc": "Check that the input matrix has identical row and column counts; fail if not square.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "validatesquarematrixshape",
+          "type_signature": "(mat: 2D numeric ndarray) -> 2D numeric ndarray",
+          "docstring": "Check that the input matrix has identical row and column counts; fail if not square.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "validatesquarematrixshape",
+          "type_signature": "(mat: 2D numeric ndarray) -> 2D numeric ndarray",
+          "docstring": "Check that the input matrix has identical row and column counts; fail if not square.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "validatesquarematrixshape",
+            "type_signature": "(mat: 2D numeric ndarray) -> 2D numeric ndarray",
+            "docstring": "Check that the input matrix has identical row and column counts; fail if not square.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "computeabsoluteweightedindexdistances",
+      "statement": "(square_mat: 2D numeric ndarray) -> sequence of numeric values",
+      "informal_desc": "Enumerate all entries and compute absolute weighted index distance for each element as abs(value * (row_index - col_index)).",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "computeabsoluteweightedindexdistances",
+          "type_signature": "(square_mat: 2D numeric ndarray) -> sequence of numeric values",
+          "docstring": "Enumerate all entries and compute absolute weighted index distance for each element as abs(value * (row_index - col_index)).",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "computeabsoluteweightedindexdistances",
+          "type_signature": "(square_mat: 2D numeric ndarray) -> sequence of numeric values",
+          "docstring": "Enumerate all entries and compute absolute weighted index distance for each element as abs(value * (row_index - col_index)).",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "computeabsoluteweightedindexdistances",
+            "type_signature": "(square_mat: 2D numeric ndarray) -> sequence of numeric values",
+            "docstring": "Enumerate all entries and compute absolute weighted index distance for each element as abs(value * (row_index - col_index)).",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "aggregatemaximumdistanceasbandwidth",
+      "statement": "(weighted_distances: sequence of numeric values) -> float",
+      "informal_desc": "Take the maximum weighted distance and convert it to float as the final bandwidth metric.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "aggregatemaximumdistanceasbandwidth",
+          "type_signature": "(weighted_distances: sequence of numeric values) -> float",
+          "docstring": "Take the maximum weighted distance and convert it to float as the final bandwidth metric.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "aggregatemaximumdistanceasbandwidth",
+          "type_signature": "(weighted_distances: sequence of numeric values) -> float",
+          "docstring": "Take the maximum weighted distance and convert it to float as the final bandwidth metric.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "aggregatemaximumdistanceasbandwidth",
+            "type_signature": "(weighted_distances: sequence of numeric values) -> float",
+            "docstring": "Take the maximum weighted distance and convert it to float as the final bandwidth metric.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "validatesymmetricinput",
+      "statement": "(matrix: np.ndarray (2D numeric square matrix)) -> np.ndarray",
+      "informal_desc": "Verify the matrix is numerically symmetric within tolerance before any reordering logic proceeds.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "validatesymmetricinput",
+          "type_signature": "(matrix: np.ndarray (2D numeric square matrix)) -> np.ndarray",
+          "docstring": "Verify the matrix is numerically symmetric within tolerance before any reordering logic proceeds.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "validatesymmetricinput",
+          "type_signature": "(matrix: np.ndarray (2D numeric square matrix)) -> np.ndarray",
+          "docstring": "Verify the matrix is numerically symmetric within tolerance before any reordering logic proceeds.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "validatesymmetricinput",
+            "type_signature": "(matrix: np.ndarray (2D numeric square matrix)) -> np.ndarray",
+            "docstring": "Verify the matrix is numerically symmetric within tolerance before any reordering logic proceeds.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "initializereductionstate",
+      "statement": "(symmetric_matrix: np.ndarray) -> object {working_matrix: np.ndarray, accumulated_permutation: list[int], bandwidth: int, remaining_iterations: int}",
+      "informal_desc": "Create the sanitized working matrix and initial optimization state for greedy bandwidth descent.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "initializereductionstate",
+          "type_signature": "(symmetric_matrix: np.ndarray) -> object {working_matrix: np.ndarray, accumulated_permutation: list[int], bandwidth: int, remaining_iterations: int}",
+          "docstring": "Create the sanitized working matrix and initial optimization state for greedy bandwidth descent.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "initializereductionstate",
+          "type_signature": "(symmetric_matrix: np.ndarray) -> object {working_matrix: np.ndarray, accumulated_permutation: list[int], bandwidth: int, remaining_iterations: int}",
+          "docstring": "Create the sanitized working matrix and initial optimization state for greedy bandwidth descent.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "initializereductionstate",
+            "type_signature": "(symmetric_matrix: np.ndarray) -> object {working_matrix: np.ndarray, accumulated_permutation: list[int], bandwidth: int, remaining_iterations: int}",
+            "docstring": "Create the sanitized working matrix and initial optimization state for greedy bandwidth descent.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "proposegreedypermutationstep",
+      "statement": "(iteration_state: object) -> tuple[object, list[int], np.ndarray, int]",
+      "informal_desc": "From the current working matrix, compute one candidate permutation and its resulting matrix bandwidth.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "proposegreedypermutationstep",
+          "type_signature": "(iteration_state: object) -> tuple[object, list[int], np.ndarray, int]",
+          "docstring": "From the current working matrix, compute one candidate permutation and its resulting matrix bandwidth.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "proposegreedypermutationstep",
+          "type_signature": "(iteration_state: object) -> tuple[object, list[int], np.ndarray, int]",
+          "docstring": "From the current working matrix, compute one candidate permutation and its resulting matrix bandwidth.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "proposegreedypermutationstep",
+            "type_signature": "(iteration_state: object) -> tuple[object, list[int], np.ndarray, int]",
+            "docstring": "From the current working matrix, compute one candidate permutation and its resulting matrix bandwidth.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "updatestatewithimprovementcriterion",
+      "statement": "(current_iteration_state: object, candidate_permutation: list[int], candidate_matrix: np.ndarray, candidate_bandwidth: int) -> tuple[object, bool]",
+      "informal_desc": "Apply iteration budget checks, compare candidate vs current bandwidth, and either accept the candidate state or terminate without update.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "updatestatewithimprovementcriterion",
+          "type_signature": "(current_iteration_state: object, candidate_permutation: list[int], candidate_matrix: np.ndarray, candidate_bandwidth: int) -> tuple[object, bool]",
+          "docstring": "Apply iteration budget checks, compare candidate vs current bandwidth, and either accept the candidate state or terminate without update.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "updatestatewithimprovementcriterion",
+          "type_signature": "(current_iteration_state: object, candidate_permutation: list[int], candidate_matrix: np.ndarray, candidate_bandwidth: int) -> tuple[object, bool]",
+          "docstring": "Apply iteration budget checks, compare candidate vs current bandwidth, and either accept the candidate state or terminate without update.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "updatestatewithimprovementcriterion",
+            "type_signature": "(current_iteration_state: object, candidate_permutation: list[int], candidate_matrix: np.ndarray, candidate_bandwidth: int) -> tuple[object, bool]",
+            "docstring": "Apply iteration budget checks, compare candidate vs current bandwidth, and either accept the candidate state or terminate without update.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "extractfinalpermutation",
+      "statement": "(terminal_state: object) -> list[int]",
+      "informal_desc": "Return the accumulated permutation from the terminal state as the function result.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "extractfinalpermutation",
+          "type_signature": "(terminal_state: object) -> list[int]",
+          "docstring": "Return the accumulated permutation from the terminal state as the function result.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "extractfinalpermutation",
+          "type_signature": "(terminal_state: object) -> list[int]",
+          "docstring": "Return the accumulated permutation from the terminal state as the function result.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "extractfinalpermutation",
+            "type_signature": "(terminal_state: object) -> list[int]",
+            "docstring": "Return the accumulated permutation from the terminal state as the function result.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "enforcethresholdsparsity",
+      "statement": "(mat: 2D numeric matrix, threshold: numeric scalar) -> 2D numeric matrix",
+      "informal_desc": "Create a thresholded copy of the input matrix where all entries below the threshold are set to zero, preserving the original input matrix.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "enforcethresholdsparsity",
+          "type_signature": "(mat: 2D numeric matrix, threshold: numeric scalar) -> 2D numeric matrix",
+          "docstring": "Create a thresholded copy of the input matrix where all entries below the threshold are set to zero, preserving the original input matrix.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "enforcethresholdsparsity",
+          "type_signature": "(mat: 2D numeric matrix, threshold: numeric scalar) -> 2D numeric matrix",
+          "docstring": "Create a thresholded copy of the input matrix where all entries below the threshold are set to zero, preserving the original input matrix.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "enforcethresholdsparsity",
+            "type_signature": "(mat: 2D numeric matrix, threshold: numeric scalar) -> 2D numeric matrix",
+            "docstring": "Create a thresholded copy of the input matrix where all entries below the threshold are set to zero, preserving the original input matrix.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "buildsparsegraphview",
+      "statement": "(thresholded_matrix: 2D numeric matrix) -> CSR sparse matrix",
+      "informal_desc": "Convert the thresholded dense matrix into a CSR sparse representation suitable for graph-based bandwidth reduction.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "buildsparsegraphview",
+          "type_signature": "(thresholded_matrix: 2D numeric matrix) -> CSR sparse matrix",
+          "docstring": "Convert the thresholded dense matrix into a CSR sparse representation suitable for graph-based bandwidth reduction.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "buildsparsegraphview",
+          "type_signature": "(thresholded_matrix: 2D numeric matrix) -> CSR sparse matrix",
+          "docstring": "Convert the thresholded dense matrix into a CSR sparse representation suitable for graph-based bandwidth reduction.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "buildsparsegraphview",
+            "type_signature": "(thresholded_matrix: 2D numeric matrix) -> CSR sparse matrix",
+            "docstring": "Convert the thresholded dense matrix into a CSR sparse representation suitable for graph-based bandwidth reduction.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "computesymmetricbandwidthreducingorder",
+      "statement": "(sparse_matrix: CSR sparse matrix) -> 1D integer permutation array",
+      "informal_desc": "Run reverse Cuthill-McKee in symmetric mode on the sparse matrix and materialize the permutation as a NumPy array.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "computesymmetricbandwidthreducingorder",
+          "type_signature": "(sparse_matrix: CSR sparse matrix) -> 1D integer permutation array",
+          "docstring": "Run reverse Cuthill-McKee in symmetric mode on the sparse matrix and materialize the permutation as a NumPy array.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "computesymmetricbandwidthreducingorder",
+          "type_signature": "(sparse_matrix: CSR sparse matrix) -> 1D integer permutation array",
+          "docstring": "Run reverse Cuthill-McKee in symmetric mode on the sparse matrix and materialize the permutation as a NumPy array.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "computesymmetricbandwidthreducingorder",
+            "type_signature": "(sparse_matrix: CSR sparse matrix) -> 1D integer permutation array",
+            "docstring": "Run reverse Cuthill-McKee in symmetric mode on the sparse matrix and materialize the permutation as a NumPy array.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "validate_symmetric_input",
+      "statement": "(mat: np.ndarray (2D numeric)) -> np.ndarray (2D numeric)",
+      "informal_desc": "Verify the input matrix is symmetric within tolerance and fail fast if the precondition is violated.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "validate_symmetric_input",
+          "type_signature": "(mat: np.ndarray (2D numeric)) -> np.ndarray (2D numeric)",
+          "docstring": "Verify the input matrix is symmetric within tolerance and fail fast if the precondition is violated.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "validate_symmetric_input",
+          "type_signature": "(mat: np.ndarray (2D numeric)) -> np.ndarray (2D numeric)",
+          "docstring": "Verify the input matrix is symmetric within tolerance and fail fast if the precondition is violated.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "validate_symmetric_input",
+            "type_signature": "(mat: np.ndarray (2D numeric)) -> np.ndarray (2D numeric)",
+            "docstring": "Verify the input matrix is symmetric within tolerance and fail fast if the precondition is violated.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "build_threshold_search_space",
+      "statement": "(validated_mat: np.ndarray (2D numeric)) -> tuple[float, np.ndarray (1D float)]",
+      "informal_desc": "Compute matrix amplitude from absolute values and construct the truncation sweep used to explore candidate permutations.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "build_threshold_search_space",
+          "type_signature": "(validated_mat: np.ndarray (2D numeric)) -> tuple[float, np.ndarray (1D float)]",
+          "docstring": "Compute matrix amplitude from absolute values and construct the truncation sweep used to explore candidate permutations.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "build_threshold_search_space",
+          "type_signature": "(validated_mat: np.ndarray (2D numeric)) -> tuple[float, np.ndarray (1D float)]",
+          "docstring": "Compute matrix amplitude from absolute values and construct the truncation sweep used to explore candidate permutations.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "build_threshold_search_space",
+            "type_signature": "(validated_mat: np.ndarray (2D numeric)) -> tuple[float, np.ndarray (1D float)]",
+            "docstring": "Compute matrix amplitude from absolute values and construct the truncation sweep used to explore candidate permutations.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "enumerate_threshold_based_permutations",
+      "statement": "(validated_mat: np.ndarray (2D numeric), mat_amplitude: float, truncation_values: np.ndarray (1D float)) -> iterable[np.ndarray | list[int]]",
+      "informal_desc": "Generate candidate permutations by calling thresholded bandwidth minimization for each scaled truncation value.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "enumerate_threshold_based_permutations",
+          "type_signature": "(validated_mat: np.ndarray (2D numeric), mat_amplitude: float, truncation_values: np.ndarray (1D float)) -> iterable[np.ndarray | list[int]]",
+          "docstring": "Generate candidate permutations by calling thresholded bandwidth minimization for each scaled truncation value.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "enumerate_threshold_based_permutations",
+          "type_signature": "(validated_mat: np.ndarray (2D numeric), mat_amplitude: float, truncation_values: np.ndarray (1D float)) -> iterable[np.ndarray | list[int]]",
+          "docstring": "Generate candidate permutations by calling thresholded bandwidth minimization for each scaled truncation value.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "enumerate_threshold_based_permutations",
+            "type_signature": "(validated_mat: np.ndarray (2D numeric), mat_amplitude: float, truncation_values: np.ndarray (1D float)) -> iterable[np.ndarray | list[int]]",
+            "docstring": "Generate candidate permutations by calling thresholded bandwidth minimization for each scaled truncation value.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "select_minimum_bandwidth_permutation",
+      "statement": "(validated_mat: np.ndarray (2D numeric), candidate_permutations: iterable[np.ndarray | list[int]]) -> list[int]",
+      "informal_desc": "Evaluate each candidate by permuting the matrix and computing resulting bandwidth, then return the best permutation as a Python list.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "select_minimum_bandwidth_permutation",
+          "type_signature": "(validated_mat: np.ndarray (2D numeric), candidate_permutations: iterable[np.ndarray | list[int]]) -> list[int]",
+          "docstring": "Evaluate each candidate by permuting the matrix and computing resulting bandwidth, then return the best permutation as a Python list.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "select_minimum_bandwidth_permutation",
+          "type_signature": "(validated_mat: np.ndarray (2D numeric), candidate_permutations: iterable[np.ndarray | list[int]]) -> list[int]",
+          "docstring": "Evaluate each candidate by permuting the matrix and computing resulting bandwidth, then return the best permutation as a Python list.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "select_minimum_bandwidth_permutation",
+            "type_signature": "(validated_mat: np.ndarray (2D numeric), candidate_permutations: iterable[np.ndarray | list[int]]) -> list[int]",
+            "docstring": "Evaluate each candidate by permuting the matrix and computing resulting bandwidth, then return the best permutation as a Python list.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  }
+]
