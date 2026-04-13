@@ -1,0 +1,130 @@
+{
+  "schema_version": "1.1",
+  "atoms": {
+    "ageoa.molecular_docking.quantum_solver_d12.adiabaticpulseassembler@ageoa/molecular_docking/quantum_solver_d12/atoms.py:176": {
+      "references": [
+        {
+          "ref_id": "moleculardocking2025",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Primary Molecular-Docking paper."
+          }
+        },
+        {
+          "ref_id": "repo_molecular_docking",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Upstream implementation is mapped to the vendored Molecular-Docking repository."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "ageoa.molecular_docking.quantum_solver_d12.interactionboundscomputer@ageoa/molecular_docking/quantum_solver_d12/atoms.py:119": {
+      "references": [
+        {
+          "ref_id": "moleculardocking2025",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Primary Molecular-Docking paper."
+          }
+        },
+        {
+          "ref_id": "repo_molecular_docking",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Upstream implementation is mapped to the vendored Molecular-Docking repository."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "ageoa.molecular_docking.quantum_solver_d12.quantumcircuitsampler@ageoa/molecular_docking/quantum_solver_d12/atoms.py:210": {
+      "references": [
+        {
+          "ref_id": "moleculardocking2025",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Primary Molecular-Docking paper."
+          }
+        },
+        {
+          "ref_id": "repo_molecular_docking",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Upstream implementation is mapped to the vendored Molecular-Docking repository."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "ageoa.molecular_docking.quantum_solver_d12.quantumsolutionextractor@ageoa/molecular_docking/quantum_solver_d12/atoms.py:285": {
+      "references": [
+        {
+          "ref_id": "moleculardocking2025",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Primary Molecular-Docking paper."
+          }
+        },
+        {
+          "ref_id": "repo_molecular_docking",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Upstream implementation is mapped to the vendored Molecular-Docking repository."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "ageoa.molecular_docking.quantum_solver_d12.quantumsolverorchestrator@ageoa/molecular_docking/quantum_solver_d12/atoms.py:37": {
+      "references": [
+        {
+          "ref_id": "moleculardocking2025",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Primary Molecular-Docking paper."
+          }
+        },
+        {
+          "ref_id": "repo_molecular_docking",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Upstream implementation is mapped to the vendored Molecular-Docking repository."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    }
+  }
+}

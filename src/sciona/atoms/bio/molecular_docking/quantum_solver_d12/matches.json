@@ -1,0 +1,1586 @@
+[
+  {
+    "pdg_node": {
+      "predicate_id": "extract_node_weights_and_ids",
+      "statement": "(graph: NetworkX Graph) -> tuple[np.ndarray[float], list[node_id]]",
+      "informal_desc": "Extract node weight attributes and ordered atom IDs from the graph, producing a weight array and an ordered list of atom identifiers for downstream register construction.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "extract_node_weights_and_ids",
+          "type_signature": "(graph: NetworkX Graph) -> tuple[np.ndarray[float], list[node_id]]",
+          "docstring": "Extract node weight attributes and ordered atom IDs from the graph, producing a weight array and an ordered list of atom identifiers for downstream register construction.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "extract_node_weights_and_ids",
+          "type_signature": "(graph: NetworkX Graph) -> tuple[np.ndarray[float], list[node_id]]",
+          "docstring": "Extract node weight attributes and ordered atom IDs from the graph, producing a weight array and an ordered list of atom identifiers for downstream register construction.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "extract_node_weights_and_ids",
+            "type_signature": "(graph: NetworkX Graph) -> tuple[np.ndarray[float], list[node_id]]",
+            "docstring": "Extract node weight attributes and ordered atom IDs from the graph, producing a weight array and an ordered list of atom identifiers for downstream register construction.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "assemble_register_coordinates",
+      "statement": "(atoms_id: list[node_id], coordinates_layout: dict[node_id, (float,float)]) -> tuple[Register, dict[node_id, (float,float)]]",
+      "informal_desc": "Filter the full coordinates_layout to retain only the entries whose trap IDs match atom IDs in the graph, then construct a Pulser Register from the matched coordinate dict.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "assemble_register_coordinates",
+          "type_signature": "(atoms_id: list[node_id], coordinates_layout: dict[node_id, (float,float)]) -> tuple[Register, dict[node_id, (float,float)]]",
+          "docstring": "Filter the full coordinates_layout to retain only the entries whose trap IDs match atom IDs in the graph, then construct a Pulser Register from the matched coordinate dict.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "assemble_register_coordinates",
+          "type_signature": "(atoms_id: list[node_id], coordinates_layout: dict[node_id, (float,float)]) -> tuple[Register, dict[node_id, (float,float)]]",
+          "docstring": "Filter the full coordinates_layout to retain only the entries whose trap IDs match atom IDs in the graph, then construct a Pulser Register from the matched coordinate dict.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "assemble_register_coordinates",
+            "type_signature": "(atoms_id: list[node_id], coordinates_layout: dict[node_id, (float,float)]) -> tuple[Register, dict[node_id, (float,float)]]",
+            "docstring": "Filter the full coordinates_layout to retain only the entries whose trap IDs match atom IDs in the graph, then construct a Pulser Register from the matched coordinate dict.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "optimise_register_bandwidth",
+      "statement": "(reg: Register, array_weights_origin: np.ndarray[float]) -> tuple[Register, list[int], list[float]]",
+      "informal_desc": "Compute the reciprocal-distance interaction matrix for the register, apply bandwidth-minimisation to find an optimal qubit permutation, and reorder the register and weight array according to that permutation.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "optimise_register_bandwidth",
+          "type_signature": "(reg: Register, array_weights_origin: np.ndarray[float]) -> tuple[Register, list[int], list[float]]",
+          "docstring": "Compute the reciprocal-distance interaction matrix for the register, apply bandwidth-minimisation to find an optimal qubit permutation, and reorder the register and weight array according to that permutation.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "optimise_register_bandwidth",
+          "type_signature": "(reg: Register, array_weights_origin: np.ndarray[float]) -> tuple[Register, list[int], list[float]]",
+          "docstring": "Compute the reciprocal-distance interaction matrix for the register, apply bandwidth-minimisation to find an optimal qubit permutation, and reorder the register and weight array according to that permutation.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "optimise_register_bandwidth",
+            "type_signature": "(reg: Register, array_weights_origin: np.ndarray[float]) -> tuple[Register, list[int], list[float]]",
+            "docstring": "Compute the reciprocal-distance interaction matrix for the register, apply bandwidth-minimisation to find an optimal qubit permutation, and reorder the register and weight array according to that permutation.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "compute_pulse_parameter_bounds",
+      "statement": "(coord: dict[node_id, (float,float)], graph: NetworkX Graph) -> tuple[float, float]",
+      "informal_desc": "Compute min/max inter-atomic interaction strengths from spatial coordinates and graph topology, then derive the detuning_maximum and amplitude_maximum pulse parameters.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "compute_pulse_parameter_bounds",
+          "type_signature": "(coord: dict[node_id, (float,float)], graph: NetworkX Graph) -> tuple[float, float]",
+          "docstring": "Compute min/max inter-atomic interaction strengths from spatial coordinates and graph topology, then derive the detuning_maximum and amplitude_maximum pulse parameters.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "compute_pulse_parameter_bounds",
+          "type_signature": "(coord: dict[node_id, (float,float)], graph: NetworkX Graph) -> tuple[float, float]",
+          "docstring": "Compute min/max inter-atomic interaction strengths from spatial coordinates and graph topology, then derive the detuning_maximum and amplitude_maximum pulse parameters.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "compute_pulse_parameter_bounds",
+            "type_signature": "(coord: dict[node_id, (float,float)], graph: NetworkX Graph) -> tuple[float, float]",
+            "docstring": "Compute min/max inter-atomic interaction strengths from spatial coordinates and graph topology, then derive the detuning_maximum and amplitude_maximum pulse parameters.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "build_dmm_weight_map",
+      "statement": "(permuted_weights: list[float], detuning_maximum: float, amplitude_maximum: float, opt_reg: Register, reg: Register, list_perm: list[int]) -> tuple[dict, np.ndarray[float]]",
+      "informal_desc": "Normalise permuted weights, compute the reversed (1 \u2212 w) DMM weight array, calculate the spread detuning from the minimum normalised weight, and package everything into the params dict ready for pulse scheduling.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "build_dmm_weight_map",
+          "type_signature": "(permuted_weights: list[float], detuning_maximum: float, amplitude_maximum: float, opt_reg: Register, reg: Register, list_perm: list[int]) -> tuple[dict, np.ndarray[float]]",
+          "docstring": "Normalise permuted weights, compute the reversed (1 \u2212 w) DMM weight array, calculate the spread detuning from the minimum normalised weight, and package everything into the params dict ready for pulse scheduling.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "build_dmm_weight_map",
+          "type_signature": "(permuted_weights: list[float], detuning_maximum: float, amplitude_maximum: float, opt_reg: Register, reg: Register, list_perm: list[int]) -> tuple[dict, np.ndarray[float]]",
+          "docstring": "Normalise permuted weights, compute the reversed (1 \u2212 w) DMM weight array, calculate the spread detuning from the minimum normalised weight, and package everything into the params dict ready for pulse scheduling.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "build_dmm_weight_map",
+            "type_signature": "(permuted_weights: list[float], detuning_maximum: float, amplitude_maximum: float, opt_reg: Register, reg: Register, list_perm: list[int]) -> tuple[dict, np.ndarray[float]]",
+            "docstring": "Normalise permuted weights, compute the reversed (1 \u2212 w) DMM weight array, calculate the spread detuning from the minimum normalised weight, and package everything into the params dict ready for pulse scheduling.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "route_and_run_quantum_simulation",
+      "statement": "(params: dict, reg: Register, opt_reg: Register, list_perm: list[int], weights_rev: np.ndarray[float]) -> dict[str, int]",
+      "informal_desc": "Branch on register size: for < 22 atoms run the statevector simulator; for \u2265 22 atoms run the MPS emulator. Returns the raw measurement count distribution from simple_quantum_loop.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "route_and_run_quantum_simulation",
+          "type_signature": "(params: dict, reg: Register, opt_reg: Register, list_perm: list[int], weights_rev: np.ndarray[float]) -> dict[str, int]",
+          "docstring": "Branch on register size: for < 22 atoms run the statevector simulator; for \u2265 22 atoms run the MPS emulator. Returns the raw measurement count distribution from simple_quantum_loop.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "route_and_run_quantum_simulation",
+          "type_signature": "(params: dict, reg: Register, opt_reg: Register, list_perm: list[int], weights_rev: np.ndarray[float]) -> dict[str, int]",
+          "docstring": "Branch on register size: for < 22 atoms run the statevector simulator; for \u2265 22 atoms run the MPS emulator. Returns the raw measurement count distribution from simple_quantum_loop.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "route_and_run_quantum_simulation",
+            "type_signature": "(params: dict, reg: Register, opt_reg: Register, list_perm: list[int], weights_rev: np.ndarray[float]) -> dict[str, int]",
+            "docstring": "Branch on register size: for < 22 atoms run the statevector simulator; for \u2265 22 atoms run the MPS emulator. Returns the raw measurement count distribution from simple_quantum_loop.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "rank_and_extract_solutions",
+      "statement": "(count_dist: dict[str, int], reg: Register, num_sol: int) -> tuple[list[set | str], dict[str, int]]",
+      "informal_desc": "Sort the raw count distribution by descending frequency, then call process_quantum_solution to decode the top-num_sol bitstrings into MWIS node-set solutions.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "rank_and_extract_solutions",
+          "type_signature": "(count_dist: dict[str, int], reg: Register, num_sol: int) -> tuple[list[set | str], dict[str, int]]",
+          "docstring": "Sort the raw count distribution by descending frequency, then call process_quantum_solution to decode the top-num_sol bitstrings into MWIS node-set solutions.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "rank_and_extract_solutions",
+          "type_signature": "(count_dist: dict[str, int], reg: Register, num_sol: int) -> tuple[list[set | str], dict[str, int]]",
+          "docstring": "Sort the raw count distribution by descending frequency, then call process_quantum_solution to decode the top-num_sol bitstrings into MWIS node-set solutions.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "rank_and_extract_solutions",
+            "type_signature": "(count_dist: dict[str, int], reg: Register, num_sol: int) -> tuple[list[set | str], dict[str, int]]",
+            "docstring": "Sort the raw count distribution by descending frequency, then call process_quantum_solution to decode the top-num_sol bitstrings into MWIS node-set solutions.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "compute_connected_edge_distances",
+      "statement": "(register_coord: dict/array of (x, y) tuples indexed by node id, graph: networkx.Graph) -> list of float",
+      "informal_desc": "Iterates over all edges in the problem graph, retrieves the (x, y) coordinates of each endpoint from the register, and computes the Euclidean distance for every connected atom pair.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "compute_connected_edge_distances",
+          "type_signature": "(register_coord: dict/array of (x, y) tuples indexed by node id, graph: networkx.Graph) -> list of float",
+          "docstring": "Iterates over all edges in the problem graph, retrieves the (x, y) coordinates of each endpoint from the register, and computes the Euclidean distance for every connected atom pair.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "compute_connected_edge_distances",
+          "type_signature": "(register_coord: dict/array of (x, y) tuples indexed by node id, graph: networkx.Graph) -> list of float",
+          "docstring": "Iterates over all edges in the problem graph, retrieves the (x, y) coordinates of each endpoint from the register, and computes the Euclidean distance for every connected atom pair.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "compute_connected_edge_distances",
+            "type_signature": "(register_coord: dict/array of (x, y) tuples indexed by node id, graph: networkx.Graph) -> list of float",
+            "docstring": "Iterates over all edges in the problem graph, retrieves the (x, y) coordinates of each endpoint from the register, and computes the Euclidean distance for every connected atom pair.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "compute_u_min_from_connected_distances",
+      "statement": "(distance_list_connected: list of float, interaction_coefficient: float) -> float",
+      "informal_desc": "Derives the minimum interaction energy U_min by applying the van-der-Waals interaction law U = C / r^6 to the maximum pairwise distance among connected edges, using the device interaction coefficient.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "compute_u_min_from_connected_distances",
+          "type_signature": "(distance_list_connected: list of float, interaction_coefficient: float) -> float",
+          "docstring": "Derives the minimum interaction energy U_min by applying the van-der-Waals interaction law U = C / r^6 to the maximum pairwise distance among connected edges, using the device interaction coefficient.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "compute_u_min_from_connected_distances",
+          "type_signature": "(distance_list_connected: list of float, interaction_coefficient: float) -> float",
+          "docstring": "Derives the minimum interaction energy U_min by applying the van-der-Waals interaction law U = C / r^6 to the maximum pairwise distance among connected edges, using the device interaction coefficient.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "compute_u_min_from_connected_distances",
+            "type_signature": "(distance_list_connected: list of float, interaction_coefficient: float) -> float",
+            "docstring": "Derives the minimum interaction energy U_min by applying the van-der-Waals interaction law U = C / r^6 to the maximum pairwise distance among connected edges, using the device interaction coefficient.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "compute_complementary_edge_distances",
+      "statement": "(register_coord: dict/array of (x, y) tuples indexed by node id, graph: networkx.Graph) -> list of float",
+      "informal_desc": "Constructs the complement of the problem graph (edges between non-connected atoms), retrieves the (x, y) coordinates for each complementary edge's endpoints, and computes the Euclidean distance for every disconnected atom pair.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "compute_complementary_edge_distances",
+          "type_signature": "(register_coord: dict/array of (x, y) tuples indexed by node id, graph: networkx.Graph) -> list of float",
+          "docstring": "Constructs the complement of the problem graph (edges between non-connected atoms), retrieves the (x, y) coordinates for each complementary edge's endpoints, and computes the Euclidean distance for every disconnected atom pair.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "compute_complementary_edge_distances",
+          "type_signature": "(register_coord: dict/array of (x, y) tuples indexed by node id, graph: networkx.Graph) -> list of float",
+          "docstring": "Constructs the complement of the problem graph (edges between non-connected atoms), retrieves the (x, y) coordinates for each complementary edge's endpoints, and computes the Euclidean distance for every disconnected atom pair.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "compute_complementary_edge_distances",
+            "type_signature": "(register_coord: dict/array of (x, y) tuples indexed by node id, graph: networkx.Graph) -> list of float",
+            "docstring": "Constructs the complement of the problem graph (edges between non-connected atoms), retrieves the (x, y) coordinates for each complementary edge's endpoints, and computes the Euclidean distance for every disconnected atom pair.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "compute_u_max_from_disconnected_distances",
+      "statement": "(distance_list_no_connected: list of float, interaction_coefficient: float) -> float",
+      "informal_desc": "Derives the maximum interaction energy U_max by applying the van-der-Waals interaction law U = C / r^6 to the minimum pairwise distance among non-connected edges, using the device interaction coefficient.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "compute_u_max_from_disconnected_distances",
+          "type_signature": "(distance_list_no_connected: list of float, interaction_coefficient: float) -> float",
+          "docstring": "Derives the maximum interaction energy U_max by applying the van-der-Waals interaction law U = C / r^6 to the minimum pairwise distance among non-connected edges, using the device interaction coefficient.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "compute_u_max_from_disconnected_distances",
+          "type_signature": "(distance_list_no_connected: list of float, interaction_coefficient: float) -> float",
+          "docstring": "Derives the maximum interaction energy U_max by applying the van-der-Waals interaction law U = C / r^6 to the minimum pairwise distance among non-connected edges, using the device interaction coefficient.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "compute_u_max_from_disconnected_distances",
+            "type_signature": "(distance_list_no_connected: list of float, interaction_coefficient: float) -> float",
+            "docstring": "Derives the maximum interaction energy U_max by applying the van-der-Waals interaction law U = C / r^6 to the minimum pairwise distance among non-connected edges, using the device interaction coefficient.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "resolve_detuning_boundaries",
+      "statement": "(parameters: dict) -> tuple[float, float]",
+      "informal_desc": "Derives the initial and final detuning ramp endpoints (delta_0, delta_f) from the maximum detuning parameter, establishing the symmetric sweep range for the adiabatic schedule.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "resolve_detuning_boundaries",
+          "type_signature": "(parameters: dict) -> tuple[float, float]",
+          "docstring": "Derives the initial and final detuning ramp endpoints (delta_0, delta_f) from the maximum detuning parameter, establishing the symmetric sweep range for the adiabatic schedule.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "resolve_detuning_boundaries",
+          "type_signature": "(parameters: dict) -> tuple[float, float]",
+          "docstring": "Derives the initial and final detuning ramp endpoints (delta_0, delta_f) from the maximum detuning parameter, establishing the symmetric sweep range for the adiabatic schedule.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "resolve_detuning_boundaries",
+            "type_signature": "(parameters: dict) -> tuple[float, float]",
+            "docstring": "Derives the initial and final detuning ramp endpoints (delta_0, delta_f) from the maximum detuning parameter, establishing the symmetric sweep range for the adiabatic schedule.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "build_detuning_map",
+      "statement": "(register: Pulser Register, parameters: dict) -> Pulser DetuningMap",
+      "informal_desc": "Constructs the spatial detuning map from the register geometry and the DMM weight mask, binding qubit positions to local detuning amplitudes for the DMM channel.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "build_detuning_map",
+          "type_signature": "(register: Pulser Register, parameters: dict) -> Pulser DetuningMap",
+          "docstring": "Constructs the spatial detuning map from the register geometry and the DMM weight mask, binding qubit positions to local detuning amplitudes for the DMM channel.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "build_detuning_map",
+          "type_signature": "(register: Pulser Register, parameters: dict) -> Pulser DetuningMap",
+          "docstring": "Constructs the spatial detuning map from the register geometry and the DMM weight mask, binding qubit positions to local detuning amplitudes for the DMM channel.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "build_detuning_map",
+            "type_signature": "(register: Pulser Register, parameters: dict) -> Pulser DetuningMap",
+            "docstring": "Constructs the spatial detuning map from the register geometry and the DMM weight mask, binding qubit positions to local detuning amplitudes for the DMM channel.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "construct_rydberg_waveforms",
+      "statement": "(duration: int, omega_list: list[float], delta_list: list[float]) -> tuple[InterpolatedWaveform, InterpolatedWaveform]",
+      "informal_desc": "Builds the interpolated amplitude and detuning waveforms for the global Rydberg channel using the fixed duration, omega breakpoints, and delta breakpoints that define the shaped adiabatic ramp.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "construct_rydberg_waveforms",
+          "type_signature": "(duration: int, omega_list: list[float], delta_list: list[float]) -> tuple[InterpolatedWaveform, InterpolatedWaveform]",
+          "docstring": "Builds the interpolated amplitude and detuning waveforms for the global Rydberg channel using the fixed duration, omega breakpoints, and delta breakpoints that define the shaped adiabatic ramp.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "construct_rydberg_waveforms",
+          "type_signature": "(duration: int, omega_list: list[float], delta_list: list[float]) -> tuple[InterpolatedWaveform, InterpolatedWaveform]",
+          "docstring": "Builds the interpolated amplitude and detuning waveforms for the global Rydberg channel using the fixed duration, omega breakpoints, and delta breakpoints that define the shaped adiabatic ramp.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "construct_rydberg_waveforms",
+            "type_signature": "(duration: int, omega_list: list[float], delta_list: list[float]) -> tuple[InterpolatedWaveform, InterpolatedWaveform]",
+            "docstring": "Builds the interpolated amplitude and detuning waveforms for the global Rydberg channel using the fixed duration, omega breakpoints, and delta breakpoints that define the shaped adiabatic ramp.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "assemble_rydberg_pulse",
+      "statement": "(amp_waveform: InterpolatedWaveform, det_waveform: InterpolatedWaveform) -> Pulser Pulse",
+      "informal_desc": "Packages the amplitude and detuning waveforms together with zero phase into a single Pulse object representing one complete adiabatic drive on the global Rydberg channel.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "assemble_rydberg_pulse",
+          "type_signature": "(amp_waveform: InterpolatedWaveform, det_waveform: InterpolatedWaveform) -> Pulser Pulse",
+          "docstring": "Packages the amplitude and detuning waveforms together with zero phase into a single Pulse object representing one complete adiabatic drive on the global Rydberg channel.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "assemble_rydberg_pulse",
+          "type_signature": "(amp_waveform: InterpolatedWaveform, det_waveform: InterpolatedWaveform) -> Pulser Pulse",
+          "docstring": "Packages the amplitude and detuning waveforms together with zero phase into a single Pulse object representing one complete adiabatic drive on the global Rydberg channel.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "assemble_rydberg_pulse",
+            "type_signature": "(amp_waveform: InterpolatedWaveform, det_waveform: InterpolatedWaveform) -> Pulser Pulse",
+            "docstring": "Packages the amplitude and detuning waveforms together with zero phase into a single Pulse object representing one complete adiabatic drive on the global Rydberg channel.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "construct_dmm_waveform",
+      "statement": "(duration: int, parameters: dict) -> ConstantWaveform",
+      "informal_desc": "Creates a constant-valued DMM detuning waveform of the required duration, encoding the uniform local detuning offset applied to all atoms weighted by the detuning map.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "construct_dmm_waveform",
+          "type_signature": "(duration: int, parameters: dict) -> ConstantWaveform",
+          "docstring": "Creates a constant-valued DMM detuning waveform of the required duration, encoding the uniform local detuning offset applied to all atoms weighted by the detuning map.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "construct_dmm_waveform",
+          "type_signature": "(duration: int, parameters: dict) -> ConstantWaveform",
+          "docstring": "Creates a constant-valued DMM detuning waveform of the required duration, encoding the uniform local detuning offset applied to all atoms weighted by the detuning map.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "construct_dmm_waveform",
+            "type_signature": "(duration: int, parameters: dict) -> ConstantWaveform",
+            "docstring": "Creates a constant-valued DMM detuning waveform of the required duration, encoding the uniform local detuning offset applied to all atoms weighted by the detuning map.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "compose_pulse_sequence",
+      "statement": "(register: Pulser Register, rydberg_pulse: Pulser Pulse, detuning_map: Pulser DetuningMap, dmm_waveform: ConstantWaveform, channel_name: str, dmm_channel_name: str) -> Pulser Sequence",
+      "informal_desc": "Initialises a Pulser Sequence on the mock device, declares and configures the global Rydberg and DMM channels, then appends the Rydberg pulse and DMM detuning waveform to produce the complete, immutable adiabatic pulse schedule.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "compose_pulse_sequence",
+          "type_signature": "(register: Pulser Register, rydberg_pulse: Pulser Pulse, detuning_map: Pulser DetuningMap, dmm_waveform: ConstantWaveform, channel_name: str, dmm_channel_name: str) -> Pulser Sequence",
+          "docstring": "Initialises a Pulser Sequence on the mock device, declares and configures the global Rydberg and DMM channels, then appends the Rydberg pulse and DMM detuning waveform to produce the complete, immutable adiabatic pulse schedule.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "compose_pulse_sequence",
+          "type_signature": "(register: Pulser Register, rydberg_pulse: Pulser Pulse, detuning_map: Pulser DetuningMap, dmm_waveform: ConstantWaveform, channel_name: str, dmm_channel_name: str) -> Pulser Sequence",
+          "docstring": "Initialises a Pulser Sequence on the mock device, declares and configures the global Rydberg and DMM channels, then appends the Rydberg pulse and DMM detuning waveform to produce the complete, immutable adiabatic pulse schedule.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "compose_pulse_sequence",
+            "type_signature": "(register: Pulser Register, rydberg_pulse: Pulser Pulse, detuning_map: Pulser DetuningMap, dmm_waveform: ConstantWaveform, channel_name: str, dmm_channel_name: str) -> Pulser Sequence",
+            "docstring": "Initialises a Pulser Sequence on the mock device, declares and configures the global Rydberg and DMM channels, then appends the Rydberg pulse and DMM detuning waveform to produce the complete, immutable adiabatic pulse schedule.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "build_adiabatic_sequence",
+      "statement": "(register: pulser.Register, parameters: dict) -> pulser.Sequence",
+      "informal_desc": "Compiles the register layout and variational parameters into a concrete Pulser adiabatic sequence object ready for simulation.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "build_adiabatic_sequence",
+          "type_signature": "(register: pulser.Register, parameters: dict) -> pulser.Sequence",
+          "docstring": "Compiles the register layout and variational parameters into a concrete Pulser adiabatic sequence object ready for simulation.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "build_adiabatic_sequence",
+          "type_signature": "(register: pulser.Register, parameters: dict) -> pulser.Sequence",
+          "docstring": "Compiles the register layout and variational parameters into a concrete Pulser adiabatic sequence object ready for simulation.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "build_adiabatic_sequence",
+            "type_signature": "(register: pulser.Register, parameters: dict) -> pulser.Sequence",
+            "docstring": "Compiles the register layout and variational parameters into a concrete Pulser adiabatic sequence object ready for simulation.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "run_qutip_backend",
+      "statement": "(seq: pulser.Sequence, run_qutip: bool, n_samples: int) -> dict[str, int]",
+      "informal_desc": "Integrates the master equation with QuTiP, then draws 5000 samples from the final density-matrix state to produce a bitstring count distribution.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "run_qutip_backend",
+          "type_signature": "(seq: pulser.Sequence, run_qutip: bool, n_samples: int) -> dict[str, int]",
+          "docstring": "Integrates the master equation with QuTiP, then draws 5000 samples from the final density-matrix state to produce a bitstring count distribution.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "run_qutip_backend",
+          "type_signature": "(seq: pulser.Sequence, run_qutip: bool, n_samples: int) -> dict[str, int]",
+          "docstring": "Integrates the master equation with QuTiP, then draws 5000 samples from the final density-matrix state to produce a bitstring count distribution.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "run_qutip_backend",
+            "type_signature": "(seq: pulser.Sequence, run_qutip: bool, n_samples: int) -> dict[str, int]",
+            "docstring": "Integrates the master equation with QuTiP, then draws 5000 samples from the final density-matrix state to produce a bitstring count distribution.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "compute_simulation_timeline",
+      "statement": "(seq: pulser.Sequence, dt: int) -> tuple[int, list[float], float]",
+      "informal_desc": "Derives the discrete time grid (dt, seq_duration, eval_times, final_time) shared by the state-vector and EMU-MPS backends from the sequence duration.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "compute_simulation_timeline",
+          "type_signature": "(seq: pulser.Sequence, dt: int) -> tuple[int, list[float], float]",
+          "docstring": "Derives the discrete time grid (dt, seq_duration, eval_times, final_time) shared by the state-vector and EMU-MPS backends from the sequence duration.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "compute_simulation_timeline",
+          "type_signature": "(seq: pulser.Sequence, dt: int) -> tuple[int, list[float], float]",
+          "docstring": "Derives the discrete time grid (dt, seq_duration, eval_times, final_time) shared by the state-vector and EMU-MPS backends from the sequence duration.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "compute_simulation_timeline",
+            "type_signature": "(seq: pulser.Sequence, dt: int) -> tuple[int, list[float], float]",
+            "docstring": "Derives the discrete time grid (dt, seq_duration, eval_times, final_time) shared by the state-vector and EMU-MPS backends from the sequence duration.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "run_sv_backend",
+      "statement": "(seq: pulser.Sequence, run_sv: bool, dt: int, final_time: float, n_samples: int) -> dict[str, int]",
+      "informal_desc": "Configures and executes the exact state-vector simulator with the derived time grid, then samples 5000 bitstrings from the final statevector.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "run_sv_backend",
+          "type_signature": "(seq: pulser.Sequence, run_sv: bool, dt: int, final_time: float, n_samples: int) -> dict[str, int]",
+          "docstring": "Configures and executes the exact state-vector simulator with the derived time grid, then samples 5000 bitstrings from the final statevector.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "run_sv_backend",
+          "type_signature": "(seq: pulser.Sequence, run_sv: bool, dt: int, final_time: float, n_samples: int) -> dict[str, int]",
+          "docstring": "Configures and executes the exact state-vector simulator with the derived time grid, then samples 5000 bitstrings from the final statevector.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "run_sv_backend",
+            "type_signature": "(seq: pulser.Sequence, run_sv: bool, dt: int, final_time: float, n_samples: int) -> dict[str, int]",
+            "docstring": "Configures and executes the exact state-vector simulator with the derived time grid, then samples 5000 bitstrings from the final statevector.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "run_emu_mps_backend",
+      "statement": "(seq: pulser.Sequence, run_emu_mps: bool, dt: int, final_time: float, n_shots: int, max_bond_dim: int) -> dict[str, int]",
+      "informal_desc": "Configures and executes the EMU-MPS tensor-network simulator (bond-dim 200) with the derived time grid, then extracts raw bitstring counts at the final evaluation time.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "run_emu_mps_backend",
+          "type_signature": "(seq: pulser.Sequence, run_emu_mps: bool, dt: int, final_time: float, n_shots: int, max_bond_dim: int) -> dict[str, int]",
+          "docstring": "Configures and executes the EMU-MPS tensor-network simulator (bond-dim 200) with the derived time grid, then extracts raw bitstring counts at the final evaluation time.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "run_emu_mps_backend",
+          "type_signature": "(seq: pulser.Sequence, run_emu_mps: bool, dt: int, final_time: float, n_shots: int, max_bond_dim: int) -> dict[str, int]",
+          "docstring": "Configures and executes the EMU-MPS tensor-network simulator (bond-dim 200) with the derived time grid, then extracts raw bitstring counts at the final evaluation time.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "run_emu_mps_backend",
+            "type_signature": "(seq: pulser.Sequence, run_emu_mps: bool, dt: int, final_time: float, n_shots: int, max_bond_dim: int) -> dict[str, int]",
+            "docstring": "Configures and executes the EMU-MPS tensor-network simulator (bond-dim 200) with the derived time grid, then extracts raw bitstring counts at the final evaluation time.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "reorder_bitstrings_by_permutation",
+      "statement": "(counts_mps_raw: dict[str, int], list_perm: list[int]) -> dict[str, int]",
+      "informal_desc": "Applies the inverse of list_perm to every bitstring key returned by the MPS backend so that qubit indices correspond to the canonical problem ordering.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "reorder_bitstrings_by_permutation",
+          "type_signature": "(counts_mps_raw: dict[str, int], list_perm: list[int]) -> dict[str, int]",
+          "docstring": "Applies the inverse of list_perm to every bitstring key returned by the MPS backend so that qubit indices correspond to the canonical problem ordering.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "reorder_bitstrings_by_permutation",
+          "type_signature": "(counts_mps_raw: dict[str, int], list_perm: list[int]) -> dict[str, int]",
+          "docstring": "Applies the inverse of list_perm to every bitstring key returned by the MPS backend so that qubit indices correspond to the canonical problem ordering.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "reorder_bitstrings_by_permutation",
+            "type_signature": "(counts_mps_raw: dict[str, int], list_perm: list[int]) -> dict[str, int]",
+            "docstring": "Applies the inverse of list_perm to every bitstring key returned by the MPS backend so that qubit indices correspond to the canonical problem ordering.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "quantumsolutionextractor",
+      "statement": "(count_dist: dict[bitstring, int] \u2014 raw measurement counts from the sampler, register: Pulser Register \u2014 used for node-index to qubit-index mapping, num_solutions: int \u2014 number of top solutions to extract) -> tuple[list of node-set dicts ranked by measurement frequency, list of int \u2014 occurrence counts corresponding to each solution]",
+      "informal_desc": "Post-processes the raw measurement count distribution to decode, rank, and filter the top-k bitstring solutions corresponding to valid independent sets (or QUBO ground states), mapping them back to the original graph node labelling.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "quantumsolutionextractor",
+          "type_signature": "(count_dist: dict[bitstring, int] \u2014 raw measurement counts from the sampler, register: Pulser Register \u2014 used for node-index to qubit-index mapping, num_solutions: int \u2014 number of top solutions to extract) -> tuple[list of node-set dicts ranked by measurement frequency, list of int \u2014 occurrence counts corresponding to each solution]",
+          "docstring": "Post-processes the raw measurement count distribution to decode, rank, and filter the top-k bitstring solutions corresponding to valid independent sets (or QUBO ground states), mapping them back to the original graph node labelling.",
+          "conceptual_summary": "FrequencyRankedTopKDecoder. Transforms a raw empirical frequency distribution over a discrete combinatorial symbol space (bitstrings) into a ranked, filtered, and semantically re-labeled subset of the k most probable feasible configurations. The operation applies a validity predicate to prune infeasible configurations, sorts survivors by descending observation frequency, and then applies an index-relabeling bijection to map internal symbolic indices back to the original external identifier namespace. The result is a lossy compression of the full distribution that retains only the highest-frequency, constraint-satisfying points, annotated with their original structural context.. Applications: Genomics / variant calling: given a multiset of observed read alignment patterns (bitstrings encoding SNP presence/absence across loci), extract the top-k most frequently observed haplotype configurations that satisfy biological feasibility constraints (e.g., Hardy-Weinberg consistency), remapping internal read indices back to chromosome position labels, Combinatorial optimization / scheduling: after stochastic local search or simulated annealing produces a histogram of visited assignment vectors, decode and rank the top-k feasible schedules (satisfying resource or precedence constraints) and re-label internal slot indices back to human-readable job/machine identifiers, Natural language processing / beam decoding: given a count distribution over discrete token-sequence samples from a language model, filter sequences satisfying a structural grammar predicate, rank by empirical frequency, and remap internal vocabulary integer IDs back to surface-form string tokens for the top-k outputs, Sensor fusion / fault detection: given a distribution of binary system-state snapshots (each bit encoding a sensor's alarm status) collected over a monitoring window, extract the k most frequently occurring fault-pattern configurations that match known failure-mode signatures, remapping bit positions back to physical sensor identifiers in the engineering schematic",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "quantumsolutionextractor",
+          "type_signature": "(count_dist: dict[bitstring, int] \u2014 raw measurement counts from the sampler, register: Pulser Register \u2014 used for node-index to qubit-index mapping, num_solutions: int \u2014 number of top solutions to extract) -> tuple[list of node-set dicts ranked by measurement frequency, list of int \u2014 occurrence counts corresponding to each solution]",
+          "docstring": "Post-processes the raw measurement count distribution to decode, rank, and filter the top-k bitstring solutions corresponding to valid independent sets (or QUBO ground states), mapping them back to the original graph node labelling.",
+          "conceptual_summary": "FrequencyRankedTopKDecoder. Transforms a raw empirical frequency distribution over a discrete combinatorial symbol space (bitstrings) into a ranked, filtered, and semantically re-labeled subset of the k most probable feasible configurations. The operation applies a validity predicate to prune infeasible configurations, sorts survivors by descending observation frequency, and then applies an index-relabeling bijection to map internal symbolic indices back to the original external identifier namespace. The result is a lossy compression of the full distribution that retains only the highest-frequency, constraint-satisfying points, annotated with their original structural context.. Applications: Genomics / variant calling: given a multiset of observed read alignment patterns (bitstrings encoding SNP presence/absence across loci), extract the top-k most frequently observed haplotype configurations that satisfy biological feasibility constraints (e.g., Hardy-Weinberg consistency), remapping internal read indices back to chromosome position labels, Combinatorial optimization / scheduling: after stochastic local search or simulated annealing produces a histogram of visited assignment vectors, decode and rank the top-k feasible schedules (satisfying resource or precedence constraints) and re-label internal slot indices back to human-readable job/machine identifiers, Natural language processing / beam decoding: given a count distribution over discrete token-sequence samples from a language model, filter sequences satisfying a structural grammar predicate, rank by empirical frequency, and remap internal vocabulary integer IDs back to surface-form string tokens for the top-k outputs, Sensor fusion / fault detection: given a distribution of binary system-state snapshots (each bit encoding a sensor's alarm status) collected over a monitoring window, extract the k most frequently occurring fault-pattern configurations that match known failure-mode signatures, remapping bit positions back to physical sensor identifiers in the engineering schematic",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "quantumsolutionextractor",
+            "type_signature": "(count_dist: dict[bitstring, int] \u2014 raw measurement counts from the sampler, register: Pulser Register \u2014 used for node-index to qubit-index mapping, num_solutions: int \u2014 number of top solutions to extract) -> tuple[list of node-set dicts ranked by measurement frequency, list of int \u2014 occurrence counts corresponding to each solution]",
+            "docstring": "Post-processes the raw measurement count distribution to decode, rank, and filter the top-k bitstring solutions corresponding to valid independent sets (or QUBO ground states), mapping them back to the original graph node labelling.",
+            "conceptual_summary": "FrequencyRankedTopKDecoder. Transforms a raw empirical frequency distribution over a discrete combinatorial symbol space (bitstrings) into a ranked, filtered, and semantically re-labeled subset of the k most probable feasible configurations. The operation applies a validity predicate to prune infeasible configurations, sorts survivors by descending observation frequency, and then applies an index-relabeling bijection to map internal symbolic indices back to the original external identifier namespace. The result is a lossy compression of the full distribution that retains only the highest-frequency, constraint-satisfying points, annotated with their original structural context.. Applications: Genomics / variant calling: given a multiset of observed read alignment patterns (bitstrings encoding SNP presence/absence across loci), extract the top-k most frequently observed haplotype configurations that satisfy biological feasibility constraints (e.g., Hardy-Weinberg consistency), remapping internal read indices back to chromosome position labels, Combinatorial optimization / scheduling: after stochastic local search or simulated annealing produces a histogram of visited assignment vectors, decode and rank the top-k feasible schedules (satisfying resource or precedence constraints) and re-label internal slot indices back to human-readable job/machine identifiers, Natural language processing / beam decoding: given a count distribution over discrete token-sequence samples from a language model, filter sequences satisfying a structural grammar predicate, rank by empirical frequency, and remap internal vocabulary integer IDs back to surface-form string tokens for the top-k outputs, Sensor fusion / fault detection: given a distribution of binary system-state snapshots (each bit encoding a sensor's alarm status) collected over a monitoring window, extract the k most frequently occurring fault-pattern configurations that match known failure-mode signatures, remapping bit positions back to physical sensor identifiers in the engineering schematic",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  }
+]

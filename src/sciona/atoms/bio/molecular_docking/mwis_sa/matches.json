@@ -1,0 +1,266 @@
+[
+  {
+    "pdg_node": {
+      "predicate_id": "load_graphs_from_folder",
+      "statement": "(folder_path: Any) -> Any",
+      "informal_desc": "",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "load_graphs_from_folder",
+          "type_signature": "(folder_path: Any) -> Any",
+          "docstring": "",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "load_graphs_from_folder",
+          "type_signature": "(folder_path: Any) -> Any",
+          "docstring": "",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "load_graphs_from_folder",
+            "type_signature": "(folder_path: Any) -> Any",
+            "docstring": "",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "is_independent_set",
+      "statement": "(graph: Any, subset: Any) -> bool",
+      "informal_desc": "Checks if the given subset of nodes is an independent set in the graph.\n\n:param graph: The input graph.\n:param subset: The list of nodes to check.\n:return: True if the subset is an independent set, False otherwise.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "is_independent_set",
+          "type_signature": "(graph: Any, subset: Any) -> bool",
+          "docstring": "Checks if the given subset of nodes is an independent set in the graph.\n\n:param graph: The input graph.\n:param subset: The list of nodes to check.\n:return: True if the subset is an independent set, False otherwise.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "is_independent_set",
+          "type_signature": "(graph: Any, subset: Any) -> bool",
+          "docstring": "Checks if the given subset of nodes is an independent set in the graph.\n\n:param graph: The input graph.\n:param subset: The list of nodes to check.\n:return: True if the subset is an independent set, False otherwise.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "is_independent_set",
+            "type_signature": "(graph: Any, subset: Any) -> bool",
+            "docstring": "Checks if the given subset of nodes is an independent set in the graph.\n\n:param graph: The input graph.\n:param subset: The list of nodes to check.\n:return: True if the subset is an independent set, False otherwise.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "calculate_weight",
+      "statement": "(graph: Any, node_list: Any) -> float",
+      "informal_desc": "Calculates the total weight of a given list of nodes in the graph.\n\n:param node_list: List of nodes.\n:return: Total weight of the nodes.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "calculate_weight",
+          "type_signature": "(graph: Any, node_list: Any) -> float",
+          "docstring": "Calculates the total weight of a given list of nodes in the graph.\n\n:param node_list: List of nodes.\n:return: Total weight of the nodes.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "calculate_weight",
+          "type_signature": "(graph: Any, node_list: Any) -> float",
+          "docstring": "Calculates the total weight of a given list of nodes in the graph.\n\n:param node_list: List of nodes.\n:return: Total weight of the nodes.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "calculate_weight",
+            "type_signature": "(graph: Any, node_list: Any) -> float",
+            "docstring": "Calculates the total weight of a given list of nodes in the graph.\n\n:param node_list: List of nodes.\n:return: Total weight of the nodes.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "to_qubo",
+      "statement": "(graph: Any, penalty: Any) -> np.ndarray",
+      "informal_desc": "Convert a MISInstance to a qubo matrix.\n\nQUBO formulation:\nMinimize:\n    Q(x) = -\u2211_{i \u2208 V} w_i x_i  +  \u03bb \u2211_{(i, j) \u2208 E} x_i x_j\n\nArgs:\n    penalty (float, optional): Penalty factor. Defaults to None.\n\nRaises:\n    ValueError: When penalty is strictly inferior to 2 x max(weight).\n\nReturns:\n    np.ndarray: The QUBO matrix formulation of MIS.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "to_qubo",
+          "type_signature": "(graph: Any, penalty: Any) -> np.ndarray",
+          "docstring": "Convert a MISInstance to a qubo matrix.\n\nQUBO formulation:\nMinimize:\n    Q(x) = -\u2211_{i \u2208 V} w_i x_i  +  \u03bb \u2211_{(i, j) \u2208 E} x_i x_j\n\nArgs:\n    penalty (float, optional): Penalty factor. Defaults to None.\n\nRaises:\n    ValueError: When penalty is strictly inferior to 2 x max(weight).\n\nReturns:\n    np.ndarray: The QUBO matrix formulation of MIS.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "to_qubo",
+          "type_signature": "(graph: Any, penalty: Any) -> np.ndarray",
+          "docstring": "Convert a MISInstance to a qubo matrix.\n\nQUBO formulation:\nMinimize:\n    Q(x) = -\u2211_{i \u2208 V} w_i x_i  +  \u03bb \u2211_{(i, j) \u2208 E} x_i x_j\n\nArgs:\n    penalty (float, optional): Penalty factor. Defaults to None.\n\nRaises:\n    ValueError: When penalty is strictly inferior to 2 x max(weight).\n\nReturns:\n    np.ndarray: The QUBO matrix formulation of MIS.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "to_qubo",
+            "type_signature": "(graph: Any, penalty: Any) -> np.ndarray",
+            "docstring": "Convert a MISInstance to a qubo matrix.\n\nQUBO formulation:\nMinimize:\n    Q(x) = -\u2211_{i \u2208 V} w_i x_i  +  \u03bb \u2211_{(i, j) \u2208 E} x_i x_j\n\nArgs:\n    penalty (float, optional): Penalty factor. Defaults to None.\n\nRaises:\n    ValueError: When penalty is strictly inferior to 2 x max(weight).\n\nReturns:\n    np.ndarray: The QUBO matrix formulation of MIS.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  }
+]

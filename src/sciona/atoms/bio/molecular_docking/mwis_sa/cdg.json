@@ -1,0 +1,182 @@
+{
+  "nodes": [
+    {
+      "node_id": "mwis_SA_root",
+      "parent_id": null,
+      "name": "mwis_SA",
+      "description": "Ingested pipeline from mwis_SA",
+      "concept_type": "custom",
+      "inputs": [],
+      "outputs": [],
+      "status": "decomposed",
+      "children": [
+        "load_graphs_from_folder",
+        "is_independent_set",
+        "calculate_weight",
+        "to_qubo"
+      ],
+      "depth": 0,
+      "type_signature": "",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "load_graphs_from_folder",
+      "parent_id": "mwis_SA_root",
+      "name": "Load Graphs From Folder",
+      "description": "Load all molecular interaction graphs from a directory",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "folder_path",
+          "type_desc": "Any",
+          "constraints": "x is not None"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type_desc": "Any",
+          "constraints": "x is not None"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 1,
+      "type_signature": "(folder_path: Any) -> Any",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "is_independent_set",
+      "parent_id": "mwis_SA_root",
+      "name": "Is Independent Set",
+      "description": "Checks if the given subset of nodes is an independent set in the graph.\n\n:param graph: The input graph.\n:param subset: The list of nodes to check.\n:return: True if the subset is an independent set, False otherwise.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "graph",
+          "type_desc": "Any",
+          "constraints": "x is not None"
+        },
+        {
+          "name": "subset",
+          "type_desc": "Any",
+          "constraints": "x is not None"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type_desc": "bool",
+          "constraints": "isinstance(x, bool)"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 1,
+      "type_signature": "(graph: Any, subset: Any) -> bool",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "calculate_weight",
+      "parent_id": "mwis_SA_root",
+      "name": "Calculate Weight",
+      "description": "Calculates the total weight of a given list of nodes in the graph.\n\n:param node_list: List of nodes.\n:return: Total weight of the nodes.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "graph",
+          "type_desc": "Any",
+          "constraints": "x is not None"
+        },
+        {
+          "name": "node_list",
+          "type_desc": "Any",
+          "constraints": "x is not None"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type_desc": "float",
+          "constraints": "isinstance(x, (int, float))"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 1,
+      "type_signature": "(graph: Any, node_list: Any) -> float",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "to_qubo",
+      "parent_id": "mwis_SA_root",
+      "name": "To Qubo",
+      "description": "Convert a MISInstance to a qubo matrix.\n\nQUBO formulation:\nMinimize:\n    Q(x) = -∑_{i ∈ V} w_i x_i  +  λ ∑_{(i, j) ∈ E} x_i x_j\n\nArgs:\n    penalty (float, optional): Penalty factor. Defaults to None.\n\nRaises:\n    ValueError: When penalty is strictly inferior to 2 x max(weight).\n\nReturns:\n    np.ndarray: The QUBO matrix formulation of MIS.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "graph",
+          "type_desc": "Any",
+          "constraints": "x is not None"
+        },
+        {
+          "name": "penalty",
+          "type_desc": "Any",
+          "constraints": "x is not None"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type_desc": "np.ndarray",
+          "constraints": "ndim >= 1"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 1,
+      "type_signature": "(graph: Any, penalty: Any) -> np.ndarray",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    }
+  ],
+  "edges": [],
+  "metadata": {
+    "source": "ingester",
+    "class_name": "mwis_SA"
+  }
+}

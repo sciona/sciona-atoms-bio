@@ -1,0 +1,794 @@
+[
+  {
+    "pdg_node": {
+      "predicate_id": "extractgraphproperties",
+      "statement": "(graph: nx.Graph) -> tuple[np.ndarray, List[any]]",
+      "informal_desc": "Extracts node weights and a corresponding list of node identifiers from the input graph.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "extractgraphproperties",
+          "type_signature": "(graph: nx.Graph) -> tuple[np.ndarray, List[any]]",
+          "docstring": "Extracts node weights and a corresponding list of node identifiers from the input graph.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "extractgraphproperties",
+          "type_signature": "(graph: nx.Graph) -> tuple[np.ndarray, List[any]]",
+          "docstring": "Extracts node weights and a corresponding list of node identifiers from the input graph.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "extractgraphproperties",
+            "type_signature": "(graph: nx.Graph) -> tuple[np.ndarray, List[any]]",
+            "docstring": "Extracts node weights and a corresponding list of node identifiers from the input graph.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "createinitialregister",
+      "statement": "(node_ids: List[any], coordinates_layout: Dict) -> tuple[Register, Dict]",
+      "informal_desc": "Builds the quantum register by assigning physical coordinates to each node (qubit) from the graph.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "createinitialregister",
+          "type_signature": "(node_ids: List[any], coordinates_layout: Dict) -> tuple[Register, Dict]",
+          "docstring": "Builds the quantum register by assigning physical coordinates to each node (qubit) from the graph.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "createinitialregister",
+          "type_signature": "(node_ids: List[any], coordinates_layout: Dict) -> tuple[Register, Dict]",
+          "docstring": "Builds the quantum register by assigning physical coordinates to each node (qubit) from the graph.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "createinitialregister",
+            "type_signature": "(node_ids: List[any], coordinates_layout: Dict) -> tuple[Register, Dict]",
+            "docstring": "Builds the quantum register by assigning physical coordinates to each node (qubit) from the graph.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "optimizeregisterlayout",
+      "statement": "(initial_register: Register, original_weight_array: np.ndarray) -> tuple[Register, List[float], List[int]]",
+      "informal_desc": "Finds and applies a permutation to the register and weights to minimize the interaction bandwidth, aiming to improve simulation efficiency.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "optimizeregisterlayout",
+          "type_signature": "(initial_register: Register, original_weight_array: np.ndarray) -> tuple[Register, List[float], List[int]]",
+          "docstring": "Finds and applies a permutation to the register and weights to minimize the interaction bandwidth, aiming to improve simulation efficiency.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "optimizeregisterlayout",
+          "type_signature": "(initial_register: Register, original_weight_array: np.ndarray) -> tuple[Register, List[float], List[int]]",
+          "docstring": "Finds and applies a permutation to the register and weights to minimize the interaction bandwidth, aiming to improve simulation efficiency.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "optimizeregisterlayout",
+            "type_signature": "(initial_register: Register, original_weight_array: np.ndarray) -> tuple[Register, List[float], List[int]]",
+            "docstring": "Finds and applies a permutation to the register and weights to minimize the interaction bandwidth, aiming to improve simulation efficiency.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "calculatehamiltonianscale",
+      "statement": "(register_coordinates: Dict, graph: nx.Graph) -> float",
+      "informal_desc": "Determines the global energy scale for the Hamiltonian by calculating the interaction strength for the shortest non-connected qubit pair, which defines the Rydberg blockade radius.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "calculatehamiltonianscale",
+          "type_signature": "(register_coordinates: Dict, graph: nx.Graph) -> float",
+          "docstring": "Determines the global energy scale for the Hamiltonian by calculating the interaction strength for the shortest non-connected qubit pair, which defines the Rydberg blockade radius.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "calculatehamiltonianscale",
+          "type_signature": "(register_coordinates: Dict, graph: nx.Graph) -> float",
+          "docstring": "Determines the global energy scale for the Hamiltonian by calculating the interaction strength for the shortest non-connected qubit pair, which defines the Rydberg blockade radius.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "calculatehamiltonianscale",
+            "type_signature": "(register_coordinates: Dict, graph: nx.Graph) -> float",
+            "docstring": "Determines the global energy scale for the Hamiltonian by calculating the interaction strength for the shortest non-connected qubit pair, which defines the Rydberg blockade radius.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "formulatedetuningproblem",
+      "statement": "(permuted_weights: List[float], max_interaction_strength: float) -> tuple[np.ndarray, float, Dict]",
+      "informal_desc": "Encodes the problem's objective function into the hardware by normalizing weights and mapping them to a local detuning field (DMM) and global detuning strength.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "formulatedetuningproblem",
+          "type_signature": "(permuted_weights: List[float], max_interaction_strength: float) -> tuple[np.ndarray, float, Dict]",
+          "docstring": "Encodes the problem's objective function into the hardware by normalizing weights and mapping them to a local detuning field (DMM) and global detuning strength.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "formulatedetuningproblem",
+          "type_signature": "(permuted_weights: List[float], max_interaction_strength: float) -> tuple[np.ndarray, float, Dict]",
+          "docstring": "Encodes the problem's objective function into the hardware by normalizing weights and mapping them to a local detuning field (DMM) and global detuning strength.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "formulatedetuningproblem",
+            "type_signature": "(permuted_weights: List[float], max_interaction_strength: float) -> tuple[np.ndarray, float, Dict]",
+            "docstring": "Encodes the problem's objective function into the hardware by normalizing weights and mapping them to a local detuning field (DMM) and global detuning strength.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "executequantumannealing",
+      "statement": "(base_hamiltonian_params: Dict, inverted_normalized_weights: np.ndarray, detuning_spread: float, initial_register: Register, optimized_register: Register, permutation_list: List[int]) -> Dict",
+      "informal_desc": "Performs the quantum evolution by running a simulation. It selects an appropriate backend (State Vector or Matrix Product State) based on the number of atoms and constructs the final DMM map.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "executequantumannealing",
+          "type_signature": "(base_hamiltonian_params: Dict, inverted_normalized_weights: np.ndarray, detuning_spread: float, initial_register: Register, optimized_register: Register, permutation_list: List[int]) -> Dict",
+          "docstring": "Performs the quantum evolution by running a simulation. It selects an appropriate backend (State Vector or Matrix Product State) based on the number of atoms and constructs the final DMM map.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "executequantumannealing",
+          "type_signature": "(base_hamiltonian_params: Dict, inverted_normalized_weights: np.ndarray, detuning_spread: float, initial_register: Register, optimized_register: Register, permutation_list: List[int]) -> Dict",
+          "docstring": "Performs the quantum evolution by running a simulation. It selects an appropriate backend (State Vector or Matrix Product State) based on the number of atoms and constructs the final DMM map.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "executequantumannealing",
+            "type_signature": "(base_hamiltonian_params: Dict, inverted_normalized_weights: np.ndarray, detuning_spread: float, initial_register: Register, optimized_register: Register, permutation_list: List[int]) -> Dict",
+            "docstring": "Performs the quantum evolution by running a simulation. It selects an appropriate backend (State Vector or Matrix Product State) based on the number of atoms and constructs the final DMM map.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "decodesolutions",
+      "statement": "(measurement_counts: Dict, initial_register: Register, num_solutions_to_find: int) -> List[List[int]]",
+      "informal_desc": "Processes the raw measurement counts from the simulation, sorting them by probability and converting the most frequent results into valid Maximum-Weight Independent Set (MWIS) solutions.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "decodesolutions",
+          "type_signature": "(measurement_counts: Dict, initial_register: Register, num_solutions_to_find: int) -> List[List[int]]",
+          "docstring": "Processes the raw measurement counts from the simulation, sorting them by probability and converting the most frequent results into valid Maximum-Weight Independent Set (MWIS) solutions.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "decodesolutions",
+          "type_signature": "(measurement_counts: Dict, initial_register: Register, num_solutions_to_find: int) -> List[List[int]]",
+          "docstring": "Processes the raw measurement counts from the simulation, sorting them by probability and converting the most frequent results into valid Maximum-Weight Independent Set (MWIS) solutions.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "decodesolutions",
+            "type_signature": "(measurement_counts: Dict, initial_register: Register, num_solutions_to_find: int) -> List[List[int]]",
+            "docstring": "Processes the raw measurement counts from the simulation, sorting them by probability and converting the most frequent results into valid Maximum-Weight Independent Set (MWIS) solutions.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "build_adiabatic_sequence",
+      "statement": "(register: QuantumRegister, parameters: Dict) -> Sequence",
+      "informal_desc": "Constructs the adiabatic pulse sequence based on simulation parameters and register geometry. This includes defining the amplitude and detuning waveforms for the global Rydberg channel and configuring the local detuning map.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "build_adiabatic_sequence",
+          "type_signature": "(register: QuantumRegister, parameters: Dict) -> Sequence",
+          "docstring": "Constructs the adiabatic pulse sequence based on simulation parameters and register geometry. This includes defining the amplitude and detuning waveforms for the global Rydberg channel and configuring the local detuning map.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "build_adiabatic_sequence",
+          "type_signature": "(register: QuantumRegister, parameters: Dict) -> Sequence",
+          "docstring": "Constructs the adiabatic pulse sequence based on simulation parameters and register geometry. This includes defining the amplitude and detuning waveforms for the global Rydberg channel and configuring the local detuning map.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "build_adiabatic_sequence",
+            "type_signature": "(register: QuantumRegister, parameters: Dict) -> Sequence",
+            "docstring": "Constructs the adiabatic pulse sequence based on simulation parameters and register geometry. This includes defining the amplitude and detuning waveforms for the global Rydberg channel and configuring the local detuning map.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "initialize_simulation_backend",
+      "statement": "(adiabatic_sequence: Sequence, backend_flags: Dict) -> Union[QutipEmulator, SVBackend, MPSBackend]",
+      "informal_desc": "Initializes and configures the appropriate quantum simulation backend (QuTip, State Vector, or MPS) for the given pulse sequence, based on runtime flags. This involves setting up backend-specific configurations like time steps, observables, and log levels.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "initialize_simulation_backend",
+          "type_signature": "(adiabatic_sequence: Sequence, backend_flags: Dict) -> Union[QutipEmulator, SVBackend, MPSBackend]",
+          "docstring": "Initializes and configures the appropriate quantum simulation backend (QuTip, State Vector, or MPS) for the given pulse sequence, based on runtime flags. This involves setting up backend-specific configurations like time steps, observables, and log levels.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "initialize_simulation_backend",
+          "type_signature": "(adiabatic_sequence: Sequence, backend_flags: Dict) -> Union[QutipEmulator, SVBackend, MPSBackend]",
+          "docstring": "Initializes and configures the appropriate quantum simulation backend (QuTip, State Vector, or MPS) for the given pulse sequence, based on runtime flags. This involves setting up backend-specific configurations like time steps, observables, and log levels.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "initialize_simulation_backend",
+            "type_signature": "(adiabatic_sequence: Sequence, backend_flags: Dict) -> Union[QutipEmulator, SVBackend, MPSBackend]",
+            "docstring": "Initializes and configures the appropriate quantum simulation backend (QuTip, State Vector, or MPS) for the given pulse sequence, based on runtime flags. This involves setting up backend-specific configurations like time steps, observables, and log levels.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "run_quantum_simulation",
+      "statement": "(configured_simulator: Union[QutipEmulator, SVBackend, MPSBackend]) -> SimulationResults",
+      "informal_desc": "Executes the simulation on the configured backend to produce raw results, which may include final state vectors or bitstring measurements over time.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "run_quantum_simulation",
+          "type_signature": "(configured_simulator: Union[QutipEmulator, SVBackend, MPSBackend]) -> SimulationResults",
+          "docstring": "Executes the simulation on the configured backend to produce raw results, which may include final state vectors or bitstring measurements over time.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "run_quantum_simulation",
+          "type_signature": "(configured_simulator: Union[QutipEmulator, SVBackend, MPSBackend]) -> SimulationResults",
+          "docstring": "Executes the simulation on the configured backend to produce raw results, which may include final state vectors or bitstring measurements over time.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "run_quantum_simulation",
+            "type_signature": "(configured_simulator: Union[QutipEmulator, SVBackend, MPSBackend]) -> SimulationResults",
+            "docstring": "Executes the simulation on the configured backend to produce raw results, which may include final state vectors or bitstring measurements over time.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "process_simulation_results",
+      "statement": "(raw_simulation_results: SimulationResults, permutation_list: List[Permutation], backend_flags: Dict) -> CountDistribution",
+      "informal_desc": "Extracts final measurement counts from the raw simulation results by sampling the final state. For the MPS backend, it also applies an inverse permutation to the sampled bitstrings to align them with the original qubit order.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "process_simulation_results",
+          "type_signature": "(raw_simulation_results: SimulationResults, permutation_list: List[Permutation], backend_flags: Dict) -> CountDistribution",
+          "docstring": "Extracts final measurement counts from the raw simulation results by sampling the final state. For the MPS backend, it also applies an inverse permutation to the sampled bitstrings to align them with the original qubit order.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "process_simulation_results",
+          "type_signature": "(raw_simulation_results: SimulationResults, permutation_list: List[Permutation], backend_flags: Dict) -> CountDistribution",
+          "docstring": "Extracts final measurement counts from the raw simulation results by sampling the final state. For the MPS backend, it also applies an inverse permutation to the sampled bitstrings to align them with the original qubit order.",
+          "conceptual_summary": "",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "process_simulation_results",
+            "type_signature": "(raw_simulation_results: SimulationResults, permutation_list: List[Permutation], backend_flags: Dict) -> CountDistribution",
+            "docstring": "Extracts final measurement counts from the raw simulation results by sampling the final state. For the MPS backend, it also applies an inverse permutation to the sampled bitstrings to align them with the original qubit order.",
+            "conceptual_summary": "",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  },
+  {
+    "pdg_node": {
+      "predicate_id": "solutionextraction",
+      "statement": "(measurement_counts: CountDistribution, final_register: QuantumRegister, num_solutions: Integer) -> List[Solution]",
+      "informal_desc": "Processes the raw results from the quantum sampler. It interprets the measurement count distribution to extract the top solutions for the optimization problem.",
+      "prover": "python",
+      "context": {}
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "solutionextraction",
+          "type_signature": "(measurement_counts: CountDistribution, final_register: QuantumRegister, num_solutions: Integer) -> List[Solution]",
+          "docstring": "Processes the raw results from the quantum sampler. It interprets the measurement count distribution to extract the top solutions for the optimization problem.",
+          "conceptual_summary": "MostProbableStateDecoder. Filters a discrete probability distribution to identify the 'K' most frequently observed states. It then decodes these high-frequency states from a raw format into a structured representation, effectively reducing a large outcome space to a small set of the most likely results.. Applications: Genomics: Identifying the most common genetic variants in a population from sequencing count data., Natural Language Processing: Extracting the most likely candidate words from a language model's output probability distribution for use in beam search decoding., Failure Analysis: Pinpointing the most frequent error codes from system logs to prioritize investigation of system failure modes., Market Research: Determining the most popular product choices from a large set of customer transaction data.",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [
+      {
+        "declaration": {
+          "name": "solutionextraction",
+          "type_signature": "(measurement_counts: CountDistribution, final_register: QuantumRegister, num_solutions: Integer) -> List[Solution]",
+          "docstring": "Processes the raw results from the quantum sampler. It interprets the measurement count distribution to extract the top solutions for the optimization problem.",
+          "conceptual_summary": "MostProbableStateDecoder. Filters a discrete probability distribution to identify the 'K' most frequently observed states. It then decodes these high-frequency states from a raw format into a structured representation, effectively reducing a large outcome space to a small set of the most likely results.. Applications: Genomics: Identifying the most common genetic variants in a population from sequencing count data., Natural Language Processing: Extracting the most likely candidate words from a language model's output probability distribution for use in beam search decoding., Failure Analysis: Pinpointing the most frequent error codes from system logs to prioritize investigation of system failure modes., Market Research: Determining the most popular product choices from a large set of customer transaction data.",
+          "source_lib": "ingester",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "ingester"
+      }
+    ],
+    "all_verifications": [
+      {
+        "candidate": {
+          "declaration": {
+            "name": "solutionextraction",
+            "type_signature": "(measurement_counts: CountDistribution, final_register: QuantumRegister, num_solutions: Integer) -> List[Solution]",
+            "docstring": "Processes the raw results from the quantum sampler. It interprets the measurement count distribution to extract the top solutions for the optimization problem.",
+            "conceptual_summary": "MostProbableStateDecoder. Filters a discrete probability distribution to identify the 'K' most frequently observed states. It then decodes these high-frequency states from a raw format into a structured representation, effectively reducing a large outcome space to a small set of the most likely results.. Applications: Genomics: Identifying the most common genetic variants in a population from sequencing count data., Natural Language Processing: Extracting the most likely candidate words from a language model's output probability distribution for use in beam search decoding., Failure Analysis: Pinpointing the most frequent error codes from system logs to prioritize investigation of system failure modes., Market Research: Determining the most popular product choices from a large set of customer transaction data.",
+            "source_lib": "ingester",
+            "prover": "python",
+            "raw_code": ""
+          },
+          "score": 1.0,
+          "retrieval_method": "ingester"
+        },
+        "verified": true,
+        "compiler_output": "",
+        "proof_term": "",
+        "error_message": "",
+        "verification_level": "type_checked"
+      }
+    ]
+  }
+]

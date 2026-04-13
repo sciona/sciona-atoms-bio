@@ -1,0 +1,896 @@
+{
+  "nodes": [
+    {
+      "node_id": "q_solver_root",
+      "parent_id": null,
+      "name": "q_solver",
+      "description": "Ingested pipeline from q_solver",
+      "concept_type": "custom",
+      "inputs": [],
+      "outputs": [],
+      "status": "decomposed",
+      "children": [
+        "quantumproblemdefinition",
+        "adiabaticquantumsampler",
+        "solutionextraction"
+      ],
+      "depth": 0,
+      "type_signature": "",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "quantumproblemdefinition",
+      "parent_id": "q_solver_root",
+      "name": "QuantumProblemDefinition",
+      "description": "Initializes the quantum annealing problem. It computes simulation parameters like the minimum and maximum coupling strengths (u) based on the graph and register coordinates, and prepares the initial state for the solver.",
+      "concept_type": "prior_init",
+      "inputs": [
+        {
+          "name": "graph",
+          "type_desc": "ProblemGraph",
+          "constraints": "A graph structure representing the optimization problem."
+        },
+        {
+          "name": "coordinates_layout",
+          "type_desc": "RegisterCoordinates",
+          "constraints": "Spatial layout of qubits in the register."
+        },
+        {
+          "name": "num_sol",
+          "type_desc": "Integer",
+          "constraints": "Number of desired solutions."
+        },
+        {
+          "name": "display_info",
+          "type_desc": "Boolean",
+          "constraints": "Flag to control informational display."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "initial_register",
+          "type_desc": "QuantumRegister",
+          "constraints": "The initialized quantum register."
+        },
+        {
+          "name": "simulation_parameters",
+          "type_desc": "Dict",
+          "constraints": "Parameters for the adiabatic sequence."
+        },
+        {
+          "name": "permutation_list",
+          "type_desc": "List[Permutation]",
+          "constraints": "List of permutations for the quantum loop."
+        },
+        {
+          "name": "backend_flags",
+          "type_desc": "Dict",
+          "constraints": "Flags to select the simulation backend (qutip, mps, sv)."
+        },
+        {
+          "name": "num_solutions_passthrough",
+          "type_desc": "Integer",
+          "constraints": "The number of solutions, passed through to the final processing stage."
+        }
+      ],
+      "status": "decomposed",
+      "children": [
+        "extractgraphproperties",
+        "createinitialregister",
+        "optimizeregisterlayout",
+        "calculatehamiltonianscale",
+        "formulatedetuningproblem",
+        "executequantumannealing",
+        "decodesolutions"
+      ],
+      "depth": 1,
+      "type_signature": "(graph: ProblemGraph, coordinates_layout: RegisterCoordinates, num_sol: Integer, display_info: Boolean) -> tuple[QuantumRegister, Dict, List[Permutation], Dict, Integer]",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "SpatialGraphParameterInitializer. Initializes the parameter space for a system simulation by analyzing the geometric embedding of a relational graph. It calculates the extremal values of an interaction function defined over the graph's edges based on the spatial coordinates of their vertices. This process establishes the boundary conditions and initial state for a subsequent solver or iterative process.. Applications: Molecular Dynamics: Calculating the minimum and maximum electrostatic potentials between atoms in a protein based on their 3D positions to initialize a folding simulation., Urban Planning: Determining optimal operational zones in a city by analyzing a road network graph and the geographic locations of facilities to set constraints for a logistics solver., Finite Element Analysis: Initializing the boundary conditions for a stress simulation on a mechanical part by computing maximum force constraints from the mesh geometry., Neuroscience: Setting up a neural activity simulation by calculating the range of effective synaptic strengths based on the physical proximity of neurons in a connectome.",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "extractgraphproperties",
+      "parent_id": "quantumproblemdefinition",
+      "name": "ExtractGraphProperties",
+      "description": "Extracts node weights and a corresponding list of node identifiers from the input graph.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "graph",
+          "type_desc": "object",
+          "constraints": "Graph with 'weight' attribute on nodes."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "original_weight_array",
+          "type_desc": "np.ndarray",
+          "constraints": "1D array of node weights."
+        },
+        {
+          "name": "node_ids",
+          "type_desc": "List[any]",
+          "constraints": "List of node identifiers."
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(graph: nx.Graph) -> tuple[np.ndarray, List[any]]",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "createinitialregister",
+      "parent_id": "quantumproblemdefinition",
+      "name": "CreateInitialRegister",
+      "description": "Builds the quantum register by assigning physical coordinates to each node (qubit) from the graph.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "node_ids",
+          "type_desc": "List[any]",
+          "constraints": "List of node identifiers."
+        },
+        {
+          "name": "coordinates_layout",
+          "type_desc": "Dict",
+          "constraints": "Mapping from node ID to coordinate."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "initial_register",
+          "type_desc": "Register",
+          "constraints": "pulser_analog.Register object."
+        },
+        {
+          "name": "register_coordinates",
+          "type_desc": "Dict",
+          "constraints": "Mapping from node ID to coordinate for nodes in the graph."
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(node_ids: List[any], coordinates_layout: Dict) -> tuple[Register, Dict]",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "optimizeregisterlayout",
+      "parent_id": "quantumproblemdefinition",
+      "name": "OptimizeRegisterLayout",
+      "description": "Finds and applies a permutation to the register and weights to minimize the interaction bandwidth, aiming to improve simulation efficiency.",
+      "concept_type": "graph_optimization",
+      "inputs": [
+        {
+          "name": "initial_register",
+          "type_desc": "Register",
+          "constraints": "Unoptimized pulser_analog.Register object."
+        },
+        {
+          "name": "original_weight_array",
+          "type_desc": "np.ndarray",
+          "constraints": "1D array of node weights, ordered according to initial_register."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "optimized_register",
+          "type_desc": "Register",
+          "constraints": "Permuted pulser_analog.Register object."
+        },
+        {
+          "name": "permuted_weights",
+          "type_desc": "List[float]",
+          "constraints": "List of weights, reordered according to the optimized layout."
+        },
+        {
+          "name": "permutation_list",
+          "type_desc": "List[int]",
+          "constraints": "The permutation indices used to reorder the register."
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(initial_register: Register, original_weight_array: np.ndarray) -> tuple[Register, List[float], List[int]]",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "calculatehamiltonianscale",
+      "parent_id": "quantumproblemdefinition",
+      "name": "CalculateHamiltonianScale",
+      "description": "Determines the global energy scale for the Hamiltonian by calculating the interaction strength for the shortest non-connected qubit pair, which defines the Rydberg blockade radius.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "register_coordinates",
+          "type_desc": "Dict",
+          "constraints": "Mapping from node ID to coordinate."
+        },
+        {
+          "name": "graph",
+          "type_desc": "object",
+          "constraints": "The problem graph defining connectivity."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "max_interaction_strength",
+          "type_desc": "float",
+          "constraints": "The calculated 'u_max' value."
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(register_coordinates: Dict, graph: nx.Graph) -> float",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "formulatedetuningproblem",
+      "parent_id": "quantumproblemdefinition",
+      "name": "FormulateDetuningProblem",
+      "description": "Encodes the problem's objective function into the hardware by normalizing weights and mapping them to a local detuning field (DMM) and global detuning strength.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "permuted_weights",
+          "type_desc": "List[float]",
+          "constraints": "Reordered list of node weights."
+        },
+        {
+          "name": "max_interaction_strength",
+          "type_desc": "float",
+          "constraints": "The 'u_max' value for scaling."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "inverted_normalized_weights",
+          "type_desc": "np.ndarray",
+          "constraints": "1D array of (1 - normalized_weights)."
+        },
+        {
+          "name": "detuning_spread",
+          "type_desc": "float",
+          "constraints": "Calculated spread for the DMM."
+        },
+        {
+          "name": "base_hamiltonian_params",
+          "type_desc": "Dict",
+          "constraints": "Dictionary with evolution duration, amplitude, and detuning maximums."
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(permuted_weights: List[float], max_interaction_strength: float) -> tuple[np.ndarray, float, Dict]",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "executequantumannealing",
+      "parent_id": "quantumproblemdefinition",
+      "name": "ExecuteQuantumAnnealing",
+      "description": "Performs the quantum evolution by running a simulation. It selects an appropriate backend (State Vector or Matrix Product State) based on the number of atoms and constructs the final DMM map.",
+      "concept_type": "sampler",
+      "inputs": [
+        {
+          "name": "base_hamiltonian_params",
+          "type_desc": "Dict",
+          "constraints": "Core parameters for the quantum evolution."
+        },
+        {
+          "name": "inverted_normalized_weights",
+          "type_desc": "np.ndarray",
+          "constraints": "Weights used to create the DMM map."
+        },
+        {
+          "name": "detuning_spread",
+          "type_desc": "float",
+          "constraints": "Global detuning for the DMM."
+        },
+        {
+          "name": "initial_register",
+          "type_desc": "Register",
+          "constraints": "Required for small-scale simulations."
+        },
+        {
+          "name": "optimized_register",
+          "type_desc": "Register",
+          "constraints": "Required for large-scale simulations."
+        },
+        {
+          "name": "permutation_list",
+          "type_desc": "List[int]",
+          "constraints": "Used to correctly map weights in large-scale simulations."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "measurement_counts",
+          "type_desc": "Dict",
+          "constraints": "A dictionary mapping final quantum states (as bitstrings) to their occurrence counts."
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(base_hamiltonian_params: Dict, inverted_normalized_weights: np.ndarray, detuning_spread: float, initial_register: Register, optimized_register: Register, permutation_list: List[int]) -> Dict",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "decodesolutions",
+      "parent_id": "quantumproblemdefinition",
+      "name": "DecodeSolutions",
+      "description": "Processes the raw measurement counts from the simulation, sorting them by probability and converting the most frequent results into valid Maximum-Weight Independent Set (MWIS) solutions.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "measurement_counts",
+          "type_desc": "Dict",
+          "constraints": "Mapping of quantum states to their counts."
+        },
+        {
+          "name": "initial_register",
+          "type_desc": "Register",
+          "constraints": "Used to map qubit indices back to node IDs."
+        },
+        {
+          "name": "num_solutions_to_find",
+          "type_desc": "int",
+          "constraints": "The desired number of MWIS solutions."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "mwis_solutions",
+          "type_desc": "List[List[int]]",
+          "constraints": "A list of the top MWIS solutions found."
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(measurement_counts: Dict, initial_register: Register, num_solutions_to_find: int) -> List[List[int]]",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "adiabaticquantumsampler",
+      "parent_id": "q_solver_root",
+      "name": "AdiabaticQuantumSampler",
+      "description": "Executes the core quantum simulation loop. It evolves the quantum register through an adiabatic sequence to find low-energy states of the problem Hamiltonian, effectively sampling from the solution distribution.",
+      "concept_type": "sampler",
+      "inputs": [
+        {
+          "name": "initial_register",
+          "type_desc": "QuantumRegister",
+          "constraints": "The initialized quantum register."
+        },
+        {
+          "name": "simulation_parameters",
+          "type_desc": "Dict",
+          "constraints": "Parameters for the adiabatic sequence."
+        },
+        {
+          "name": "permutation_list",
+          "type_desc": "List[Permutation]",
+          "constraints": "List of permutations for the quantum loop."
+        },
+        {
+          "name": "backend_flags",
+          "type_desc": "Dict",
+          "constraints": "Flags to select the simulation backend (qutip, mps, sv)."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "measurement_counts",
+          "type_desc": "CountDistribution",
+          "constraints": "A distribution of measurement outcomes from the simulation."
+        },
+        {
+          "name": "final_register",
+          "type_desc": "QuantumRegister",
+          "constraints": "The final state of the quantum register after evolution."
+        }
+      ],
+      "status": "decomposed",
+      "children": [
+        "build_adiabatic_sequence",
+        "initialize_simulation_backend",
+        "run_quantum_simulation",
+        "process_simulation_results"
+      ],
+      "depth": 1,
+      "type_signature": "(initial_register: QuantumRegister, simulation_parameters: Dict, permutation_list: List[Permutation], backend_flags: Dict) -> tuple[CountDistribution, QuantumRegister]",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "HeuristicMinimumSampler. Evolves a high-dimensional state vector through a scheduled series of transformations. The process is designed to find low-value configurations of a complex objective function by gradually deforming an initial, simple landscape into a target problem landscape, thereby guiding the state towards a minimum. It returns a probability distribution of the most likely low-value final states.. Applications: Protein Folding: Simulating an annealing process to find the minimum energy conformation (the native state) of a polypeptide chain., Logistics Optimization: Finding near-optimal solutions to combinatorial problems like the Traveling Salesperson Problem by encoding the cost function into the system's energy landscape., Financial Modeling: Discovering optimal asset allocations in a portfolio that minimize a complex risk-and-return objective function., VLSI Design: Determining the physical placement of logic gates on a chip to minimize wire length and signal interference, treating the layout as the state and cost as the energy.",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "build_adiabatic_sequence",
+      "parent_id": "adiabaticquantumsampler",
+      "name": "build_adiabatic_sequence",
+      "description": "Constructs the adiabatic pulse sequence based on simulation parameters and register geometry. This includes defining the amplitude and detuning waveforms for the global Rydberg channel and configuring the local detuning map.",
+      "concept_type": "prior_init",
+      "inputs": [
+        {
+          "name": "register",
+          "type_desc": "QuantumRegister",
+          "constraints": "Defines the geometry of the quantum processor."
+        },
+        {
+          "name": "parameters",
+          "type_desc": "Dict",
+          "constraints": "Contains keys for sequence properties like 'duration', 'amplitude_maximum', 'detuning_maximum', and 'dmm_map'."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "adiabatic_sequence",
+          "type_desc": "Sequence",
+          "constraints": "A full description of the pulses to be run on the device."
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(register: QuantumRegister, parameters: Dict) -> Sequence",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "initialize_simulation_backend",
+      "parent_id": "adiabaticquantumsampler",
+      "name": "initialize_simulation_backend",
+      "description": "Initializes and configures the appropriate quantum simulation backend (QuTip, State Vector, or MPS) for the given pulse sequence, based on runtime flags. This involves setting up backend-specific configurations like time steps, observables, and log levels.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "adiabatic_sequence",
+          "type_desc": "Sequence",
+          "constraints": "isinstance(x, (list, tuple))"
+        },
+        {
+          "name": "backend_flags",
+          "type_desc": "Dict",
+          "constraints": "Contains boolean flags like 'run_qutip', 'run_sv', 'run_emu_mps'."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "configured_simulator",
+          "type_desc": "Union[QutipEmulator, SVBackend, MPSBackend]",
+          "constraints": "The initialized simulator object ready for execution."
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(adiabatic_sequence: Sequence, backend_flags: Dict) -> Union[QutipEmulator, SVBackend, MPSBackend]",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "run_quantum_simulation",
+      "parent_id": "adiabaticquantumsampler",
+      "name": "run_quantum_simulation",
+      "description": "Executes the simulation on the configured backend to produce raw results, which may include final state vectors or bitstring measurements over time.",
+      "concept_type": "sampler",
+      "inputs": [
+        {
+          "name": "configured_simulator",
+          "type_desc": "Union[QutipEmulator, SVBackend, MPSBackend]",
+          "constraints": "x is not None"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "raw_simulation_results",
+          "type_desc": "SimulationResults",
+          "constraints": "Backend-specific results object containing state vectors or measurement data."
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(configured_simulator: Union[QutipEmulator, SVBackend, MPSBackend]) -> SimulationResults",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "process_simulation_results",
+      "parent_id": "adiabaticquantumsampler",
+      "name": "process_simulation_results",
+      "description": "Extracts final measurement counts from the raw simulation results by sampling the final state. For the MPS backend, it also applies an inverse permutation to the sampled bitstrings to align them with the original qubit order.",
+      "concept_type": "posterior_update",
+      "inputs": [
+        {
+          "name": "raw_simulation_results",
+          "type_desc": "SimulationResults",
+          "constraints": "x is not None"
+        },
+        {
+          "name": "permutation_list",
+          "type_desc": "List[Permutation]",
+          "constraints": "Required only for specific backends (e.g., MPS) that require result reordering."
+        },
+        {
+          "name": "backend_flags",
+          "type_desc": "Dict",
+          "constraints": "Used to determine the correct result extraction and processing logic for the backend that was run."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "measurement_counts",
+          "type_desc": "CountDistribution",
+          "constraints": "A distribution of measured final states."
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 2,
+      "type_signature": "(raw_simulation_results: SimulationResults, permutation_list: List[Permutation], backend_flags: Dict) -> CountDistribution",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    },
+    {
+      "node_id": "solutionextraction",
+      "parent_id": "q_solver_root",
+      "name": "SolutionExtraction",
+      "description": "Processes the raw results from the quantum sampler. It interprets the measurement count distribution to extract the top solutions for the optimization problem.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "measurement_counts",
+          "type_desc": "CountDistribution",
+          "constraints": "A distribution of measurement outcomes from the simulation."
+        },
+        {
+          "name": "final_register",
+          "type_desc": "QuantumRegister",
+          "constraints": "The final state of the quantum register."
+        },
+        {
+          "name": "num_solutions",
+          "type_desc": "Integer",
+          "constraints": "The number of top solutions to extract."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "solutions",
+          "type_desc": "List[Solution]",
+          "constraints": "The final, processed solutions to the problem."
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 1,
+      "type_signature": "(measurement_counts: CountDistribution, final_register: QuantumRegister, num_solutions: Integer) -> List[Solution]",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "MostProbableStateDecoder. Filters a discrete probability distribution to identify the 'K' most frequently observed states. It then decodes these high-frequency states from a raw format into a structured representation, effectively reducing a large outcome space to a small set of the most likely results.. Applications: Genomics: Identifying the most common genetic variants in a population from sequencing count data., Natural Language Processing: Extracting the most likely candidate words from a language model's output probability distribution for use in beam search decoding., Failure Analysis: Pinpointing the most frequent error codes from system logs to prioritize investigation of system failure modes., Market Research: Determining the most popular product choices from a large set of customer transaction data.",
+      "critic_notes": "",
+      "decomposition_rationale": ""
+    }
+  ],
+  "edges": [
+    {
+      "source_id": "extractgraphproperties",
+      "target_id": "createinitialregister",
+      "output_name": "node_ids",
+      "input_name": "node_ids",
+      "source_type": "List[any]",
+      "target_type": "List[any]",
+      "requires_glue": false
+    },
+    {
+      "source_id": "extractgraphproperties",
+      "target_id": "optimizeregisterlayout",
+      "output_name": "original_weight_array",
+      "input_name": "original_weight_array",
+      "source_type": "np.ndarray",
+      "target_type": "np.ndarray",
+      "requires_glue": false
+    },
+    {
+      "source_id": "createinitialregister",
+      "target_id": "optimizeregisterlayout",
+      "output_name": "initial_register",
+      "input_name": "initial_register",
+      "source_type": "Register",
+      "target_type": "Register",
+      "requires_glue": false
+    },
+    {
+      "source_id": "createinitialregister",
+      "target_id": "calculatehamiltonianscale",
+      "output_name": "register_coordinates",
+      "input_name": "register_coordinates",
+      "source_type": "Dict",
+      "target_type": "Dict",
+      "requires_glue": false
+    },
+    {
+      "source_id": "createinitialregister",
+      "target_id": "executequantumannealing",
+      "output_name": "initial_register",
+      "input_name": "initial_register",
+      "source_type": "Register",
+      "target_type": "Register",
+      "requires_glue": false
+    },
+    {
+      "source_id": "createinitialregister",
+      "target_id": "decodesolutions",
+      "output_name": "initial_register",
+      "input_name": "initial_register",
+      "source_type": "Register",
+      "target_type": "Register",
+      "requires_glue": false
+    },
+    {
+      "source_id": "optimizeregisterlayout",
+      "target_id": "formulatedetuningproblem",
+      "output_name": "permuted_weights",
+      "input_name": "permuted_weights",
+      "source_type": "List[float]",
+      "target_type": "List[float]",
+      "requires_glue": false
+    },
+    {
+      "source_id": "optimizeregisterlayout",
+      "target_id": "executequantumannealing",
+      "output_name": "optimized_register",
+      "input_name": "optimized_register",
+      "source_type": "Register",
+      "target_type": "Register",
+      "requires_glue": false
+    },
+    {
+      "source_id": "optimizeregisterlayout",
+      "target_id": "executequantumannealing",
+      "output_name": "permutation_list",
+      "input_name": "permutation_list",
+      "source_type": "List[int]",
+      "target_type": "List[int]",
+      "requires_glue": false
+    },
+    {
+      "source_id": "calculatehamiltonianscale",
+      "target_id": "formulatedetuningproblem",
+      "output_name": "max_interaction_strength",
+      "input_name": "max_interaction_strength",
+      "source_type": "float",
+      "target_type": "float",
+      "requires_glue": false
+    },
+    {
+      "source_id": "formulatedetuningproblem",
+      "target_id": "executequantumannealing",
+      "output_name": "base_hamiltonian_params",
+      "input_name": "base_hamiltonian_params",
+      "source_type": "Dict",
+      "target_type": "Dict",
+      "requires_glue": false
+    },
+    {
+      "source_id": "formulatedetuningproblem",
+      "target_id": "executequantumannealing",
+      "output_name": "inverted_normalized_weights",
+      "input_name": "inverted_normalized_weights",
+      "source_type": "np.ndarray",
+      "target_type": "np.ndarray",
+      "requires_glue": false
+    },
+    {
+      "source_id": "formulatedetuningproblem",
+      "target_id": "executequantumannealing",
+      "output_name": "detuning_spread",
+      "input_name": "detuning_spread",
+      "source_type": "float",
+      "target_type": "float",
+      "requires_glue": false
+    },
+    {
+      "source_id": "executequantumannealing",
+      "target_id": "decodesolutions",
+      "output_name": "measurement_counts",
+      "input_name": "measurement_counts",
+      "source_type": "Dict",
+      "target_type": "Dict",
+      "requires_glue": false
+    },
+    {
+      "source_id": "build_adiabatic_sequence",
+      "target_id": "initialize_simulation_backend",
+      "output_name": "adiabatic_sequence",
+      "input_name": "adiabatic_sequence",
+      "source_type": "Sequence",
+      "target_type": "Sequence",
+      "requires_glue": false
+    },
+    {
+      "source_id": "initialize_simulation_backend",
+      "target_id": "run_quantum_simulation",
+      "output_name": "configured_simulator",
+      "input_name": "configured_simulator",
+      "source_type": "Union[QutipEmulator, SVBackend, MPSBackend]",
+      "target_type": "Union[QutipEmulator, SVBackend, MPSBackend]",
+      "requires_glue": false
+    },
+    {
+      "source_id": "run_quantum_simulation",
+      "target_id": "process_simulation_results",
+      "output_name": "raw_simulation_results",
+      "input_name": "raw_simulation_results",
+      "source_type": "SimulationResults",
+      "target_type": "SimulationResults",
+      "requires_glue": false
+    },
+    {
+      "source_id": "quantumproblemdefinition",
+      "target_id": "adiabaticquantumsampler",
+      "output_name": "initial_register",
+      "input_name": "initial_register",
+      "source_type": "QuantumRegister",
+      "target_type": "QuantumRegister",
+      "requires_glue": false
+    },
+    {
+      "source_id": "quantumproblemdefinition",
+      "target_id": "adiabaticquantumsampler",
+      "output_name": "simulation_parameters",
+      "input_name": "simulation_parameters",
+      "source_type": "Dict",
+      "target_type": "Dict",
+      "requires_glue": false
+    },
+    {
+      "source_id": "quantumproblemdefinition",
+      "target_id": "adiabaticquantumsampler",
+      "output_name": "permutation_list",
+      "input_name": "permutation_list",
+      "source_type": "List[Permutation]",
+      "target_type": "List[Permutation]",
+      "requires_glue": false
+    },
+    {
+      "source_id": "quantumproblemdefinition",
+      "target_id": "adiabaticquantumsampler",
+      "output_name": "backend_flags",
+      "input_name": "backend_flags",
+      "source_type": "Dict",
+      "target_type": "Dict",
+      "requires_glue": false
+    },
+    {
+      "source_id": "quantumproblemdefinition",
+      "target_id": "solutionextraction",
+      "output_name": "num_solutions_passthrough",
+      "input_name": "num_solutions",
+      "source_type": "Integer",
+      "target_type": "Integer",
+      "requires_glue": false
+    },
+    {
+      "source_id": "adiabaticquantumsampler",
+      "target_id": "solutionextraction",
+      "output_name": "measurement_counts",
+      "input_name": "measurement_counts",
+      "source_type": "CountDistribution",
+      "target_type": "CountDistribution",
+      "requires_glue": false
+    },
+    {
+      "source_id": "adiabaticquantumsampler",
+      "target_id": "solutionextraction",
+      "output_name": "final_register",
+      "input_name": "final_register",
+      "source_type": "QuantumRegister",
+      "target_type": "QuantumRegister",
+      "requires_glue": false
+    }
+  ],
+  "metadata": {
+    "source": "ingester",
+    "class_name": "q_solver"
+  }
+}
