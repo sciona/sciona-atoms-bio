@@ -1,7 +1,10 @@
 from __future__ import annotations
-from ageoa.ghost.abstract import AbstractArray, AbstractDistribution, AbstractScalar, AbstractSignal
 
-def witness_validate_square_matrix_shape(mat: AbstractArray, *args, **kwargs) -> AbstractArray:
+from sciona.ghost.abstract import AbstractArray, AbstractDistribution, AbstractScalar, AbstractSignal
+
+
+def witness_validate_square_matrix_shape(mat: AbstractArray) -> AbstractArray:
+    """Describe the validated square matrix passed into bandwidth minimization."""
     result = AbstractArray(
         shape=mat.shape,
         dtype="float64",)

@@ -1,7 +1,12 @@
 from __future__ import annotations
-from ageoa.ghost.abstract import AbstractArray, AbstractDistribution, AbstractMCMCTrace, AbstractRNGState, AbstractScalar, AbstractSignal
 
-def witness_quantumproblemdefinition(family: object, event_shape: object, *args, **kwargs) -> AbstractDistribution:
+from sciona.ghost.abstract import AbstractArray, AbstractDistribution, AbstractMCMCTrace, AbstractRNGState, AbstractScalar, AbstractSignal
+
+
+def witness_quantumproblemdefinition(
+    family: object,
+    event_shape: object,
+) -> AbstractDistribution:
     """Shape-and-type check for prior init: quantum problem definition. Returns output metadata without running the real computation."""
     return AbstractDistribution(
         family=family,

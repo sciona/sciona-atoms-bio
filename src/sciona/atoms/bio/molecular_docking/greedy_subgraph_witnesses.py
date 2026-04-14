@@ -1,8 +1,14 @@
 from __future__ import annotations
 
-from ageoa.ghost.abstract import AbstractArray, AbstractDistribution, AbstractScalar, AbstractSignal
+from sciona.ghost.abstract import AbstractArray, AbstractDistribution, AbstractScalar, AbstractSignal
 
-def witness_greedy_maximum_subgraph(adjacency: AbstractArray, scores: AbstractArray, *args, **kwargs) -> AbstractArray:
+
+def witness_greedy_maximum_subgraph(
+    adjacency: AbstractArray,
+    scores: AbstractArray,
+) -> AbstractArray:
+    """Describe the selected subgraph mask for greedy maximum-subgraph search."""
+    _ = scores
     result = AbstractArray(
         shape=adjacency.shape,
         dtype="float64",)

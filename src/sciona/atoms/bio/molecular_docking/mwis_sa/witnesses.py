@@ -1,8 +1,11 @@
 from __future__ import annotations
-from ageoa.ghost.abstract import AbstractArray, AbstractDistribution, AbstractScalar, AbstractSignal
 
-def witness_load_graphs_from_folder(folder_path: AbstractArray, *args, **kwargs) -> AbstractArray:
+from sciona.ghost.abstract import AbstractArray, AbstractDistribution, AbstractScalar, AbstractSignal
+
+
+def witness_load_graphs_from_folder(folder_path: AbstractArray) -> AbstractArray:
     """Shape-and-type check for load graphs from folder. Returns output metadata without running the real computation."""
+    _ = folder_path
     result = AbstractArray(
         shape=(1,),
         dtype="float64",)
