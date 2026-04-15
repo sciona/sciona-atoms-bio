@@ -3,8 +3,8 @@
     {
       "node_id": "map_to_udg_root",
       "parent_id": null,
-      "name": "ageoa.molecular_docking.map_to_udg",
-      "description": "Consolidated module for ageoa.molecular_docking.map_to_udg.",
+      "name": "sciona.molecular_docking.map_to_udg",
+      "description": "Consolidated module for sciona.molecular_docking.map_to_udg.",
       "concept_type": "custom",
       "inputs": [],
       "outputs": [],

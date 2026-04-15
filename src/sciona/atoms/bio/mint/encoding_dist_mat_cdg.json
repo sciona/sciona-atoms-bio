@@ -3,8 +3,8 @@
     {
       "node_id": "encoding_dist_mat_root",
       "parent_id": null,
-      "name": "ageoa.mint.encoding_dist_mat",
-      "description": "Consolidated module for ageoa.mint.encoding_dist_mat.",
+      "name": "sciona.mint.encoding_dist_mat",
+      "description": "Consolidated module for sciona.mint.encoding_dist_mat.",
       "concept_type": "custom",
       "inputs": [],
       "outputs": [],

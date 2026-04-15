@@ -3,8 +3,8 @@
     {
       "node_id": "axial_attention_root",
       "parent_id": null,
-      "name": "ageoa.mint.axial_attention",
-      "description": "Consolidated module for ageoa.mint.axial_attention.",
+      "name": "sciona.mint.axial_attention",
+      "description": "Consolidated module for sciona.mint.axial_attention.",
       "concept_type": "custom",
       "inputs": [],
       "outputs": [],

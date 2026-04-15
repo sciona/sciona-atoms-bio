@@ -3,8 +3,8 @@
     {
       "node_id": "rotary_embedding_root",
       "parent_id": null,
-      "name": "ageoa.mint.rotary_embedding",
-      "description": "Consolidated module for ageoa.mint.rotary_embedding.",
+      "name": "sciona.mint.rotary_embedding",
+      "description": "Consolidated module for sciona.mint.rotary_embedding.",
       "concept_type": "custom",
       "inputs": [],
       "outputs": [],

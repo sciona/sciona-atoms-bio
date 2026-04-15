@@ -7,7 +7,7 @@ from sciona.ghost.registry import register_atom
 from .rotary_embedding_witnesses import witness_rotaryembedding
 
 
-@register_atom(witness_rotaryembedding)
+@register_atom(witness_rotaryembedding, name="rotaryembedding_numpy")
 @icontract.require(lambda q: q.ndim >= 2, "q must be at least 2-D")
 @icontract.require(lambda k: k.ndim >= 2, "k must be at least 2-D")
 @icontract.require(lambda q: isinstance(q, np.ndarray), "q must be np.ndarray")
@@ -51,7 +51,7 @@ import icontract
 
 from sciona.ghost.registry import register_atom
 from .rotary_embedding_witnesses import witness_rotaryembedding
-@register_atom(witness_rotaryembedding)
+@register_atom(witness_rotaryembedding, name="rotaryembedding_torch")
 @icontract.require(lambda q: q is not None, "q cannot be None")
 @icontract.require(lambda k: k is not None, "k cannot be None")
 @icontract.ensure(lambda result: result is not None, "RotaryEmbedding output must not be None")

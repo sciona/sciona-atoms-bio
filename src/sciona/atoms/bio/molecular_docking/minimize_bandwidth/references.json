@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "atoms": {
-    "ageoa.molecular_docking.minimize_bandwidth.aggregate_maximum_distance_as_bandwidth@ageoa/molecular_docking/minimize_bandwidth/atoms.py:93": {
+    "sciona.atoms.bio.molecular_docking.minimize_bandwidth.aggregate_maximum_distance_as_bandwidth@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:93": {
       "references": [
         {
           "ref_id": "moleculardocking2025",
@@ -26,7 +26,7 @@
       ],
       "auto_attribution_runs": []
     },
-    "ageoa.molecular_docking.minimize_bandwidth.build_sparse_graph_view@ageoa/molecular_docking/minimize_bandwidth/atoms.py:269": {
+    "sciona.atoms.bio.molecular_docking.minimize_bandwidth.build_sparse_graph_view@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:269": {
       "references": [
         {
           "ref_id": "moleculardocking2025",
@@ -51,7 +51,7 @@
       ],
       "auto_attribution_runs": []
     },
-    "ageoa.molecular_docking.minimize_bandwidth.build_threshold_search_space@ageoa/molecular_docking/minimize_bandwidth/atoms.py:322": {
+    "sciona.atoms.bio.molecular_docking.minimize_bandwidth.build_threshold_search_space@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:322": {
       "references": [
         {
           "ref_id": "moleculardocking2025",
@@ -76,7 +76,7 @@
       ],
       "auto_attribution_runs": []
     },
-    "ageoa.molecular_docking.minimize_bandwidth.compute_absolute_weighted_index_distances@ageoa/molecular_docking/minimize_bandwidth/atoms.py:76": {
+    "sciona.atoms.bio.molecular_docking.minimize_bandwidth.compute_absolute_weighted_index_distances@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:76": {
       "references": [
         {
           "ref_id": "moleculardocking2025",
@@ -101,7 +101,7 @@
       ],
       "auto_attribution_runs": []
     },
-    "ageoa.molecular_docking.minimize_bandwidth.compute_symmetric_bandwidth_reducing_order@ageoa/molecular_docking/minimize_bandwidth/atoms.py:287": {
+    "sciona.atoms.bio.molecular_docking.minimize_bandwidth.compute_symmetric_bandwidth_reducing_order@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:287": {
       "references": [
         {
           "ref_id": "moleculardocking2025",
@@ -126,7 +126,7 @@
       ],
       "auto_attribution_runs": []
     },
-    "ageoa.molecular_docking.minimize_bandwidth.enforce_threshold_sparsity@ageoa/molecular_docking/minimize_bandwidth/atoms.py:249": {
+    "sciona.atoms.bio.molecular_docking.minimize_bandwidth.enforce_threshold_sparsity@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:249": {
       "references": [
         {
           "ref_id": "moleculardocking2025",
@@ -151,7 +151,7 @@
       ],
       "auto_attribution_runs": []
     },
-    "ageoa.molecular_docking.minimize_bandwidth.enumerate_threshold_based_permutations@ageoa/molecular_docking/minimize_bandwidth/atoms.py:346": {
+    "sciona.atoms.bio.molecular_docking.minimize_bandwidth.enumerate_threshold_based_permutations@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:346": {
       "references": [
         {
           "ref_id": "moleculardocking2025",
@@ -176,7 +176,7 @@
       ],
       "auto_attribution_runs": []
     },
-    "ageoa.molecular_docking.minimize_bandwidth.extract_final_permutation@ageoa/molecular_docking/minimize_bandwidth/atoms.py:229": {
+    "sciona.atoms.bio.molecular_docking.minimize_bandwidth.extract_final_permutation@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:229": {
       "references": [
         {
           "ref_id": "moleculardocking2025",
@@ -201,7 +201,7 @@
       ],
       "auto_attribution_runs": []
     },
-    "ageoa.molecular_docking.minimize_bandwidth.initialize_reduction_state@ageoa/molecular_docking/minimize_bandwidth/atoms.py:130": {
+    "sciona.atoms.bio.molecular_docking.minimize_bandwidth.initialize_reduction_state@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:130": {
       "references": [
         {
           "ref_id": "moleculardocking2025",
@@ -226,7 +226,7 @@
       ],
       "auto_attribution_runs": []
     },
-    "ageoa.molecular_docking.minimize_bandwidth.propose_greedy_permutation_step@ageoa/molecular_docking/minimize_bandwidth/atoms.py:158": {
+    "sciona.atoms.bio.molecular_docking.minimize_bandwidth.propose_greedy_permutation_step@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:158": {
       "references": [
         {
           "ref_id": "moleculardocking2025",
@@ -251,7 +251,7 @@
       ],
       "auto_attribution_runs": []
     },
-    "ageoa.molecular_docking.minimize_bandwidth.select_minimum_bandwidth_permutation@ageoa/molecular_docking/minimize_bandwidth/atoms.py:373": {
+    "sciona.atoms.bio.molecular_docking.minimize_bandwidth.select_minimum_bandwidth_permutation@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:373": {
       "references": [
         {
           "ref_id": "moleculardocking2025",
@@ -276,7 +276,7 @@
       ],
       "auto_attribution_runs": []
     },
-    "ageoa.molecular_docking.minimize_bandwidth.update_state_with_improvement_criterion@ageoa/molecular_docking/minimize_bandwidth/atoms.py:186": {
+    "sciona.atoms.bio.molecular_docking.minimize_bandwidth.update_state_with_improvement_criterion@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:186": {
       "references": [
         {
           "ref_id": "moleculardocking2025",
@@ -301,7 +301,7 @@
       ],
       "auto_attribution_runs": []
     },
-    "ageoa.molecular_docking.minimize_bandwidth.validate_square_matrix_shape@ageoa/molecular_docking/minimize_bandwidth/atoms.py:58": {
+    "sciona.atoms.bio.molecular_docking.minimize_bandwidth.validate_square_matrix_shape@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:58": {
       "references": [
         {
           "ref_id": "moleculardocking2025",
@@ -326,7 +326,7 @@
       ],
       "auto_attribution_runs": []
     },
-    "ageoa.molecular_docking.minimize_bandwidth.validate_symmetric_input@ageoa/molecular_docking/minimize_bandwidth/atoms.py:111": {
+    "sciona.atoms.bio.molecular_docking.minimize_bandwidth.validate_symmetric_input_dense@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:111": {
       "references": [
         {
           "ref_id": "moleculardocking2025",
@@ -351,7 +351,7 @@
       ],
       "auto_attribution_runs": []
     },
-    "ageoa.molecular_docking.minimize_bandwidth.validate_symmetric_input@ageoa/molecular_docking/minimize_bandwidth/atoms.py:304": {
+    "sciona.atoms.bio.molecular_docking.minimize_bandwidth.validate_symmetric_input_thresholded@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:304": {
       "references": [
         {
           "ref_id": "moleculardocking2025",

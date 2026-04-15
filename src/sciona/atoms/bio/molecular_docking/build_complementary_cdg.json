@@ -3,8 +3,8 @@
     {
       "node_id": "build_complementary_root",
       "parent_id": null,
-      "name": "ageoa.molecular_docking.build_complementary",
-      "description": "Consolidated module for ageoa.molecular_docking.build_complementary.",
+      "name": "sciona.molecular_docking.build_complementary",
+      "description": "Consolidated module for sciona.molecular_docking.build_complementary.",
       "concept_type": "custom",
       "inputs": [],
       "outputs": [],

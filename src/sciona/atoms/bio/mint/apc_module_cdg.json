@@ -3,8 +3,8 @@
     {
       "node_id": "apc_module_root",
       "parent_id": null,
-      "name": "ageoa.mint.apc_module",
-      "description": "Consolidated module for ageoa.mint.apc_module.",
+      "name": "sciona.mint.apc_module",
+      "description": "Consolidated module for sciona.mint.apc_module.",
       "concept_type": "custom",
       "inputs": [],
       "outputs": [],

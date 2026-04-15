@@ -3,8 +3,8 @@
     {
       "node_id": "greedy_subgraph_root",
       "parent_id": null,
-      "name": "ageoa.molecular_docking.greedy_subgraph",
-      "description": "Consolidated module for ageoa.molecular_docking.greedy_subgraph.",
+      "name": "sciona.molecular_docking.greedy_subgraph",
+      "description": "Consolidated module for sciona.molecular_docking.greedy_subgraph.",
       "concept_type": "custom",
       "inputs": [],
       "outputs": [],

@@ -97,7 +97,7 @@ def aggregate_maximum_distance_as_bandwidth(weighted_distances: np.ndarray) -> f
     return float(arr.max()) if arr.size > 0 else 0.0
 
 
-@register_atom(witness_validate_symmetric_input)
+@register_atom(witness_validate_symmetric_input, name="validate_symmetric_input_dense")
 @icontract.require(lambda matrix: matrix is not None, "matrix cannot be None")
 @icontract.require(lambda matrix: isinstance(matrix, np.ndarray), "matrix must be np.ndarray")
 @icontract.ensure(lambda result: isinstance(result, np.ndarray), "result must be np.ndarray")
@@ -290,7 +290,7 @@ def compute_symmetric_bandwidth_reducing_order(sparse_matrix: np.ndarray) -> np.
     return np.asarray(_minimize_bandwidth_rcm(sparse_matrix))
 
 
-@register_atom(witness_validate_symmetric_input)
+@register_atom(witness_validate_symmetric_input, name="validate_symmetric_input_thresholded")
 @icontract.require(lambda mat: mat is not None, "mat cannot be None")
 @icontract.require(lambda mat: isinstance(mat, np.ndarray), "mat must be np.ndarray")
 @icontract.ensure(lambda result: isinstance(result, np.ndarray), "result must be np.ndarray")

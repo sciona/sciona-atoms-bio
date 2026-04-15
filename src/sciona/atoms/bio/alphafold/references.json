@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "atoms": {
-    "ageoa.alphafold.coordinate_reconstruction@ageoa/alphafold/atoms.py:109": {
+    "sciona.atoms.bio.alphafold.coordinate_reconstruction@sciona/atoms/bio/alphafold/atoms.py:109": {
       "references": [
         {
           "ref_id": "alphafold2021",
@@ -16,7 +16,7 @@
       ],
       "auto_attribution_runs": []
     },
-    "ageoa.alphafold.equivariant_frame_update@ageoa/alphafold/atoms.py:74": {
+    "sciona.atoms.bio.alphafold.equivariant_frame_update@sciona/atoms/bio/alphafold/atoms.py:74": {
       "references": [
         {
           "ref_id": "alphafold2021",
@@ -31,7 +31,7 @@
       ],
       "auto_attribution_runs": []
     },
-    "ageoa.alphafold.invariant_point_attention@ageoa/alphafold/atoms.py:22": {
+    "sciona.atoms.bio.alphafold.invariant_point_attention@sciona/atoms/bio/alphafold/atoms.py:22": {
       "references": [
         {
           "ref_id": "alphafold2021",

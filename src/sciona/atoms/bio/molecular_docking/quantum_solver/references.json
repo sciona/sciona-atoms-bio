@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "atoms": {
-    "ageoa.molecular_docking.quantum_solver.adiabaticquantumsampler@ageoa/molecular_docking/quantum_solver/atoms.py:78": {
+    "sciona.atoms.bio.molecular_docking.quantum_solver.adiabaticquantumsampler@sciona/atoms/bio/molecular_docking/quantum_solver/atoms.py:78": {
       "references": [
         {
           "ref_id": "moleculardocking2025",
@@ -26,7 +26,7 @@
       ],
       "auto_attribution_runs": []
     },
-    "ageoa.molecular_docking.quantum_solver.quantumproblemdefinition@ageoa/molecular_docking/quantum_solver/atoms.py:30": {
+    "sciona.atoms.bio.molecular_docking.quantum_solver.quantumproblemdefinition@sciona/atoms/bio/molecular_docking/quantum_solver/atoms.py:30": {
       "references": [
         {
           "ref_id": "moleculardocking2025",
@@ -51,7 +51,7 @@
       ],
       "auto_attribution_runs": []
     },
-    "ageoa.molecular_docking.quantum_solver.solutionextraction@ageoa/molecular_docking/quantum_solver/atoms.py:144": {
+    "sciona.atoms.bio.molecular_docking.quantum_solver.solutionextraction@sciona/atoms/bio/molecular_docking/quantum_solver/atoms.py:144": {
       "references": [
         {
           "ref_id": "moleculardocking2025",

@@ -3,8 +3,8 @@
     {
       "node_id": "add_quantum_link_root",
       "parent_id": null,
-      "name": "ageoa.molecular_docking.add_quantum_link",
-      "description": "Consolidated module for ageoa.molecular_docking.add_quantum_link.",
+      "name": "sciona.molecular_docking.add_quantum_link",
+      "description": "Consolidated module for sciona.molecular_docking.add_quantum_link.",
       "concept_type": "custom",
       "inputs": [],
       "outputs": [],

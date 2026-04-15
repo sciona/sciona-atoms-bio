@@ -3,8 +3,8 @@
     {
       "node_id": "incremental_attention_root",
       "parent_id": null,
-      "name": "ageoa.mint.incremental_attention",
-      "description": "Consolidated module for ageoa.mint.incremental_attention.",
+      "name": "sciona.mint.incremental_attention",
+      "description": "Consolidated module for sciona.mint.incremental_attention.",
       "concept_type": "custom",
       "inputs": [],
       "outputs": [],
