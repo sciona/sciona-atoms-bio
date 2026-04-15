@@ -3,7 +3,7 @@ from __future__ import annotations
 import numpy as np
 
 import icontract
-from ageoa.ghost.registry import register_atom
+from sciona.ghost.registry import register_atom
 from .incremental_attention_witnesses import witness_enable_incremental_state_configuration
 
 # Witness functions should be imported from the generated witnesses module

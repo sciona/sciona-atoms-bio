@@ -6,7 +6,7 @@ import icontract
 
 if TYPE_CHECKING:
     import networkx as nx
-from ageoa.ghost.registry import register_atom
+from sciona.ghost.registry import register_atom
 from .build_complementary_witnesses import witness_constructcomplementarygraph
 
 @register_atom(witness_constructcomplementarygraph)  # type: ignore[untyped-decorator]

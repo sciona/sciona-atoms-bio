@@ -1,5 +1,5 @@
 from __future__ import annotations
-"""Auto-generated atom wrappers following the ageoa pattern."""
+"""Auto-generated atom wrappers following the sciona pattern."""
 
 from typing import Any
 
@@ -11,10 +11,10 @@ if TYPE_CHECKING:
 import numpy as np
 
 import icontract
-from ageoa.ghost.registry import register_atom
+from sciona.ghost.registry import register_atom
 from .witnesses import witness_adiabaticpulseassembler, witness_interactionboundscomputer, witness_quantumcircuitsampler, witness_quantumsolutionextractor, witness_quantumsolverorchestrator
 
-# Type aliases for domain-specific types not in ageoa.ghost.abstract.
+# Type aliases for domain-specific types not in sciona.ghost.abstract.
 PulseSequence = Any  # pulser.Sequence (pulse-level quantum control object)
 QuantumRegister = Any  # pulser.Register (atom arrangement on QPU)
 

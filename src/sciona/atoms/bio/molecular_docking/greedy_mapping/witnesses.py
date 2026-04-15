@@ -1,5 +1,5 @@
 from __future__ import annotations
-from ageoa.ghost.abstract import AbstractArray, AbstractDistribution, AbstractScalar, AbstractSignal
+from sciona.ghost.abstract import AbstractArray, AbstractDistribution, AbstractScalar, AbstractSignal
 
 def witness_assemblestaticmappingcontext(graph: AbstractArray, lattice_instance: AbstractArray, previously_generated_subgraphs: AbstractArray, seed: AbstractScalar) -> AbstractArray:
     """Shape-and-type check for assemble static mapping context. Returns output metadata without running the real computation."""

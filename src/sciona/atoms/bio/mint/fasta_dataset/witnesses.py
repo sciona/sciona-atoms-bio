@@ -1,5 +1,5 @@
 from __future__ import annotations
-from ageoa.ghost.abstract import AbstractArray, AbstractScalar
+from sciona.ghost.abstract import AbstractArray, AbstractScalar
 
 
 def witness_dataset_state_initialization(sequence_labels: AbstractArray, sequence_strs: AbstractArray) -> AbstractArray:

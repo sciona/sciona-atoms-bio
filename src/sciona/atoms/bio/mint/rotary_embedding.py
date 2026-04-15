@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import numpy as np
 import icontract
-from ageoa.ghost.registry import register_atom
+from sciona.ghost.registry import register_atom
 
 from .rotary_embedding_witnesses import witness_rotaryembedding
 
@@ -49,7 +49,7 @@ if TYPE_CHECKING:
 
 import icontract
 
-from ageoa.ghost.registry import register_atom
+from sciona.ghost.registry import register_atom
 from .rotary_embedding_witnesses import witness_rotaryembedding
 @register_atom(witness_rotaryembedding)
 @icontract.require(lambda q: q is not None, "q cannot be None")

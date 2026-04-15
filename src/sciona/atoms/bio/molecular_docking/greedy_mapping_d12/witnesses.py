@@ -1,5 +1,5 @@
 from __future__ import annotations
-from ageoa.ghost.abstract import AbstractArray, AbstractDistribution, AbstractScalar, AbstractSignal
+from sciona.ghost.abstract import AbstractArray, AbstractDistribution, AbstractScalar, AbstractSignal
 
 
 def witness_init_problem_context(graph: AbstractArray, lattice_instance: AbstractArray, previously_generated_subgraphs: AbstractArray, seed: AbstractArray) -> AbstractArray:

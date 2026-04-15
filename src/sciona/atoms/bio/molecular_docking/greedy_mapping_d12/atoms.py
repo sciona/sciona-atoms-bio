@@ -1,10 +1,10 @@
 from __future__ import annotations
-"""Auto-generated atom wrappers following the ageoa pattern."""
+"""Auto-generated atom wrappers following the sciona pattern."""
 
 from typing import Any, Collection
 
 import icontract
-from ageoa.ghost.registry import register_atom
+from sciona.ghost.registry import register_atom
 from .witnesses import witness_construct_mapping_state_via_greedy_expansion, witness_init_problem_context, witness_orchestrate_generation_and_validate
 
 # Fallback type aliases for domain-specific types.

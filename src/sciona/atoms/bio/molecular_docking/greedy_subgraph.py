@@ -5,7 +5,7 @@ from __future__ import annotations
 
 import numpy as np
 import icontract
-from ageoa.ghost.registry import register_atom
+from sciona.ghost.registry import register_atom
 from .greedy_subgraph_witnesses import witness_greedy_maximum_subgraph
 
 

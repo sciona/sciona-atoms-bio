@@ -1,5 +1,5 @@
 from __future__ import annotations
-from ageoa.ghost.abstract import AbstractArray, AbstractScalar, AbstractDistribution, AbstractSignal
+from sciona.ghost.abstract import AbstractArray, AbstractScalar, AbstractDistribution, AbstractSignal
 
 
 def witness_invariant_point_attention(nodes: AbstractArray, pairs: AbstractArray, frames: AbstractArray, state: AbstractSignal) -> tuple[AbstractArray, AbstractSignal]:

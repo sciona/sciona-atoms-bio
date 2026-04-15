@@ -6,9 +6,9 @@ import numpy as np
 
 import icontract
 
-from ageoa.ghost.registry import register_atom
-from ageoa.alphafold.state_models import AlphaFoldStructuralState
-from ageoa.alphafold.witnesses import (
+from sciona.ghost.registry import register_atom
+from sciona.atoms.bio.alphafold.state_models import AlphaFoldStructuralState
+from sciona.atoms.bio.alphafold.witnesses import (
     witness_invariant_point_attention,
     witness_equivariant_frame_update,
     witness_coordinate_reconstruction,

@@ -6,7 +6,7 @@ import icontract
 
 if TYPE_CHECKING:
     import networkx as nx
-from ageoa.ghost.registry import register_atom
+from sciona.ghost.registry import register_atom
 from .map_to_udg_witnesses import witness_graphtoudgmapping
 
 @register_atom(witness_graphtoudgmapping)  # type: ignore[untyped-decorator]

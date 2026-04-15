@@ -4,7 +4,7 @@ from typing import Any
 import numpy as np
 
 import icontract
-from ageoa.ghost.registry import register_atom
+from sciona.ghost.registry import register_atom
 from .apc_module_witnesses import witness_apccoreevaluation
 
 @register_atom(witness_apccoreevaluation)  # type: ignore[untyped-decorator]

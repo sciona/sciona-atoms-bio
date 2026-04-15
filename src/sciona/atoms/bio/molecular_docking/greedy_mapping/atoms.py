@@ -1,5 +1,5 @@
 from __future__ import annotations
-"""Auto-generated atom wrappers following the ageoa pattern."""
+"""Auto-generated atom wrappers following the sciona pattern."""
 from typing import Any, Callable, Dict, List, Set, Collection, cast
 Map = Dict
 
@@ -7,7 +7,7 @@ Map = Dict
 import numpy as np
 
 import icontract
-from ageoa.ghost.registry import register_atom
+from sciona.ghost.registry import register_atom
 from .witnesses import witness_assemblestaticmappingcontext, witness_initializefrontierfromstartnode, witness_rungreedymappingpipeline, witness_scoreandextendgreedycandidates, witness_validatecurrentmapping
 
 # Generated type placeholders.

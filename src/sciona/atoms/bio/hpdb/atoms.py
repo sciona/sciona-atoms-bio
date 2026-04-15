@@ -1,6 +1,6 @@
 from __future__ import annotations
 from typing import Any
-"""Auto-generated atom wrappers following the ageoa pattern."""
+"""Auto-generated atom wrappers following the sciona pattern."""
 
 from typing import Iterator, Optional, Any
 
@@ -8,10 +8,10 @@ class Atom: pass
 class Residue: pass
 
 import icontract
-from ageoa.tempo import register_atom
+from sciona.ghost.registry import register_atom
 
 # Witness functions should be imported from the generated witnesses module
-from ageoa.hPDB.witnesses import (  # type: ignore
+from sciona.atoms.bio.hpdb.witnesses import (  # type: ignore
     witness_iterate_pdb_atoms,
     witness_iterate_pdb_residues,
 )

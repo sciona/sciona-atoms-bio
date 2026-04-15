@@ -8,6 +8,9 @@ version = "0.1.0"
 description = "Biology provider repo for sciona.atoms.* and sciona.probes.*"
 readme = "README.md"
 requires-python = ">=3.11"
+dependencies = [
+  "sciona",
+]
 
 [tool.setuptools]
 package-dir = {"" = "src"}

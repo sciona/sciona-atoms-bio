@@ -1,5 +1,5 @@
 from __future__ import annotations
-"""Auto-generated atom wrappers following the ageoa pattern."""
+"""Auto-generated atom wrappers following the sciona pattern."""
 
 from collections.abc import Hashable, Sequence
 from typing import TYPE_CHECKING
@@ -10,7 +10,7 @@ if TYPE_CHECKING:
     import networkx as nx
 
 import icontract
-from ageoa.ghost.registry import register_atom
+from sciona.ghost.registry import register_atom
 from .witnesses import witness_networkx_weighted_graph_materialization, witness_pair_distance_compatibility_check, witness_weighted_interaction_edge_derivation
 
 # Witness functions should be imported from the generated witnesses module

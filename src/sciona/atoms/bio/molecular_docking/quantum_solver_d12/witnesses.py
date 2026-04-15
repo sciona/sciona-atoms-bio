@@ -1,5 +1,5 @@
 from __future__ import annotations
-from ageoa.ghost.abstract import AbstractArray, AbstractDistribution, AbstractMCMCTrace, AbstractRNGState, AbstractScalar, AbstractSignal
+from sciona.ghost.abstract import AbstractArray, AbstractDistribution, AbstractMCMCTrace, AbstractRNGState, AbstractScalar, AbstractSignal
 
 
 def witness_quantumsolverorchestrator(graph: AbstractArray, coordinates_layout: AbstractArray, num_sol: AbstractArray, display_info: AbstractArray) -> AbstractArray:

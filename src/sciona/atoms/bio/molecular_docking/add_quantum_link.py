@@ -10,7 +10,7 @@ Node: Any = Any
 import numpy as np
 
 import icontract
-from ageoa.ghost.registry import register_atom
+from sciona.ghost.registry import register_atom
 from .add_quantum_link_witnesses import witness_addquantumlink
 
 # Witness functions should be imported from the generated witnesses module

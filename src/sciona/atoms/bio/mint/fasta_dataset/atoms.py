@@ -4,7 +4,7 @@ from typing import TypedDict
 
 import icontract
 
-from ageoa.ghost.registry import register_atom
+from sciona.ghost.registry import register_atom
 
 from .witnesses import (
     witness_dataset_item_retrieval,

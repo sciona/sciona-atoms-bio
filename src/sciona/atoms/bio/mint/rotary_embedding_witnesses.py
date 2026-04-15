@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from ageoa.ghost.abstract import AbstractArray, AbstractScalar, AbstractDistribution, AbstractSignal
+from sciona.ghost.abstract import AbstractArray, AbstractScalar, AbstractDistribution, AbstractSignal
 
 
 def witness_rotaryembedding(q: AbstractArray, k: AbstractArray) -> tuple:
@@ -11,7 +11,7 @@ def witness_rotaryembedding(q: AbstractArray, k: AbstractArray) -> tuple:
     k_out = AbstractArray(shape=k_shape, dtype="float32")
     return q_out, k_out
 
-from ageoa.ghost.abstract import AbstractArray, AbstractScalar, AbstractDistribution, AbstractSignal
+from sciona.ghost.abstract import AbstractArray, AbstractScalar, AbstractDistribution, AbstractSignal
 
 
 def witness_rotaryembedding(q: AbstractArray, k: AbstractArray) -> AbstractArray:

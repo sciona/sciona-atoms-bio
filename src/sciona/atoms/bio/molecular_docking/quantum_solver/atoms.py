@@ -9,13 +9,13 @@ QuantumRegister: Any = Any
 RegisterCoordinates: Any = Any
 Solution: Any = Any
 
-"""Auto-generated atom wrappers following the ageoa pattern."""
+"""Auto-generated atom wrappers following the sciona pattern."""
 
 
 import numpy as np
 
 import icontract
-from ageoa.ghost.registry import register_atom
+from sciona.ghost.registry import register_atom
 from .witnesses import witness_adiabaticquantumsampler, witness_quantumproblemdefinition, witness_solutionextraction
 
 # Witness functions should be imported from the generated witnesses module

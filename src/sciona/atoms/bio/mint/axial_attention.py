@@ -3,7 +3,7 @@ from __future__ import annotations
 import numpy as np
 from typing import Any
 import icontract
-from ageoa.ghost.registry import register_atom
+from sciona.ghost.registry import register_atom
 from .axial_attention_witnesses import witness_rowselfattention
 
 # Witness functions should be imported from the generated witnesses module
@@ -58,7 +58,7 @@ import icontract  # type: ignore[import-untyped]
 
 if TYPE_CHECKING:
     import torch
-from ageoa.ghost.registry import register_atom
+from sciona.ghost.registry import register_atom
 from .axial_attention_witnesses import witness_rowselfattention
 
 @register_atom(witness_rowselfattention)  # type: ignore[untyped-decorator]
