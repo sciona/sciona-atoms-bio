@@ -1,0 +1,872 @@
+{
+  "schema_version": "1.0",
+  "bundle_id": "bio.molecular_docking.family_batch.review.v1",
+  "provider_repo": "sciona-atoms-bio",
+  "family": "bio.molecular_docking",
+  "review_status": "partial",
+  "semantic_verdict": "publishable_candidate_with_gaps",
+  "developer_semantic_verdict": "source_aligned_with_partial_evidence",
+  "trust_readiness": "blocked_on_uncertainty_backfill",
+  "authoritative_sources": [
+    "src/sciona/atoms/bio/molecular_docking/**/references.json",
+    "src/sciona/atoms/bio/molecular_docking/**/cdg.json",
+    "src/sciona/atoms/bio/molecular_docking/**/matches.json"
+  ],
+  "limitations": [
+    "Some subfamilies still lack uncertainty evidence: build_interaction_graph, greedy_mapping, greedy_mapping_d12, minimize_bandwidth, mwis_sa, quantum_solver, quantum_solver_d12."
+  ],
+  "required_actions": [
+    "Backfill uncertainty evidence for: build_interaction_graph, greedy_mapping, greedy_mapping_d12, minimize_bandwidth, mwis_sa, quantum_solver, quantum_solver_d12."
+  ],
+  "subfamily_summaries": [
+    {
+      "subfamily": "build_interaction_graph",
+      "row_count": 3,
+      "has_cdg": true,
+      "has_matches": true,
+      "has_uncertainty": false
+    },
+    {
+      "subfamily": "greedy_mapping",
+      "row_count": 5,
+      "has_cdg": true,
+      "has_matches": true,
+      "has_uncertainty": false
+    },
+    {
+      "subfamily": "greedy_mapping_d12",
+      "row_count": 3,
+      "has_cdg": true,
+      "has_matches": true,
+      "has_uncertainty": false
+    },
+    {
+      "subfamily": "minimize_bandwidth",
+      "row_count": 15,
+      "has_cdg": true,
+      "has_matches": true,
+      "has_uncertainty": false
+    },
+    {
+      "subfamily": "mwis_sa",
+      "row_count": 4,
+      "has_cdg": true,
+      "has_matches": true,
+      "has_uncertainty": false
+    },
+    {
+      "subfamily": "quantum_solver",
+      "row_count": 3,
+      "has_cdg": true,
+      "has_matches": true,
+      "has_uncertainty": false
+    },
+    {
+      "subfamily": "quantum_solver_d12",
+      "row_count": 5,
+      "has_cdg": true,
+      "has_matches": true,
+      "has_uncertainty": false
+    }
+  ],
+  "rows": [
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.build_interaction_graph.networkx_weighted_graph_materialization@sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py:88",
+      "subfamily": "build_interaction_graph",
+      "source_path": "sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py:88",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for build_interaction_graph."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for build_interaction_graph."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/references.json",
+        "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[0]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.build_interaction_graph.pair_distance_compatibility_check@sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py:20",
+      "subfamily": "build_interaction_graph",
+      "source_path": "sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py:20",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for build_interaction_graph."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for build_interaction_graph."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/references.json",
+        "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[1]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.build_interaction_graph.weighted_interaction_edge_derivation@sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py:44",
+      "subfamily": "build_interaction_graph",
+      "source_path": "sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py:44",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for build_interaction_graph."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for build_interaction_graph."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/references.json",
+        "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[2]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping.assemblestaticmappingcontext@sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:29",
+      "subfamily": "greedy_mapping",
+      "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:29",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for greedy_mapping."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for greedy_mapping."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/references.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[3]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping.initializefrontierfromstartnode@sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:57",
+      "subfamily": "greedy_mapping",
+      "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:57",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for greedy_mapping."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for greedy_mapping."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/references.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[4]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping.rungreedymappingpipeline@sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:218",
+      "subfamily": "greedy_mapping",
+      "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:218",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for greedy_mapping."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for greedy_mapping."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/references.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[5]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping.scoreandextendgreedycandidates@sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:106",
+      "subfamily": "greedy_mapping",
+      "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:106",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for greedy_mapping."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for greedy_mapping."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/references.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[6]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping.validatecurrentmapping@sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:176",
+      "subfamily": "greedy_mapping",
+      "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:176",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for greedy_mapping."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for greedy_mapping."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/references.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[7]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping_d12.construct_mapping_state_via_greedy_expansion@sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py:57",
+      "subfamily": "greedy_mapping_d12",
+      "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py:57",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for greedy_mapping_d12."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for greedy_mapping_d12."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/references.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[8]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping_d12.init_problem_context@sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py:26",
+      "subfamily": "greedy_mapping_d12",
+      "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py:26",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for greedy_mapping_d12."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for greedy_mapping_d12."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/references.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[9]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping_d12.orchestrate_generation_and_validate@sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py:155",
+      "subfamily": "greedy_mapping_d12",
+      "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py:155",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for greedy_mapping_d12."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for greedy_mapping_d12."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/references.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[10]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.aggregate_maximum_distance_as_bandwidth@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:93",
+      "subfamily": "minimize_bandwidth",
+      "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:93",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for minimize_bandwidth."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for minimize_bandwidth."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[11]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.build_sparse_graph_view@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:269",
+      "subfamily": "minimize_bandwidth",
+      "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:269",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for minimize_bandwidth."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for minimize_bandwidth."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[12]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.build_threshold_search_space@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:322",
+      "subfamily": "minimize_bandwidth",
+      "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:322",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for minimize_bandwidth."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for minimize_bandwidth."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[13]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.compute_absolute_weighted_index_distances@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:76",
+      "subfamily": "minimize_bandwidth",
+      "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:76",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for minimize_bandwidth."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for minimize_bandwidth."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[14]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.compute_symmetric_bandwidth_reducing_order@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:287",
+      "subfamily": "minimize_bandwidth",
+      "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:287",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for minimize_bandwidth."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for minimize_bandwidth."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[15]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.enforce_threshold_sparsity@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:249",
+      "subfamily": "minimize_bandwidth",
+      "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:249",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for minimize_bandwidth."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for minimize_bandwidth."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[16]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.enumerate_threshold_based_permutations@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:346",
+      "subfamily": "minimize_bandwidth",
+      "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:346",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for minimize_bandwidth."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for minimize_bandwidth."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[17]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.extract_final_permutation@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:229",
+      "subfamily": "minimize_bandwidth",
+      "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:229",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for minimize_bandwidth."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for minimize_bandwidth."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[18]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.initialize_reduction_state@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:130",
+      "subfamily": "minimize_bandwidth",
+      "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:130",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for minimize_bandwidth."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for minimize_bandwidth."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[19]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.propose_greedy_permutation_step@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:158",
+      "subfamily": "minimize_bandwidth",
+      "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:158",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for minimize_bandwidth."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for minimize_bandwidth."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[20]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.select_minimum_bandwidth_permutation@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:373",
+      "subfamily": "minimize_bandwidth",
+      "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:373",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for minimize_bandwidth."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for minimize_bandwidth."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[21]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.update_state_with_improvement_criterion@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:186",
+      "subfamily": "minimize_bandwidth",
+      "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:186",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for minimize_bandwidth."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for minimize_bandwidth."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[22]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.validate_square_matrix_shape@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:58",
+      "subfamily": "minimize_bandwidth",
+      "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:58",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for minimize_bandwidth."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for minimize_bandwidth."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[23]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.validate_symmetric_input_dense@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:111",
+      "subfamily": "minimize_bandwidth",
+      "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:111",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for minimize_bandwidth."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for minimize_bandwidth."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[24]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.validate_symmetric_input_thresholded@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:304",
+      "subfamily": "minimize_bandwidth",
+      "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:304",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for minimize_bandwidth."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for minimize_bandwidth."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[25]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.mwis_sa.calculate_weight@sciona/atoms/bio/molecular_docking/mwis_sa/atoms.py:66",
+      "subfamily": "mwis_sa",
+      "source_path": "sciona/atoms/bio/molecular_docking/mwis_sa/atoms.py:66",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for mwis_sa."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for mwis_sa."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/references.json",
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[26]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.mwis_sa.is_independent_set@sciona/atoms/bio/molecular_docking/mwis_sa/atoms.py:42",
+      "subfamily": "mwis_sa",
+      "source_path": "sciona/atoms/bio/molecular_docking/mwis_sa/atoms.py:42",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for mwis_sa."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for mwis_sa."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/references.json",
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[27]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.mwis_sa.load_graphs_from_folder@sciona/atoms/bio/molecular_docking/mwis_sa/atoms.py:18",
+      "subfamily": "mwis_sa",
+      "source_path": "sciona/atoms/bio/molecular_docking/mwis_sa/atoms.py:18",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for mwis_sa."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for mwis_sa."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/references.json",
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[28]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.mwis_sa.to_qubo@sciona/atoms/bio/molecular_docking/mwis_sa/atoms.py:86",
+      "subfamily": "mwis_sa",
+      "source_path": "sciona/atoms/bio/molecular_docking/mwis_sa/atoms.py:86",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for mwis_sa."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for mwis_sa."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/references.json",
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[29]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver.adiabaticquantumsampler@sciona/atoms/bio/molecular_docking/quantum_solver/atoms.py:78",
+      "subfamily": "quantum_solver",
+      "source_path": "sciona/atoms/bio/molecular_docking/quantum_solver/atoms.py:78",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for quantum_solver."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for quantum_solver."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver/references.json",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[30]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver.quantumproblemdefinition@sciona/atoms/bio/molecular_docking/quantum_solver/atoms.py:30",
+      "subfamily": "quantum_solver",
+      "source_path": "sciona/atoms/bio/molecular_docking/quantum_solver/atoms.py:30",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for quantum_solver."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for quantum_solver."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver/references.json",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[31]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver.solutionextraction@sciona/atoms/bio/molecular_docking/quantum_solver/atoms.py:144",
+      "subfamily": "quantum_solver",
+      "source_path": "sciona/atoms/bio/molecular_docking/quantum_solver/atoms.py:144",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for quantum_solver."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for quantum_solver."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver/references.json",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[32]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.adiabaticpulseassembler@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:176",
+      "subfamily": "quantum_solver_d12",
+      "source_path": "sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:176",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for quantum_solver_d12."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for quantum_solver_d12."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/references.json",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[33]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.interactionboundscomputer@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:119",
+      "subfamily": "quantum_solver_d12",
+      "source_path": "sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:119",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for quantum_solver_d12."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for quantum_solver_d12."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/references.json",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[34]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantumcircuitsampler@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:210",
+      "subfamily": "quantum_solver_d12",
+      "source_path": "sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:210",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for quantum_solver_d12."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for quantum_solver_d12."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/references.json",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[35]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantumsolutionextractor@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:285",
+      "subfamily": "quantum_solver_d12",
+      "source_path": "sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:285",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for quantum_solver_d12."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for quantum_solver_d12."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/references.json",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[36]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantumsolverorchestrator@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:37",
+      "subfamily": "quantum_solver_d12",
+      "source_path": "sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:37",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_gap",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "limitations": [
+        "No uncertainty.json present for quantum_solver_d12."
+      ],
+      "required_actions": [
+        "Backfill uncertainty evidence for quantum_solver_d12."
+      ],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/references.json",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[37]"
+    }
+  ]
+}
