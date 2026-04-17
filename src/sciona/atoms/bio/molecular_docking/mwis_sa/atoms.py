@@ -93,6 +93,10 @@ def to_qubo(graph: np.ndarray, penalty: float) -> np.ndarray:
     Returns:
         QUBO matrix encoding the MWIS objective
     """
+    max_weight = float(np.max(np.diag(graph))) if graph.size else 0.0
+    if penalty < 2.0 * max_weight:
+        raise ValueError("penalty must be at least 2 * max(node weight)")
+
     n = graph.shape[0]
     Q = np.zeros((n, n), dtype=float)
     # Diagonal: negative node weights (we minimize, so negate for maximization)

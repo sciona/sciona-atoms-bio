@@ -10,13 +10,14 @@
   "authoritative_sources": [
     "src/sciona/atoms/bio/molecular_docking/**/references.json",
     "src/sciona/atoms/bio/molecular_docking/**/cdg.json",
-    "src/sciona/atoms/bio/molecular_docking/**/matches.json"
+    "src/sciona/atoms/bio/molecular_docking/**/matches.json",
+    "src/sciona/atoms/bio/molecular_docking/**/uncertainty.json"
   ],
   "limitations": [
-    "Some subfamilies still lack uncertainty evidence: build_interaction_graph, greedy_mapping, greedy_mapping_d12, minimize_bandwidth, mwis_sa, quantum_solver, quantum_solver_d12."
+    "Some subfamilies still lack uncertainty evidence: build_interaction_graph, greedy_mapping, greedy_mapping_d12, minimize_bandwidth, quantum_solver, quantum_solver_d12."
   ],
   "required_actions": [
-    "Backfill uncertainty evidence for: build_interaction_graph, greedy_mapping, greedy_mapping_d12, minimize_bandwidth, mwis_sa, quantum_solver, quantum_solver_d12."
+    "Backfill uncertainty evidence for: build_interaction_graph, greedy_mapping, greedy_mapping_d12, minimize_bandwidth, quantum_solver, quantum_solver_d12."
   ],
   "subfamily_summaries": [
     {
@@ -52,7 +53,7 @@
       "row_count": 4,
       "has_cdg": true,
       "has_matches": true,
-      "has_uncertainty": false
+      "has_uncertainty": true
     },
     {
       "subfamily": "quantum_solver",
@@ -622,18 +623,15 @@
       "source_path": "sciona/atoms/bio/molecular_docking/mwis_sa/atoms.py:66",
       "review_status": "reviewed",
       "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
-      "limitations": [
-        "No uncertainty.json present for mwis_sa."
-      ],
-      "required_actions": [
-        "Backfill uncertainty evidence for mwis_sa."
-      ],
+      "developer_semantic_verdict": "source_aligned_with_evidence",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
       "authoritative_sources": [
         "src/sciona/atoms/bio/molecular_docking/mwis_sa/references.json",
         "src/sciona/atoms/bio/molecular_docking/mwis_sa/cdg.json",
-        "src/sciona/atoms/bio/molecular_docking/mwis_sa/matches.json"
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/uncertainty.json"
       ],
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[26]"
     },
@@ -643,18 +641,15 @@
       "source_path": "sciona/atoms/bio/molecular_docking/mwis_sa/atoms.py:42",
       "review_status": "reviewed",
       "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
-      "limitations": [
-        "No uncertainty.json present for mwis_sa."
-      ],
-      "required_actions": [
-        "Backfill uncertainty evidence for mwis_sa."
-      ],
+      "developer_semantic_verdict": "source_aligned_with_evidence",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
       "authoritative_sources": [
         "src/sciona/atoms/bio/molecular_docking/mwis_sa/references.json",
         "src/sciona/atoms/bio/molecular_docking/mwis_sa/cdg.json",
-        "src/sciona/atoms/bio/molecular_docking/mwis_sa/matches.json"
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/uncertainty.json"
       ],
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[27]"
     },
@@ -664,18 +659,15 @@
       "source_path": "sciona/atoms/bio/molecular_docking/mwis_sa/atoms.py:18",
       "review_status": "reviewed",
       "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
-      "limitations": [
-        "No uncertainty.json present for mwis_sa."
-      ],
-      "required_actions": [
-        "Backfill uncertainty evidence for mwis_sa."
-      ],
+      "developer_semantic_verdict": "source_aligned_with_evidence",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
       "authoritative_sources": [
         "src/sciona/atoms/bio/molecular_docking/mwis_sa/references.json",
         "src/sciona/atoms/bio/molecular_docking/mwis_sa/cdg.json",
-        "src/sciona/atoms/bio/molecular_docking/mwis_sa/matches.json"
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/uncertainty.json"
       ],
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[28]"
     },
@@ -685,18 +677,15 @@
       "source_path": "sciona/atoms/bio/molecular_docking/mwis_sa/atoms.py:86",
       "review_status": "reviewed",
       "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
-      "limitations": [
-        "No uncertainty.json present for mwis_sa."
-      ],
-      "required_actions": [
-        "Backfill uncertainty evidence for mwis_sa."
-      ],
+      "developer_semantic_verdict": "source_aligned_with_evidence",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
       "authoritative_sources": [
         "src/sciona/atoms/bio/molecular_docking/mwis_sa/references.json",
         "src/sciona/atoms/bio/molecular_docking/mwis_sa/cdg.json",
-        "src/sciona/atoms/bio/molecular_docking/mwis_sa/matches.json"
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/uncertainty.json"
       ],
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[29]"
     },

@@ -1,0 +1,14 @@
+{
+  "atom": "to_qubo",
+  "estimates": [
+    {
+      "mode": "empirical",
+      "scalar_factor": 1.0,
+      "confidence": 0.7,
+      "n_trials": 5,
+      "epsilon": 1e-08,
+      "input_regime": "deterministic fixture regression over folder loading, independence checks, diagonal weight accumulation, QUBO encoding, and weak-penalty rejection",
+      "notes": "five deterministic mwis_sa regression scenarios exercised from provider-owned pytest coverage; outputs are exact for the covered graphs and penalty thresholds"
+    }
+  ]
+}
