@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0",
+  "bundle_id": "bio.alphafold.family_batch.review.v1",
+  "provider_repo": "sciona-atoms-bio",
+  "family": "bio.alphafold",
+  "review_status": "reviewed",
+  "semantic_verdict": "publishable_candidate",
+  "developer_semantic_verdict": "source_aligned_with_evidence",
+  "trust_readiness": "ready_for_manifest_merge",
+  "authoritative_sources": [
+    "src/sciona/atoms/bio/alphafold/references.json",
+    "src/sciona/atoms/bio/alphafold/cdg.json"
+  ],
+  "limitations": [],
+  "required_actions": [],
+  "subfamily_summaries": [
+    {
+      "subfamily": "alphafold",
+      "row_count": 3,
+      "has_cdg": true,
+      "has_matches": false,
+      "has_uncertainty": false
+    }
+  ],
+  "rows": [
+    {
+      "atom_fqdn": "sciona.atoms.bio.alphafold.invariant_point_attention@sciona/atoms/bio/alphafold/atoms.py:22",
+      "subfamily": "alphafold",
+      "source_path": "sciona/atoms/bio/alphafold/atoms.py:22",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_evidence",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/alphafold/references.json",
+        "src/sciona/atoms/bio/alphafold/cdg.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/alphafold/review_bundle.json#rows[0]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.alphafold.equivariant_frame_update@sciona/atoms/bio/alphafold/atoms.py:74",
+      "subfamily": "alphafold",
+      "source_path": "sciona/atoms/bio/alphafold/atoms.py:74",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_evidence",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/alphafold/references.json",
+        "src/sciona/atoms/bio/alphafold/cdg.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/alphafold/review_bundle.json#rows[1]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.alphafold.coordinate_reconstruction@sciona/atoms/bio/alphafold/atoms.py:109",
+      "subfamily": "alphafold",
+      "source_path": "sciona/atoms/bio/alphafold/atoms.py:109",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_evidence",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/alphafold/references.json",
+        "src/sciona/atoms/bio/alphafold/cdg.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/alphafold/review_bundle.json#rows[2]"
+    }
+  ]
+}
