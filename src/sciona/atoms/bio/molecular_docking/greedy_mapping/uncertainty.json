@@ -1,0 +1,14 @@
+{
+  "atom": "greedy_mapping",
+  "estimates": [
+    {
+      "mode": "empirical",
+      "scalar_factor": 1.0,
+      "confidence": 0.7,
+      "n_trials": 5,
+      "epsilon": 1e-08,
+      "input_regime": "deterministic fixture regression over context assembly, frontier initialization, greedy candidate scoring and pruning, mapping validation, and pipeline fallback behavior",
+      "notes": "five provider-owned pytest scenarios exercise the greedy_mapping atoms directly on a small graph/lattice fixture; outputs are exact for the covered state transitions and consistency checks"
+    }
+  ]
+}

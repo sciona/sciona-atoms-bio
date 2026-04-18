@@ -14,10 +14,10 @@
     "src/sciona/atoms/bio/molecular_docking/**/uncertainty.json"
   ],
   "limitations": [
-    "Some subfamilies still lack uncertainty evidence: build_interaction_graph, greedy_mapping, greedy_mapping_d12, minimize_bandwidth, quantum_solver, quantum_solver_d12."
+    "Some subfamilies still lack uncertainty evidence: build_interaction_graph, greedy_mapping_d12, minimize_bandwidth, quantum_solver, quantum_solver_d12."
   ],
   "required_actions": [
-    "Backfill uncertainty evidence for: build_interaction_graph, greedy_mapping, greedy_mapping_d12, minimize_bandwidth, quantum_solver, quantum_solver_d12."
+    "Backfill uncertainty evidence for: build_interaction_graph, greedy_mapping_d12, minimize_bandwidth, quantum_solver, quantum_solver_d12."
   ],
   "subfamily_summaries": [
     {
@@ -32,7 +32,7 @@
       "row_count": 5,
       "has_cdg": true,
       "has_matches": true,
-      "has_uncertainty": false
+      "has_uncertainty": true
     },
     {
       "subfamily": "greedy_mapping_d12",
@@ -140,18 +140,15 @@
       "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:29",
       "review_status": "reviewed",
       "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
-      "limitations": [
-        "No uncertainty.json present for greedy_mapping."
-      ],
-      "required_actions": [
-        "Backfill uncertainty evidence for greedy_mapping."
-      ],
+      "developer_semantic_verdict": "source_aligned_with_evidence",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
       "authoritative_sources": [
         "src/sciona/atoms/bio/molecular_docking/greedy_mapping/references.json",
         "src/sciona/atoms/bio/molecular_docking/greedy_mapping/cdg.json",
-        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/matches.json"
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/uncertainty.json"
       ],
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[3]"
     },
@@ -161,18 +158,15 @@
       "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:57",
       "review_status": "reviewed",
       "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
-      "limitations": [
-        "No uncertainty.json present for greedy_mapping."
-      ],
-      "required_actions": [
-        "Backfill uncertainty evidence for greedy_mapping."
-      ],
+      "developer_semantic_verdict": "source_aligned_with_evidence",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
       "authoritative_sources": [
         "src/sciona/atoms/bio/molecular_docking/greedy_mapping/references.json",
         "src/sciona/atoms/bio/molecular_docking/greedy_mapping/cdg.json",
-        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/matches.json"
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/uncertainty.json"
       ],
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[4]"
     },
@@ -182,18 +176,15 @@
       "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:218",
       "review_status": "reviewed",
       "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
-      "limitations": [
-        "No uncertainty.json present for greedy_mapping."
-      ],
-      "required_actions": [
-        "Backfill uncertainty evidence for greedy_mapping."
-      ],
+      "developer_semantic_verdict": "source_aligned_with_evidence",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
       "authoritative_sources": [
         "src/sciona/atoms/bio/molecular_docking/greedy_mapping/references.json",
         "src/sciona/atoms/bio/molecular_docking/greedy_mapping/cdg.json",
-        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/matches.json"
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/uncertainty.json"
       ],
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[5]"
     },
@@ -203,18 +194,15 @@
       "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:106",
       "review_status": "reviewed",
       "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
-      "limitations": [
-        "No uncertainty.json present for greedy_mapping."
-      ],
-      "required_actions": [
-        "Backfill uncertainty evidence for greedy_mapping."
-      ],
+      "developer_semantic_verdict": "source_aligned_with_evidence",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
       "authoritative_sources": [
         "src/sciona/atoms/bio/molecular_docking/greedy_mapping/references.json",
         "src/sciona/atoms/bio/molecular_docking/greedy_mapping/cdg.json",
-        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/matches.json"
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/uncertainty.json"
       ],
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[6]"
     },
@@ -224,18 +212,15 @@
       "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:176",
       "review_status": "reviewed",
       "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
-      "limitations": [
-        "No uncertainty.json present for greedy_mapping."
-      ],
-      "required_actions": [
-        "Backfill uncertainty evidence for greedy_mapping."
-      ],
+      "developer_semantic_verdict": "source_aligned_with_evidence",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
       "authoritative_sources": [
         "src/sciona/atoms/bio/molecular_docking/greedy_mapping/references.json",
         "src/sciona/atoms/bio/molecular_docking/greedy_mapping/cdg.json",
-        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/matches.json"
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/uncertainty.json"
       ],
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[7]"
     },

@@ -42,17 +42,16 @@ def test_molecular_docking_review_bundle_covers_all_rows() -> None:
         "src/sciona/atoms/bio/molecular_docking/**/uncertainty.json",
     ]
     assert bundle["limitations"] == [
-        "Some subfamilies still lack uncertainty evidence: build_interaction_graph, greedy_mapping, greedy_mapping_d12, minimize_bandwidth, quantum_solver, quantum_solver_d12."
+        "Some subfamilies still lack uncertainty evidence: build_interaction_graph, greedy_mapping_d12, minimize_bandwidth, quantum_solver, quantum_solver_d12."
     ]
     assert bundle["required_actions"] == [
-        "Backfill uncertainty evidence for: build_interaction_graph, greedy_mapping, greedy_mapping_d12, minimize_bandwidth, quantum_solver, quantum_solver_d12."
+        "Backfill uncertainty evidence for: build_interaction_graph, greedy_mapping_d12, minimize_bandwidth, quantum_solver, quantum_solver_d12."
     ]
     assert len(bundle["rows"]) == len(expected_keys)
     assert {row["atom_fqdn"] for row in bundle["rows"]} == expected_keys
-    assert ready_subfamilies == {"mwis_sa"}
+    assert ready_subfamilies == {"greedy_mapping", "mwis_sa"}
     assert blocked_subfamilies == [
         "build_interaction_graph",
-        "greedy_mapping",
         "greedy_mapping_d12",
         "minimize_bandwidth",
         "quantum_solver",
