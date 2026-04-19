@@ -1,0 +1,170 @@
+{
+  "schema_version": "1.1",
+  "metadata": {
+    "generated_at": "2026-04-19T21:41:09.598702+00:00",
+    "generator": "scripts/apply_audit_review_bundles.py",
+    "phase": "phase_1_review_bundle_merge"
+  },
+  "atoms": [
+    {
+      "atom_name": "sciona.atoms.bio.hpdb.iterate_pdb_atoms",
+      "atom_key": "sciona.atoms.bio.hpdb.iterate_pdb_atoms",
+      "atom_id": "sciona.atoms.bio.hpdb.iterate_pdb_atoms",
+      "module_import_path": "sciona.atoms.bio.hpdb",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/hpdb/atoms.py",
+      "module_family": "bio",
+      "domain_family": "bio",
+      "wrapper_symbol": "iterate_pdb_atoms",
+      "argument_names": [
+        "pdb_element",
+        "chemical_element"
+      ],
+      "argument_details": [
+        {
+          "name": "pdb_element",
+          "annotation": "PDBElement",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "chemical_element",
+          "annotation": "str | None",
+          "required": false,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "tuple[Atom, ...]",
+      "docstring_summary": "Return atoms reached by recursively walking an hPDB-style hierarchy.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/hpdb/atoms.py",
+        "src/sciona/atoms/bio/hpdb/witnesses.py",
+        "src/sciona/atoms/bio/hpdb/cdg.json",
+        "src/sciona/atoms/bio/hpdb/references.json",
+        "tests/test_hpdb_behavior.py",
+        "tests/test_hpdb_references_metadata.py",
+        "tests/test_hpdb_review_bundle.py"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [
+        "No PDB text parser is included; callers must provide in-memory hierarchy objects."
+      ],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "acceptable_with_limits",
+      "risk_tier": "low",
+      "risk_score": 15,
+      "risk_dimensions": {
+        "provenance": "low",
+        "semantic_drift": "low",
+        "runtime": "low"
+      },
+      "risk_reasons": [
+        "Scope is limited to the local hPDB ingest hierarchy model rather than full PDB parsing."
+      ],
+      "acceptability_score": 85,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "positive_path",
+      "parity_test_status": "pass",
+      "parity_fixture_count": 1,
+      "parity_case_count": 5,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/hpdb/review_bundle.json#rows[0]",
+      "source_path": "sciona/atoms/bio/hpdb/atoms.py:74",
+      "has_references": true,
+      "references_status": "pass"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.hpdb.iterate_pdb_residues",
+      "atom_key": "sciona.atoms.bio.hpdb.iterate_pdb_residues",
+      "atom_id": "sciona.atoms.bio.hpdb.iterate_pdb_residues",
+      "module_import_path": "sciona.atoms.bio.hpdb",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/hpdb/atoms.py",
+      "module_family": "bio",
+      "domain_family": "bio",
+      "wrapper_symbol": "iterate_pdb_residues",
+      "argument_names": [
+        "pdb_element",
+        "chemical_element"
+      ],
+      "argument_details": [
+        {
+          "name": "pdb_element",
+          "annotation": "Residue | Chain | Model | Structure",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "chemical_element",
+          "annotation": "str | None",
+          "required": false,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "tuple[Residue, ...]",
+      "docstring_summary": "Return residues reached by recursively walking an hPDB-style hierarchy.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/hpdb/atoms.py",
+        "src/sciona/atoms/bio/hpdb/witnesses.py",
+        "src/sciona/atoms/bio/hpdb/cdg.json",
+        "src/sciona/atoms/bio/hpdb/references.json",
+        "tests/test_hpdb_behavior.py",
+        "tests/test_hpdb_references_metadata.py",
+        "tests/test_hpdb_review_bundle.py"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [
+        "No PDB text parser is included; callers must provide in-memory hierarchy objects."
+      ],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "acceptable_with_limits",
+      "risk_tier": "low",
+      "risk_score": 15,
+      "risk_dimensions": {
+        "provenance": "low",
+        "semantic_drift": "low",
+        "runtime": "low"
+      },
+      "risk_reasons": [
+        "Scope is limited to the local hPDB ingest hierarchy model rather than full PDB parsing."
+      ],
+      "acceptability_score": 85,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "positive_path",
+      "parity_test_status": "pass",
+      "parity_fixture_count": 1,
+      "parity_case_count": 5,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/hpdb/review_bundle.json#rows[1]",
+      "source_path": "sciona/atoms/bio/hpdb/atoms.py:121",
+      "has_references": true,
+      "references_status": "pass"
+    }
+  ]
+}

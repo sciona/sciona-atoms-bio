@@ -1,51 +1,55 @@
 {
   "schema_version": "1.1",
   "atoms": {
-    "sciona.atoms.bio.hpdb.iterate_pdb_atoms@sciona/atoms/bio/hpdb/atoms.py:24": {
+    "sciona.atoms.bio.hpdb.iterate_pdb_atoms@sciona/atoms/bio/hpdb/atoms.py:74": {
       "references": [
-        {
-          "ref_id": "berman2000pdb",
-          "match_metadata": {
-            "similarity_score": null,
-            "match_type": "manual",
-            "matched_nodes": [],
-            "confidence": "high",
-            "notes": "Canonical Protein Data Bank attribution."
-          }
-        },
         {
           "ref_id": "repo_hpdb",
           "match_metadata": {
             "similarity_score": null,
-            "match_type": "manual",
-            "matched_nodes": [],
+            "match_type": "manual_source_alignment",
+            "matched_nodes": [
+              "../ageo-atoms/third_party/hPDB/hPDB_ingest.py:38"
+            ],
             "confidence": "high",
-            "notes": "Upstream implementation is mapped to the vendored hPDB repository."
+            "notes": "Implements the recursive atom traversal modeled by hPDBIterable.iter_atoms, with an explicit optional element filter."
+          }
+        },
+        {
+          "ref_id": "berman2000pdb",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "domain_context",
+            "matched_nodes": [],
+            "confidence": "medium",
+            "notes": "Provides Protein Data Bank context for the hierarchy being traversed."
           }
         }
       ],
       "auto_attribution_runs": []
     },
-    "sciona.atoms.bio.hpdb.iterate_pdb_residues@sciona/atoms/bio/hpdb/atoms.py:39": {
+    "sciona.atoms.bio.hpdb.iterate_pdb_residues@sciona/atoms/bio/hpdb/atoms.py:121": {
       "references": [
-        {
-          "ref_id": "berman2000pdb",
-          "match_metadata": {
-            "similarity_score": null,
-            "match_type": "manual",
-            "matched_nodes": [],
-            "confidence": "high",
-            "notes": "Canonical Protein Data Bank attribution."
-          }
-        },
         {
           "ref_id": "repo_hpdb",
           "match_metadata": {
             "similarity_score": null,
-            "match_type": "manual",
-            "matched_nodes": [],
+            "match_type": "manual_source_alignment",
+            "matched_nodes": [
+              "../ageo-atoms/third_party/hPDB/hPDB_ingest.py:55"
+            ],
             "confidence": "high",
-            "notes": "Upstream implementation is mapped to the vendored hPDB repository."
+            "notes": "Implements the recursive residue traversal modeled by hPDBIterable.iter_residues, with an explicit optional contained-atom element filter."
+          }
+        },
+        {
+          "ref_id": "berman2000pdb",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "domain_context",
+            "matched_nodes": [],
+            "confidence": "medium",
+            "notes": "Provides Protein Data Bank context for the hierarchy being traversed."
           }
         }
       ],

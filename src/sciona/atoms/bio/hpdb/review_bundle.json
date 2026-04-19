@@ -1,93 +1,126 @@
 {
   "schema_version": "1.0",
-  "bundle_id": "bio.hpdb.family_batch.review.v1",
+  "bundle_id": "sciona.atoms.review_bundle.bio.hpdb.v1",
   "provider_repo": "sciona-atoms-bio",
   "family": "bio.hpdb",
+  "family_batch": "bio_hpdb",
   "review_status": "reviewed",
-  "semantic_verdict": "held_requires_remediation",
-  "developer_semantic_verdict": "placeholder_noop_with_parameter_and_description_drift",
-  "trust_readiness": "blocked_on_semantic_remediation",
+  "semantic_verdict": "supported",
+  "review_semantic_verdict": "pass_with_limits",
+  "review_developer_semantic_verdict": "pass_with_limits",
+  "trust_readiness": "catalog_ready",
   "authoritative_sources": [
     "src/sciona/atoms/bio/hpdb/atoms.py",
-    "src/sciona/atoms/bio/hpdb/references.json",
+    "src/sciona/atoms/bio/hpdb/witnesses.py",
     "src/sciona/atoms/bio/hpdb/cdg.json",
-    "src/sciona/atoms/bio/hpdb/matches.json"
+    "src/sciona/atoms/bio/hpdb/references.json",
+    "tests/test_hpdb_behavior.py",
+    "tests/test_hpdb_references_metadata.py",
+    "tests/test_hpdb_review_bundle.py"
   ],
   "limitations": [
-    "pubrev-064 directly audited the hpdb remainder atoms and held both rows because the implementations are explicit deferred stubs returning empty iterators.",
-    "The public names and descriptions promise traversal of Protein Data Bank atoms/residues, but there is no PDB structure, file, parser, repository handle, or dataset input parameter.",
-    "The declared Optional[str] element parameter is contradictory: the contract rejects None even though the description says the filter is optional."
+    "The atoms implement the local hPDB ingest model for in-memory hierarchy traversal; they do not parse PDB files or expose the full Haskell library API.",
+    "The optional chemical element filter is an explicit Python extension over the vendored traversal model."
   ],
-  "required_actions": [
-    "Implement source-aligned PDB traversal using an explicit structure/file/parser/dataset input and real atom/residue object iteration, including element filtering semantics.",
-    "Reconcile the parameter contract, CDG metadata, and docstrings so optional filtering is either truly optional or documented as required.",
-    "Add behavior tests using representative PDB records before any hpdb iterator atom is advanced to ready_for_manifest_merge."
-  ],
-  "subfamily_summaries": [
-    {
-      "subfamily": "hpdb",
-      "row_count": 2,
-      "has_cdg": true,
-      "has_matches": true,
-      "has_uncertainty": false
-    }
-  ],
+  "blocking_findings": [],
+  "required_actions": [],
+  "review_record_path": "src/sciona/atoms/bio/hpdb/review_bundle.json",
   "rows": [
     {
-      "atom_fqdn": "sciona.atoms.bio.hpdb.iterate_pdb_atoms@sciona/atoms/bio/hpdb/atoms.py:24",
-      "subfamily": "hpdb",
-      "source_path": "sciona/atoms/bio/hpdb/atoms.py:24",
-      "review_status": "reviewed",
-      "semantic_verdict": "held_requires_remediation",
-      "developer_semantic_verdict": "placeholder_noop_no_pdb_atom_traversal",
-      "trust_readiness": "blocked_on_semantic_remediation",
-      "limitations": [
-        "Current implementation is marked DEFERRED and always returns iter([]), so it does not iterate PDB atoms or apply a real element filter.",
-        "The atom has no input representing a PDB structure, PDB file, parser, repository, or dataset source.",
-        "The Optional[str] element contract rejects None despite the public description presenting the element filter as optional."
-      ],
-      "required_actions": [
-        "Replace the empty iterator stub with real PDB atom traversal and element filtering over an explicit PDB source input.",
-        "Update function, CDG, and witness metadata so parameters and descriptions match implemented semantics.",
-        "Add representative positive and filtered atom-iteration tests before publication."
-      ],
-      "authoritative_sources": [
+      "atom_name": "sciona.atoms.bio.hpdb.iterate_pdb_atoms",
+      "atom_key": "sciona.atoms.bio.hpdb.iterate_pdb_atoms",
+      "source_path": "sciona/atoms/bio/hpdb/atoms.py:74",
+      "source_paths": [
         "src/sciona/atoms/bio/hpdb/atoms.py",
-        "src/sciona/atoms/bio/hpdb/references.json",
-        "src/sciona/atoms/bio/hpdb/cdg.json",
-        "src/sciona/atoms/bio/hpdb/matches.json"
+        "../ageo-atoms/third_party/hPDB/hPDB_ingest.py:38"
       ],
+      "review_status": "reviewed",
+      "semantic_verdict": "supported",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantic_verdict": "pass_with_limits",
+      "trust_readiness": "catalog_ready",
       "review_record_path": "src/sciona/atoms/bio/hpdb/review_bundle.json#rows[0]",
-      "audit_batch": "pubrev-064",
-      "audit_scope": "sciona.atoms.bio.hpdb.__remainder__"
+      "overall_verdict": "pass",
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass_with_limits",
+      "risk_tier": "low",
+      "risk_score": 15,
+      "risk_dimensions": {
+        "provenance": "low",
+        "semantic_drift": "low",
+        "runtime": "low"
+      },
+      "risk_reasons": [
+        "Scope is limited to the local hPDB ingest hierarchy model rather than full PDB parsing."
+      ],
+      "acceptability_score": 85,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "positive_path",
+      "parity_test_status": "pass",
+      "parity_fixture_count": 1,
+      "parity_case_count": 5,
+      "review_limitations": [
+        "No PDB text parser is included; callers must provide in-memory hierarchy objects."
+      ],
+      "review_required_actions": [],
+      "trust_blockers": [],
+      "has_references": true,
+      "references_status": "pass",
+      "limitations": [
+        "No PDB text parser is included; callers must provide in-memory hierarchy objects."
+      ],
+      "blocking_findings": [],
+      "required_actions": []
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.hpdb.iterate_pdb_residues@sciona/atoms/bio/hpdb/atoms.py:39",
-      "subfamily": "hpdb",
-      "source_path": "sciona/atoms/bio/hpdb/atoms.py:39",
-      "review_status": "reviewed",
-      "semantic_verdict": "held_requires_remediation",
-      "developer_semantic_verdict": "placeholder_noop_no_pdb_residue_traversal",
-      "trust_readiness": "blocked_on_semantic_remediation",
-      "limitations": [
-        "Current implementation is marked DEFERRED and always returns iter([]), so it does not iterate PDB residues or inspect residue atom elements.",
-        "The atom has no input representing a PDB structure, PDB file, parser, repository, or dataset source.",
-        "The Optional[str] element contract rejects None despite the public description presenting the element filter as optional."
-      ],
-      "required_actions": [
-        "Replace the empty iterator stub with real PDB residue traversal and residue-level element filtering over an explicit PDB source input.",
-        "Update function, CDG, and witness metadata so parameters and descriptions match implemented semantics.",
-        "Add representative positive and filtered residue-iteration tests before publication."
-      ],
-      "authoritative_sources": [
+      "atom_name": "sciona.atoms.bio.hpdb.iterate_pdb_residues",
+      "atom_key": "sciona.atoms.bio.hpdb.iterate_pdb_residues",
+      "source_path": "sciona/atoms/bio/hpdb/atoms.py:121",
+      "source_paths": [
         "src/sciona/atoms/bio/hpdb/atoms.py",
-        "src/sciona/atoms/bio/hpdb/references.json",
-        "src/sciona/atoms/bio/hpdb/cdg.json",
-        "src/sciona/atoms/bio/hpdb/matches.json"
+        "../ageo-atoms/third_party/hPDB/hPDB_ingest.py:55"
       ],
+      "review_status": "reviewed",
+      "semantic_verdict": "supported",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantic_verdict": "pass_with_limits",
+      "trust_readiness": "catalog_ready",
       "review_record_path": "src/sciona/atoms/bio/hpdb/review_bundle.json#rows[1]",
-      "audit_batch": "pubrev-064",
-      "audit_scope": "sciona.atoms.bio.hpdb.__remainder__"
+      "overall_verdict": "pass",
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass_with_limits",
+      "risk_tier": "low",
+      "risk_score": 15,
+      "risk_dimensions": {
+        "provenance": "low",
+        "semantic_drift": "low",
+        "runtime": "low"
+      },
+      "risk_reasons": [
+        "Scope is limited to the local hPDB ingest hierarchy model rather than full PDB parsing."
+      ],
+      "acceptability_score": 85,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "positive_path",
+      "parity_test_status": "pass",
+      "parity_fixture_count": 1,
+      "parity_case_count": 5,
+      "review_limitations": [
+        "No PDB text parser is included; callers must provide in-memory hierarchy objects."
+      ],
+      "review_required_actions": [],
+      "trust_blockers": [],
+      "has_references": true,
+      "references_status": "pass",
+      "limitations": [
+        "No PDB text parser is included; callers must provide in-memory hierarchy objects."
+      ],
+      "blocking_findings": [],
+      "required_actions": []
     }
   ]
 }

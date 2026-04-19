@@ -1,11 +1,11 @@
 {
   "nodes": [
     {
-      "node_id": "hPDBIterable_root",
+      "node_id": "hpdb_traversal_root",
       "parent_id": null,
-      "name": "hPDBIterable",
-      "description": "Ingested pipeline from hPDBIterable",
-      "concept_type": "custom",
+      "name": "hpdb_traversal",
+      "description": "Recursive traversal over hPDB-style atom, residue, chain, model, and structure records.",
+      "concept_type": "bio_structure_traversal",
       "inputs": [],
       "outputs": [],
       "status": "decomposed",
@@ -22,30 +22,37 @@
       "is_opaque": false,
       "is_external": false,
       "parallelizable": false,
-      "conceptual_summary": "",
+      "conceptual_summary": "Walks nested protein-structure records and returns selected lower-level records.",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "The upstream hPDB ingest source exposes separate recursive atom and residue traversal methods, so the public atoms keep the same split."
     },
     {
       "node_id": "iterate_pdb_atoms",
-      "parent_id": "hPDBIterable_root",
+      "parent_id": "hpdb_traversal_root",
       "name": "iterate_pdb_atoms",
-      "description": "Iterates over all atoms in the PDB structure, optionally filtering by a specific chemical element.",
-      "concept_type": "data_extraction",
+      "description": "Return atom records found by recursively walking an hPDB-style hierarchy, optionally filtered by chemical element.",
+      "concept_type": "bio_structure_traversal",
       "inputs": [
         {
-          "name": "element",
-          "type_desc": "Optional[str]",
-          "constraints": "If provided, only atoms of this element are yielded.",
+          "name": "pdb_element",
+          "type_desc": "Atom | Residue | Chain | Model | Structure",
+          "constraints": "Root object for recursive traversal.",
           "required": true,
           "default_value_repr": ""
+        },
+        {
+          "name": "chemical_element",
+          "type_desc": "str | None",
+          "constraints": "Optional case-insensitive atom element symbol filter.",
+          "required": false,
+          "default_value_repr": "None"
         }
       ],
       "outputs": [
         {
-          "name": "atom_iterator",
-          "type_desc": "Iterator[Atom]",
-          "constraints": "An iterator yielding atom objects from the PDB structure.",
+          "name": "result",
+          "type_desc": "tuple[Atom, ...]",
+          "constraints": "Atom records reached from the root and matching the optional element filter.",
           "required": true,
           "default_value_repr": ""
         }
@@ -53,7 +60,7 @@
       "status": "atomic",
       "children": [],
       "depth": 1,
-      "type_signature": "(element: Optional[str]) -> Iterator[Atom]",
+      "type_signature": "(pdb_element: PDBElement, chemical_element: str | None = None) -> tuple[Atom, ...]",
       "matched_primitive": null,
       "primitive_binding_confidence": 0.0,
       "primitive_binding_source": "",
@@ -61,30 +68,37 @@
       "is_opaque": false,
       "is_external": false,
       "parallelizable": false,
-      "conceptual_summary": "filtered_collection_iterator. Sequentially traverses a structured collection of records, yielding a stateful iterator over the entire set. An optional filtering parameter allows for the selective retrieval of records where a specific categorical attribute matches a given value. This provides a memory-efficient mechanism for processing either the entire dataset or a specific subset without loading the full collection into memory.. Applications: In computer graphics, iterating through all nodes in a scene graph, with an option to filter for nodes of a certain type, like 'light', 'mesh', or 'camera'., In social network analysis, streaming through a dataset of user profiles, selectively yielding only users who match a specific demographic attribute (e.g., city or listed interest)., In financial data processing, scanning a large ledger of transactions and yielding only those associated with a particular transaction type or currency., In astronomical surveys, iterating through a catalog of celestial objects and filtering to return only objects of a specific class, such as 'galaxy' or 'quasar'.",
+      "conceptual_summary": "Recursive atom traversal with an optional element filter.",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "Corresponds to hPDB_ingest.py hPDBIterable.iter_atoms."
     },
     {
       "node_id": "iterate_pdb_residues",
-      "parent_id": "hPDBIterable_root",
+      "parent_id": "hpdb_traversal_root",
       "name": "iterate_pdb_residues",
-      "description": "Iterates over all residues in the PDB structure. An optional filter can be applied to return only residues that contain a specified chemical element.",
-      "concept_type": "data_extraction",
+      "description": "Return residue records found by recursively walking an hPDB-style hierarchy, optionally filtered by contained atom element.",
+      "concept_type": "bio_structure_traversal",
       "inputs": [
         {
-          "name": "element",
-          "type_desc": "Optional[str]",
-          "constraints": "If provided, only residues containing an atom of this element are yielded.",
+          "name": "pdb_element",
+          "type_desc": "Residue | Chain | Model | Structure",
+          "constraints": "Root object for recursive residue traversal.",
           "required": true,
           "default_value_repr": ""
+        },
+        {
+          "name": "chemical_element",
+          "type_desc": "str | None",
+          "constraints": "Optional case-insensitive contained-atom element symbol filter.",
+          "required": false,
+          "default_value_repr": "None"
         }
       ],
       "outputs": [
         {
-          "name": "residue_iterator",
-          "type_desc": "Iterator[Residue]",
-          "constraints": "An iterator yielding residue objects from the PDB structure.",
+          "name": "result",
+          "type_desc": "tuple[Residue, ...]",
+          "constraints": "Residue records reached from the root and matching the optional element filter.",
           "required": true,
           "default_value_repr": ""
         }
@@ -92,7 +106,7 @@
       "status": "atomic",
       "children": [],
       "depth": 1,
-      "type_signature": "(element: Optional[str]) -> Iterator[Residue]",
+      "type_signature": "(pdb_element: Residue | Chain | Model | Structure, chemical_element: str | None = None) -> tuple[Residue, ...]",
       "matched_primitive": null,
       "primitive_binding_confidence": 0.0,
       "primitive_binding_source": "",
@@ -100,14 +114,14 @@
       "is_opaque": false,
       "is_external": false,
       "parallelizable": false,
-      "conceptual_summary": "query_substructures_by_component_property. Traverses a hierarchical data structure composed of nested substructures, which in turn contain primitive components. It generates a sequential, lazy iterator over the substructures, with an optional filter to include only those that contain a primitive component matching a specific categorical property.. Applications: In a 3D scene graph, iterating over all mesh groups that contain a specific primitive type, like a light source or a collision object., In a file system representation, finding all directories that contain a file with a specific extension (e.g., '.log')., In a parsed XML/HTML document, yielding all parent nodes (e.g., '<div>' tags) that contain a child node with a specific attribute., In a logistics database, iterating through all shipping containers that are registered to be carrying a specific class of item (e.g., 'refrigerated goods').",
+      "conceptual_summary": "Recursive residue traversal with an optional contained-atom element filter.",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "Corresponds to hPDB_ingest.py hPDBIterable.iter_residues."
     }
   ],
   "edges": [],
   "metadata": {
-    "source": "ingester",
+    "source": "../ageo-atoms/third_party/hPDB/hPDB_ingest.py",
     "class_name": "hPDBIterable"
   }
 }
