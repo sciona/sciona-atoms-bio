@@ -15,10 +15,12 @@
   ],
   "limitations": [
     "pubrev-005 marks only directly audited safe molecular_docking atoms ready; placeholder or semantically drifting atoms remain unpublished and are documented in REMEDIATION.md.",
+    "pubrev-028 quantum_solver_d12 rows were directly audited and held because current wrappers drift from the Pulser neutral-atom solver semantics described by matches/cdg evidence.",
     "Some older subfamily rows still lack uncertainty evidence and remain blocked until separately reviewed."
   ],
   "required_actions": [
     "Resolve REMEDIATION.md hold items before publishing the held pubrev-005 atoms.",
+    "Replace or re-document quantum_solver_d12 placeholder/classical stand-ins before publishing pubrev-028 rows.",
     "Backfill or supersede uncertainty evidence for any non-pubrev-005 rows still blocked on uncertainty."
   ],
   "subfamily_summaries": [
@@ -695,105 +697,120 @@
       "subfamily": "quantum_solver_d12",
       "source_path": "sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:176",
       "review_status": "reviewed",
-      "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "semantic_verdict": "held_requires_remediation",
+      "developer_semantic_verdict": "semantic_drift_placeholder_pulse_payload",
+      "trust_readiness": "blocked_on_semantic_remediation",
       "limitations": [
-        "No uncertainty.json present for quantum_solver_d12."
+        "Current implementation returns a plain dict classical stand-in instead of constructing Pulser waveforms, DMM detuning map, channels, pulse, and locked Sequence described by the source evidence."
       ],
       "required_actions": [
-        "Backfill uncertainty evidence for quantum_solver_d12."
+        "Implement the source-aligned Pulser adiabatic pulse assembly path or explicitly rename/re-document the atom as a non-Pulser placeholder before publication."
       ],
       "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py",
         "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/references.json",
         "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/cdg.json",
         "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/matches.json"
       ],
-      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[33]"
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[33]",
+      "audit_batch": "pubrev-028",
+      "audit_scope": "quantum_solver_d12_publishability_wave"
     },
     {
       "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.interactionboundscomputer@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:119",
       "subfamily": "quantum_solver_d12",
       "source_path": "sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:119",
       "review_status": "reviewed",
-      "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "semantic_verdict": "held_requires_remediation",
+      "developer_semantic_verdict": "semantic_drift_incomplete_bound_derivation",
+      "trust_readiness": "blocked_on_semantic_remediation",
       "limitations": [
-        "No uncertainty.json present for quantum_solver_d12."
+        "Current implementation returns raw u_min/u_max interaction bounds and clamps u_max, but source evidence expects pulse parameter bound derivation for detuning_maximum and amplitude_maximum from register geometry and graph topology."
       ],
       "required_actions": [
-        "Backfill uncertainty evidence for quantum_solver_d12."
+        "Reconcile the return contract with source semantics by deriving the advertised pulse parameter bounds, with evidence for edge/complement distance handling and uncertainty."
       ],
       "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py",
         "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/references.json",
         "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/cdg.json",
         "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/matches.json"
       ],
-      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[34]"
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[34]",
+      "audit_batch": "pubrev-028",
+      "audit_scope": "quantum_solver_d12_publishability_wave"
     },
     {
       "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantumcircuitsampler@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:210",
       "subfamily": "quantum_solver_d12",
       "source_path": "sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:210",
       "review_status": "reviewed",
-      "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "semantic_verdict": "held_requires_remediation",
+      "developer_semantic_verdict": "semantic_drift_classical_sampler",
+      "trust_readiness": "blocked_on_semantic_remediation",
       "limitations": [
-        "No uncertainty.json present for quantum_solver_d12."
+        "Current implementation ignores backend flags as quantum backends and generates deterministic classical greedy/SA counts instead of executing the adiabatic pulse sequence through qutip, tensor-network, or state-vector simulation."
       ],
       "required_actions": [
-        "Backfill uncertainty evidence for quantum_solver_d12."
+        "Replace the classical sampler stand-in with the advertised backend execution path and permutation restoration, or re-document the atom as a classical approximation before publication."
       ],
       "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py",
         "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/references.json",
         "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/cdg.json",
         "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/matches.json"
       ],
-      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[35]"
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[35]",
+      "audit_batch": "pubrev-028",
+      "audit_scope": "quantum_solver_d12_publishability_wave"
     },
     {
       "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantumsolutionextractor@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:285",
       "subfamily": "quantum_solver_d12",
       "source_path": "sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:285",
       "review_status": "reviewed",
-      "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "semantic_verdict": "held_requires_remediation",
+      "developer_semantic_verdict": "insufficient_source_alignment_evidence",
+      "trust_readiness": "blocked_on_semantic_remediation",
       "limitations": [
-        "No uncertainty.json present for quantum_solver_d12."
+        "Current implementation ranks bitstrings and maps set bits to labels, but source evidence describes node-set solution objects tied to Pulser register mapping; no focused evidence proves the wrapper preserves the advertised solution extraction contract."
       ],
       "required_actions": [
-        "Backfill uncertainty evidence for quantum_solver_d12."
+        "Add source-aligned extraction semantics, including register/qubit mapping evidence and focused tests, before publication."
       ],
       "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py",
         "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/references.json",
         "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/cdg.json",
         "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/matches.json"
       ],
-      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[36]"
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[36]",
+      "audit_batch": "pubrev-028",
+      "audit_scope": "quantum_solver_d12_publishability_wave"
     },
     {
       "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantumsolverorchestrator@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:37",
       "subfamily": "quantum_solver_d12",
       "source_path": "sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:37",
       "review_status": "reviewed",
-      "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "semantic_verdict": "held_requires_remediation",
+      "developer_semantic_verdict": "semantic_drift_classical_orchestrator",
+      "trust_readiness": "blocked_on_semantic_remediation",
       "limitations": [
-        "No uncertainty.json present for quantum_solver_d12."
+        "Current implementation bypasses Pulser register construction, bandwidth optimization, pulse parameter packaging, adiabatic backend sampling, and solution extraction; it directly runs a classical greedy/SA loop."
       ],
       "required_actions": [
-        "Backfill uncertainty evidence for quantum_solver_d12."
+        "Implement the end-to-end neutral-atom MWIS pipeline described by matches/cdg evidence, or re-scope the atom as a classical heuristic before publication."
       ],
       "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py",
         "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/references.json",
         "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/cdg.json",
         "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/matches.json"
       ],
-      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[37]"
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[37]",
+      "audit_batch": "pubrev-028",
+      "audit_scope": "quantum_solver_d12_publishability_wave"
     },
     {
       "atom_fqdn": "sciona.atoms.bio.molecular_docking.add_quantum_link.addquantumlink@sciona/atoms/bio/molecular_docking/add_quantum_link.py:24",
