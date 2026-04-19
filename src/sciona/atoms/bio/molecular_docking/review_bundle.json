@@ -14,10 +14,10 @@
     "src/sciona/atoms/bio/molecular_docking/**/uncertainty.json"
   ],
   "limitations": [
-    "Some subfamilies still lack uncertainty evidence: build_interaction_graph, greedy_mapping_d12, minimize_bandwidth, quantum_solver, quantum_solver_d12."
+    "Some subfamilies still lack uncertainty evidence: build_interaction_graph, greedy_mapping_d12, quantum_solver, quantum_solver_d12."
   ],
   "required_actions": [
-    "Backfill uncertainty evidence for: build_interaction_graph, greedy_mapping_d12, minimize_bandwidth, quantum_solver, quantum_solver_d12."
+    "Backfill uncertainty evidence for: build_interaction_graph, greedy_mapping_d12, quantum_solver, quantum_solver_d12."
   ],
   "subfamily_summaries": [
     {
@@ -46,7 +46,7 @@
       "row_count": 15,
       "has_cdg": true,
       "has_matches": true,
-      "has_uncertainty": false
+      "has_uncertainty": true
     },
     {
       "subfamily": "mwis_sa",
@@ -293,18 +293,15 @@
       "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:93",
       "review_status": "reviewed",
       "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
-      "limitations": [
-        "No uncertainty.json present for minimize_bandwidth."
-      ],
-      "required_actions": [
-        "Backfill uncertainty evidence for minimize_bandwidth."
-      ],
+      "developer_semantic_verdict": "source_aligned_with_evidence",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
       "authoritative_sources": [
         "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
         "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
-        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json"
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/uncertainty.json"
       ],
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[11]"
     },
@@ -314,18 +311,15 @@
       "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:269",
       "review_status": "reviewed",
       "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
-      "limitations": [
-        "No uncertainty.json present for minimize_bandwidth."
-      ],
-      "required_actions": [
-        "Backfill uncertainty evidence for minimize_bandwidth."
-      ],
+      "developer_semantic_verdict": "source_aligned_with_evidence",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
       "authoritative_sources": [
         "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
         "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
-        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json"
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/uncertainty.json"
       ],
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[12]"
     },
@@ -335,18 +329,15 @@
       "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:322",
       "review_status": "reviewed",
       "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
-      "limitations": [
-        "No uncertainty.json present for minimize_bandwidth."
-      ],
-      "required_actions": [
-        "Backfill uncertainty evidence for minimize_bandwidth."
-      ],
+      "developer_semantic_verdict": "source_aligned_with_evidence",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
       "authoritative_sources": [
         "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
         "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
-        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json"
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/uncertainty.json"
       ],
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[13]"
     },
@@ -356,18 +347,15 @@
       "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:76",
       "review_status": "reviewed",
       "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
-      "limitations": [
-        "No uncertainty.json present for minimize_bandwidth."
-      ],
-      "required_actions": [
-        "Backfill uncertainty evidence for minimize_bandwidth."
-      ],
+      "developer_semantic_verdict": "source_aligned_with_evidence",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
       "authoritative_sources": [
         "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
         "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
-        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json"
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/uncertainty.json"
       ],
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[14]"
     },
@@ -377,18 +365,15 @@
       "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:287",
       "review_status": "reviewed",
       "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
-      "limitations": [
-        "No uncertainty.json present for minimize_bandwidth."
-      ],
-      "required_actions": [
-        "Backfill uncertainty evidence for minimize_bandwidth."
-      ],
+      "developer_semantic_verdict": "source_aligned_with_evidence",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
       "authoritative_sources": [
         "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
         "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
-        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json"
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/uncertainty.json"
       ],
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[15]"
     },
@@ -398,18 +383,15 @@
       "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:249",
       "review_status": "reviewed",
       "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
-      "limitations": [
-        "No uncertainty.json present for minimize_bandwidth."
-      ],
-      "required_actions": [
-        "Backfill uncertainty evidence for minimize_bandwidth."
-      ],
+      "developer_semantic_verdict": "source_aligned_with_evidence",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
       "authoritative_sources": [
         "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
         "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
-        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json"
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/uncertainty.json"
       ],
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[16]"
     },
@@ -419,18 +401,15 @@
       "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:346",
       "review_status": "reviewed",
       "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
-      "limitations": [
-        "No uncertainty.json present for minimize_bandwidth."
-      ],
-      "required_actions": [
-        "Backfill uncertainty evidence for minimize_bandwidth."
-      ],
+      "developer_semantic_verdict": "source_aligned_with_evidence",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
       "authoritative_sources": [
         "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
         "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
-        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json"
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/uncertainty.json"
       ],
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[17]"
     },
@@ -440,18 +419,15 @@
       "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:229",
       "review_status": "reviewed",
       "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
-      "limitations": [
-        "No uncertainty.json present for minimize_bandwidth."
-      ],
-      "required_actions": [
-        "Backfill uncertainty evidence for minimize_bandwidth."
-      ],
+      "developer_semantic_verdict": "source_aligned_with_evidence",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
       "authoritative_sources": [
         "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
         "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
-        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json"
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/uncertainty.json"
       ],
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[18]"
     },
@@ -461,18 +437,15 @@
       "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:130",
       "review_status": "reviewed",
       "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
-      "limitations": [
-        "No uncertainty.json present for minimize_bandwidth."
-      ],
-      "required_actions": [
-        "Backfill uncertainty evidence for minimize_bandwidth."
-      ],
+      "developer_semantic_verdict": "source_aligned_with_evidence",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
       "authoritative_sources": [
         "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
         "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
-        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json"
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/uncertainty.json"
       ],
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[19]"
     },
@@ -482,18 +455,15 @@
       "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:158",
       "review_status": "reviewed",
       "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
-      "limitations": [
-        "No uncertainty.json present for minimize_bandwidth."
-      ],
-      "required_actions": [
-        "Backfill uncertainty evidence for minimize_bandwidth."
-      ],
+      "developer_semantic_verdict": "source_aligned_with_evidence",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
       "authoritative_sources": [
         "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
         "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
-        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json"
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/uncertainty.json"
       ],
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[20]"
     },
@@ -503,18 +473,15 @@
       "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:373",
       "review_status": "reviewed",
       "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
-      "limitations": [
-        "No uncertainty.json present for minimize_bandwidth."
-      ],
-      "required_actions": [
-        "Backfill uncertainty evidence for minimize_bandwidth."
-      ],
+      "developer_semantic_verdict": "source_aligned_with_evidence",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
       "authoritative_sources": [
         "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
         "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
-        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json"
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/uncertainty.json"
       ],
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[21]"
     },
@@ -524,18 +491,15 @@
       "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:186",
       "review_status": "reviewed",
       "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
-      "limitations": [
-        "No uncertainty.json present for minimize_bandwidth."
-      ],
-      "required_actions": [
-        "Backfill uncertainty evidence for minimize_bandwidth."
-      ],
+      "developer_semantic_verdict": "source_aligned_with_evidence",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
       "authoritative_sources": [
         "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
         "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
-        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json"
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/uncertainty.json"
       ],
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[22]"
     },
@@ -545,18 +509,15 @@
       "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:58",
       "review_status": "reviewed",
       "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
-      "limitations": [
-        "No uncertainty.json present for minimize_bandwidth."
-      ],
-      "required_actions": [
-        "Backfill uncertainty evidence for minimize_bandwidth."
-      ],
+      "developer_semantic_verdict": "source_aligned_with_evidence",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
       "authoritative_sources": [
         "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
         "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
-        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json"
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/uncertainty.json"
       ],
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[23]"
     },
@@ -566,18 +527,15 @@
       "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:111",
       "review_status": "reviewed",
       "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
-      "limitations": [
-        "No uncertainty.json present for minimize_bandwidth."
-      ],
-      "required_actions": [
-        "Backfill uncertainty evidence for minimize_bandwidth."
-      ],
+      "developer_semantic_verdict": "source_aligned_with_evidence",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
       "authoritative_sources": [
         "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
         "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
-        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json"
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/uncertainty.json"
       ],
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[24]"
     },
@@ -587,18 +545,15 @@
       "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:304",
       "review_status": "reviewed",
       "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
-      "limitations": [
-        "No uncertainty.json present for minimize_bandwidth."
-      ],
-      "required_actions": [
-        "Backfill uncertainty evidence for minimize_bandwidth."
-      ],
+      "developer_semantic_verdict": "source_aligned_with_evidence",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
       "authoritative_sources": [
         "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
         "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
-        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json"
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/uncertainty.json"
       ],
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[25]"
     },

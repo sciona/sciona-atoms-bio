@@ -1,0 +1,14 @@
+{
+  "atom": "minimize_bandwidth",
+  "estimates": [
+    {
+      "mode": "empirical",
+      "scalar_factor": 1.0,
+      "confidence": 0.7,
+      "n_trials": 10,
+      "epsilon": 1e-08,
+      "input_regime": "deterministic fixture regression over square and symmetric validation, weighted bandwidth metrics, reduction-state transitions, threshold sparsity, sparse graph materialization, reverse Cuthill-McKee ordering, threshold sweep enumeration, minimum-bandwidth selection, and registry alias coverage",
+      "notes": "provider-owned pytest scenarios exercise all fifteen minimize_bandwidth atom rows on small symmetric matrices; outputs are exact for the covered validation, permutation, and state-transition behavior"
+    }
+  ]
+}
