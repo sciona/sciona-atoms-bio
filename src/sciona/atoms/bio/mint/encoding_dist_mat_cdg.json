@@ -27,43 +27,43 @@
       "node_id": "encodedistancematrix",
       "parent_id": "encoding_dist_mat_root",
       "name": "encodedistancematrix",
-      "description": "Takes a list of matrices and pads them to a specified maximum dimension, effectively creating a batched and padded distance matrix representation.",
+      "description": "Encodes TCR CDR3/epitope distance matrices into a fixed-size centered representation and matching validity mask.",
       "concept_type": "custom",
       "inputs": [
         {
           "name": "mat_list",
-          "type_desc": "List[np.ndarray]",
-          "constraints": "required argument"
+          "type_desc": "Sequence[np.ndarray]",
+          "constraints": "required sequence of 2D matrices"
         },
         {
           "name": "max_cdr3",
           "type_desc": "int",
-          "constraints": "required argument"
+          "constraints": "positive maximum CDR3 axis length; default 20"
         },
         {
           "name": "max_epi",
           "type_desc": "int",
-          "constraints": "required argument"
+          "constraints": "positive maximum epitope axis length; default 12"
         }
       ],
       "outputs": [
         {
           "name": "result",
-          "type_desc": "np.ndarray",
-          "constraints": "function return value"
+          "type_desc": "tuple[np.ndarray, np.ndarray]",
+          "constraints": "encoded float32 values and boolean validity mask"
         }
       ],
       "status": "atomic",
       "children": [],
       "depth": 1,
-      "type_signature": "(mat_list: List[np.ndarray], max_cdr3: int, max_epi: int) -> np.ndarray",
+      "type_signature": "(mat_list: Sequence[np.ndarray], max_cdr3: int = 20, max_epi: int = 12) -> tuple[np.ndarray, np.ndarray]",
       "matched_primitive": null,
       "is_optional": false,
       "is_opaque": false,
       "is_external": false,
       "parallelizable": false,
-      "conceptual_summary": "Direct callable atom in the consolidated module.",
-      "critic_notes": "Signature derived from the Python wrapper definition.",
+      "conceptual_summary": "Places each source matrix in the upstream MINT CDR3-centered/epitope-offset location and returns both values and mask.",
+      "critic_notes": "pubrev-019 remediated prior top-left padding and missing-mask drift against upstream tcr-interface teim_utils.encoding_dist_mat.",
       "decomposition_rationale": "Leaf atom."
     }
   ],

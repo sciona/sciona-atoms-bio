@@ -27,13 +27,13 @@
       "node_id": "enable_incremental_state_configuration",
       "parent_id": "incremental_attention_root",
       "name": "enable_incremental_state_configuration",
-      "description": "Produces an incremental-state-enabled class/configuration as a pure class-level transformation.",
+      "description": "Decorates an attention class with Fairseq/MINT incremental-state behavior.",
       "concept_type": "custom",
       "inputs": [
         {
           "name": "cls",
           "type_desc": "type",
-          "constraints": "required class object argument"
+          "constraints": "required class object argument; class bases are mutated"
         }
       ],
       "outputs": [
@@ -52,8 +52,8 @@
       "is_opaque": false,
       "is_external": false,
       "parallelizable": false,
-      "conceptual_summary": "Direct callable atom in the consolidated module.",
-      "critic_notes": "Signature derived from the Python wrapper definition.",
+      "conceptual_summary": "Prepends the Fairseq-style incremental-state mixin, adding UUID-scoped external-state get/set helpers.",
+      "critic_notes": "pubrev-019 remediated prior hidden instance-dict state drift to the upstream with_incremental_state/FairseqIncrementalState pattern.",
       "decomposition_rationale": "Leaf atom."
     }
   ],

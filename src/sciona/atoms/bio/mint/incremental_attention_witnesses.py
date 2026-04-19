@@ -1,12 +1,10 @@
 from __future__ import annotations
 
-from sciona.ghost.abstract import AbstractArray, AbstractScalar, AbstractDistribution, AbstractSignal
+from typing import TypeVar
+
+T = TypeVar("T", bound=type)
 
 
-def witness_enable_incremental_state_configuration(cls: AbstractArray) -> AbstractArray:
-    """Shape-and-type check for enable incremental state configuration. Returns output metadata without running the real computation."""
-    result = AbstractArray(
-        shape=cls.shape,
-        dtype="float64",
-    )
-    return result
+def witness_enable_incremental_state_configuration(cls: T) -> T:
+    """The decorator returns the same class object with augmented bases."""
+    return cls

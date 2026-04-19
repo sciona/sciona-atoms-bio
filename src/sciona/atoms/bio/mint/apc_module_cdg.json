@@ -27,13 +27,13 @@
       "node_id": "apccoreevaluation",
       "parent_id": "apc_module_root",
       "name": "apccoreevaluation",
-      "description": "Executes the standalone Autoregressive Predictive Coding (APC) computation as a pure stateless function of the input.",
+      "description": "Executes average-product correction (APC) over the final two axes of a pairwise matrix.",
       "concept_type": "custom",
       "inputs": [
         {
           "name": "x",
           "type_desc": "np.ndarray",
-          "constraints": "required argument"
+          "constraints": "required ndarray with at least two dimensions"
         }
       ],
       "outputs": [
@@ -52,8 +52,8 @@
       "is_opaque": false,
       "is_external": false,
       "parallelizable": false,
-      "conceptual_summary": "Direct callable atom in the consolidated module.",
-      "critic_notes": "Signature derived from the Python wrapper definition.",
+      "conceptual_summary": "Computes x - (row_sum * col_sum / total_sum), preserving input shape.",
+      "critic_notes": "pubrev-019 remediated prior Autoregressive Predictive Coding drift to the average-product correction used by upstream MINT.",
       "decomposition_rationale": "Leaf atom."
     }
   ],

@@ -21,7 +21,7 @@
       "is_external": false,
       "parallelizable": false,
       "conceptual_summary": "Grouped atoms sharing an upstream family or module.",
-      "critic_notes": "Auto-generated module CDG for consolidation.",
+      "critic_notes": "pubrev-019 held both row-attention wrappers because the public APIs do not expose the upstream MINT RowSelfAttention module parameters or 4D MSA tensor contract.",
       "decomposition_rationale": "Replaces singleton atom subpackages with a flat module layout."
     },
     {
@@ -63,8 +63,8 @@
       "is_opaque": false,
       "is_external": false,
       "parallelizable": false,
-      "conceptual_summary": "Direct callable atom in the consolidated module.",
-      "critic_notes": "Signature derived from the Python wrapper definition.",
+      "conceptual_summary": "Generated NumPy scaled dot-product attention wrapper; not source-aligned with upstream MINT RowSelfAttention.",
+      "critic_notes": "Held in pubrev-019: current implementation lacks learned q/k/v/out projections, row-axis aggregation, 4D input contract, and upstream masking semantics.",
       "decomposition_rationale": "Leaf atom."
     },
     {
@@ -106,8 +106,8 @@
       "is_opaque": false,
       "is_external": false,
       "parallelizable": false,
-      "conceptual_summary": "Direct callable atom in the consolidated module.",
-      "critic_notes": "Signature derived from the Python wrapper definition.",
+      "conceptual_summary": "Generated torch scaled dot-product attention wrapper; not source-aligned with upstream MINT RowSelfAttention.",
+      "critic_notes": "Held in pubrev-019: current implementation lacks learned q/k/v/out projections, row-axis aggregation, 4D input contract, and upstream masking semantics.",
       "decomposition_rationale": "Leaf atom."
     }
   ],

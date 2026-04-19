@@ -1,0 +1,141 @@
+{
+  "schema_version": "1.1",
+  "atoms": {
+    "sciona.atoms.bio.mint.apc_module.apccoreevaluation@sciona/atoms/bio/mint/apc_module.py:13": {
+      "references": [
+        {
+          "ref_id": "mint2026",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual_direct_audit",
+            "matched_nodes": [
+              "mint/modules.py:32"
+            ],
+            "confidence": "high",
+            "notes": "Primary MINT paper plus upstream repository implementation of average-product correction."
+          }
+        },
+        {
+          "ref_id": "repo_mint",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual_direct_audit",
+            "matched_nodes": [
+              "mint/modules.py:32"
+            ],
+            "confidence": "high",
+            "notes": "Upstream MINT apc computes row/column product divided by total and subtracts it from x."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "sciona.atoms.bio.mint.axial_attention.row_self_attention@sciona/atoms/bio/mint/axial_attention.py:69": {
+      "references": [
+        {
+          "ref_id": "repo_mint",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual_negative_audit",
+            "matched_nodes": [
+              "mint/axial_attention.py:12"
+            ],
+            "confidence": "high",
+            "notes": "Current wrapper is not equivalent to upstream RowSelfAttention, which is a parameterized 4D nn.Module."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "sciona.atoms.bio.mint.axial_attention.rowselfattention@sciona/atoms/bio/mint/axial_attention.py:16": {
+      "references": [
+        {
+          "ref_id": "repo_mint",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual_negative_audit",
+            "matched_nodes": [
+              "mint/axial_attention.py:12"
+            ],
+            "confidence": "high",
+            "notes": "Current NumPy wrapper is an unparameterized scaled dot-product approximation, not upstream MINT RowSelfAttention."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "sciona.atoms.bio.mint.encoding_dist_mat.encodedistancematrix@sciona/atoms/bio/mint/encoding_dist_mat.py:20": {
+      "references": [
+        {
+          "ref_id": "repo_mint",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual_direct_audit",
+            "matched_nodes": [
+              "downstream/TCR-Epitope/tcr-interface/teim_utils.py:309"
+            ],
+            "confidence": "high",
+            "notes": "Upstream encoding_dist_mat centers CDR3, offsets epitopes by length, and returns encoding plus mask."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "sciona.atoms.bio.mint.incremental_attention.enable_incremental_state_configuration@sciona/atoms/bio/mint/incremental_attention.py:44": {
+      "references": [
+        {
+          "ref_id": "repo_mint",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual_direct_audit",
+            "matched_nodes": [
+              "mint/multihead_attention.py:18",
+              "mint/multihead_attention.py:58"
+            ],
+            "confidence": "high",
+            "notes": "Implementation follows MINT's FairseqIncrementalState/with_incremental_state pattern for nn.Module classes."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "sciona.atoms.bio.mint.rotary_embedding.rotaryembedding_numpy@sciona/atoms/bio/mint/rotary_embedding.py:41": {
+      "references": [
+        {
+          "ref_id": "repo_mint",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual_direct_audit",
+            "matched_nodes": [
+              "mint/rotary_embedding.py:8",
+              "mint/rotary_embedding.py:16",
+              "mint/rotary_embedding.py:23"
+            ],
+            "confidence": "medium",
+            "notes": "NumPy implementation replays upstream MINT torch rotate-half rotary embedding semantics."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "sciona.atoms.bio.mint.rotary_embedding.rotaryembedding_torch@sciona/atoms/bio/mint/rotary_embedding.py:55": {
+      "references": [
+        {
+          "ref_id": "repo_mint",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual_direct_audit",
+            "matched_nodes": [
+              "mint/rotary_embedding.py:8",
+              "mint/rotary_embedding.py:16",
+              "mint/rotary_embedding.py:23"
+            ],
+            "confidence": "high",
+            "notes": "Torch implementation follows upstream MINT RotaryEmbedding without cache state."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    }
+  }
+}

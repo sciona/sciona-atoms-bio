@@ -1,0 +1,305 @@
+{
+  "schema_version": "1.0",
+  "bundle_id": "bio.mint.pubrev019.review.v1",
+  "provider_repo": "sciona-atoms-bio",
+  "family": "bio.mint",
+  "review_status": "reviewed",
+  "semantic_verdict": "partial_safe_subset_publishable",
+  "developer_semantic_verdict": "five_source_aligned_two_held_for_row_attention_api_drift",
+  "trust_readiness": "partial_safe_subset_ready",
+  "authoritative_sources": [
+    "src/sciona/atoms/bio/mint/references.json",
+    "src/sciona/atoms/bio/mint/apc_module_cdg.json",
+    "src/sciona/atoms/bio/mint/axial_attention_cdg.json",
+    "src/sciona/atoms/bio/mint/encoding_dist_mat_cdg.json",
+    "src/sciona/atoms/bio/mint/incremental_attention_cdg.json",
+    "src/sciona/atoms/bio/mint/rotary_embedding_cdg.json"
+  ],
+  "limitations": [
+    "The two axial_attention RowSelfAttention wrappers are held because their signatures and implementations omit upstream MINT module parameters, 4D MSA layout, row aggregation, projections, and mask semantics.",
+    "rotaryembedding_numpy is a NumPy replay of upstream torch semantics rather than an upstream-defined NumPy callable."
+  ],
+  "required_actions": [
+    "Do not merge axial_attention rows into the shared manifest until RowSelfAttention is redesigned as a source-aligned parameterized module atom or explicitly re-scoped away from MINT RowSelfAttention.",
+    "Add shared REMEDIATION.md entries for both held axial_attention FQDNs with the remediation text from this review bundle."
+  ],
+  "upstream_provenance": {
+    "repository": "https://github.com/VarunUllanat/mint",
+    "commit": "79a9956b80e221066a3007bb156e8e986cba6190",
+    "audit_batch": "pubrev-019"
+  },
+  "subfamily_summaries": [
+    {
+      "subfamily": "mint_apc_module",
+      "row_count": 1,
+      "ready_count": 1,
+      "held_count": 0,
+      "has_cdg": true,
+      "has_references": true
+    },
+    {
+      "subfamily": "mint_axial_attention",
+      "row_count": 2,
+      "ready_count": 0,
+      "held_count": 2,
+      "has_cdg": true,
+      "has_references": true
+    },
+    {
+      "subfamily": "mint_encoding_dist_mat",
+      "row_count": 1,
+      "ready_count": 1,
+      "held_count": 0,
+      "has_cdg": true,
+      "has_references": true
+    },
+    {
+      "subfamily": "mint_incremental_attention",
+      "row_count": 1,
+      "ready_count": 1,
+      "held_count": 0,
+      "has_cdg": true,
+      "has_references": true
+    },
+    {
+      "subfamily": "mint_rotary_embedding",
+      "row_count": 2,
+      "ready_count": 2,
+      "held_count": 0,
+      "has_cdg": true,
+      "has_references": true
+    }
+  ],
+  "rows": [
+    {
+      "atom_fqdn": "sciona.atoms.bio.mint.apc_module.apccoreevaluation@sciona/atoms/bio/mint/apc_module.py:13",
+      "subfamily": "mint_apc_module",
+      "source_path": "sciona/atoms/bio/mint/apc_module.py:13",
+      "description": "Apply average-product correction over the final two axes.",
+      "parameters": [
+        "x: np.ndarray with at least two dimensions"
+      ],
+      "io_specs": [
+        "returns np.ndarray preserving x.shape"
+      ],
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_direct_audit_after_remediation",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
+      "uncertainty": "low",
+      "provenance": "Matched to upstream mint/modules.py:32 apc implementation at commit 79a9956b80e221066a3007bb156e8e986cba6190.",
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/mint/apc_module.py",
+        "src/sciona/atoms/bio/mint/apc_module_witnesses.py",
+        "src/sciona/atoms/bio/mint/apc_module_cdg.json",
+        "src/sciona/atoms/bio/mint/references.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/mint/review_bundle.json#rows[0]",
+      "audit_batch": "pubrev-019",
+      "audit_scope": "bio.mint.remainder"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.mint.axial_attention.row_self_attention@sciona/atoms/bio/mint/axial_attention.py:69",
+      "subfamily": "mint_axial_attention",
+      "source_path": "sciona/atoms/bio/mint/axial_attention.py:69",
+      "description": "Generated torch scaled dot-product attention wrapper currently named like MINT RowSelfAttention.",
+      "parameters": [
+        "x: torch.Tensor",
+        "self_attn_mask: torch.Tensor | None",
+        "self_attn_padding_mask: torch.Tensor | None"
+      ],
+      "io_specs": [
+        "returns tuple[torch.Tensor, torch.Tensor] for 2D/3D inputs"
+      ],
+      "review_status": "reviewed",
+      "semantic_verdict": "held_requires_remediation",
+      "developer_semantic_verdict": "semantic_drift_from_parameterized_mint_row_self_attention",
+      "trust_readiness": "blocked_on_semantic_remediation",
+      "limitations": [
+        "Upstream MINT RowSelfAttention is an nn.Module over 4D tensors shaped (num_rows, num_cols, batch_size, embed_dim).",
+        "Current wrapper has no q_proj, k_proj, v_proj, out_proj weights and cannot reproduce learned RowSelfAttention behavior.",
+        "Current mask semantics differ: upstream raises for self_attn_mask and handles padding over MSA row/column axes."
+      ],
+      "required_actions": [
+        "Replace with a source-aligned RowSelfAttention module/core API that accepts or owns q/k/v/out projection parameters and 4D MSA tensors.",
+        "Update CDG, witness metadata, and tests to cover upstream shape contract, projection behavior, row aggregation, padding masking, and batched-forward behavior.",
+        "Alternatively rename/re-scope this atom as generic scaled dot-product attention and do not cite MINT RowSelfAttention."
+      ],
+      "uncertainty": "low",
+      "provenance": "Negative audit against upstream mint/axial_attention.py:12 RowSelfAttention at commit 79a9956b80e221066a3007bb156e8e986cba6190.",
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/mint/axial_attention.py",
+        "src/sciona/atoms/bio/mint/axial_attention_witnesses.py",
+        "src/sciona/atoms/bio/mint/axial_attention_cdg.json",
+        "src/sciona/atoms/bio/mint/references.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/mint/review_bundle.json#rows[1]",
+      "audit_batch": "pubrev-019",
+      "audit_scope": "bio.mint.remainder"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.mint.axial_attention.rowselfattention@sciona/atoms/bio/mint/axial_attention.py:16",
+      "subfamily": "mint_axial_attention",
+      "source_path": "sciona/atoms/bio/mint/axial_attention.py:16",
+      "description": "Generated NumPy scaled dot-product attention wrapper currently named like MINT RowSelfAttention.",
+      "parameters": [
+        "x: np.ndarray",
+        "self_attn_mask: np.ndarray",
+        "self_attn_padding_mask: np.ndarray"
+      ],
+      "io_specs": [
+        "returns np.ndarray for 2D/3D inputs"
+      ],
+      "review_status": "reviewed",
+      "semantic_verdict": "held_requires_remediation",
+      "developer_semantic_verdict": "semantic_drift_from_parameterized_mint_row_self_attention",
+      "trust_readiness": "blocked_on_semantic_remediation",
+      "limitations": [
+        "Upstream MINT has no NumPy RowSelfAttention implementation.",
+        "Current wrapper has no learned projections or 4D MSA row/column tensor contract.",
+        "Current padding-mask behavior is an approximation and is not substantiated by upstream MINT source."
+      ],
+      "required_actions": [
+        "Either remove/re-scope as an independently documented generic NumPy attention helper or add an explicit source-aligned API with parameters matching upstream RowSelfAttention semantics.",
+        "Do not publish under the MINT RowSelfAttention claim without source-aligned behavior tests and documentation."
+      ],
+      "uncertainty": "low",
+      "provenance": "Negative audit against upstream mint/axial_attention.py:12 RowSelfAttention at commit 79a9956b80e221066a3007bb156e8e986cba6190.",
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/mint/axial_attention.py",
+        "src/sciona/atoms/bio/mint/axial_attention_witnesses.py",
+        "src/sciona/atoms/bio/mint/axial_attention_cdg.json",
+        "src/sciona/atoms/bio/mint/references.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/mint/review_bundle.json#rows[2]",
+      "audit_batch": "pubrev-019",
+      "audit_scope": "bio.mint.remainder"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.mint.encoding_dist_mat.encodedistancematrix@sciona/atoms/bio/mint/encoding_dist_mat.py:20",
+      "subfamily": "mint_encoding_dist_mat",
+      "source_path": "sciona/atoms/bio/mint/encoding_dist_mat.py:20",
+      "description": "Encode TCR CDR3/epitope distance matrices and validity masks.",
+      "parameters": [
+        "mat_list: Sequence[np.ndarray]",
+        "max_cdr3: int = 20",
+        "max_epi: int = 12"
+      ],
+      "io_specs": [
+        "returns tuple[encoding float32, masking bool] shaped (len(mat_list), max_cdr3, max_epi)"
+      ],
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_direct_audit_after_remediation",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
+      "uncertainty": "low",
+      "provenance": "Matched to upstream downstream/TCR-Epitope/tcr-interface/teim_utils.py:309 encoding_dist_mat at commit 79a9956b80e221066a3007bb156e8e986cba6190.",
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/mint/encoding_dist_mat.py",
+        "src/sciona/atoms/bio/mint/encoding_dist_mat_witnesses.py",
+        "src/sciona/atoms/bio/mint/encoding_dist_mat_cdg.json",
+        "src/sciona/atoms/bio/mint/references.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/mint/review_bundle.json#rows[3]",
+      "audit_batch": "pubrev-019",
+      "audit_scope": "bio.mint.remainder"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.mint.incremental_attention.enable_incremental_state_configuration@sciona/atoms/bio/mint/incremental_attention.py:44",
+      "subfamily": "mint_incremental_attention",
+      "source_path": "sciona/atoms/bio/mint/incremental_attention.py:44",
+      "description": "Decorate an nn.Module-style class with MINT/Fairseq incremental-state behavior.",
+      "parameters": [
+        "cls: type"
+      ],
+      "io_specs": [
+        "returns the same class object with FairseqIncrementalState prepended to bases"
+      ],
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_direct_audit_after_remediation",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [
+        "Like upstream MINT, dynamic __bases__ mutation is validated for nn.Module-style classes and may not work for arbitrary built-in/layout-incompatible classes."
+      ],
+      "required_actions": [],
+      "uncertainty": "medium",
+      "provenance": "Matched to upstream mint/multihead_attention.py FairseqIncrementalState and with_incremental_state at commit 79a9956b80e221066a3007bb156e8e986cba6190.",
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/mint/incremental_attention.py",
+        "src/sciona/atoms/bio/mint/incremental_attention_witnesses.py",
+        "src/sciona/atoms/bio/mint/incremental_attention_cdg.json",
+        "src/sciona/atoms/bio/mint/references.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/mint/review_bundle.json#rows[4]",
+      "audit_batch": "pubrev-019",
+      "audit_scope": "bio.mint.remainder"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.mint.rotary_embedding.rotaryembedding_numpy@sciona/atoms/bio/mint/rotary_embedding.py:41",
+      "subfamily": "mint_rotary_embedding",
+      "source_path": "sciona/atoms/bio/mint/rotary_embedding.py:41",
+      "description": "Apply MINT/RoFormer rotate-half rotary embedding to NumPy query/key arrays.",
+      "parameters": [
+        "q: np.ndarray",
+        "k: np.ndarray"
+      ],
+      "io_specs": [
+        "returns tuple[np.ndarray, np.ndarray] preserving q/k shapes"
+      ],
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_numpy_replay_after_fqdn_remediation",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [
+        "NumPy variant is a deterministic replay of the upstream torch algorithm; upstream MINT only defines torch RotaryEmbedding."
+      ],
+      "required_actions": [],
+      "uncertainty": "medium",
+      "provenance": "Matched to upstream mint/rotary_embedding.py rotate_half/apply_rotary_pos_emb/RotaryEmbedding at commit 79a9956b80e221066a3007bb156e8e986cba6190.",
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/mint/rotary_embedding.py",
+        "src/sciona/atoms/bio/mint/rotary_embedding_witnesses.py",
+        "src/sciona/atoms/bio/mint/rotary_embedding_cdg.json",
+        "src/sciona/atoms/bio/mint/references.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/mint/review_bundle.json#rows[5]",
+      "audit_batch": "pubrev-019",
+      "audit_scope": "bio.mint.remainder"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.mint.rotary_embedding.rotaryembedding_torch@sciona/atoms/bio/mint/rotary_embedding.py:55",
+      "subfamily": "mint_rotary_embedding",
+      "source_path": "sciona/atoms/bio/mint/rotary_embedding.py:55",
+      "description": "Apply MINT/RoFormer rotate-half rotary embedding to torch query/key tensors.",
+      "parameters": [
+        "q: torch.Tensor",
+        "k: torch.Tensor"
+      ],
+      "io_specs": [
+        "returns tuple[torch.Tensor, torch.Tensor] preserving q/k shapes"
+      ],
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_direct_audit_after_fqdn_remediation",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
+      "uncertainty": "low",
+      "provenance": "Matched to upstream mint/rotary_embedding.py rotate_half/apply_rotary_pos_emb/RotaryEmbedding at commit 79a9956b80e221066a3007bb156e8e986cba6190.",
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/mint/rotary_embedding.py",
+        "src/sciona/atoms/bio/mint/rotary_embedding_witnesses.py",
+        "src/sciona/atoms/bio/mint/rotary_embedding_cdg.json",
+        "src/sciona/atoms/bio/mint/references.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/mint/review_bundle.json#rows[6]",
+      "audit_batch": "pubrev-019",
+      "audit_scope": "bio.mint.remainder"
+    }
+  ]
+}

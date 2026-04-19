@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from typing import Any
 import numpy as np
 
 import icontract
@@ -9,19 +8,26 @@ from .apc_module_witnesses import witness_apccoreevaluation
 
 @register_atom(witness_apccoreevaluation)  # type: ignore[untyped-decorator]
 @icontract.require(lambda x: x is not None, "x cannot be None")
+@icontract.require(lambda x: x.ndim >= 2, "x must have at least two dimensions")
 @icontract.ensure(lambda result: result is not None, "ApcCoreEvaluation output must not be None")
 def apccoreevaluation(x: np.ndarray) -> np.ndarray:
-    """Executes the standalone Autoregressive Predictive Coding (APC) computation as a pure stateless function of the input.
+    """Apply average-product correction (APC) over the final two axes.
 
     Args:
-        x: Direct method argument; no stated structural constraints.
+        x: Array whose last two axes form the pairwise matrix to correct.
 
     Returns:
-        Return value produced solely from x with no persistent state.
+        Corrected array with the same shape as ``x``.
     """
-    # Autoregressive Predictive Coding: predict next frame from context
-    # Simple APC: use last-frame predictor (identity shift)
-    if x.ndim == 1:
-        return np.roll(x, -1)
-    # For 2D+ input: shift along time axis (axis 0)
-    return np.roll(x, -1, axis=0)
+    a1 = x.sum(axis=-1, keepdims=True)
+    a2 = x.sum(axis=-2, keepdims=True)
+    a12 = x.sum(axis=(-1, -2), keepdims=True)
+
+    with np.errstate(divide="ignore", invalid="ignore"):
+        avg = np.divide(
+            a1 * a2,
+            a12,
+            out=np.zeros_like(x, dtype=np.result_type(x, np.float64)),
+            where=a12 != 0,
+        )
+    return x - avg
