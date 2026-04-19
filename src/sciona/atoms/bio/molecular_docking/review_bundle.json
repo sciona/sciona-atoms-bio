@@ -5,8 +5,8 @@
   "family": "bio.molecular_docking",
   "review_status": "partial",
   "semantic_verdict": "publishable_candidate_with_gaps",
-  "developer_semantic_verdict": "source_aligned_with_partial_evidence",
-  "trust_readiness": "blocked_on_uncertainty_backfill",
+  "developer_semantic_verdict": "source_aligned_safe_subset_with_holds",
+  "trust_readiness": "partial_safe_subset_ready",
   "authoritative_sources": [
     "src/sciona/atoms/bio/molecular_docking/**/references.json",
     "src/sciona/atoms/bio/molecular_docking/**/cdg.json",
@@ -14,10 +14,12 @@
     "src/sciona/atoms/bio/molecular_docking/**/uncertainty.json"
   ],
   "limitations": [
-    "Some subfamilies still lack uncertainty evidence: build_interaction_graph, greedy_mapping_d12, quantum_solver, quantum_solver_d12."
+    "pubrev-005 marks only directly audited safe molecular_docking atoms ready; placeholder or semantically drifting atoms remain unpublished and are documented in REMEDIATION.md.",
+    "Some older subfamily rows still lack uncertainty evidence and remain blocked until separately reviewed."
   ],
   "required_actions": [
-    "Backfill uncertainty evidence for: build_interaction_graph, greedy_mapping_d12, quantum_solver, quantum_solver_d12."
+    "Resolve REMEDIATION.md hold items before publishing the held pubrev-005 atoms.",
+    "Backfill or supersede uncertainty evidence for any non-pubrev-005 rows still blocked on uncertainty."
   ],
   "subfamily_summaries": [
     {
@@ -72,67 +74,64 @@
   ],
   "rows": [
     {
-      "atom_fqdn": "sciona.atoms.bio.molecular_docking.build_interaction_graph.networkx_weighted_graph_materialization@sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py:88",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.build_interaction_graph.networkx_weighted_graph_materialization@sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py:72",
       "subfamily": "build_interaction_graph",
-      "source_path": "sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py:88",
+      "source_path": "sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py:72",
       "review_status": "reviewed",
       "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
-      "limitations": [
-        "No uncertainty.json present for build_interaction_graph."
-      ],
-      "required_actions": [
-        "Backfill uncertainty evidence for build_interaction_graph."
-      ],
+      "developer_semantic_verdict": "source_aligned_with_direct_audit",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
       "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py",
         "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/references.json",
         "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/cdg.json",
         "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/matches.json"
       ],
-      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[0]"
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[0]",
+      "audit_batch": "pubrev-005",
+      "audit_scope": "wave_1_audit_completion"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.molecular_docking.build_interaction_graph.pair_distance_compatibility_check@sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py:20",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.build_interaction_graph.pair_distance_compatibility_check@sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py:26",
       "subfamily": "build_interaction_graph",
-      "source_path": "sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py:20",
+      "source_path": "sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py:26",
       "review_status": "reviewed",
       "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
-      "limitations": [
-        "No uncertainty.json present for build_interaction_graph."
-      ],
-      "required_actions": [
-        "Backfill uncertainty evidence for build_interaction_graph."
-      ],
+      "developer_semantic_verdict": "source_aligned_with_direct_audit",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
       "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py",
         "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/references.json",
         "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/cdg.json",
         "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/matches.json"
       ],
-      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[1]"
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[1]",
+      "audit_batch": "pubrev-005",
+      "audit_scope": "wave_1_audit_completion"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.molecular_docking.build_interaction_graph.weighted_interaction_edge_derivation@sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py:44",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.build_interaction_graph.weighted_interaction_edge_derivation@sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py:57",
       "subfamily": "build_interaction_graph",
-      "source_path": "sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py:44",
+      "source_path": "sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py:57",
       "review_status": "reviewed",
       "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
-      "limitations": [
-        "No uncertainty.json present for build_interaction_graph."
-      ],
-      "required_actions": [
-        "Backfill uncertainty evidence for build_interaction_graph."
-      ],
+      "developer_semantic_verdict": "source_aligned_with_direct_audit",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
       "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py",
         "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/references.json",
         "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/cdg.json",
         "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/matches.json"
       ],
-      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[2]"
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[2]",
+      "audit_batch": "pubrev-005",
+      "audit_scope": "wave_1_audit_completion"
     },
     {
       "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping.assemblestaticmappingcontext@sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:29",
@@ -251,20 +250,19 @@
       "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py:26",
       "review_status": "reviewed",
       "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
-      "limitations": [
-        "No uncertainty.json present for greedy_mapping_d12."
-      ],
-      "required_actions": [
-        "Backfill uncertainty evidence for greedy_mapping_d12."
-      ],
+      "developer_semantic_verdict": "source_aligned_with_direct_audit",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
       "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py",
         "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/references.json",
         "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/cdg.json",
         "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/matches.json"
       ],
-      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[9]"
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[9]",
+      "audit_batch": "pubrev-005",
+      "audit_scope": "wave_1_audit_completion"
     },
     {
       "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping_d12.orchestrate_generation_and_validate@sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py:155",
@@ -796,6 +794,44 @@
         "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/matches.json"
       ],
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[37]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.add_quantum_link.addquantumlink@sciona/atoms/bio/molecular_docking/add_quantum_link.py:24",
+      "subfamily": "add_quantum_link",
+      "source_path": "sciona/atoms/bio/molecular_docking/add_quantum_link.py:24",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_direct_audit",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/add_quantum_link.py",
+        "src/sciona/atoms/bio/molecular_docking/add_quantum_link_cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/references.json"
+      ],
+      "audit_batch": "pubrev-005",
+      "audit_scope": "wave_1_audit_completion",
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[38]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.build_complementary.constructcomplementarygraph@sciona/atoms/bio/molecular_docking/build_complementary.py:15",
+      "subfamily": "build_complementary",
+      "source_path": "sciona/atoms/bio/molecular_docking/build_complementary.py:15",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_direct_audit",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/build_complementary.py",
+        "src/sciona/atoms/bio/molecular_docking/build_complementary_cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/references.json"
+      ],
+      "audit_batch": "pubrev-005",
+      "audit_scope": "wave_1_audit_completion",
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[39]"
     }
   ]
 }
