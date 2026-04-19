@@ -26,7 +26,7 @@ def dataset_state_initialization(
     sequence_labels: list[str],
     sequence_strs: list[str],
 ) -> DatasetState:
-    """Build a read-only sequence dataset state from aligned in-memory inputs.
+    """Build a sequence dataset state snapshot from aligned in-memory inputs.
 
     Args:
         sequence_labels: Sequence identifiers.

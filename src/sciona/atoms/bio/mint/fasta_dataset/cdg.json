@@ -4,7 +4,7 @@
       "node_id": "FastaBatchedDataset_root",
       "parent_id": null,
       "name": "FastaBatchedDataset",
-      "description": "Ingested pipeline from FastaBatchedDataset",
+      "description": "In-memory sequence dataset helpers aligned with the FastaBatchedDataset constructor, length, item access, and token-budget batching operations.",
       "concept_type": "custom",
       "inputs": [],
       "outputs": [],
@@ -22,267 +22,52 @@
       "is_opaque": false,
       "is_external": false,
       "parallelizable": false,
-      "conceptual_summary": "",
+      "conceptual_summary": "A stateful dataset facade represented here as pure functions over an explicit state dictionary.",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "The registered atoms expose the class constructor and simple methods as explicit state-passing functions."
     },
     {
       "node_id": "dataset_state_initialization",
       "parent_id": "FastaBatchedDataset_root",
       "name": "dataset_state_initialization",
-      "description": "Build an immutable dataset state (sequence_labels, sequence_strs) either from direct in-memory inputs or by loading/parsing a FASTA file.",
+      "description": "Copy aligned sequence labels and sequence strings into an explicit dataset state.",
       "concept_type": "custom",
       "inputs": [
         {
           "name": "sequence_labels",
-          "type_desc": "List[str]",
-          "constraints": "Required when constructing directly; length must match sequence_strs."
+          "type_desc": "list[str]",
+          "constraints": "Sequence identifiers; length must match sequence_strs.",
+          "required": true,
+          "default_value_repr": ""
         },
         {
           "name": "sequence_strs",
-          "type_desc": "List[str]",
-          "constraints": "Required when constructing directly; one sequence per label."
-        },
-        {
-          "name": "fasta_file",
-          "type_desc": "str",
-          "constraints": "Optional alternate constructor input; if provided, sequences are parsed from file."
+          "type_desc": "list[str]",
+          "constraints": "Biological sequence strings; one sequence per label.",
+          "required": true,
+          "default_value_repr": ""
         }
       ],
       "outputs": [
         {
           "name": "dataset_state",
-          "type_desc": "object",
-          "constraints": "Immutable logical state passed to downstream atoms."
+          "type_desc": "DatasetState",
+          "constraints": "Dictionary with copied sequence_labels and sequence_strs lists.",
+          "required": true,
+          "default_value_repr": ""
         }
       ],
-      "status": "decomposed",
-      "children": [
-        "normalize_direct_sequence_inputs",
-        "parse_fasta_records_with_header_fallback",
-        "select_sequence_source",
-        "validate_label_uniqueness",
-        "assemble_dataset_state"
-      ],
+      "status": "atomic",
+      "children": [],
       "depth": 1,
-      "type_signature": "(sequence_labels: List[str], sequence_strs: List[str], fasta_file: str | Path) -> FastaDatasetState{sequence_labels: List[str], sequence_strs: List[str]}",
+      "type_signature": "(sequence_labels: list[str], sequence_strs: list[str]) -> DatasetState",
       "matched_primitive": null,
       "is_optional": false,
       "is_opaque": false,
       "is_external": false,
       "parallelizable": false,
-      "conceptual_summary": "Canonical Immutable Paired-Sequence State Constructor. Constructs a canonical immutable state object containing two index-aligned lists: identifier tokens and associated symbol sequences. The constructor supports two ingestion paths that converge to the same internal representation: direct in-memory arrays or parsing from a structured text file into equivalent arrays. It enforces structural validity constraints (especially one-to-one cardinality alignment) before freezing the state for downstream computation.. Applications: Initializing an immutable corpus state of document IDs and token strings from either RAM buffers or line-delimited text archives in natural language processing, Building a fixed experiment state of trial IDs and temporal signal traces from direct arrays or instrument export files in biomedical signal analysis, Creating a read-only simulation input state of entity IDs and event-sequence encodings from memory or configuration files in discrete-event systems engineering",
-      "critic_notes": "",
-      "decomposition_rationale": ""
-    },
-    {
-      "node_id": "normalize_direct_sequence_inputs",
-      "parent_id": "dataset_state_initialization",
-      "name": "normalize_direct_sequence_inputs",
-      "description": "Create immutable list snapshots of in-memory sequence labels and sequence strings for the direct-constructor path.",
-      "concept_type": "custom",
-      "inputs": [
-        {
-          "name": "sequence_labels",
-          "type_desc": "List[str] | Iterable[str]",
-          "constraints": "Optional when using FASTA path"
-        },
-        {
-          "name": "sequence_strs",
-          "type_desc": "List[str] | Iterable[str]",
-          "constraints": "Optional when using FASTA path"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "direct_labels",
-          "type_desc": "List[str]",
-          "constraints": "Order preserved from input"
-        },
-        {
-          "name": "direct_strs",
-          "type_desc": "List[str]",
-          "constraints": "Order preserved from input"
-        }
-      ],
-      "status": "atomic",
-      "children": [],
-      "depth": 2,
-      "type_signature": "(sequence_labels: List[str] | Iterable[str], sequence_strs: List[str] | Iterable[str]) -> tuple[List[str], List[str]]",
-      "matched_primitive": null,
-      "is_optional": false,
-      "is_opaque": false,
-      "is_external": false,
-      "parallelizable": false,
-      "conceptual_summary": "",
-      "critic_notes": "",
-      "decomposition_rationale": ""
-    },
-    {
-      "node_id": "parse_fasta_records_with_header_fallback",
-      "parent_id": "dataset_state_initialization",
-      "name": "parse_fasta_records_with_header_fallback",
-      "description": "Scan FASTA lines, flush completed records on new headers, concatenate sequence buffers, and synthesize a fallback label `seqnum{line_idx:09d}` when a header is empty.",
-      "concept_type": "string_matching",
-      "inputs": [
-        {
-          "name": "fasta_file",
-          "type_desc": "str",
-          "constraints": "Readable FASTA-like text file; optional when using direct inputs"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "file_labels",
-          "type_desc": "List[str]",
-          "constraints": "One label per parsed sequence record"
-        },
-        {
-          "name": "file_strs",
-          "type_desc": "List[str]",
-          "constraints": "Each entry is concatenated sequence lines for corresponding label"
-        }
-      ],
-      "status": "atomic",
-      "children": [],
-      "depth": 2,
-      "type_signature": "(fasta_file: str | Path) -> tuple[List[str], List[str]]",
-      "matched_primitive": null,
-      "is_optional": false,
-      "is_opaque": false,
-      "is_external": false,
-      "parallelizable": false,
-      "conceptual_summary": "",
-      "critic_notes": "",
-      "decomposition_rationale": ""
-    },
-    {
-      "node_id": "select_sequence_source",
-      "parent_id": "dataset_state_initialization",
-      "name": "select_sequence_source",
-      "description": "Choose canonical sequence payload from either parsed FASTA records or normalized in-memory lists.",
-      "concept_type": "custom",
-      "inputs": [
-        {
-          "name": "direct_labels",
-          "type_desc": "List[str]",
-          "constraints": "Used when no FASTA source is selected"
-        },
-        {
-          "name": "direct_strs",
-          "type_desc": "List[str]",
-          "constraints": "Used when no FASTA source is selected"
-        },
-        {
-          "name": "file_labels",
-          "type_desc": "List[str]",
-          "constraints": "Used when FASTA source is selected"
-        },
-        {
-          "name": "file_strs",
-          "type_desc": "List[str]",
-          "constraints": "Used when FASTA source is selected"
-        },
-        {
-          "name": "fasta_file",
-          "type_desc": "str",
-          "constraints": "Presence indicates FASTA path is active"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "selected_labels",
-          "type_desc": "List[str]",
-          "constraints": "Canonical labels for dataset state"
-        },
-        {
-          "name": "selected_strs",
-          "type_desc": "List[str]",
-          "constraints": "Canonical sequence strings for dataset state"
-        }
-      ],
-      "status": "atomic",
-      "children": [],
-      "depth": 2,
-      "type_signature": "(direct_labels: List[str], direct_strs: List[str], file_labels: List[str], file_strs: List[str], fasta_file: str | Path) -> tuple[List[str], List[str]]",
-      "matched_primitive": null,
-      "is_optional": false,
-      "is_opaque": false,
-      "is_external": false,
-      "parallelizable": false,
-      "conceptual_summary": "",
-      "critic_notes": "",
-      "decomposition_rationale": ""
-    },
-    {
-      "node_id": "validate_label_uniqueness",
-      "parent_id": "dataset_state_initialization",
-      "name": "validate_label_uniqueness",
-      "description": "Enforce that sequence labels are unique by comparing list size with set cardinality.",
-      "concept_type": "set_theory",
-      "inputs": [
-        {
-          "name": "selected_labels",
-          "type_desc": "List[str]",
-          "constraints": "Must be finite; duplicates are invalid"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "validated_labels",
-          "type_desc": "List[str]",
-          "constraints": "Guaranteed unique labels"
-        }
-      ],
-      "status": "atomic",
-      "children": [],
-      "depth": 2,
-      "type_signature": "(selected_labels: List[str]) -> List[str]",
-      "matched_primitive": null,
-      "is_optional": false,
-      "is_opaque": false,
-      "is_external": false,
-      "parallelizable": false,
-      "conceptual_summary": "",
-      "critic_notes": "",
-      "decomposition_rationale": ""
-    },
-    {
-      "node_id": "assemble_dataset_state",
-      "parent_id": "dataset_state_initialization",
-      "name": "assemble_dataset_state",
-      "description": "Construct the immutable dataset state object from validated labels and aligned sequence strings.",
-      "concept_type": "custom",
-      "inputs": [
-        {
-          "name": "validated_labels",
-          "type_desc": "List[str]",
-          "constraints": "Unique, ordered labels"
-        },
-        {
-          "name": "selected_strs",
-          "type_desc": "List[str]",
-          "constraints": "Same length and order as labels"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "dataset_state",
-          "type_desc": "object",
-          "constraints": "Immutable logical state for downstream use"
-        }
-      ],
-      "status": "atomic",
-      "children": [],
-      "depth": 2,
-      "type_signature": "(validated_labels: List[str], selected_strs: List[str]) -> FastaDatasetState{sequence_labels: List[str], sequence_strs: List[str]}",
-      "matched_primitive": null,
-      "is_optional": false,
-      "is_opaque": false,
-      "is_external": false,
-      "parallelizable": false,
-      "conceptual_summary": "",
-      "critic_notes": "",
+      "conceptual_summary": "Aligned sequence-state constructor. The operation snapshots two same-length collections into an explicit dictionary state while preserving index alignment.",
+      "critic_notes": "This atom covers the in-memory constructor path only; FASTA file parsing is not implemented by this registered function.",
       "decomposition_rationale": ""
     },
     {
@@ -294,27 +79,31 @@
       "inputs": [
         {
           "name": "dataset_state",
-          "type_desc": "FastaDatasetState",
-          "constraints": "Must contain sequence_labels."
+          "type_desc": "DatasetState",
+          "constraints": "Must contain sequence_labels.",
+          "required": true,
+          "default_value_repr": ""
         }
       ],
       "outputs": [
         {
           "name": "dataset_length",
           "type_desc": "int",
-          "constraints": ">= 0"
+          "constraints": "Non-negative count of labels.",
+          "required": true,
+          "default_value_repr": ""
         }
       ],
       "status": "atomic",
       "children": [],
       "depth": 1,
-      "type_signature": "(dataset_state: FastaDatasetState) -> int",
+      "type_signature": "(dataset_state: DatasetState) -> int",
       "matched_primitive": null,
       "is_optional": false,
       "is_opaque": false,
       "is_external": false,
       "parallelizable": false,
-      "conceptual_summary": "Labeled Collection Cardinality Extractor. This operation maps a state container to a single scalar by reading the cardinality of a required identifier index within that container. It does not transform, reorder, or inspect element content; it only extracts structural size information from the current state snapshot. The output is an exact non-negative integer equal to the current number of indexed entries.. Applications: Counting annotated waveform segments in a biomedical signal processing registry before batched analysis, Retrieving the number of pending work-unit IDs in a distributed scheduler state for resource allocation, Measuring labeled tile count in a remote-sensing annotation manifest prior to training/evaluation split generation, Querying component-identifier count in a mechanical assembly model to gate downstream simulation complexity",
+      "conceptual_summary": "Labeled collection cardinality extractor.",
       "critic_notes": "",
       "decomposition_rationale": ""
     },
@@ -322,37 +111,43 @@
       "node_id": "dataset_item_retrieval",
       "parent_id": "FastaBatchedDataset_root",
       "name": "dataset_item_retrieval",
-      "description": "Retrieve a single labeled sequence by index from immutable dataset_state.",
+      "description": "Retrieve a single labeled sequence by index from dataset_state.",
       "concept_type": "searching",
       "inputs": [
         {
           "name": "dataset_state",
-          "type_desc": "FastaDatasetState",
-          "constraints": "Must contain sequence_labels and sequence_strs with equal length."
+          "type_desc": "DatasetState",
+          "constraints": "Must contain sequence_labels and sequence_strs with equal length.",
+          "required": true,
+          "default_value_repr": ""
         },
         {
           "name": "idx",
           "type_desc": "int",
-          "constraints": "Index must be valid for dataset length."
+          "constraints": "Valid Python list index for the dataset.",
+          "required": true,
+          "default_value_repr": ""
         }
       ],
       "outputs": [
         {
           "name": "sequence_record",
-          "type_desc": "Tuple[str, str]",
-          "constraints": "(label, sequence_str)"
+          "type_desc": "tuple[str, str]",
+          "constraints": "(label, sequence_str) from the same index.",
+          "required": true,
+          "default_value_repr": ""
         }
       ],
       "status": "atomic",
       "children": [],
       "depth": 1,
-      "type_signature": "(dataset_state: FastaDatasetState, idx: int) -> Tuple[str, str]",
+      "type_signature": "(dataset_state: DatasetState, idx: int) -> tuple[str, str]",
       "matched_primitive": null,
       "is_optional": false,
       "is_opaque": false,
       "is_external": false,
       "parallelizable": false,
-      "conceptual_summary": "aligned_pair_index_lookup. Given an immutable container composed of two positionally aligned 1-D collections, this operation performs direct integer-index selection into both collections at the same coordinate. It returns the paired elements as a 2-tuple, preserving alignment semantics without modifying source state. The transform is a lossless projection from a size-N paired collection to a single pair under a validity constraint on the index.. Applications: Signal processing: retrieve one (channel_id, sampled_trace) pair from aligned channel metadata and waveform arrays., Computer vision: fetch one (annotation_tag, encoded_feature_string) pair from parallel label/descriptor stores., Network engineering: select one (node_identifier, serialized_state_vector) pair from indexed topology snapshots., Manufacturing analytics: access one (part_code, sensor_event_sequence) pair from synchronized production records.",
+      "conceptual_summary": "Aligned pair index lookup.",
       "critic_notes": "",
       "decomposition_rationale": ""
     },
@@ -360,117 +155,62 @@
       "node_id": "token_budget_batch_planning",
       "parent_id": "FastaBatchedDataset_root",
       "name": "token_budget_batch_planning",
-      "description": "Compute batch index groups under a token budget using sequence strings and per-sequence overhead.",
+      "description": "Compute sorted greedy batch index groups using sequence lengths and per-sequence token overhead.",
       "concept_type": "greedy",
       "inputs": [
         {
           "name": "dataset_state",
-          "type_desc": "FastaDatasetState",
-          "constraints": "Uses sequence_strs for length-aware batching."
+          "type_desc": "DatasetState",
+          "constraints": "Uses sequence_strs for length-aware batching.",
+          "required": true,
+          "default_value_repr": ""
         },
         {
           "name": "toks_per_batch",
           "type_desc": "int",
-          "constraints": "> 0"
+          "constraints": "Maximum token budget used by the greedy batching check.",
+          "required": true,
+          "default_value_repr": ""
         },
         {
           "name": "extra_toks_per_seq",
           "type_desc": "int",
-          "constraints": ">= 0"
+          "constraints": "Per-sequence overhead added to each sequence length.",
+          "required": false,
+          "default_value_repr": "0"
         }
       ],
       "outputs": [
         {
           "name": "batch_indices",
-          "type_desc": "List[List[int]]",
-          "constraints": "Each inner list is a batch of dataset indices satisfying token budget."
+          "type_desc": "list[list[int]]",
+          "constraints": "Each inner list contains original dataset indices.",
+          "required": true,
+          "default_value_repr": ""
         }
       ],
       "status": "atomic",
       "children": [],
       "depth": 1,
-      "type_signature": "(dataset_state: FastaDatasetState, toks_per_batch: int, extra_toks_per_seq: int) -> List[List[int]]",
+      "type_signature": "(dataset_state: DatasetState, toks_per_batch: int, extra_toks_per_seq: int = 0) -> list[list[int]]",
       "matched_primitive": null,
       "is_optional": false,
       "is_opaque": false,
       "is_external": false,
       "parallelizable": false,
-      "conceptual_summary": "Length-Constrained Sequential Packing. Transforms an ordered collection of variable-size elements into nested index groups under a fixed per-group capacity constraint. Each element contributes a cost equal to its intrinsic length plus a constant per-element overhead. A greedy single-pass rule appends the next element if feasible; otherwise it closes the current group and starts a new one.. Applications: Satellite telemetry framing: pack variable-length sensor records into downlink frames with fixed per-record protocol overhead, Additive manufacturing job staging: group parts into print runs under machine-time limits with per-part setup overhead, Medical imaging pipeline orchestration: bundle scans of varying slice counts into compute batches under memory limits with per-scan preprocessing overhead, Robotics communication scheduling: aggregate variable-size control/state messages into cycle windows with fixed per-message encoding overhead",
-      "critic_notes": "",
+      "conceptual_summary": "Length-constrained sequential packing. Sequences are sorted by length, then greedily appended until the current maximum adjusted length times batch size would exceed the budget.",
+      "critic_notes": "The implementation mirrors FastaBatchedDataset.get_batch_indices and does not reject a single sequence whose adjusted length exceeds the budget.",
       "decomposition_rationale": ""
     }
   ],
   "edges": [
     {
-      "source_id": "normalize_direct_sequence_inputs",
-      "target_id": "select_sequence_source",
-      "output_name": "direct_labels",
-      "input_name": "direct_labels",
-      "source_type": "List[str]",
-      "target_type": "List[str]",
-      "requires_glue": false
-    },
-    {
-      "source_id": "normalize_direct_sequence_inputs",
-      "target_id": "select_sequence_source",
-      "output_name": "direct_strs",
-      "input_name": "direct_strs",
-      "source_type": "List[str]",
-      "target_type": "List[str]",
-      "requires_glue": false
-    },
-    {
-      "source_id": "parse_fasta_records_with_header_fallback",
-      "target_id": "select_sequence_source",
-      "output_name": "file_labels",
-      "input_name": "file_labels",
-      "source_type": "List[str]",
-      "target_type": "List[str]",
-      "requires_glue": false
-    },
-    {
-      "source_id": "parse_fasta_records_with_header_fallback",
-      "target_id": "select_sequence_source",
-      "output_name": "file_strs",
-      "input_name": "file_strs",
-      "source_type": "List[str]",
-      "target_type": "List[str]",
-      "requires_glue": false
-    },
-    {
-      "source_id": "select_sequence_source",
-      "target_id": "validate_label_uniqueness",
-      "output_name": "selected_labels",
-      "input_name": "selected_labels",
-      "source_type": "List[str]",
-      "target_type": "List[str]",
-      "requires_glue": false
-    },
-    {
-      "source_id": "validate_label_uniqueness",
-      "target_id": "assemble_dataset_state",
-      "output_name": "validated_labels",
-      "input_name": "validated_labels",
-      "source_type": "List[str]",
-      "target_type": "List[str]",
-      "requires_glue": false
-    },
-    {
-      "source_id": "select_sequence_source",
-      "target_id": "assemble_dataset_state",
-      "output_name": "selected_strs",
-      "input_name": "selected_strs",
-      "source_type": "List[str]",
-      "target_type": "List[str]",
-      "requires_glue": false
-    },
-    {
       "source_id": "dataset_state_initialization",
       "target_id": "dataset_length_query",
       "output_name": "dataset_state",
       "input_name": "dataset_state",
-      "source_type": "FastaDatasetState",
-      "target_type": "FastaDatasetState",
+      "source_type": "DatasetState",
+      "target_type": "DatasetState",
       "requires_glue": false
     },
     {
@@ -478,8 +218,8 @@
       "target_id": "dataset_item_retrieval",
       "output_name": "dataset_state",
       "input_name": "dataset_state",
-      "source_type": "FastaDatasetState",
-      "target_type": "FastaDatasetState",
+      "source_type": "DatasetState",
+      "target_type": "DatasetState",
       "requires_glue": false
     },
     {
@@ -487,13 +227,14 @@
       "target_id": "token_budget_batch_planning",
       "output_name": "dataset_state",
       "input_name": "dataset_state",
-      "source_type": "FastaDatasetState",
-      "target_type": "FastaDatasetState",
+      "source_type": "DatasetState",
+      "target_type": "DatasetState",
       "requires_glue": false
     }
   ],
   "metadata": {
-    "source": "ingester",
-    "class_name": "FastaBatchedDataset"
+    "source": "direct_audit_pubrev_037",
+    "class_name": "FastaBatchedDataset",
+    "audit_batch": "pubrev-037"
   }
 }

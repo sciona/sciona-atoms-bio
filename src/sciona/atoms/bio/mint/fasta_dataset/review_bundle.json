@@ -1,0 +1,301 @@
+{
+  "schema_version": "1.0",
+  "bundle_id": "bio.mint.fasta_dataset.pubrev037.review.v1",
+  "provider_repo": "sciona-atoms-bio",
+  "family": "bio.mint.fasta_dataset",
+  "review_status": "reviewed",
+  "semantic_verdict": "publishable_candidate",
+  "developer_semantic_verdict": "source_aligned_with_direct_audit",
+  "trust_readiness": "ready_for_manifest_merge",
+  "authoritative_sources": [
+    "src/sciona/atoms/bio/mint/fasta_dataset/atoms.py",
+    "src/sciona/atoms/bio/mint/fasta_dataset/references.json",
+    "src/sciona/atoms/bio/mint/fasta_dataset/cdg.json",
+    "src/sciona/atoms/bio/mint/fasta_dataset/matches.json"
+  ],
+  "limitations": [],
+  "required_actions": [],
+  "subfamily_summaries": [
+    {
+      "subfamily": "fasta_dataset",
+      "row_count": 4,
+      "has_cdg": true,
+      "has_matches": true,
+      "has_uncertainty": false
+    }
+  ],
+  "rows": [
+    {
+      "atom_fqdn": "sciona.atoms.bio.mint.fasta_dataset.dataset_item_retrieval@sciona/atoms/bio/mint/fasta_dataset/atoms.py:62",
+      "subfamily": "fasta_dataset",
+      "source_path": "sciona/atoms/bio/mint/fasta_dataset/atoms.py:62",
+      "description": "Retrieve the label and sequence string at a valid dataset index from aligned dataset state lists.",
+      "parameters": [
+        {
+          "name": "dataset_state",
+          "kind": "positional_or_keyword",
+          "type_desc": "DatasetState",
+          "required": true,
+          "default_value_repr": "",
+          "description": "Dataset state containing aligned sequence_labels and sequence_strs lists."
+        },
+        {
+          "name": "idx",
+          "kind": "positional_or_keyword",
+          "type_desc": "int",
+          "required": true,
+          "default_value_repr": "",
+          "description": "Python list index of the sequence record to return."
+        }
+      ],
+      "io_specs": [
+        {
+          "direction": "input",
+          "name": "dataset_state",
+          "type_desc": "DatasetState",
+          "constraints": "Must contain sequence_labels and sequence_strs with equal length.",
+          "required": true,
+          "default_value_repr": "",
+          "ordinal": 0
+        },
+        {
+          "direction": "input",
+          "name": "idx",
+          "type_desc": "int",
+          "constraints": "Valid Python list index for the dataset.",
+          "required": true,
+          "default_value_repr": "",
+          "ordinal": 1
+        },
+        {
+          "direction": "output",
+          "name": "sequence_record",
+          "type_desc": "tuple[str, str]",
+          "constraints": "(label, sequence_str) from the same index.",
+          "required": true,
+          "default_value_repr": "",
+          "ordinal": 0
+        }
+      ],
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_direct_audit",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/mint/fasta_dataset/atoms.py",
+        "src/sciona/atoms/bio/mint/fasta_dataset/references.json",
+        "src/sciona/atoms/bio/mint/fasta_dataset/cdg.json",
+        "src/sciona/atoms/bio/mint/fasta_dataset/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/mint/fasta_dataset/review_bundle.json#rows[0]",
+      "audit_batch": "pubrev-037",
+      "audit_scope": "sciona.atoms.bio.mint.fasta_dataset"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.mint.fasta_dataset.dataset_length_query@sciona/atoms/bio/mint/fasta_dataset/atoms.py:47",
+      "subfamily": "fasta_dataset",
+      "source_path": "sciona/atoms/bio/mint/fasta_dataset/atoms.py:47",
+      "description": "Return the number of sequence labels in the dataset state.",
+      "parameters": [
+        {
+          "name": "dataset_state",
+          "kind": "positional_or_keyword",
+          "type_desc": "DatasetState",
+          "required": true,
+          "default_value_repr": "",
+          "description": "Dataset state containing a sequence_labels list."
+        }
+      ],
+      "io_specs": [
+        {
+          "direction": "input",
+          "name": "dataset_state",
+          "type_desc": "DatasetState",
+          "constraints": "Must contain sequence_labels.",
+          "required": true,
+          "default_value_repr": "",
+          "ordinal": 0
+        },
+        {
+          "direction": "output",
+          "name": "dataset_length",
+          "type_desc": "int",
+          "constraints": "Non-negative count of labels.",
+          "required": true,
+          "default_value_repr": "",
+          "ordinal": 0
+        }
+      ],
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_direct_audit",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/mint/fasta_dataset/atoms.py",
+        "src/sciona/atoms/bio/mint/fasta_dataset/references.json",
+        "src/sciona/atoms/bio/mint/fasta_dataset/cdg.json",
+        "src/sciona/atoms/bio/mint/fasta_dataset/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/mint/fasta_dataset/review_bundle.json#rows[1]",
+      "audit_batch": "pubrev-037",
+      "audit_scope": "sciona.atoms.bio.mint.fasta_dataset"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.mint.fasta_dataset.dataset_state_initialization@sciona/atoms/bio/mint/fasta_dataset/atoms.py:25",
+      "subfamily": "fasta_dataset",
+      "source_path": "sciona/atoms/bio/mint/fasta_dataset/atoms.py:25",
+      "description": "Copy aligned sequence label and sequence string lists into an explicit dataset state dictionary.",
+      "parameters": [
+        {
+          "name": "sequence_labels",
+          "kind": "positional_or_keyword",
+          "type_desc": "list[str]",
+          "required": true,
+          "default_value_repr": "",
+          "description": "Sequence identifiers; length must match sequence_strs."
+        },
+        {
+          "name": "sequence_strs",
+          "kind": "positional_or_keyword",
+          "type_desc": "list[str]",
+          "required": true,
+          "default_value_repr": "",
+          "description": "Biological sequence strings; one sequence per label."
+        }
+      ],
+      "io_specs": [
+        {
+          "direction": "input",
+          "name": "sequence_labels",
+          "type_desc": "list[str]",
+          "constraints": "Sequence identifiers; length must match sequence_strs.",
+          "required": true,
+          "default_value_repr": "",
+          "ordinal": 0
+        },
+        {
+          "direction": "input",
+          "name": "sequence_strs",
+          "type_desc": "list[str]",
+          "constraints": "Biological sequence strings; one sequence per label.",
+          "required": true,
+          "default_value_repr": "",
+          "ordinal": 1
+        },
+        {
+          "direction": "output",
+          "name": "dataset_state",
+          "type_desc": "DatasetState",
+          "constraints": "Dictionary with copied sequence_labels and sequence_strs lists.",
+          "required": true,
+          "default_value_repr": "",
+          "ordinal": 0
+        }
+      ],
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_direct_audit",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/mint/fasta_dataset/atoms.py",
+        "src/sciona/atoms/bio/mint/fasta_dataset/references.json",
+        "src/sciona/atoms/bio/mint/fasta_dataset/cdg.json",
+        "src/sciona/atoms/bio/mint/fasta_dataset/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/mint/fasta_dataset/review_bundle.json#rows[2]",
+      "audit_batch": "pubrev-037",
+      "audit_scope": "sciona.atoms.bio.mint.fasta_dataset"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.mint.fasta_dataset.token_budget_batch_planning@sciona/atoms/bio/mint/fasta_dataset/atoms.py:79",
+      "subfamily": "fasta_dataset",
+      "source_path": "sciona/atoms/bio/mint/fasta_dataset/atoms.py:79",
+      "description": "Sort sequences by length and greedily group original dataset indices under a token-budget batching rule.",
+      "parameters": [
+        {
+          "name": "dataset_state",
+          "kind": "positional_or_keyword",
+          "type_desc": "DatasetState",
+          "required": true,
+          "default_value_repr": "",
+          "description": "Dataset state whose sequence_strs lengths drive batching."
+        },
+        {
+          "name": "toks_per_batch",
+          "kind": "positional_or_keyword",
+          "type_desc": "int",
+          "required": true,
+          "default_value_repr": "",
+          "description": "Maximum token budget used by the greedy batching check."
+        },
+        {
+          "name": "extra_toks_per_seq",
+          "kind": "positional_or_keyword",
+          "type_desc": "int",
+          "required": false,
+          "default_value_repr": "0",
+          "description": "Per-sequence overhead added to each sequence length."
+        }
+      ],
+      "io_specs": [
+        {
+          "direction": "input",
+          "name": "dataset_state",
+          "type_desc": "DatasetState",
+          "constraints": "Uses sequence_strs for length-aware batching.",
+          "required": true,
+          "default_value_repr": "",
+          "ordinal": 0
+        },
+        {
+          "direction": "input",
+          "name": "toks_per_batch",
+          "type_desc": "int",
+          "constraints": "Maximum token budget used by the greedy batching check.",
+          "required": true,
+          "default_value_repr": "",
+          "ordinal": 1
+        },
+        {
+          "direction": "input",
+          "name": "extra_toks_per_seq",
+          "type_desc": "int",
+          "constraints": "Per-sequence overhead added to each sequence length.",
+          "required": false,
+          "default_value_repr": "0",
+          "ordinal": 2
+        },
+        {
+          "direction": "output",
+          "name": "batch_indices",
+          "type_desc": "list[list[int]]",
+          "constraints": "Each inner list contains original dataset indices.",
+          "required": true,
+          "default_value_repr": "",
+          "ordinal": 0
+        }
+      ],
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_direct_audit",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/mint/fasta_dataset/atoms.py",
+        "src/sciona/atoms/bio/mint/fasta_dataset/references.json",
+        "src/sciona/atoms/bio/mint/fasta_dataset/cdg.json",
+        "src/sciona/atoms/bio/mint/fasta_dataset/matches.json"
+      ],
+      "review_record_path": "src/sciona/atoms/bio/mint/fasta_dataset/review_bundle.json#rows[3]",
+      "audit_batch": "pubrev-037",
+      "audit_scope": "sciona.atoms.bio.mint.fasta_dataset"
+    }
+  ]
+}

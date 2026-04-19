@@ -1,25 +1,27 @@
 [
   {
     "pdg_node": {
-      "predicate_id": "normalize_direct_sequence_inputs",
-      "statement": "(sequence_labels: List[str] | Iterable[str], sequence_strs: List[str] | Iterable[str]) -> tuple[List[str], List[str]]",
-      "informal_desc": "Create immutable list snapshots of in-memory sequence labels and sequence strings for the direct-constructor path.",
+      "predicate_id": "dataset_state_initialization",
+      "statement": "(sequence_labels: list[str], sequence_strs: list[str]) -> DatasetState",
+      "informal_desc": "Copy aligned sequence labels and sequence strings into an explicit dataset state.",
       "prover": "python",
-      "context": {}
+      "context": {
+        "source_class": "FastaBatchedDataset.__init__"
+      }
     },
     "verified_match": {
       "candidate": {
         "declaration": {
-          "name": "normalize_direct_sequence_inputs",
-          "type_signature": "(sequence_labels: List[str] | Iterable[str], sequence_strs: List[str] | Iterable[str]) -> tuple[List[str], List[str]]",
-          "docstring": "Create immutable list snapshots of in-memory sequence labels and sequence strings for the direct-constructor path.",
-          "conceptual_summary": "",
+          "name": "dataset_state_initialization",
+          "type_signature": "(sequence_labels: list[str], sequence_strs: list[str]) -> DatasetState",
+          "docstring": "Build a sequence dataset state snapshot from aligned in-memory inputs.",
+          "conceptual_summary": "Aligned sequence-state constructor.",
           "source_lib": "ingester",
           "prover": "python",
           "raw_code": ""
         },
         "score": 1.0,
-        "retrieval_method": "ingester"
+        "retrieval_method": "direct_audit"
       },
       "verified": true,
       "compiler_output": "",
@@ -30,296 +32,32 @@
     "all_candidates": [
       {
         "declaration": {
-          "name": "normalize_direct_sequence_inputs",
-          "type_signature": "(sequence_labels: List[str] | Iterable[str], sequence_strs: List[str] | Iterable[str]) -> tuple[List[str], List[str]]",
-          "docstring": "Create immutable list snapshots of in-memory sequence labels and sequence strings for the direct-constructor path.",
-          "conceptual_summary": "",
+          "name": "dataset_state_initialization",
+          "type_signature": "(sequence_labels: list[str], sequence_strs: list[str]) -> DatasetState",
+          "docstring": "Build a sequence dataset state snapshot from aligned in-memory inputs.",
+          "conceptual_summary": "Aligned sequence-state constructor.",
           "source_lib": "ingester",
           "prover": "python",
           "raw_code": ""
         },
         "score": 1.0,
-        "retrieval_method": "ingester"
+        "retrieval_method": "direct_audit"
       }
     ],
     "all_verifications": [
       {
         "candidate": {
           "declaration": {
-            "name": "normalize_direct_sequence_inputs",
-            "type_signature": "(sequence_labels: List[str] | Iterable[str], sequence_strs: List[str] | Iterable[str]) -> tuple[List[str], List[str]]",
-            "docstring": "Create immutable list snapshots of in-memory sequence labels and sequence strings for the direct-constructor path.",
-            "conceptual_summary": "",
+            "name": "dataset_state_initialization",
+            "type_signature": "(sequence_labels: list[str], sequence_strs: list[str]) -> DatasetState",
+            "docstring": "Build a sequence dataset state snapshot from aligned in-memory inputs.",
+            "conceptual_summary": "Aligned sequence-state constructor.",
             "source_lib": "ingester",
             "prover": "python",
             "raw_code": ""
           },
           "score": 1.0,
-          "retrieval_method": "ingester"
-        },
-        "verified": true,
-        "compiler_output": "",
-        "proof_term": "",
-        "error_message": "",
-        "verification_level": "type_checked"
-      }
-    ]
-  },
-  {
-    "pdg_node": {
-      "predicate_id": "parse_fasta_records_with_header_fallback",
-      "statement": "(fasta_file: str | Path) -> tuple[List[str], List[str]]",
-      "informal_desc": "Scan FASTA lines, flush completed records on new headers, concatenate sequence buffers, and synthesize a fallback label `seqnum{line_idx:09d}` when a header is empty.",
-      "prover": "python",
-      "context": {}
-    },
-    "verified_match": {
-      "candidate": {
-        "declaration": {
-          "name": "parse_fasta_records_with_header_fallback",
-          "type_signature": "(fasta_file: str | Path) -> tuple[List[str], List[str]]",
-          "docstring": "Scan FASTA lines, flush completed records on new headers, concatenate sequence buffers, and synthesize a fallback label `seqnum{line_idx:09d}` when a header is empty.",
-          "conceptual_summary": "",
-          "source_lib": "ingester",
-          "prover": "python",
-          "raw_code": ""
-        },
-        "score": 1.0,
-        "retrieval_method": "ingester"
-      },
-      "verified": true,
-      "compiler_output": "",
-      "proof_term": "",
-      "error_message": "",
-      "verification_level": "type_checked"
-    },
-    "all_candidates": [
-      {
-        "declaration": {
-          "name": "parse_fasta_records_with_header_fallback",
-          "type_signature": "(fasta_file: str | Path) -> tuple[List[str], List[str]]",
-          "docstring": "Scan FASTA lines, flush completed records on new headers, concatenate sequence buffers, and synthesize a fallback label `seqnum{line_idx:09d}` when a header is empty.",
-          "conceptual_summary": "",
-          "source_lib": "ingester",
-          "prover": "python",
-          "raw_code": ""
-        },
-        "score": 1.0,
-        "retrieval_method": "ingester"
-      }
-    ],
-    "all_verifications": [
-      {
-        "candidate": {
-          "declaration": {
-            "name": "parse_fasta_records_with_header_fallback",
-            "type_signature": "(fasta_file: str | Path) -> tuple[List[str], List[str]]",
-            "docstring": "Scan FASTA lines, flush completed records on new headers, concatenate sequence buffers, and synthesize a fallback label `seqnum{line_idx:09d}` when a header is empty.",
-            "conceptual_summary": "",
-            "source_lib": "ingester",
-            "prover": "python",
-            "raw_code": ""
-          },
-          "score": 1.0,
-          "retrieval_method": "ingester"
-        },
-        "verified": true,
-        "compiler_output": "",
-        "proof_term": "",
-        "error_message": "",
-        "verification_level": "type_checked"
-      }
-    ]
-  },
-  {
-    "pdg_node": {
-      "predicate_id": "select_sequence_source",
-      "statement": "(direct_labels: List[str], direct_strs: List[str], file_labels: List[str], file_strs: List[str], fasta_file: str | Path) -> tuple[List[str], List[str]]",
-      "informal_desc": "Choose canonical sequence payload from either parsed FASTA records or normalized in-memory lists.",
-      "prover": "python",
-      "context": {}
-    },
-    "verified_match": {
-      "candidate": {
-        "declaration": {
-          "name": "select_sequence_source",
-          "type_signature": "(direct_labels: List[str], direct_strs: List[str], file_labels: List[str], file_strs: List[str], fasta_file: str | Path) -> tuple[List[str], List[str]]",
-          "docstring": "Choose canonical sequence payload from either parsed FASTA records or normalized in-memory lists.",
-          "conceptual_summary": "",
-          "source_lib": "ingester",
-          "prover": "python",
-          "raw_code": ""
-        },
-        "score": 1.0,
-        "retrieval_method": "ingester"
-      },
-      "verified": true,
-      "compiler_output": "",
-      "proof_term": "",
-      "error_message": "",
-      "verification_level": "type_checked"
-    },
-    "all_candidates": [
-      {
-        "declaration": {
-          "name": "select_sequence_source",
-          "type_signature": "(direct_labels: List[str], direct_strs: List[str], file_labels: List[str], file_strs: List[str], fasta_file: str | Path) -> tuple[List[str], List[str]]",
-          "docstring": "Choose canonical sequence payload from either parsed FASTA records or normalized in-memory lists.",
-          "conceptual_summary": "",
-          "source_lib": "ingester",
-          "prover": "python",
-          "raw_code": ""
-        },
-        "score": 1.0,
-        "retrieval_method": "ingester"
-      }
-    ],
-    "all_verifications": [
-      {
-        "candidate": {
-          "declaration": {
-            "name": "select_sequence_source",
-            "type_signature": "(direct_labels: List[str], direct_strs: List[str], file_labels: List[str], file_strs: List[str], fasta_file: str | Path) -> tuple[List[str], List[str]]",
-            "docstring": "Choose canonical sequence payload from either parsed FASTA records or normalized in-memory lists.",
-            "conceptual_summary": "",
-            "source_lib": "ingester",
-            "prover": "python",
-            "raw_code": ""
-          },
-          "score": 1.0,
-          "retrieval_method": "ingester"
-        },
-        "verified": true,
-        "compiler_output": "",
-        "proof_term": "",
-        "error_message": "",
-        "verification_level": "type_checked"
-      }
-    ]
-  },
-  {
-    "pdg_node": {
-      "predicate_id": "validate_label_uniqueness",
-      "statement": "(selected_labels: List[str]) -> List[str]",
-      "informal_desc": "Enforce that sequence labels are unique by comparing list size with set cardinality.",
-      "prover": "python",
-      "context": {}
-    },
-    "verified_match": {
-      "candidate": {
-        "declaration": {
-          "name": "validate_label_uniqueness",
-          "type_signature": "(selected_labels: List[str]) -> List[str]",
-          "docstring": "Enforce that sequence labels are unique by comparing list size with set cardinality.",
-          "conceptual_summary": "",
-          "source_lib": "ingester",
-          "prover": "python",
-          "raw_code": ""
-        },
-        "score": 1.0,
-        "retrieval_method": "ingester"
-      },
-      "verified": true,
-      "compiler_output": "",
-      "proof_term": "",
-      "error_message": "",
-      "verification_level": "type_checked"
-    },
-    "all_candidates": [
-      {
-        "declaration": {
-          "name": "validate_label_uniqueness",
-          "type_signature": "(selected_labels: List[str]) -> List[str]",
-          "docstring": "Enforce that sequence labels are unique by comparing list size with set cardinality.",
-          "conceptual_summary": "",
-          "source_lib": "ingester",
-          "prover": "python",
-          "raw_code": ""
-        },
-        "score": 1.0,
-        "retrieval_method": "ingester"
-      }
-    ],
-    "all_verifications": [
-      {
-        "candidate": {
-          "declaration": {
-            "name": "validate_label_uniqueness",
-            "type_signature": "(selected_labels: List[str]) -> List[str]",
-            "docstring": "Enforce that sequence labels are unique by comparing list size with set cardinality.",
-            "conceptual_summary": "",
-            "source_lib": "ingester",
-            "prover": "python",
-            "raw_code": ""
-          },
-          "score": 1.0,
-          "retrieval_method": "ingester"
-        },
-        "verified": true,
-        "compiler_output": "",
-        "proof_term": "",
-        "error_message": "",
-        "verification_level": "type_checked"
-      }
-    ]
-  },
-  {
-    "pdg_node": {
-      "predicate_id": "assemble_dataset_state",
-      "statement": "(validated_labels: List[str], selected_strs: List[str]) -> FastaDatasetState{sequence_labels: List[str], sequence_strs: List[str]}",
-      "informal_desc": "Construct the immutable dataset state object from validated labels and aligned sequence strings.",
-      "prover": "python",
-      "context": {}
-    },
-    "verified_match": {
-      "candidate": {
-        "declaration": {
-          "name": "assemble_dataset_state",
-          "type_signature": "(validated_labels: List[str], selected_strs: List[str]) -> FastaDatasetState{sequence_labels: List[str], sequence_strs: List[str]}",
-          "docstring": "Construct the immutable dataset state object from validated labels and aligned sequence strings.",
-          "conceptual_summary": "",
-          "source_lib": "ingester",
-          "prover": "python",
-          "raw_code": ""
-        },
-        "score": 1.0,
-        "retrieval_method": "ingester"
-      },
-      "verified": true,
-      "compiler_output": "",
-      "proof_term": "",
-      "error_message": "",
-      "verification_level": "type_checked"
-    },
-    "all_candidates": [
-      {
-        "declaration": {
-          "name": "assemble_dataset_state",
-          "type_signature": "(validated_labels: List[str], selected_strs: List[str]) -> FastaDatasetState{sequence_labels: List[str], sequence_strs: List[str]}",
-          "docstring": "Construct the immutable dataset state object from validated labels and aligned sequence strings.",
-          "conceptual_summary": "",
-          "source_lib": "ingester",
-          "prover": "python",
-          "raw_code": ""
-        },
-        "score": 1.0,
-        "retrieval_method": "ingester"
-      }
-    ],
-    "all_verifications": [
-      {
-        "candidate": {
-          "declaration": {
-            "name": "assemble_dataset_state",
-            "type_signature": "(validated_labels: List[str], selected_strs: List[str]) -> FastaDatasetState{sequence_labels: List[str], sequence_strs: List[str]}",
-            "docstring": "Construct the immutable dataset state object from validated labels and aligned sequence strings.",
-            "conceptual_summary": "",
-            "source_lib": "ingester",
-            "prover": "python",
-            "raw_code": ""
-          },
-          "score": 1.0,
-          "retrieval_method": "ingester"
+          "retrieval_method": "direct_audit"
         },
         "verified": true,
         "compiler_output": "",
@@ -332,24 +70,26 @@
   {
     "pdg_node": {
       "predicate_id": "dataset_length_query",
-      "statement": "(dataset_state: FastaDatasetState) -> int",
+      "statement": "(dataset_state: DatasetState) -> int",
       "informal_desc": "Return the number of labeled sequences in dataset_state.",
       "prover": "python",
-      "context": {}
+      "context": {
+        "source_class": "FastaBatchedDataset.__len__"
+      }
     },
     "verified_match": {
       "candidate": {
         "declaration": {
           "name": "dataset_length_query",
-          "type_signature": "(dataset_state: FastaDatasetState) -> int",
+          "type_signature": "(dataset_state: DatasetState) -> int",
           "docstring": "Return the number of labeled sequences in dataset_state.",
-          "conceptual_summary": "Labeled Collection Cardinality Extractor. This operation maps a state container to a single scalar by reading the cardinality of a required identifier index within that container. It does not transform, reorder, or inspect element content; it only extracts structural size information from the current state snapshot. The output is an exact non-negative integer equal to the current number of indexed entries.. Applications: Counting annotated waveform segments in a biomedical signal processing registry before batched analysis, Retrieving the number of pending work-unit IDs in a distributed scheduler state for resource allocation, Measuring labeled tile count in a remote-sensing annotation manifest prior to training/evaluation split generation, Querying component-identifier count in a mechanical assembly model to gate downstream simulation complexity",
+          "conceptual_summary": "Labeled collection cardinality extractor.",
           "source_lib": "ingester",
           "prover": "python",
           "raw_code": ""
         },
         "score": 1.0,
-        "retrieval_method": "ingester"
+        "retrieval_method": "direct_audit"
       },
       "verified": true,
       "compiler_output": "",
@@ -361,15 +101,15 @@
       {
         "declaration": {
           "name": "dataset_length_query",
-          "type_signature": "(dataset_state: FastaDatasetState) -> int",
+          "type_signature": "(dataset_state: DatasetState) -> int",
           "docstring": "Return the number of labeled sequences in dataset_state.",
-          "conceptual_summary": "Labeled Collection Cardinality Extractor. This operation maps a state container to a single scalar by reading the cardinality of a required identifier index within that container. It does not transform, reorder, or inspect element content; it only extracts structural size information from the current state snapshot. The output is an exact non-negative integer equal to the current number of indexed entries.. Applications: Counting annotated waveform segments in a biomedical signal processing registry before batched analysis, Retrieving the number of pending work-unit IDs in a distributed scheduler state for resource allocation, Measuring labeled tile count in a remote-sensing annotation manifest prior to training/evaluation split generation, Querying component-identifier count in a mechanical assembly model to gate downstream simulation complexity",
+          "conceptual_summary": "Labeled collection cardinality extractor.",
           "source_lib": "ingester",
           "prover": "python",
           "raw_code": ""
         },
         "score": 1.0,
-        "retrieval_method": "ingester"
+        "retrieval_method": "direct_audit"
       }
     ],
     "all_verifications": [
@@ -377,15 +117,15 @@
         "candidate": {
           "declaration": {
             "name": "dataset_length_query",
-            "type_signature": "(dataset_state: FastaDatasetState) -> int",
+            "type_signature": "(dataset_state: DatasetState) -> int",
             "docstring": "Return the number of labeled sequences in dataset_state.",
-            "conceptual_summary": "Labeled Collection Cardinality Extractor. This operation maps a state container to a single scalar by reading the cardinality of a required identifier index within that container. It does not transform, reorder, or inspect element content; it only extracts structural size information from the current state snapshot. The output is an exact non-negative integer equal to the current number of indexed entries.. Applications: Counting annotated waveform segments in a biomedical signal processing registry before batched analysis, Retrieving the number of pending work-unit IDs in a distributed scheduler state for resource allocation, Measuring labeled tile count in a remote-sensing annotation manifest prior to training/evaluation split generation, Querying component-identifier count in a mechanical assembly model to gate downstream simulation complexity",
+            "conceptual_summary": "Labeled collection cardinality extractor.",
             "source_lib": "ingester",
             "prover": "python",
             "raw_code": ""
           },
           "score": 1.0,
-          "retrieval_method": "ingester"
+          "retrieval_method": "direct_audit"
         },
         "verified": true,
         "compiler_output": "",
@@ -398,24 +138,26 @@
   {
     "pdg_node": {
       "predicate_id": "dataset_item_retrieval",
-      "statement": "(dataset_state: FastaDatasetState, idx: int) -> Tuple[str, str]",
-      "informal_desc": "Retrieve a single labeled sequence by index from immutable dataset_state.",
+      "statement": "(dataset_state: DatasetState, idx: int) -> tuple[str, str]",
+      "informal_desc": "Retrieve a single labeled sequence by index from dataset_state.",
       "prover": "python",
-      "context": {}
+      "context": {
+        "source_class": "FastaBatchedDataset.__getitem__"
+      }
     },
     "verified_match": {
       "candidate": {
         "declaration": {
           "name": "dataset_item_retrieval",
-          "type_signature": "(dataset_state: FastaDatasetState, idx: int) -> Tuple[str, str]",
-          "docstring": "Retrieve a single labeled sequence by index from immutable dataset_state.",
-          "conceptual_summary": "aligned_pair_index_lookup. Given an immutable container composed of two positionally aligned 1-D collections, this operation performs direct integer-index selection into both collections at the same coordinate. It returns the paired elements as a 2-tuple, preserving alignment semantics without modifying source state. The transform is a lossless projection from a size-N paired collection to a single pair under a validity constraint on the index.. Applications: Signal processing: retrieve one (channel_id, sampled_trace) pair from aligned channel metadata and waveform arrays., Computer vision: fetch one (annotation_tag, encoded_feature_string) pair from parallel label/descriptor stores., Network engineering: select one (node_identifier, serialized_state_vector) pair from indexed topology snapshots., Manufacturing analytics: access one (part_code, sensor_event_sequence) pair from synchronized production records.",
+          "type_signature": "(dataset_state: DatasetState, idx: int) -> tuple[str, str]",
+          "docstring": "Retrieve one labeled sequence by index.",
+          "conceptual_summary": "Aligned pair index lookup.",
           "source_lib": "ingester",
           "prover": "python",
           "raw_code": ""
         },
         "score": 1.0,
-        "retrieval_method": "ingester"
+        "retrieval_method": "direct_audit"
       },
       "verified": true,
       "compiler_output": "",
@@ -427,15 +169,15 @@
       {
         "declaration": {
           "name": "dataset_item_retrieval",
-          "type_signature": "(dataset_state: FastaDatasetState, idx: int) -> Tuple[str, str]",
-          "docstring": "Retrieve a single labeled sequence by index from immutable dataset_state.",
-          "conceptual_summary": "aligned_pair_index_lookup. Given an immutable container composed of two positionally aligned 1-D collections, this operation performs direct integer-index selection into both collections at the same coordinate. It returns the paired elements as a 2-tuple, preserving alignment semantics without modifying source state. The transform is a lossless projection from a size-N paired collection to a single pair under a validity constraint on the index.. Applications: Signal processing: retrieve one (channel_id, sampled_trace) pair from aligned channel metadata and waveform arrays., Computer vision: fetch one (annotation_tag, encoded_feature_string) pair from parallel label/descriptor stores., Network engineering: select one (node_identifier, serialized_state_vector) pair from indexed topology snapshots., Manufacturing analytics: access one (part_code, sensor_event_sequence) pair from synchronized production records.",
+          "type_signature": "(dataset_state: DatasetState, idx: int) -> tuple[str, str]",
+          "docstring": "Retrieve one labeled sequence by index.",
+          "conceptual_summary": "Aligned pair index lookup.",
           "source_lib": "ingester",
           "prover": "python",
           "raw_code": ""
         },
         "score": 1.0,
-        "retrieval_method": "ingester"
+        "retrieval_method": "direct_audit"
       }
     ],
     "all_verifications": [
@@ -443,15 +185,15 @@
         "candidate": {
           "declaration": {
             "name": "dataset_item_retrieval",
-            "type_signature": "(dataset_state: FastaDatasetState, idx: int) -> Tuple[str, str]",
-            "docstring": "Retrieve a single labeled sequence by index from immutable dataset_state.",
-            "conceptual_summary": "aligned_pair_index_lookup. Given an immutable container composed of two positionally aligned 1-D collections, this operation performs direct integer-index selection into both collections at the same coordinate. It returns the paired elements as a 2-tuple, preserving alignment semantics without modifying source state. The transform is a lossless projection from a size-N paired collection to a single pair under a validity constraint on the index.. Applications: Signal processing: retrieve one (channel_id, sampled_trace) pair from aligned channel metadata and waveform arrays., Computer vision: fetch one (annotation_tag, encoded_feature_string) pair from parallel label/descriptor stores., Network engineering: select one (node_identifier, serialized_state_vector) pair from indexed topology snapshots., Manufacturing analytics: access one (part_code, sensor_event_sequence) pair from synchronized production records.",
+            "type_signature": "(dataset_state: DatasetState, idx: int) -> tuple[str, str]",
+            "docstring": "Retrieve one labeled sequence by index.",
+            "conceptual_summary": "Aligned pair index lookup.",
             "source_lib": "ingester",
             "prover": "python",
             "raw_code": ""
           },
           "score": 1.0,
-          "retrieval_method": "ingester"
+          "retrieval_method": "direct_audit"
         },
         "verified": true,
         "compiler_output": "",
@@ -464,24 +206,26 @@
   {
     "pdg_node": {
       "predicate_id": "token_budget_batch_planning",
-      "statement": "(dataset_state: FastaDatasetState, toks_per_batch: int, extra_toks_per_seq: int) -> List[List[int]]",
-      "informal_desc": "Compute batch index groups under a token budget using sequence strings and per-sequence overhead.",
+      "statement": "(dataset_state: DatasetState, toks_per_batch: int, extra_toks_per_seq: int = 0) -> list[list[int]]",
+      "informal_desc": "Compute sorted greedy batch index groups using sequence lengths and per-sequence token overhead.",
       "prover": "python",
-      "context": {}
+      "context": {
+        "source_class": "FastaBatchedDataset.get_batch_indices"
+      }
     },
     "verified_match": {
       "candidate": {
         "declaration": {
           "name": "token_budget_batch_planning",
-          "type_signature": "(dataset_state: FastaDatasetState, toks_per_batch: int, extra_toks_per_seq: int) -> List[List[int]]",
-          "docstring": "Compute batch index groups under a token budget using sequence strings and per-sequence overhead.",
-          "conceptual_summary": "Length-Constrained Sequential Packing. Transforms an ordered collection of variable-size elements into nested index groups under a fixed per-group capacity constraint. Each element contributes a cost equal to its intrinsic length plus a constant per-element overhead. A greedy single-pass rule appends the next element if feasible; otherwise it closes the current group and starts a new one.. Applications: Satellite telemetry framing: pack variable-length sensor records into downlink frames with fixed per-record protocol overhead, Additive manufacturing job staging: group parts into print runs under machine-time limits with per-part setup overhead, Medical imaging pipeline orchestration: bundle scans of varying slice counts into compute batches under memory limits with per-scan preprocessing overhead, Robotics communication scheduling: aggregate variable-size control/state messages into cycle windows with fixed per-message encoding overhead",
+          "type_signature": "(dataset_state: DatasetState, toks_per_batch: int, extra_toks_per_seq: int = 0) -> list[list[int]]",
+          "docstring": "Plan batches under a token budget.",
+          "conceptual_summary": "Length-constrained sequential packing.",
           "source_lib": "ingester",
           "prover": "python",
           "raw_code": ""
         },
         "score": 1.0,
-        "retrieval_method": "ingester"
+        "retrieval_method": "direct_audit"
       },
       "verified": true,
       "compiler_output": "",
@@ -493,15 +237,15 @@
       {
         "declaration": {
           "name": "token_budget_batch_planning",
-          "type_signature": "(dataset_state: FastaDatasetState, toks_per_batch: int, extra_toks_per_seq: int) -> List[List[int]]",
-          "docstring": "Compute batch index groups under a token budget using sequence strings and per-sequence overhead.",
-          "conceptual_summary": "Length-Constrained Sequential Packing. Transforms an ordered collection of variable-size elements into nested index groups under a fixed per-group capacity constraint. Each element contributes a cost equal to its intrinsic length plus a constant per-element overhead. A greedy single-pass rule appends the next element if feasible; otherwise it closes the current group and starts a new one.. Applications: Satellite telemetry framing: pack variable-length sensor records into downlink frames with fixed per-record protocol overhead, Additive manufacturing job staging: group parts into print runs under machine-time limits with per-part setup overhead, Medical imaging pipeline orchestration: bundle scans of varying slice counts into compute batches under memory limits with per-scan preprocessing overhead, Robotics communication scheduling: aggregate variable-size control/state messages into cycle windows with fixed per-message encoding overhead",
+          "type_signature": "(dataset_state: DatasetState, toks_per_batch: int, extra_toks_per_seq: int = 0) -> list[list[int]]",
+          "docstring": "Plan batches under a token budget.",
+          "conceptual_summary": "Length-constrained sequential packing.",
           "source_lib": "ingester",
           "prover": "python",
           "raw_code": ""
         },
         "score": 1.0,
-        "retrieval_method": "ingester"
+        "retrieval_method": "direct_audit"
       }
     ],
     "all_verifications": [
@@ -509,15 +253,15 @@
         "candidate": {
           "declaration": {
             "name": "token_budget_batch_planning",
-            "type_signature": "(dataset_state: FastaDatasetState, toks_per_batch: int, extra_toks_per_seq: int) -> List[List[int]]",
-            "docstring": "Compute batch index groups under a token budget using sequence strings and per-sequence overhead.",
-            "conceptual_summary": "Length-Constrained Sequential Packing. Transforms an ordered collection of variable-size elements into nested index groups under a fixed per-group capacity constraint. Each element contributes a cost equal to its intrinsic length plus a constant per-element overhead. A greedy single-pass rule appends the next element if feasible; otherwise it closes the current group and starts a new one.. Applications: Satellite telemetry framing: pack variable-length sensor records into downlink frames with fixed per-record protocol overhead, Additive manufacturing job staging: group parts into print runs under machine-time limits with per-part setup overhead, Medical imaging pipeline orchestration: bundle scans of varying slice counts into compute batches under memory limits with per-scan preprocessing overhead, Robotics communication scheduling: aggregate variable-size control/state messages into cycle windows with fixed per-message encoding overhead",
+            "type_signature": "(dataset_state: DatasetState, toks_per_batch: int, extra_toks_per_seq: int = 0) -> list[list[int]]",
+            "docstring": "Plan batches under a token budget.",
+            "conceptual_summary": "Length-constrained sequential packing.",
             "source_lib": "ingester",
             "prover": "python",
             "raw_code": ""
           },
           "score": 1.0,
-          "retrieval_method": "ingester"
+          "retrieval_method": "direct_audit"
         },
         "verified": true,
         "compiler_output": "",
