@@ -17,14 +17,21 @@ SAFE_PUBREV005_FQDNS = {
     "sciona.atoms.bio.molecular_docking.build_interaction_graph.networkx_weighted_graph_materialization",
     "sciona.atoms.bio.molecular_docking.build_interaction_graph.pair_distance_compatibility_check",
     "sciona.atoms.bio.molecular_docking.build_interaction_graph.weighted_interaction_edge_derivation",
+    "sciona.atoms.bio.molecular_docking.greedy_mapping_d12.construct_mapping_state_via_greedy_expansion",
     "sciona.atoms.bio.molecular_docking.greedy_mapping_d12.init_problem_context",
+    "sciona.atoms.bio.molecular_docking.greedy_mapping_d12.orchestrate_generation_and_validate",
+    "sciona.atoms.bio.molecular_docking.greedy_subgraph.greedy_maximum_subgraph",
+    "sciona.atoms.bio.molecular_docking.map_to_udg.graphtoudgmapping",
 }
 
-HELD_PUBREV005_FQDNS = {
+REMEDIATED_CLASSICAL_FQDNS = {
     "sciona.atoms.bio.molecular_docking.greedy_mapping_d12.construct_mapping_state_via_greedy_expansion",
     "sciona.atoms.bio.molecular_docking.greedy_mapping_d12.orchestrate_generation_and_validate",
     "sciona.atoms.bio.molecular_docking.greedy_subgraph.greedy_maximum_subgraph",
     "sciona.atoms.bio.molecular_docking.map_to_udg.graphtoudgmapping",
+}
+
+HELD_PUBREV005_FQDNS = {
     "sciona.atoms.bio.molecular_docking.quantum_solver.adiabaticquantumsampler",
     "sciona.atoms.bio.molecular_docking.quantum_solver.quantumproblemdefinition",
     "sciona.atoms.bio.molecular_docking.quantum_solver.solutionextraction",
@@ -70,8 +77,12 @@ def test_molecular_docking_review_bundle_pubrev005_safe_rows_are_ready() -> None
         assert row["trust_readiness"] == "ready_for_manifest_merge"
         assert row["limitations"] == []
         assert row["required_actions"] == []
-        assert row["audit_batch"] == "pubrev-005"
-        assert row["audit_scope"] == "wave_1_audit_completion"
+        if fqdn in REMEDIATED_CLASSICAL_FQDNS:
+            assert row["audit_batch"] == "pubrev-005-remediation"
+            assert row["audit_scope"] == "classical_molecular_docking_remediation"
+        else:
+            assert row["audit_batch"] == "pubrev-005"
+            assert row["audit_scope"] == "wave_1_audit_completion"
 
         source_rel, _, line_text = row["source_path"].partition(":")
         assert line_text
@@ -95,6 +106,10 @@ def test_molecular_docking_review_bundle_pubrev005_holds_not_ready() -> None:
         assert fqdn in remediation
         if fqdn in rows:
             assert rows[fqdn]["trust_readiness"] != "ready_for_manifest_merge"
+
+    for fqdn in REMEDIATED_CLASSICAL_FQDNS:
+        assert fqdn in remediation
+        assert rows[fqdn]["trust_readiness"] == "ready_for_manifest_merge"
 
 
 def test_molecular_docking_review_bundle_pubrev028_quantum_solver_d12_holds_not_ready() -> None:

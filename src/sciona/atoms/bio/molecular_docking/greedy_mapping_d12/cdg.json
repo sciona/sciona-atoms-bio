@@ -91,7 +91,7 @@
       "node_id": "construct_mapping_state_via_greedy_expansion",
       "parent_id": "GreedyMapping_root",
       "name": "construct_mapping_state_via_greedy_expansion",
-      "description": "Builds and evolves immutable mapping state: initialize seed placement, score candidate graph nodes greedily, and extend mapping/frontier with feasible placements.",
+      "description": "Builds and evolves immutable D12 mapping state: seed at the center-biased lattice site, score candidate graph nodes greedily, and place only candidates feasible on the current lattice frontier.",
       "concept_type": "greedy",
       "inputs": [
         {
@@ -485,7 +485,7 @@
       "node_id": "orchestrate_generation_and_validate",
       "parent_id": "GreedyMapping_root",
       "name": "orchestrate_generation_and_validate",
-      "description": "Entry-point orchestration kernel (GreedyMapping): drives iterative expansion, invokes validity checks, and returns final generated subgraph mapping and inverse mapping.",
+      "description": "Entry-point orchestration kernel (GreedyMapping): drives iterative D12 expansion from the starting node, invokes validity checks, and returns the final generated mapping and inverse mapping.",
       "concept_type": "conditional_routing",
       "inputs": [
         {

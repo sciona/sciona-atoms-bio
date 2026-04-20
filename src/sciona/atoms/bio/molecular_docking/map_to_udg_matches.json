@@ -1,0 +1,35 @@
+[
+  {
+    "pdg_node": {
+      "predicate_id": "graphtoudgmapping",
+      "statement": "(G: nx.Graph) -> nx.Graph",
+      "informal_desc": "Preserve a graph edge set while certifying a radius-one unit-disk embedding from node coordinates.",
+      "prover": "python",
+      "context": {
+        "source_reference": "../ageo-atoms/third_party/Molecular-Docking/src/solver/utils/graph_register.py:64"
+      }
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "GraphRegister.graph_radius",
+          "type_signature": "(radius=1) -> nx.Graph",
+          "docstring": "Build a graph from register coordinates by connecting qubits inside a blockade radius.",
+          "conceptual_summary": "Interprets 2D register coordinates under a radius threshold to obtain the corresponding unit-disk graph.",
+          "source_lib": "Molecular-Docking",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 0.88,
+        "retrieval_method": "manual_remediation"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "behavior_tested"
+    },
+    "all_candidates": [],
+    "all_verifications": []
+  }
+]

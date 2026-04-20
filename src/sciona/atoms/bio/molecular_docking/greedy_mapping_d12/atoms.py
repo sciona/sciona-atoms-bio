@@ -1,48 +1,237 @@
 from __future__ import annotations
-"""Auto-generated atom wrappers following the sciona pattern."""
 
-from typing import Any, Collection
+import math
+import random
+from collections.abc import Collection, Hashable, Iterable, Mapping
+from typing import cast
 
 import icontract
+import networkx as nx
 from sciona.ghost.registry import register_atom
-from .witnesses import witness_construct_mapping_state_via_greedy_expansion, witness_init_problem_context, witness_orchestrate_generation_and_validate
 
-# Fallback type aliases for domain-specific types.
-Graph = Any
-LatticeInstance = Any
-Subgraph = Any
-GreedyMappingContext = Any
-NodeId = Any
-MappingState = Any
-ScoredNode = Any
+from .witnesses import (
+    witness_construct_mapping_state_via_greedy_expansion,
+    witness_init_problem_context,
+    witness_orchestrate_generation_and_validate,
+)
+
+Graph = nx.Graph
+LatticeInstance = object
+Subgraph = Collection[Hashable] | Mapping[Hashable, object]
+GreedyMappingContext = dict[str, object]
+NodeId = Hashable
+MappingState = dict[str, object]
+ScoredNode = dict[str, object]
+
+
+def _as_lattice_graph(lattice_instance: object) -> nx.Graph:
+    lattice = getattr(lattice_instance, "lattice", lattice_instance)
+    if not hasattr(lattice, "nodes") or not hasattr(lattice, "neighbors"):
+        raise TypeError("lattice_instance must expose a NetworkX-like lattice graph")
+    return cast(nx.Graph, lattice)
+
+
+def _ordered_nodes(graph: nx.Graph) -> list[Hashable]:
+    nodes = list(graph.nodes())
+    try:
+        return sorted(nodes)
+    except TypeError:
+        return nodes
+
+
+def _copy_state(mapping_state: MappingState) -> MappingState:
+    return {
+        "mapping": dict(cast(Mapping[Hashable, Hashable], mapping_state.get("mapping", {}))),
+        "unmapping": dict(cast(Mapping[Hashable, Hashable], mapping_state.get("unmapping", {}))),
+        "unexpanded_nodes": set(
+            cast(Iterable[Hashable], mapping_state.get("unexpanded_nodes", set()))
+        ),
+        "removed_nodes": set(cast(Iterable[Hashable], mapping_state.get("removed_nodes", set()))),
+        "rng_counter": int(cast(int, mapping_state.get("rng_counter", 0))),
+    }
+
+
+def _mapping(state: MappingState) -> dict[Hashable, Hashable]:
+    return cast(dict[Hashable, Hashable], state["mapping"])
+
+
+def _unmapping(state: MappingState) -> dict[Hashable, Hashable]:
+    return cast(dict[Hashable, Hashable], state["unmapping"])
+
+
+def _unexpanded(state: MappingState) -> set[Hashable]:
+    return cast(set[Hashable], state["unexpanded_nodes"])
+
+
+def _removed(state: MappingState) -> set[Hashable]:
+    return cast(set[Hashable], state["removed_nodes"])
+
+
+def _lattice_start_node(lattice: nx.Graph, used_sites: set[Hashable]) -> Hashable:
+    nodes = _ordered_nodes(lattice)
+    if not nodes:
+        raise ValueError("lattice must contain at least one node")
+
+    lattice_n = len(nodes)
+    lattice_grid_size = int(math.sqrt(lattice_n))
+    center_index = int(lattice_n / 2 + lattice_grid_size / 4)
+    center_index = min(max(center_index, 0), lattice_n - 1)
+
+    offsets = [0]
+    for delta in range(1, lattice_n):
+        offsets.extend((-delta, delta))
+    for offset in offsets:
+        candidate_index = center_index + offset
+        if 0 <= candidate_index < lattice_n and nodes[candidate_index] not in used_sites:
+            return nodes[candidate_index]
+    raise ValueError("no free lattice site is available for the starting node")
+
+
+def _average_lattice_degree(lattice_instance: object, lattice: nx.Graph) -> float:
+    if hasattr(lattice_instance, "avg_degree"):
+        return float(getattr(lattice_instance, "avg_degree"))
+    if lattice.number_of_nodes() == 0:
+        return 0.0
+    return float(sum(dict(lattice.degree()).values()) / lattice.number_of_nodes())
+
+
+def _score_candidates(
+    graph: nx.Graph,
+    lattice_instance: object,
+    lattice: nx.Graph,
+    previous_subgraphs: Collection[Subgraph],
+    unplaced_nodes: list[Hashable],
+    mapping: Mapping[Hashable, Hashable],
+    remove_invalid_placement_nodes: bool,
+    rng: random.Random,
+) -> list[ScoredNode]:
+    graph_n = max(graph.number_of_nodes(), 1)
+    avg_degree = _average_lattice_degree(lattice_instance, lattice)
+    scored_nodes: list[ScoredNode] = []
+
+    for node in unplaced_nodes:
+        degree_score = 1.0 - (abs(avg_degree - float(graph.degree(node))) / graph_n)
+        non_adj_score = 0.0
+        if not remove_invalid_placement_nodes:
+            non_neighbors = [neighbor for neighbor in nx.non_neighbors(graph, node) if neighbor in mapping]
+            non_adj_score = len(non_neighbors) / graph_n
+
+        previous_count = sum(1 for subgraph in previous_subgraphs if node in subgraph)
+        previous_score = (
+            1.0 - (previous_count / len(previous_subgraphs)) if previous_subgraphs else 0.0
+        )
+        score = degree_score + non_adj_score + previous_score
+        scored_nodes.append(
+            {
+                "node": node,
+                "score": float(score),
+                "tie_breaker": float(rng.random()),
+                "degree_score": float(degree_score),
+                "non_adjacent_score": float(non_adj_score),
+                "previous_subgraph_score": float(previous_score),
+            }
+        )
+
+    return scored_nodes
+
+
+def _place_candidates_on_frontier(
+    graph: nx.Graph,
+    lattice: nx.Graph,
+    state: MappingState,
+    ordered_candidates: list[Hashable],
+    current_lattice_node: Hashable,
+    remove_invalid_placement_nodes: bool,
+) -> None:
+    mapping = _mapping(state)
+    unmapping = _unmapping(state)
+    unexpanded_nodes = _unexpanded(state)
+    removed_nodes = _removed(state)
+    already_placed_nodes = set(mapping)
+    unplaced_nodes = list(ordered_candidates)
+    free_lattice_neighbors = [
+        neighbor for neighbor in lattice.neighbors(current_lattice_node) if neighbor not in unmapping
+    ]
+
+    for free_lattice_neighbor in free_lattice_neighbors:
+        for unplaced_node in list(unplaced_nodes):
+            valid_placement = True
+
+            mapped_lattice_neighbors = [
+                neighbor for neighbor in lattice.neighbors(free_lattice_neighbor) if neighbor in unmapping
+            ]
+            for mapped_neighbor in mapped_lattice_neighbors:
+                if not graph.has_edge(unplaced_node, unmapping[mapped_neighbor]):
+                    valid_placement = False
+                    break
+
+            if valid_placement:
+                for graph_neighbor in graph.neighbors(unplaced_node):
+                    if graph_neighbor in already_placed_nodes and not lattice.has_edge(
+                        mapping[graph_neighbor], free_lattice_neighbor
+                    ):
+                        valid_placement = False
+                        break
+
+            if valid_placement:
+                mapping[unplaced_node] = free_lattice_neighbor
+                unmapping[free_lattice_neighbor] = unplaced_node
+                already_placed_nodes.add(unplaced_node)
+                unexpanded_nodes.add(unplaced_node)
+                unplaced_nodes.remove(unplaced_node)
+                break
+
+    if remove_invalid_placement_nodes:
+        removed_nodes.update(unplaced_nodes)
+
+
+def _validate_mapping(context: GreedyMappingContext, state: MappingState) -> bool:
+    graph = cast(nx.Graph, context["graph"])
+    lattice = cast(nx.Graph, context["lattice"])
+    mapping = _mapping(state)
+    unmapping = _unmapping(state)
+
+    for graph_node, lattice_node in mapping.items():
+        if unmapping.get(lattice_node) != graph_node:
+            return False
+    for lattice_node, graph_node in unmapping.items():
+        if mapping.get(graph_node) != lattice_node:
+            return False
+
+    for graph_u, graph_v in graph.edges():
+        if graph_u in mapping and graph_v in mapping and not lattice.has_edge(
+            mapping[graph_u], mapping[graph_v]
+        ):
+            return False
+
+    for lattice_u, lattice_v in lattice.edges():
+        if lattice_u in unmapping and lattice_v in unmapping and not graph.has_edge(
+            unmapping[lattice_u], unmapping[lattice_v]
+        ):
+            return False
+
+    return True
 
 
 @register_atom(witness_init_problem_context)
 @icontract.require(lambda graph: graph is not None, "graph cannot be None")
 @icontract.require(lambda lattice_instance: lattice_instance is not None, "lattice_instance cannot be None")
 @icontract.require(lambda previously_generated_subgraphs: previously_generated_subgraphs is not None, "previously_generated_subgraphs cannot be None")
-@icontract.require(lambda seed: seed is not None, "seed cannot be None")
 @icontract.ensure(lambda result: result is not None, "init_problem_context output must not be None")
-def init_problem_context(graph: Graph, lattice_instance: LatticeInstance, previously_generated_subgraphs: Collection[Subgraph], seed: int) -> GreedyMappingContext:
-    """Bootstraps immutable problem context for all later kernels: graph topology, lattice abstraction, lattice instance, previously generated subgraphs, and seed.
-
-    Args:
-        graph: Required; treated as immutable input state.
-        lattice_instance: Required; used for placement/scoring context.
-        previously_generated_subgraphs: Required; historical constraints for scoring.
-        seed: Deterministic initialization input.
-
-    Returns:
-        Immutable state object carrying graph, lattice, lattice_instance,
-        previously_generated_subgraphs, seed.
-    """
-    lattice = getattr(lattice_instance, 'lattice', lattice_instance)
+def init_problem_context(
+    graph: Graph,
+    lattice_instance: LatticeInstance,
+    previously_generated_subgraphs: Collection[Subgraph],
+    seed: int,
+) -> GreedyMappingContext:
+    """Collect the graph, lattice, historical subgraphs, and seed for D12 greedy mapping."""
+    lattice = getattr(lattice_instance, "lattice", lattice_instance)
     return {
-        'graph': graph,
-        'lattice': lattice,
-        'lattice_instance': lattice_instance,
-        'previously_generated_subgraphs': list(previously_generated_subgraphs),
-        'seed': seed,
+        "graph": graph,
+        "lattice": lattice,
+        "lattice_instance": lattice_instance,
+        "previously_generated_subgraphs": list(previously_generated_subgraphs),
+        "seed": int(seed),
     }
 
 
@@ -51,150 +240,115 @@ def init_problem_context(graph: Graph, lattice_instance: LatticeInstance, previo
 @icontract.require(lambda starting_node: starting_node is not None, "starting_node cannot be None")
 @icontract.require(lambda mapping_state_in: mapping_state_in is not None, "mapping_state_in cannot be None")
 @icontract.require(lambda considered_nodes: considered_nodes is not None, "considered_nodes cannot be None")
-@icontract.require(lambda remove_invalid_placement_nodes: remove_invalid_placement_nodes is not None, "remove_invalid_placement_nodes cannot be None")
-@icontract.require(lambda rank_nodes: rank_nodes is not None, "rank_nodes cannot be None")
-@icontract.ensure(lambda result: all(r is not None for r in result), "construct_mapping_state_via_greedy_expansion all outputs must not be None")
-def construct_mapping_state_via_greedy_expansion(problem_context: GreedyMappingContext, starting_node: NodeId, mapping_state_in: MappingState, considered_nodes: Collection[NodeId], remove_invalid_placement_nodes: bool, rank_nodes: bool) -> tuple[MappingState, Collection[ScoredNode]]:
-    """Builds and evolves immutable mapping state: initialize seed placement, score candidate graph nodes greedily, and extend mapping/frontier with feasible placements.
+@icontract.ensure(lambda result: all(r is not None for r in result), "construct_mapping_state_via_greedy_expansion outputs must not be None")
+def construct_mapping_state_via_greedy_expansion(
+    problem_context: GreedyMappingContext,
+    starting_node: NodeId,
+    mapping_state_in: MappingState,
+    considered_nodes: Collection[NodeId],
+    remove_invalid_placement_nodes: bool,
+    rank_nodes: bool,
+) -> tuple[MappingState, list[ScoredNode]]:
+    """Advance one D12 greedy-lattice mapping step without mutating the input state."""
+    graph = cast(nx.Graph, problem_context["graph"])
+    lattice = _as_lattice_graph(problem_context["lattice"])
+    lattice_instance = problem_context["lattice_instance"]
+    previous_subgraphs = cast(Collection[Subgraph], problem_context["previously_generated_subgraphs"])
+    state = _copy_state(mapping_state_in)
+    mapping = _mapping(state)
+    unmapping = _unmapping(state)
+    unexpanded_nodes = _unexpanded(state)
 
-    Args:
-        problem_context: Must come from init_problem_context.
-        starting_node: Used by initialization stage.
-        mapping_state_in: Threaded immutable state.
-        considered_nodes: Nodes considered for expansion.
-        remove_invalid_placement_nodes: Controls invalid-placement pruning.
-        rank_nodes: Controls ranking behavior.
+    if starting_node not in mapping:
+        starting_lattice_node = _lattice_start_node(lattice, set(mapping.values()))
+        mapping[starting_node] = starting_lattice_node
+        unmapping[starting_lattice_node] = starting_node
+        unexpanded_nodes.add(starting_node)
 
-    Returns:
-        mapping_state_out: New immutable state after extension.
-        scored_nodes: Greedy scores computed from graph/lattice context.
-    """
-    graph = problem_context.get('graph') if isinstance(problem_context, dict) else getattr(problem_context, 'graph', None)
-    lattice = problem_context.get('lattice', problem_context.get('lattice_instance')) if isinstance(problem_context, dict) else getattr(problem_context, 'lattice', None)
+    current_node = cast(Hashable, mapping_state_in.get("current_node", starting_node))
+    current_lattice_node = cast(Hashable, mapping_state_in.get("current_lattice_node", mapping[current_node]))
+    removed_nodes = _removed(state)
+    unplaced_nodes = [
+        node for node in considered_nodes if node not in mapping and node not in removed_nodes
+    ]
 
-    # Extract current state
-    if isinstance(mapping_state_in, dict):
-        cur_mapping = dict(mapping_state_in.get('mapping', {}))
-        cur_unmapping = dict(mapping_state_in.get('unmapping', {}))
-        cur_unexpanded = set(mapping_state_in.get('unexpanded_nodes', set()))
-    else:
-        cur_mapping = {}
-        cur_unmapping = {}
-        cur_unexpanded = set()
+    rng_seed = int(cast(int, problem_context.get("seed", 0))) + int(state["rng_counter"])
+    rng = random.Random(rng_seed)
+    scored_nodes = _score_candidates(
+        graph,
+        lattice_instance,
+        lattice,
+        previous_subgraphs,
+        list(unplaced_nodes),
+        mapping,
+        remove_invalid_placement_nodes,
+        rng,
+    )
+    state["rng_counter"] = int(state["rng_counter"]) + 1
 
-    # Initialize seed placement if not yet mapped
-    if starting_node not in cur_mapping:
-        used_sites = set(cur_mapping.values())
-        if hasattr(lattice, 'nodes'):
-            available = [n for n in lattice.nodes() if n not in used_sites]
-        elif hasattr(lattice, '__iter__'):
-            available = [n for n in lattice if n not in used_sites]
-        else:
-            available = [i for i in range(1000) if i not in used_sites]
-        if available:
-            site = available[0]
-            cur_mapping[starting_node] = site
-            cur_unmapping[site] = starting_node
-            cur_unexpanded.add(starting_node)
-
-    # Score candidates
-    scored_nodes = []
-    for node in considered_nodes:
-        if node in cur_mapping:
-            continue
-        if hasattr(graph, 'neighbors'):
-            neighbors = list(graph.neighbors(node))
-        elif hasattr(graph, 'adj'):
-            neighbors = list(graph.adj.get(node, []))
-        else:
-            neighbors = []
-        score = sum(1 for nb in neighbors if nb in cur_mapping)
-        scored_nodes.append({'node': node, 'score': float(score)})
-
-    # Filter invalid placements
-    if remove_invalid_placement_nodes:
-        scored_nodes = [s for s in scored_nodes if s['score'] > 0 or len(cur_mapping) <= 1]
-
-    # Sort by score if ranking requested
     if rank_nodes:
-        scored_nodes.sort(key=lambda s: -s['score'])
+        scored_nodes.sort(
+            key=lambda item: (cast(float, item["score"]), cast(float, item["tie_breaker"])),
+            reverse=True,
+        )
+    ordered_candidates = [cast(Hashable, scored["node"]) for scored in scored_nodes]
 
-    # Greedily extend mapping
-    used_sites = set(cur_mapping.values())
-    if hasattr(lattice, 'nodes'):
-        free_sites = [n for n in lattice.nodes() if n not in used_sites]
-    elif hasattr(lattice, '__iter__'):
-        free_sites = [n for n in lattice if n not in used_sites]
-    else:
-        free_sites = [i for i in range(1000) if i not in used_sites]
+    _place_candidates_on_frontier(
+        graph,
+        lattice,
+        state,
+        ordered_candidates,
+        current_lattice_node,
+        remove_invalid_placement_nodes,
+    )
 
-    for sn in scored_nodes:
-        node = sn['node']
-        if not free_sites or node in cur_mapping:
-            continue
-        site = free_sites.pop(0)
-        cur_mapping[node] = site
-        cur_unmapping[site] = node
-        cur_unexpanded.add(node)
-
-    mapping_state_out = {
-        'mapping': cur_mapping,
-        'unmapping': cur_unmapping,
-        'unexpanded_nodes': cur_unexpanded,
-    }
-    return (mapping_state_out, scored_nodes)
+    return state, scored_nodes
 
 
 @register_atom(witness_orchestrate_generation_and_validate)
 @icontract.require(lambda problem_context: problem_context is not None, "problem_context cannot be None")
 @icontract.require(lambda starting_node: starting_node is not None, "starting_node cannot be None")
-@icontract.require(lambda remove_invalid_placement_nodes: remove_invalid_placement_nodes is not None, "remove_invalid_placement_nodes cannot be None")
-@icontract.require(lambda rank_nodes: rank_nodes is not None, "rank_nodes cannot be None")
 @icontract.require(lambda mapping_state: mapping_state is not None, "mapping_state cannot be None")
-@icontract.ensure(lambda result: all(r is not None for r in result), "orchestrate_generation_and_validate all outputs must not be None")
-def orchestrate_generation_and_validate(problem_context: GreedyMappingContext, starting_node: NodeId, remove_invalid_placement_nodes: bool, rank_nodes: bool, mapping_state: MappingState) -> tuple[MappingState, bool]:
-    """Entry-point orchestration kernel (GreedyMapping): drives iterative expansion, invokes validity checks, and returns final generated subgraph mapping and inverse mapping.
+@icontract.ensure(lambda result: all(r is not None for r in result), "orchestrate_generation_and_validate outputs must not be None")
+def orchestrate_generation_and_validate(
+    problem_context: GreedyMappingContext,
+    starting_node: NodeId,
+    remove_invalid_placement_nodes: bool,
+    rank_nodes: bool,
+    mapping_state: MappingState,
+) -> tuple[MappingState, bool]:
+    """Run the D12 greedy expansion loop from ``starting_node`` and validate the final map."""
+    graph = cast(nx.Graph, problem_context["graph"])
+    state = _copy_state(mapping_state)
 
-    Args:
-        problem_context: Immutable context from initialization.
-        starting_node: Required entry node.
-        remove_invalid_placement_nodes: Forwarded to expansion kernel.
-        rank_nodes: Forwarded to expansion kernel.
-        mapping_state: Threaded immutable state from expansion kernel.
+    if starting_node not in _mapping(state):
+        state, _ = construct_mapping_state_via_greedy_expansion(
+            problem_context,
+            starting_node,
+            state,
+            (),
+            remove_invalid_placement_nodes,
+            rank_nodes,
+        )
 
-    Returns:
-        final_mapping_state: Final immutable mapping/unmapping state.
-        is_valid: Result of final mapping validity check.
-    """
-    graph = problem_context.get('graph') if isinstance(problem_context, dict) else getattr(problem_context, 'graph', None)
-    lattice = problem_context.get('lattice', problem_context.get('lattice_instance')) if isinstance(problem_context, dict) else getattr(problem_context, 'lattice', None)
+    while _unexpanded(state):
+        current_node = next(iter(_unexpanded(state)))
+        _unexpanded(state).remove(current_node)
+        current_lattice_node = _mapping(state)[current_node]
+        removed_nodes = _removed(state)
+        considered_nodes = [
+            neighbor for neighbor in graph.neighbors(current_node) if neighbor not in removed_nodes
+        ]
+        step_state = dict(state)
+        step_state["current_node"] = current_node
+        step_state["current_lattice_node"] = current_lattice_node
+        state, _ = construct_mapping_state_via_greedy_expansion(
+            problem_context,
+            starting_node,
+            cast(MappingState, step_state),
+            considered_nodes,
+            remove_invalid_placement_nodes,
+            rank_nodes,
+        )
 
-    if isinstance(mapping_state, dict):
-        cur_mapping = mapping_state.get('mapping', {})
-        cur_unmapping = mapping_state.get('unmapping', {})
-    else:
-        cur_mapping = {}
-        cur_unmapping = {}
-
-    # Validate bijectivity
-    is_valid = True
-    for g_node, l_node in cur_mapping.items():
-        if l_node not in cur_unmapping or cur_unmapping[l_node] != g_node:
-            is_valid = False
-            break
-    if is_valid:
-        for l_node, g_node in cur_unmapping.items():
-            if g_node not in cur_mapping or cur_mapping[g_node] != l_node:
-                is_valid = False
-                break
-
-    # Validate edge preservation
-    if is_valid and hasattr(graph, 'edges'):
-        for u, v in graph.edges():
-            if u in cur_mapping and v in cur_mapping:
-                lu, lv = cur_mapping[u], cur_mapping[v]
-                if hasattr(lattice, 'has_edge') and not lattice.has_edge(lu, lv):
-                    is_valid = False
-                    break
-
-    return (mapping_state, is_valid)
+    return state, _validate_mapping(problem_context, state)

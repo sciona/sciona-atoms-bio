@@ -27,25 +27,25 @@
       "node_id": "greedy_maximum_subgraph",
       "parent_id": "greedy_subgraph_root",
       "name": "greedy_maximum_subgraph",
-      "description": "Greedily selects a maximum-weight subgraph from a molecular interaction graph by iteratively adding the highest-scoring connected node.",
+      "description": "Greedily selects a source-aligned maximum-weight independent-set subgraph mask from a molecular interaction conflict graph.",
       "concept_type": "custom",
       "inputs": [
         {
           "name": "adjacency",
           "type_desc": "np.ndarray",
-          "constraints": "required argument"
+          "constraints": "square conflict adjacency matrix"
         },
         {
           "name": "scores",
           "type_desc": "np.ndarray",
-          "constraints": "required argument"
+          "constraints": "node weights aligned to adjacency rows"
         }
       ],
       "outputs": [
         {
           "name": "result",
           "type_desc": "np.ndarray",
-          "constraints": "function return value"
+          "constraints": "boolean independent-set mask"
         }
       ],
       "status": "atomic",
@@ -57,8 +57,8 @@
       "is_opaque": false,
       "is_external": false,
       "parallelizable": false,
-      "conceptual_summary": "Direct callable atom in the consolidated module.",
-      "critic_notes": "Signature derived from the Python wrapper definition.",
+      "conceptual_summary": "Greedy weighted independent-set selector. It orders molecular interaction nodes by weight divided by one plus conflict degree, then adds a node only when it has no conflict edge to the current selection.",
+      "critic_notes": "Contract narrowed during remediation to match the upstream Molecular-Docking classical MIS helpers instead of claiming connected-subgraph selection.",
       "decomposition_rationale": "Leaf atom."
     }
   ],

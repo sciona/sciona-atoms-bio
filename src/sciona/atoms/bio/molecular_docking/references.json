@@ -50,6 +50,60 @@
         }
       ],
       "auto_attribution_runs": []
+    },
+    "sciona.atoms.bio.molecular_docking.greedy_subgraph.greedy_maximum_subgraph@sciona/atoms/bio/molecular_docking/greedy_subgraph.py:21": {
+      "references": [
+        {
+          "ref_id": "moleculardocking2025",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual_remediation",
+            "matched_nodes": [],
+            "confidence": "medium",
+            "notes": "Classical molecular-docking greedy independent-set helper aligned with the upstream Molecular-Docking solver lane."
+          }
+        },
+        {
+          "ref_id": "repo_molecular_docking",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual_remediation",
+            "matched_nodes": [
+              "third_party/Molecular-Docking/src/solver/classic_MIS_solvers.py:49"
+            ],
+            "confidence": "high",
+            "notes": "The atom uses the upstream weight/(1+degree) greedy independent-set ordering."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "sciona.atoms.bio.molecular_docking.map_to_udg.graphtoudgmapping@sciona/atoms/bio/molecular_docking/map_to_udg.py:90": {
+      "references": [
+        {
+          "ref_id": "moleculardocking2025",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual_remediation",
+            "matched_nodes": [],
+            "confidence": "medium",
+            "notes": "Classical unit-disk graph/register mapping concept used by the Molecular-Docking pipeline."
+          }
+        },
+        {
+          "ref_id": "repo_molecular_docking",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual_remediation",
+            "matched_nodes": [
+              "third_party/Molecular-Docking/src/solver/utils/graph_register.py:64"
+            ],
+            "confidence": "high",
+            "notes": "The remediation preserves graph edges and certifies the radius-one coordinate rule rather than adding spectral-layout edges."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
     }
   }
 }

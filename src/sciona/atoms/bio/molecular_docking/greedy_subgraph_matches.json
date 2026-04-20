@@ -1,0 +1,35 @@
+[
+  {
+    "pdg_node": {
+      "predicate_id": "greedy_maximum_subgraph",
+      "statement": "(adjacency: np.ndarray, scores: np.ndarray) -> np.ndarray",
+      "informal_desc": "Select a greedy weighted independent-set mask from a molecular interaction conflict graph.",
+      "prover": "python",
+      "context": {
+        "source_reference": "../ageo-atoms/third_party/Molecular-Docking/src/solver/classic_MIS_solvers.py:49"
+      }
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "weighted_greedy_independent_set",
+          "type_signature": "(graph: nx.Graph) -> list[int]",
+          "docstring": "Approximate greedy algorithm for the Weighted Independent Set problem on a NetworkX graph.",
+          "conceptual_summary": "Orders graph nodes by weight divided by one plus degree and greedily adds non-conflicting nodes to an independent set.",
+          "source_lib": "Molecular-Docking",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 0.91,
+        "retrieval_method": "manual_remediation"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "behavior_tested"
+    },
+    "all_candidates": [],
+    "all_verifications": []
+  }
+]

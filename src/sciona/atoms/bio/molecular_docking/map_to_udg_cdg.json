@@ -27,20 +27,20 @@
       "node_id": "graphtoudgmapping",
       "parent_id": "map_to_udg_root",
       "name": "graphtoudgmapping",
-      "description": "Map a graph to a UDG mapping.",
+      "description": "Certify a graph as a unit-disk graph mapping without adding layout-induced edges.",
       "concept_type": "custom",
       "inputs": [
         {
           "name": "G",
           "type_desc": "nx.Graph",
-          "constraints": "required argument"
+          "constraints": "NetworkX-like graph with existing or certifiable 2D node positions"
         }
       ],
       "outputs": [
         {
           "name": "result",
           "type_desc": "nx.Graph",
-          "constraints": "function return value"
+          "constraints": "copy of the input graph with certified radius-one UDG positions"
         }
       ],
       "status": "atomic",
@@ -52,8 +52,8 @@
       "is_opaque": false,
       "is_external": false,
       "parallelizable": false,
-      "conceptual_summary": "Direct callable atom in the consolidated module.",
-      "critic_notes": "Signature derived from the Python wrapper definition.",
+      "conceptual_summary": "Unit-disk embedding certification. It preserves the input node and edge set, writes a radius-one 2D position mapping, and rejects embeddings where the unit-disk rule would add or drop an edge.",
+      "critic_notes": "Remediated from an unsafe spectral-layout edge generator to an edge-preserving certification contract.",
       "decomposition_rationale": "Leaf atom."
     }
   ],

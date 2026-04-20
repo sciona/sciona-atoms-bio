@@ -11,17 +11,19 @@
     "src/sciona/atoms/bio/molecular_docking/**/references.json",
     "src/sciona/atoms/bio/molecular_docking/**/cdg.json",
     "src/sciona/atoms/bio/molecular_docking/**/matches.json",
-    "src/sciona/atoms/bio/molecular_docking/**/uncertainty.json"
+    "src/sciona/atoms/bio/molecular_docking/**/uncertainty.json",
+    "src/sciona/atoms/bio/molecular_docking/*_cdg.json",
+    "src/sciona/atoms/bio/molecular_docking/*_matches.json"
   ],
   "limitations": [
-    "pubrev-005 marks only directly audited safe molecular_docking atoms ready; placeholder or semantically drifting atoms remain unpublished and are documented in REMEDIATION.md.",
+    "pubrev-005 classical molecular_docking remediation advanced the audited non-quantum D12 mapping, greedy independent-set, and UDG-certification rows; quantum solver rows remain unpublished and are documented in REMEDIATION.md.",
     "pubrev-028 quantum_solver_d12 rows were directly audited and held because current wrappers drift from the Pulser neutral-atom solver semantics described by matches/cdg evidence.",
-    "Some older subfamily rows still lack uncertainty evidence and remain blocked until separately reviewed."
+    "Quantum solver rows still require an optional Pulser/emulator dependency lane before publication."
   ],
   "required_actions": [
-    "Resolve REMEDIATION.md hold items before publishing the held pubrev-005 atoms.",
+    "Resolve REMEDIATION.md quantum hold items before publishing the held pubrev-005 atoms.",
     "Replace or re-document quantum_solver_d12 placeholder/classical stand-ins before publishing pubrev-028 rows.",
-    "Backfill or supersede uncertainty evidence for any non-pubrev-005 rows still blocked on uncertainty."
+    "Backfill optional-dependency documentation and focused Pulser/emulator tests for quantum solver rows."
   ],
   "subfamily_summaries": [
     {
@@ -41,6 +43,20 @@
     {
       "subfamily": "greedy_mapping_d12",
       "row_count": 3,
+      "has_cdg": true,
+      "has_matches": true,
+      "has_uncertainty": false
+    },
+    {
+      "subfamily": "greedy_subgraph",
+      "row_count": 1,
+      "has_cdg": true,
+      "has_matches": true,
+      "has_uncertainty": false
+    },
+    {
+      "subfamily": "map_to_udg",
+      "row_count": 1,
       "has_cdg": true,
       "has_matches": true,
       "has_uncertainty": false
@@ -226,30 +242,30 @@
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[7]"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping_d12.construct_mapping_state_via_greedy_expansion@sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py:57",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping_d12.construct_mapping_state_via_greedy_expansion@sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py:244",
       "subfamily": "greedy_mapping_d12",
-      "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py:57",
+      "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py:244",
       "review_status": "reviewed",
       "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
-      "limitations": [
-        "No uncertainty.json present for greedy_mapping_d12."
-      ],
-      "required_actions": [
-        "Backfill uncertainty evidence for greedy_mapping_d12."
-      ],
+      "developer_semantic_verdict": "source_aligned_with_direct_audit",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
       "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py",
         "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/references.json",
         "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/cdg.json",
-        "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/matches.json"
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/matches.json",
+        "tests/test_molecular_docking_classical_remediation_behavior.py"
       ],
-      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[8]"
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[8]",
+      "audit_batch": "pubrev-005-remediation",
+      "audit_scope": "classical_molecular_docking_remediation"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping_d12.init_problem_context@sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py:26",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping_d12.init_problem_context@sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py:221",
       "subfamily": "greedy_mapping_d12",
-      "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py:26",
+      "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py:221",
       "review_status": "reviewed",
       "semantic_verdict": "publishable_candidate",
       "developer_semantic_verdict": "source_aligned_with_direct_audit",
@@ -267,25 +283,25 @@
       "audit_scope": "wave_1_audit_completion"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping_d12.orchestrate_generation_and_validate@sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py:155",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping_d12.orchestrate_generation_and_validate@sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py:313",
       "subfamily": "greedy_mapping_d12",
-      "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py:155",
+      "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py:313",
       "review_status": "reviewed",
       "semantic_verdict": "publishable_candidate",
-      "developer_semantic_verdict": "source_aligned_with_gap",
-      "trust_readiness": "blocked_on_uncertainty_backfill",
-      "limitations": [
-        "No uncertainty.json present for greedy_mapping_d12."
-      ],
-      "required_actions": [
-        "Backfill uncertainty evidence for greedy_mapping_d12."
-      ],
+      "developer_semantic_verdict": "source_aligned_with_direct_audit",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
       "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py",
         "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/references.json",
         "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/cdg.json",
-        "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/matches.json"
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/matches.json",
+        "tests/test_molecular_docking_classical_remediation_behavior.py"
       ],
-      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[10]"
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[10]",
+      "audit_batch": "pubrev-005-remediation",
+      "audit_scope": "classical_molecular_docking_remediation"
     },
     {
       "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.aggregate_maximum_distance_as_bandwidth@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:93",
@@ -849,6 +865,48 @@
       "audit_batch": "pubrev-005",
       "audit_scope": "wave_1_audit_completion",
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[39]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_subgraph.greedy_maximum_subgraph@sciona/atoms/bio/molecular_docking/greedy_subgraph.py:21",
+      "subfamily": "greedy_subgraph",
+      "source_path": "sciona/atoms/bio/molecular_docking/greedy_subgraph.py:21",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_direct_audit",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/greedy_subgraph.py",
+        "src/sciona/atoms/bio/molecular_docking/greedy_subgraph_cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_subgraph_matches.json",
+        "src/sciona/atoms/bio/molecular_docking/references.json",
+        "tests/test_molecular_docking_classical_remediation_behavior.py"
+      ],
+      "audit_batch": "pubrev-005-remediation",
+      "audit_scope": "classical_molecular_docking_remediation",
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[40]"
+    },
+    {
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.map_to_udg.graphtoudgmapping@sciona/atoms/bio/molecular_docking/map_to_udg.py:90",
+      "subfamily": "map_to_udg",
+      "source_path": "sciona/atoms/bio/molecular_docking/map_to_udg.py:90",
+      "review_status": "reviewed",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_direct_audit",
+      "trust_readiness": "ready_for_manifest_merge",
+      "limitations": [],
+      "required_actions": [],
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/map_to_udg.py",
+        "src/sciona/atoms/bio/molecular_docking/map_to_udg_cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/map_to_udg_matches.json",
+        "src/sciona/atoms/bio/molecular_docking/references.json",
+        "tests/test_molecular_docking_classical_remediation_behavior.py"
+      ],
+      "audit_batch": "pubrev-005-remediation",
+      "audit_scope": "classical_molecular_docking_remediation",
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[41]"
     }
   ]
 }
