@@ -4,3 +4,10 @@ __pycache__/
 .mypy_cache/
 .ruff_cache/
 .DS_Store
+src/sciona/atoms/**/.ingest_status.json
+src/sciona/atoms/**/COMPLETED.json
+src/sciona/atoms/**/debug_*.json
+src/sciona/atoms/**/debug_*.py
+src/sciona/atoms/**/shared_context_metrics.json
+src/sciona/atoms/**/trace.jsonl
+src/sciona/atoms/**/verification_failure.json

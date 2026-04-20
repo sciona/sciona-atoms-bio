@@ -116,6 +116,47 @@
       },
       "url": "https://arxiv.org/abs/2508.18147"
     },
+    "liao2017leakyNoisyOr": {
+      "ref_id": "liao2017leakyNoisyOr",
+      "type": "paper",
+      "title": "Evaluate the Malignancy of Pulmonary Nodules Using the 3D Deep Leaky Noisy-or Network",
+      "authors": [
+        "Fangzhou Liao",
+        "Ming Liang",
+        "Zhe Li",
+        "Xiaolin Hu",
+        "Sen Song"
+      ],
+      "year": 2017,
+      "venue": "arXiv",
+      "match_metadata": {
+        "similarity_score": null,
+        "match_type": "manual",
+        "matched_nodes": [],
+        "confidence": "high",
+        "notes": "Primary paper describing the leaky noisy-or case aggregation used by the DSB2017 CaseNet classifier."
+      },
+      "doi": "10.48550/arXiv.1711.08324",
+      "url": "https://arxiv.org/abs/1711.08324"
+    },
+    "repo_dsb2017_lfz": {
+      "ref_id": "repo_dsb2017_lfz",
+      "type": "repository",
+      "title": "DSB2017",
+      "authors": [
+        "Fangzhou Liao"
+      ],
+      "year": 2023,
+      "venue": "GitHub",
+      "url": "https://github.com/lfz/DSB2017",
+      "match_metadata": {
+        "similarity_score": null,
+        "match_type": "manual",
+        "matched_nodes": [],
+        "confidence": "high",
+        "notes": "MIT-licensed upstream repository containing net_classifier.py and the CaseNet aggregation implementation."
+      }
+    },
     "repo_hpdb": {
       "ref_id": "repo_hpdb",
       "type": "repository",

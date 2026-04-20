@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "metadata": {
-    "generated_at": "2026-04-20T13:50:27.997190+00:00",
+    "generated_at": "2026-04-20T14:46:08.668410+00:00",
     "generator": "scripts/apply_audit_review_bundles.py",
     "phase": "phase_1_review_bundle_merge"
   },
@@ -4852,6 +4852,86 @@
       "source_path": "sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:42",
       "audit_batch": "pubrev-028-quantum-optional",
       "audit_scope": "quantum_optional_dependency_remediation"
+    },
+    {
+      "atom_name": "sciona.atoms.medical_imaging_3d.aggregation.case_probability_from_nodule_scores",
+      "atom_key": "sciona.atoms.medical_imaging_3d.aggregation.case_probability_from_nodule_scores",
+      "atom_id": "sciona.atoms.medical_imaging_3d.aggregation.case_probability_from_nodule_scores",
+      "module_import_path": "sciona.atoms.medical_imaging_3d.aggregation",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/medical_imaging_3d/aggregation/atoms.py",
+      "module_family": "medical_imaging_3d",
+      "domain_family": "medical_imaging_3d",
+      "wrapper_symbol": "case_probability_from_nodule_scores",
+      "argument_names": [
+        "nodule_probabilities",
+        "baseline_logit"
+      ],
+      "argument_details": [
+        {
+          "name": "nodule_probabilities",
+          "annotation": "np.ndarray",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "baseline_logit",
+          "annotation": "float",
+          "required": false,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "np.ndarray",
+      "docstring_summary": "Combine candidate nodule cancer probabilities into case probabilities.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/medical_imaging_3d/aggregation/atoms.py",
+        "src/sciona/atoms/medical_imaging_3d/aggregation/witnesses.py",
+        "src/sciona/atoms/medical_imaging_3d/aggregation/cdg.json",
+        "src/sciona/atoms/medical_imaging_3d/aggregation/references.json",
+        "tests/test_medical_imaging_3d_aggregation_behavior.py",
+        "tests/test_medical_imaging_3d_aggregation_references_metadata.py",
+        "tests/test_medical_imaging_3d_aggregation_review_bundle.py"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [
+        "Inputs must be nodule probabilities, not raw CT crops or network features."
+      ],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "acceptable_with_limits",
+      "risk_tier": "low",
+      "risk_score": 20,
+      "risk_dimensions": {
+        "provenance": "low",
+        "semantic_drift": "low",
+        "runtime": "low"
+      },
+      "risk_reasons": [
+        "Scope is intentionally narrowed to the explicit aggregation equation rather than the full neural network."
+      ],
+      "acceptability_score": 86,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "positive_path",
+      "parity_test_status": "pass",
+      "parity_fixture_count": 1,
+      "parity_case_count": 5,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/medical_imaging_3d/aggregation/review_bundle.json#rows[0]",
+      "source_path": "sciona/atoms/medical_imaging_3d/aggregation/atoms.py:51",
+      "has_references": true,
+      "references_status": "pass"
     }
   ]
 }

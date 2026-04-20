@@ -1,0 +1,37 @@
+[
+  {
+    "pdg_node": {
+      "predicate_id": "case_probability_from_nodule_scores",
+      "statement": "(nodule_probabilities: NDArray[np.float64], baseline_logit: float = -30.0) -> NDArray[np.float64]",
+      "informal_desc": "Leaky noisy-or case probability aggregation",
+      "prover": "python",
+      "context": {
+        "source_language": "python",
+        "canonical_semantics": "true",
+        "concept_type": "probabilistic_aggregation"
+      }
+    },
+    "verified_match": {
+      "candidate": {
+        "declaration": {
+          "name": "case_probability_from_nodule_scores",
+          "type_signature": "(nodule_probabilities: NDArray[np.float64], baseline_logit: float = -30.0) -> NDArray[np.float64]",
+          "docstring": "Combine candidate nodule cancer probabilities into case probabilities.",
+          "conceptual_summary": "Computes the CaseNet leaky noisy-or aggregation equation.",
+          "source_lib": "manual_remediation:dsb2017_casenet",
+          "prover": "python",
+          "raw_code": ""
+        },
+        "score": 1.0,
+        "retrieval_method": "manual_source_alignment"
+      },
+      "verified": true,
+      "compiler_output": "",
+      "proof_term": "",
+      "error_message": "",
+      "verification_level": "type_checked"
+    },
+    "all_candidates": [],
+    "all_verifications": []
+  }
+]

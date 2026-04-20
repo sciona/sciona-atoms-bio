@@ -1,0 +1,104 @@
+{
+  "nodes": [
+    {
+      "node_id": "medical_imaging_3d_aggregation_root",
+      "parent_id": null,
+      "name": "medical_imaging_3d_aggregation",
+      "description": "Case-level aggregation for pulmonary nodule classifier outputs.",
+      "concept_type": "aggregation",
+      "inputs": [],
+      "outputs": [],
+      "status": "decomposed",
+      "children": [
+        "case_probability_from_nodule_scores"
+      ],
+      "depth": 0,
+      "type_signature": "",
+      "matched_primitive": null,
+      "primitive_binding_confidence": 0.0,
+      "primitive_binding_source": "",
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "A source-aligned leaky noisy-or aggregation stage for already-computed nodule probabilities.",
+      "critic_notes": "",
+      "decomposition_rationale": "The full CaseNet neural network is out of scope; this atom captures the explicit case-probability aggregation equation from the source.",
+      "fixed_point_max_iterations": 0,
+      "fixed_point_convergence_field": "",
+      "map_window_size": 0,
+      "map_hop_size": 0,
+      "boundary_kind": "none",
+      "boundary_port_name": ""
+    },
+    {
+      "node_id": "case_probability_from_nodule_scores",
+      "parent_id": "medical_imaging_3d_aggregation_root",
+      "name": "case_probability_from_nodule_scores",
+      "description": "Combines per-nodule malignancy probabilities into one case-level probability with a leaky noisy-or gate.",
+      "concept_type": "probabilistic_aggregation",
+      "inputs": [
+        {
+          "name": "nodule_probabilities",
+          "type_desc": "NDArray[np.float64]",
+          "constraints": "one- or two-dimensional finite probabilities in [0, 1]",
+          "data_kind": "probability",
+          "time_basis": "",
+          "provenance": "CaseNet per-nodule classifier outputs",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "baseline_logit",
+          "type_desc": "float",
+          "constraints": "finite scalar logit for dummy missed-nodule probability",
+          "data_kind": "model_parameter",
+          "time_basis": "",
+          "provenance": "CaseNet baseline parameter",
+          "required": false,
+          "default_value_repr": "-30.0"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type_desc": "NDArray[np.float64]",
+          "constraints": "one-dimensional case probabilities in [0, 1]",
+          "data_kind": "probability",
+          "time_basis": "",
+          "provenance": "leaky noisy-or aggregation",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 1,
+      "type_signature": "(nodule_probabilities: NDArray[np.float64], baseline_logit: float = -30.0) -> NDArray[np.float64]",
+      "matched_primitive": null,
+      "primitive_binding_confidence": 0.0,
+      "primitive_binding_source": "",
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": true,
+      "conceptual_summary": "Computes 1 - prod(1 - p_i) * (1 - sigmoid(baseline_logit)) for each case.",
+      "critic_notes": "",
+      "decomposition_rationale": "Direct extraction of the explicit CaseNet aggregation equation, excluding neural feature extraction and classifier layers.",
+      "fixed_point_max_iterations": 0,
+      "fixed_point_convergence_field": "",
+      "map_window_size": 0,
+      "map_hop_size": 0,
+      "boundary_kind": "none",
+      "boundary_port_name": ""
+    }
+  ],
+  "edges": [],
+  "planning_artifact": null,
+  "metadata": {
+    "source": "manual_remediation",
+    "class_name": "CaseNet",
+    "source_language": "python",
+    "canonical_semantics": true
+  }
+}

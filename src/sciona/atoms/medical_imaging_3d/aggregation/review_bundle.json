@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "bundle_id": "sciona.atoms.review_bundle.medical_imaging_3d.aggregation.v1",
+  "provider_repo": "sciona-atoms-bio",
+  "family": "medical_imaging_3d.aggregation",
+  "family_batch": "medical_imaging_3d_aggregation",
+  "review_status": "reviewed",
+  "semantic_verdict": "supported",
+  "review_semantic_verdict": "pass_with_limits",
+  "review_developer_semantic_verdict": "pass_with_limits",
+  "trust_readiness": "catalog_ready",
+  "authoritative_sources": [
+    "src/sciona/atoms/medical_imaging_3d/aggregation/atoms.py",
+    "src/sciona/atoms/medical_imaging_3d/aggregation/witnesses.py",
+    "src/sciona/atoms/medical_imaging_3d/aggregation/cdg.json",
+    "src/sciona/atoms/medical_imaging_3d/aggregation/references.json",
+    "tests/test_medical_imaging_3d_aggregation_behavior.py",
+    "tests/test_medical_imaging_3d_aggregation_references_metadata.py",
+    "tests/test_medical_imaging_3d_aggregation_review_bundle.py"
+  ],
+  "limitations": [
+    "This atom implements only the source-documented case-level leaky noisy-or aggregation over already-computed nodule probabilities.",
+    "It does not instantiate or approximate the full PyTorch CaseNet/NoduleNet feature extractor or classifier."
+  ],
+  "blocking_findings": [],
+  "required_actions": [],
+  "review_record_path": "src/sciona/atoms/medical_imaging_3d/aggregation/review_bundle.json",
+  "rows": [
+    {
+      "atom_name": "sciona.atoms.medical_imaging_3d.aggregation.case_probability_from_nodule_scores",
+      "atom_key": "sciona.atoms.medical_imaging_3d.aggregation.case_probability_from_nodule_scores",
+      "source_path": "sciona/atoms/medical_imaging_3d/aggregation/atoms.py:51",
+      "source_paths": [
+        "src/sciona/atoms/medical_imaging_3d/aggregation/atoms.py",
+        "../kaggle-solutions/third_party/dsb2017-1st/net_classifier.py:171",
+        "../kaggle-solutions/third_party/dsb2017-1st/net_classifier.py:172"
+      ],
+      "review_status": "reviewed",
+      "semantic_verdict": "supported",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantic_verdict": "pass_with_limits",
+      "trust_readiness": "catalog_ready",
+      "review_record_path": "src/sciona/atoms/medical_imaging_3d/aggregation/review_bundle.json#rows[0]",
+      "overall_verdict": "pass",
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass_with_limits",
+      "risk_tier": "low",
+      "risk_score": 20,
+      "risk_dimensions": {
+        "provenance": "low",
+        "semantic_drift": "low",
+        "runtime": "low"
+      },
+      "risk_reasons": [
+        "Scope is intentionally narrowed to the explicit aggregation equation rather than the full neural network."
+      ],
+      "acceptability_score": 86,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "positive_path",
+      "parity_test_status": "pass",
+      "parity_fixture_count": 1,
+      "parity_case_count": 5,
+      "review_limitations": [
+        "Inputs must be nodule probabilities, not raw CT crops or network features."
+      ],
+      "review_required_actions": [],
+      "trust_blockers": [],
+      "has_references": true,
+      "references_status": "pass",
+      "limitations": [
+        "Inputs must be nodule probabilities, not raw CT crops or network features."
+      ],
+      "blocking_findings": [],
+      "required_actions": []
+    }
+  ]
+}

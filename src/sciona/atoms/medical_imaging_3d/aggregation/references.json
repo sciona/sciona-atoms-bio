@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.1",
+  "atoms": {
+    "sciona.atoms.medical_imaging_3d.aggregation.case_probability_from_nodule_scores@sciona/atoms/medical_imaging_3d/aggregation/atoms.py:51": {
+      "references": [
+        {
+          "ref_id": "repo_dsb2017_lfz",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual_source_alignment",
+            "matched_nodes": [
+              "../kaggle-solutions/third_party/dsb2017-1st/net_classifier.py:171",
+              "../kaggle-solutions/third_party/dsb2017-1st/net_classifier.py:172"
+            ],
+            "confidence": "high",
+            "notes": "Implements the explicit CaseNet casePred equation after per-nodule probabilities are already available."
+          }
+        },
+        {
+          "ref_id": "liao2017leakyNoisyOr",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "paper_semantics",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "The paper describes combining top-nodule cancer probabilities with a leaky noisy-or gate to obtain case-level lung-cancer probability."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    }
+  }
+}
