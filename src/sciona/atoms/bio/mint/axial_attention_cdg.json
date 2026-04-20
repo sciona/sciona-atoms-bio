@@ -4,14 +4,14 @@
       "node_id": "axial_attention_root",
       "parent_id": null,
       "name": "sciona.mint.axial_attention",
-      "description": "Consolidated module for sciona.mint.axial_attention.",
+      "description": "Source-aligned MINT RowSelfAttention replay atoms for 4D MSA tensors.",
       "concept_type": "custom",
       "inputs": [],
       "outputs": [],
       "status": "decomposed",
       "children": [
-        "rowselfattention",
-        "row_self_attention"
+        "row_self_attention",
+        "rowselfattention"
       ],
       "depth": 0,
       "type_signature": "module",
@@ -20,94 +20,212 @@
       "is_opaque": false,
       "is_external": false,
       "parallelizable": false,
-      "conceptual_summary": "Grouped atoms sharing an upstream family or module.",
-      "critic_notes": "pubrev-019 held both row-attention wrappers because the public APIs do not expose the upstream MINT RowSelfAttention module parameters or 4D MSA tensor contract.",
-      "decomposition_rationale": "Replaces singleton atom subpackages with a flat module layout."
-    },
-    {
-      "node_id": "rowselfattention",
-      "parent_id": "axial_attention_root",
-      "name": "rowselfattention",
-      "description": "Applies row-wise self-attention, a mechanism that computes pairwise similarity scores across row positions to produce context-aware representations. Each row attends to all other rows, weighted by learned relevance.",
-      "concept_type": "custom",
-      "inputs": [
-        {
-          "name": "x",
-          "type_desc": "np.ndarray",
-          "constraints": "required argument"
-        },
-        {
-          "name": "self_attn_mask",
-          "type_desc": "np.ndarray",
-          "constraints": "required argument"
-        },
-        {
-          "name": "self_attn_padding_mask",
-          "type_desc": "np.ndarray",
-          "constraints": "required argument"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "result",
-          "type_desc": "np.ndarray",
-          "constraints": "function return value"
-        }
-      ],
-      "status": "atomic",
-      "children": [],
-      "depth": 1,
-      "type_signature": "(x: np.ndarray, self_attn_mask: np.ndarray, self_attn_padding_mask: np.ndarray) -> np.ndarray",
-      "matched_primitive": null,
-      "is_optional": false,
-      "is_opaque": false,
-      "is_external": false,
-      "parallelizable": false,
-      "conceptual_summary": "Generated NumPy scaled dot-product attention wrapper; not source-aligned with upstream MINT RowSelfAttention.",
-      "critic_notes": "Held in pubrev-019: current implementation lacks learned q/k/v/out projections, row-axis aggregation, 4D input contract, and upstream masking semantics.",
-      "decomposition_rationale": "Leaf atom."
+      "conceptual_summary": "Grouped atoms replay upstream MINT RowSelfAttention with explicit q/k/v/out projection parameters.",
+      "critic_notes": "Remediated after pubrev-019: atoms now require 4D MSA input shaped (num_rows, num_cols, batch_size, embed_dim), learned projection weights, MINT row aggregation, padding semantics, and no-grad batched-forward behavior.",
+      "decomposition_rationale": "The upstream source defines a parameterized nn.Module; these atoms expose a stateless core API so projection state remains explicit in the atom surface."
     },
     {
       "node_id": "row_self_attention",
       "parent_id": "axial_attention_root",
       "name": "row_self_attention",
-      "description": "Applies row-wise self-attention, a mechanism that computes pairwise similarity scores across row positions to produce context-aware representations. Each row attends to all other rows, weighted by learned relevance.",
+      "description": "Replay MINT RowSelfAttention over a 4D MSA tensor using explicit query, key, value, and output projection parameters.",
       "concept_type": "custom",
       "inputs": [
         {
           "name": "x",
           "type_desc": "torch.Tensor",
-          "constraints": "required argument"
+          "required": true
+        },
+        {
+          "name": "q_proj_weight",
+          "type_desc": "torch.Tensor",
+          "required": true
+        },
+        {
+          "name": "k_proj_weight",
+          "type_desc": "torch.Tensor",
+          "required": true
+        },
+        {
+          "name": "v_proj_weight",
+          "type_desc": "torch.Tensor",
+          "required": true
+        },
+        {
+          "name": "out_proj_weight",
+          "type_desc": "torch.Tensor",
+          "required": true
+        },
+        {
+          "name": "num_heads",
+          "type_desc": "int",
+          "required": true
+        },
+        {
+          "name": "q_proj_bias",
+          "type_desc": "torch.Tensor | None",
+          "required": false
+        },
+        {
+          "name": "k_proj_bias",
+          "type_desc": "torch.Tensor | None",
+          "required": false
+        },
+        {
+          "name": "v_proj_bias",
+          "type_desc": "torch.Tensor | None",
+          "required": false
+        },
+        {
+          "name": "out_proj_bias",
+          "type_desc": "torch.Tensor | None",
+          "required": false
         },
         {
           "name": "self_attn_mask",
           "type_desc": "torch.Tensor | None",
-          "constraints": "required argument"
+          "required": false
         },
         {
           "name": "self_attn_padding_mask",
           "type_desc": "torch.Tensor | None",
-          "constraints": "required argument"
+          "required": false
+        },
+        {
+          "name": "dropout_p",
+          "type_desc": "float",
+          "required": false
+        },
+        {
+          "name": "max_tokens_per_msa",
+          "type_desc": "int",
+          "required": false
+        },
+        {
+          "name": "training",
+          "type_desc": "bool",
+          "required": false
         }
       ],
       "outputs": [
         {
           "name": "result",
-          "type_desc": "tuple[torch.Tensor, torch.Tensor]",
-          "constraints": "function return value"
+          "type_desc": "tuple[torch.Tensor, torch.Tensor]"
         }
       ],
       "status": "atomic",
       "children": [],
       "depth": 1,
-      "type_signature": "(x: torch.Tensor, self_attn_mask: torch.Tensor | None, self_attn_padding_mask: torch.Tensor | None) -> tuple[torch.Tensor, torch.Tensor]",
+      "type_signature": "(x: torch.Tensor, q_proj_weight: torch.Tensor, k_proj_weight: torch.Tensor, v_proj_weight: torch.Tensor, out_proj_weight: torch.Tensor, num_heads: int, q_proj_bias: torch.Tensor | None = None, k_proj_bias: torch.Tensor | None = None, v_proj_bias: torch.Tensor | None = None, out_proj_bias: torch.Tensor | None = None, self_attn_mask: torch.Tensor | None = None, self_attn_padding_mask: torch.Tensor | None = None, dropout_p: float = 0.0, max_tokens_per_msa: int = 65536, training: bool = False) -> tuple[torch.Tensor, torch.Tensor]",
       "matched_primitive": null,
       "is_optional": false,
       "is_opaque": false,
       "is_external": false,
       "parallelizable": false,
-      "conceptual_summary": "Generated torch scaled dot-product attention wrapper; not source-aligned with upstream MINT RowSelfAttention.",
-      "critic_notes": "Held in pubrev-019: current implementation lacks learned q/k/v/out projections, row-axis aggregation, 4D input contract, and upstream masking semantics.",
+      "conceptual_summary": "Source-aligned stateless replay of upstream MINT RowSelfAttention.",
+      "critic_notes": "The atom follows upstream projection, row aggregation, padding mask, attention shape, and no-grad batched-forward semantics; self_attn_mask remains unsupported because upstream raises NotImplementedError.",
+      "decomposition_rationale": "Leaf atom."
+    },
+    {
+      "node_id": "rowselfattention",
+      "parent_id": "axial_attention_root",
+      "name": "rowselfattention",
+      "description": "Backward-compatible lowercase atom exposing the same MINT RowSelfAttention replay contract.",
+      "concept_type": "custom",
+      "inputs": [
+        {
+          "name": "x",
+          "type_desc": "torch.Tensor",
+          "required": true
+        },
+        {
+          "name": "q_proj_weight",
+          "type_desc": "torch.Tensor",
+          "required": true
+        },
+        {
+          "name": "k_proj_weight",
+          "type_desc": "torch.Tensor",
+          "required": true
+        },
+        {
+          "name": "v_proj_weight",
+          "type_desc": "torch.Tensor",
+          "required": true
+        },
+        {
+          "name": "out_proj_weight",
+          "type_desc": "torch.Tensor",
+          "required": true
+        },
+        {
+          "name": "num_heads",
+          "type_desc": "int",
+          "required": true
+        },
+        {
+          "name": "q_proj_bias",
+          "type_desc": "torch.Tensor | None",
+          "required": false
+        },
+        {
+          "name": "k_proj_bias",
+          "type_desc": "torch.Tensor | None",
+          "required": false
+        },
+        {
+          "name": "v_proj_bias",
+          "type_desc": "torch.Tensor | None",
+          "required": false
+        },
+        {
+          "name": "out_proj_bias",
+          "type_desc": "torch.Tensor | None",
+          "required": false
+        },
+        {
+          "name": "self_attn_mask",
+          "type_desc": "torch.Tensor | None",
+          "required": false
+        },
+        {
+          "name": "self_attn_padding_mask",
+          "type_desc": "torch.Tensor | None",
+          "required": false
+        },
+        {
+          "name": "dropout_p",
+          "type_desc": "float",
+          "required": false
+        },
+        {
+          "name": "max_tokens_per_msa",
+          "type_desc": "int",
+          "required": false
+        },
+        {
+          "name": "training",
+          "type_desc": "bool",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type_desc": "tuple[torch.Tensor, torch.Tensor]"
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 1,
+      "type_signature": "(x: torch.Tensor, q_proj_weight: torch.Tensor, k_proj_weight: torch.Tensor, v_proj_weight: torch.Tensor, out_proj_weight: torch.Tensor, num_heads: int, q_proj_bias: torch.Tensor | None = None, k_proj_bias: torch.Tensor | None = None, v_proj_bias: torch.Tensor | None = None, out_proj_bias: torch.Tensor | None = None, self_attn_mask: torch.Tensor | None = None, self_attn_padding_mask: torch.Tensor | None = None, dropout_p: float = 0.0, max_tokens_per_msa: int = 65536, training: bool = False) -> tuple[torch.Tensor, torch.Tensor]",
+      "matched_primitive": null,
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "Compatibility FQDN for the source-aligned RowSelfAttention core.",
+      "critic_notes": "This replaces the previous NumPy approximation; upstream MINT defines only the Torch module, so the remediated lowercase atom intentionally uses the Torch source contract.",
       "decomposition_rationale": "Leaf atom."
     }
   ],

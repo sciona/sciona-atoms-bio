@@ -4,9 +4,9 @@
   "provider_repo": "sciona-atoms-bio",
   "family": "bio.mint",
   "review_status": "reviewed",
-  "semantic_verdict": "partial_safe_subset_publishable",
-  "developer_semantic_verdict": "five_source_aligned_two_held_for_row_attention_api_drift",
-  "trust_readiness": "partial_safe_subset_ready",
+  "semantic_verdict": "publishable_candidate_after_axial_attention_remediation",
+  "developer_semantic_verdict": "all_mint_rows_source_aligned_or_explicitly_limited",
+  "trust_readiness": "ready_for_manifest_merge",
   "authoritative_sources": [
     "src/sciona/atoms/bio/mint/references.json",
     "src/sciona/atoms/bio/mint/apc_module_cdg.json",
@@ -16,13 +16,11 @@
     "src/sciona/atoms/bio/mint/rotary_embedding_cdg.json"
   ],
   "limitations": [
-    "The two axial_attention RowSelfAttention wrappers are held because their signatures and implementations omit upstream MINT module parameters, 4D MSA layout, row aggregation, projections, and mask semantics.",
+    "The rowselfattention lowercase compatibility atom now follows the upstream Torch RowSelfAttention contract rather than preserving the previous unsubstantiated NumPy approximation.",
+    "MINT RowSelfAttention raises NotImplementedError for self_attn_mask; the remediated atoms preserve that upstream limitation.",
     "rotaryembedding_numpy is a NumPy replay of upstream torch semantics rather than an upstream-defined NumPy callable."
   ],
-  "required_actions": [
-    "Do not merge axial_attention rows into the shared manifest until RowSelfAttention is redesigned as a source-aligned parameterized module atom or explicitly re-scoped away from MINT RowSelfAttention.",
-    "Add shared REMEDIATION.md entries for both held axial_attention FQDNs with the remediation text from this review bundle."
-  ],
+  "required_actions": [],
   "upstream_provenance": {
     "repository": "https://github.com/VarunUllanat/mint",
     "commit": "79a9956b80e221066a3007bb156e8e986cba6190",
@@ -40,8 +38,8 @@
     {
       "subfamily": "mint_axial_attention",
       "row_count": 2,
-      "ready_count": 0,
-      "held_count": 2,
+      "ready_count": 2,
+      "held_count": 0,
       "has_cdg": true,
       "has_references": true
     },
@@ -101,34 +99,36 @@
       "audit_scope": "bio.mint.remainder"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.mint.axial_attention.row_self_attention@sciona/atoms/bio/mint/axial_attention.py:69",
+      "atom_fqdn": "sciona.atoms.bio.mint.axial_attention.row_self_attention@sciona/atoms/bio/mint/axial_attention.py:211",
       "subfamily": "mint_axial_attention",
-      "source_path": "sciona/atoms/bio/mint/axial_attention.py:69",
-      "description": "Generated torch scaled dot-product attention wrapper currently named like MINT RowSelfAttention.",
+      "source_path": "sciona/atoms/bio/mint/axial_attention.py:211",
+      "description": "Replay MINT RowSelfAttention over a 4D MSA tensor using explicit q/k/v/out projection parameters.",
       "parameters": [
-        "x: torch.Tensor",
-        "self_attn_mask: torch.Tensor | None",
-        "self_attn_padding_mask: torch.Tensor | None"
+        "x: torch.Tensor shaped (num_rows, num_cols, batch_size, embed_dim)",
+        "q_proj_weight/k_proj_weight/v_proj_weight/out_proj_weight: torch.Tensor shaped (embed_dim, embed_dim)",
+        "num_heads: int",
+        "q_proj_bias/k_proj_bias/v_proj_bias/out_proj_bias: torch.Tensor | None shaped (embed_dim,)",
+        "self_attn_mask: torch.Tensor | None (unsupported by upstream and raises NotImplementedError when supplied)",
+        "self_attn_padding_mask: torch.Tensor | None shaped (batch_size, num_rows, num_cols)",
+        "dropout_p: float = 0.0",
+        "max_tokens_per_msa: int = 65536",
+        "training: bool = False"
       ],
       "io_specs": [
-        "returns tuple[torch.Tensor, torch.Tensor] for 2D/3D inputs"
+        "returns output torch.Tensor preserving x.shape",
+        "returns attention probabilities shaped (num_heads, batch_size, num_cols, num_cols)"
       ],
       "review_status": "reviewed",
-      "semantic_verdict": "held_requires_remediation",
-      "developer_semantic_verdict": "semantic_drift_from_parameterized_mint_row_self_attention",
-      "trust_readiness": "blocked_on_semantic_remediation",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_with_direct_upstream_parity_tests",
+      "trust_readiness": "ready_for_manifest_merge",
       "limitations": [
-        "Upstream MINT RowSelfAttention is an nn.Module over 4D tensors shaped (num_rows, num_cols, batch_size, embed_dim).",
-        "Current wrapper has no q_proj, k_proj, v_proj, out_proj weights and cannot reproduce learned RowSelfAttention behavior.",
-        "Current mask semantics differ: upstream raises for self_attn_mask and handles padding over MSA row/column axes."
+        "The atom is a stateless replay of the upstream nn.Module and requires callers to pass projection weights and biases explicitly.",
+        "self_attn_mask remains unsupported because upstream MINT RowSelfAttention raises NotImplementedError for that argument."
       ],
-      "required_actions": [
-        "Replace with a source-aligned RowSelfAttention module/core API that accepts or owns q/k/v/out projection parameters and 4D MSA tensors.",
-        "Update CDG, witness metadata, and tests to cover upstream shape contract, projection behavior, row aggregation, padding masking, and batched-forward behavior.",
-        "Alternatively rename/re-scope this atom as generic scaled dot-product attention and do not cite MINT RowSelfAttention."
-      ],
+      "required_actions": [],
       "uncertainty": "low",
-      "provenance": "Negative audit against upstream mint/axial_attention.py:12 RowSelfAttention at commit 79a9956b80e221066a3007bb156e8e986cba6190.",
+      "provenance": "Positive remediation audit against upstream mint/axial_attention.py:12 RowSelfAttention at commit 79a9956b80e221066a3007bb156e8e986cba6190; focused tests compare projection, padding-mask, and no-grad batched-forward behavior to the source class.",
       "authoritative_sources": [
         "src/sciona/atoms/bio/mint/axial_attention.py",
         "src/sciona/atoms/bio/mint/axial_attention_witnesses.py",
@@ -140,33 +140,37 @@
       "audit_scope": "bio.mint.remainder"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.mint.axial_attention.rowselfattention@sciona/atoms/bio/mint/axial_attention.py:16",
+      "atom_fqdn": "sciona.atoms.bio.mint.axial_attention.rowselfattention@sciona/atoms/bio/mint/axial_attention.py:282",
       "subfamily": "mint_axial_attention",
-      "source_path": "sciona/atoms/bio/mint/axial_attention.py:16",
-      "description": "Generated NumPy scaled dot-product attention wrapper currently named like MINT RowSelfAttention.",
+      "source_path": "sciona/atoms/bio/mint/axial_attention.py:282",
+      "description": "Backward-compatible lowercase atom exposing the same MINT RowSelfAttention replay contract.",
       "parameters": [
-        "x: np.ndarray",
-        "self_attn_mask: np.ndarray",
-        "self_attn_padding_mask: np.ndarray"
+        "x: torch.Tensor shaped (num_rows, num_cols, batch_size, embed_dim)",
+        "q_proj_weight/k_proj_weight/v_proj_weight/out_proj_weight: torch.Tensor shaped (embed_dim, embed_dim)",
+        "num_heads: int",
+        "q_proj_bias/k_proj_bias/v_proj_bias/out_proj_bias: torch.Tensor | None shaped (embed_dim,)",
+        "self_attn_mask: torch.Tensor | None (unsupported by upstream and raises NotImplementedError when supplied)",
+        "self_attn_padding_mask: torch.Tensor | None shaped (batch_size, num_rows, num_cols)",
+        "dropout_p: float = 0.0",
+        "max_tokens_per_msa: int = 65536",
+        "training: bool = False"
       ],
       "io_specs": [
-        "returns np.ndarray for 2D/3D inputs"
+        "returns output torch.Tensor preserving x.shape",
+        "returns attention probabilities shaped (num_heads, batch_size, num_cols, num_cols)"
       ],
       "review_status": "reviewed",
-      "semantic_verdict": "held_requires_remediation",
-      "developer_semantic_verdict": "semantic_drift_from_parameterized_mint_row_self_attention",
-      "trust_readiness": "blocked_on_semantic_remediation",
+      "semantic_verdict": "publishable_candidate",
+      "developer_semantic_verdict": "source_aligned_compatibility_entrypoint_with_direct_upstream_parity_tests",
+      "trust_readiness": "ready_for_manifest_merge",
       "limitations": [
-        "Upstream MINT has no NumPy RowSelfAttention implementation.",
-        "Current wrapper has no learned projections or 4D MSA row/column tensor contract.",
-        "Current padding-mask behavior is an approximation and is not substantiated by upstream MINT source."
+        "This compatibility atom intentionally changes the old NumPy approximation into the upstream Torch RowSelfAttention contract because MINT has no NumPy RowSelfAttention implementation.",
+        "The atom is a stateless replay of the upstream nn.Module and requires callers to pass projection weights and biases explicitly.",
+        "self_attn_mask remains unsupported because upstream MINT RowSelfAttention raises NotImplementedError for that argument."
       ],
-      "required_actions": [
-        "Either remove/re-scope as an independently documented generic NumPy attention helper or add an explicit source-aligned API with parameters matching upstream RowSelfAttention semantics.",
-        "Do not publish under the MINT RowSelfAttention claim without source-aligned behavior tests and documentation."
-      ],
-      "uncertainty": "low",
-      "provenance": "Negative audit against upstream mint/axial_attention.py:12 RowSelfAttention at commit 79a9956b80e221066a3007bb156e8e986cba6190.",
+      "required_actions": [],
+      "uncertainty": "medium",
+      "provenance": "Positive remediation audit against upstream mint/axial_attention.py:12 RowSelfAttention at commit 79a9956b80e221066a3007bb156e8e986cba6190; focused tests verify parity through the lowercase compatibility entrypoint.",
       "authoritative_sources": [
         "src/sciona/atoms/bio/mint/axial_attention.py",
         "src/sciona/atoms/bio/mint/axial_attention_witnesses.py",

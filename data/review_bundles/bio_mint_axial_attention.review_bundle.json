@@ -1,0 +1,142 @@
+{
+  "schema_version": "1.0",
+  "bundle_id": "sciona.atoms.review_bundle.bio.mint_axial_attention.v1",
+  "provider_repo": "sciona-atoms-bio",
+  "family_batch": "bio_mint_axial_attention",
+  "review_status": "reviewed",
+  "review_semantic_verdict": "pass_with_limits",
+  "review_developer_semantic_verdict": "pass_with_limits",
+  "trust_readiness": "catalog_ready",
+  "authoritative_sources": [
+    {
+      "kind": "local_wrapper",
+      "path": "src/sciona/atoms/bio/mint/axial_attention.py"
+    },
+    {
+      "kind": "local_metadata",
+      "path": "src/sciona/atoms/bio/mint/axial_attention_cdg.json"
+    },
+    {
+      "kind": "local_metadata",
+      "path": "src/sciona/atoms/bio/mint/references.json"
+    },
+    {
+      "kind": "local_test",
+      "path": "tests/test_mint_axial_attention_behavior.py"
+    },
+    {
+      "kind": "local_test",
+      "path": "tests/test_mint_axial_attention_review_bundle.py"
+    }
+  ],
+  "limitations": [
+    "The atoms expose a stateless replay of the upstream nn.Module, so q/k/v/out projection parameters must be supplied explicitly.",
+    "self_attn_mask remains unsupported because upstream MINT RowSelfAttention raises NotImplementedError for that argument.",
+    "rowselfattention preserves the legacy FQDN but now follows the upstream Torch contract; the previous NumPy approximation is intentionally not preserved."
+  ],
+  "blocking_findings": [],
+  "required_actions": [],
+  "review_record_path": "data/review_bundles/bio_mint_axial_attention.review_bundle.json",
+  "rows": [
+    {
+      "atom_key": "sciona.atoms.bio.mint.axial_attention.row_self_attention",
+      "atom_name": "sciona.atoms.bio.mint.axial_attention.row_self_attention",
+      "review_status": "reviewed",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantic_verdict": "pass_with_limits",
+      "trust_readiness": "catalog_ready",
+      "source_paths": [
+        "src/sciona/atoms/bio/mint/axial_attention.py",
+        "/Users/conrad/personal/ageo-atoms/third_party/mint/mint/axial_attention.py:12"
+      ],
+      "review_record_path": "data/review_bundles/bio_mint_axial_attention.review_bundle.json#rows[0]",
+      "overall_verdict": "pass",
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass_with_limits",
+      "developer_semantics_status": "pass_with_limits",
+      "risk_tier": "medium",
+      "risk_score": 28,
+      "risk_dimensions": {
+        "provenance": "low",
+        "semantic_drift": "low",
+        "api_change": "medium",
+        "runtime_dependency": "medium"
+      },
+      "risk_reasons": [
+        "Torch is required, and projection state is explicit rather than owned by an nn.Module instance.",
+        "self_attn_mask is intentionally unsupported to match upstream behavior."
+      ],
+      "acceptability_score": 86,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "parity_or_usage_equivalent",
+      "parity_test_status": "pass",
+      "parity_fixture_count": 3,
+      "parity_case_count": 5,
+      "review_limitations": [
+        "Requires explicit projection weights and biases from a compatible MINT RowSelfAttention module.",
+        "Preserves upstream NotImplementedError behavior for self_attn_mask."
+      ],
+      "review_required_actions": [],
+      "trust_blockers": [],
+      "has_references": true,
+      "references_status": "pass",
+      "limitations": [
+        "Requires explicit projection weights and biases from a compatible MINT RowSelfAttention module.",
+        "Preserves upstream NotImplementedError behavior for self_attn_mask."
+      ],
+      "blocking_findings": [],
+      "required_actions": []
+    },
+    {
+      "atom_key": "sciona.atoms.bio.mint.axial_attention.rowselfattention",
+      "atom_name": "sciona.atoms.bio.mint.axial_attention.rowselfattention",
+      "review_status": "reviewed",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantic_verdict": "pass_with_limits",
+      "trust_readiness": "catalog_ready",
+      "source_paths": [
+        "src/sciona/atoms/bio/mint/axial_attention.py",
+        "/Users/conrad/personal/ageo-atoms/third_party/mint/mint/axial_attention.py:12"
+      ],
+      "review_record_path": "data/review_bundles/bio_mint_axial_attention.review_bundle.json#rows[1]",
+      "overall_verdict": "pass",
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass_with_limits",
+      "developer_semantics_status": "pass_with_limits",
+      "risk_tier": "medium",
+      "risk_score": 35,
+      "risk_dimensions": {
+        "provenance": "low",
+        "semantic_drift": "low",
+        "api_change": "medium",
+        "runtime_dependency": "medium"
+      },
+      "risk_reasons": [
+        "The legacy lowercase FQDN no longer exposes a NumPy approximation because upstream MINT only defines Torch RowSelfAttention.",
+        "self_attn_mask is intentionally unsupported to match upstream behavior."
+      ],
+      "acceptability_score": 82,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "parity_or_usage_equivalent",
+      "parity_test_status": "pass",
+      "parity_fixture_count": 3,
+      "parity_case_count": 5,
+      "review_limitations": [
+        "Compatibility entrypoint follows the source-aligned Torch API rather than the previous NumPy approximation.",
+        "Preserves upstream NotImplementedError behavior for self_attn_mask."
+      ],
+      "review_required_actions": [],
+      "trust_blockers": [],
+      "has_references": true,
+      "references_status": "pass",
+      "limitations": [
+        "Compatibility entrypoint follows the source-aligned Torch API rather than the previous NumPy approximation.",
+        "Preserves upstream NotImplementedError behavior for self_attn_mask."
+      ],
+      "blocking_findings": [],
+      "required_actions": []
+    }
+  ]
+}

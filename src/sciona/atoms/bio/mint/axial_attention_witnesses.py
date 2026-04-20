@@ -1,30 +1,33 @@
 from __future__ import annotations
 
-from sciona.ghost.abstract import AbstractArray, AbstractScalar, AbstractDistribution, AbstractSignal
+from sciona.ghost.abstract import AbstractArray
 
 
-def witness_rowselfattention(x: AbstractArray, self_attn_mask: AbstractArray, self_attn_padding_mask: AbstractArray) -> AbstractArray:
-    """Shape-and-type check for opaque boundary: row self attention. Returns output metadata without running the real computation."""
-    shape = tuple(x.shape)
-    *vmapped_dims, n_rows, n_cols, d_model = shape
-    out_shape = (*vmapped_dims, n_rows, n_cols, d_model)
-    return AbstractArray(shape=out_shape, dtype="float32")
+def witness_rowselfattention(
+    x: AbstractArray,
+    q_proj_weight: AbstractArray,
+    k_proj_weight: AbstractArray,
+    v_proj_weight: AbstractArray,
+    out_proj_weight: AbstractArray,
+    num_heads: int,
+    q_proj_bias: AbstractArray | None = None,
+    k_proj_bias: AbstractArray | None = None,
+    v_proj_bias: AbstractArray | None = None,
+    out_proj_bias: AbstractArray | None = None,
+    self_attn_mask: AbstractArray | None = None,
+    self_attn_padding_mask: AbstractArray | None = None,
+    dropout_p: float = 0.0,
+    max_tokens_per_msa: int = 2**16,
+    training: bool = False,
+) -> tuple[AbstractArray, AbstractArray]:
+    """Preserve MINT RowSelfAttention output and column-attention shapes."""
+    num_rows, num_cols, batch_size, embed_dim = tuple(x.shape)
+    output = AbstractArray(shape=(num_rows, num_cols, batch_size, embed_dim), dtype=x.dtype)
+    attn_probs = AbstractArray(
+        shape=(num_heads, batch_size, num_cols, num_cols),
+        dtype=x.dtype,
+    )
+    return output, attn_probs
 
-from sciona.ghost.abstract import AbstractArray, AbstractScalar, AbstractDistribution, AbstractSignal
 
-
-def witness_rowselfattention(x: AbstractArray, self_attn_mask: AbstractArray, self_attn_padding_mask: AbstractArray) -> AbstractArray:
-    """Shape-and-type check for opaque boundary: row self attention. Returns output metadata without running the real computation."""
-    # x                    : (B, R, C, d_model)  - batch, rows, cols, hidden
-    # self_attn_mask        : (C, C) or (B*R, C, C) - additive/bool attention bias
-    # self_attn_padding_mask: (B*R, C) or (B, R, C) - True where padded
-    #
-    # RowSelfAttention attends across the *column* (C) axis for every row
-    # independently, so the output tensor is shape-identical to x.
-    #
-    # vmap note: if this witness is called under jax.vmap over the leading
-    # batch axis, x arrives as (R, C, d_model); x.shape still propagates
-    # correctly because we read the output shape directly from x.shape.
-
-    B_R_C_d = x.shape          # e.g. (B, R, C, d_model) or (R, C, d) under vmap
-    return AbstractArray(B_R_C_d, dtype='float32')
+witness_row_self_attention = witness_rowselfattention

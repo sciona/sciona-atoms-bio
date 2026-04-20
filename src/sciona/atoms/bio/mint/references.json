@@ -30,35 +30,67 @@
       ],
       "auto_attribution_runs": []
     },
-    "sciona.atoms.bio.mint.axial_attention.row_self_attention@sciona/atoms/bio/mint/axial_attention.py:69": {
+    "sciona.atoms.bio.mint.axial_attention.row_self_attention@sciona/atoms/bio/mint/axial_attention.py:211": {
       "references": [
         {
-          "ref_id": "repo_mint",
+          "ref_id": "mint2026",
           "match_metadata": {
             "similarity_score": null,
-            "match_type": "manual_negative_audit",
+            "match_type": "manual_direct_audit",
             "matched_nodes": [
               "mint/axial_attention.py:12"
             ],
             "confidence": "high",
-            "notes": "Current wrapper is not equivalent to upstream RowSelfAttention, which is a parameterized 4D nn.Module."
+            "notes": "Primary MINT paper plus upstream repository implementation of RowSelfAttention."
+          }
+        },
+        {
+          "ref_id": "repo_mint",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual_direct_audit",
+            "matched_nodes": [
+              "mint/axial_attention.py:12",
+              "mint/axial_attention.py:29",
+              "mint/axial_attention.py:46",
+              "mint/axial_attention.py:70",
+              "mint/axial_attention.py:81"
+            ],
+            "confidence": "high",
+            "notes": "Atom exposes a stateless replay of upstream RowSelfAttention with explicit q/k/v/out projection parameters, 4D MSA input, row aggregation, padding handling, and batched no-grad behavior."
           }
         }
       ],
       "auto_attribution_runs": []
     },
-    "sciona.atoms.bio.mint.axial_attention.rowselfattention@sciona/atoms/bio/mint/axial_attention.py:16": {
+    "sciona.atoms.bio.mint.axial_attention.rowselfattention@sciona/atoms/bio/mint/axial_attention.py:282": {
       "references": [
         {
-          "ref_id": "repo_mint",
+          "ref_id": "mint2026",
           "match_metadata": {
             "similarity_score": null,
-            "match_type": "manual_negative_audit",
+            "match_type": "manual_direct_audit",
             "matched_nodes": [
               "mint/axial_attention.py:12"
             ],
             "confidence": "high",
-            "notes": "Current NumPy wrapper is an unparameterized scaled dot-product approximation, not upstream MINT RowSelfAttention."
+            "notes": "Primary MINT paper plus upstream repository implementation of RowSelfAttention."
+          }
+        },
+        {
+          "ref_id": "repo_mint",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual_direct_audit",
+            "matched_nodes": [
+              "mint/axial_attention.py:12",
+              "mint/axial_attention.py:29",
+              "mint/axial_attention.py:46",
+              "mint/axial_attention.py:70",
+              "mint/axial_attention.py:81"
+            ],
+            "confidence": "high",
+            "notes": "Lowercase compatibility atom now uses the same source-aligned Torch RowSelfAttention replay contract; the previous NumPy approximation was removed because upstream MINT has no NumPy RowSelfAttention callable."
           }
         }
       ],

@@ -1,11 +1,240 @@
 {
   "schema_version": "1.1",
   "metadata": {
-    "generated_at": "2026-04-19T21:41:09.598702+00:00",
+    "generated_at": "2026-04-20T00:00:43.820443+00:00",
     "generator": "scripts/apply_audit_review_bundles.py",
     "phase": "phase_1_review_bundle_merge"
   },
   "atoms": [
+    {
+      "atom_name": "sciona.atoms.bio.alphafold.coordinate_reconstruction",
+      "atom_key": "sciona.atoms.bio.alphafold.coordinate_reconstruction",
+      "atom_id": "sciona.atoms.bio.alphafold.coordinate_reconstruction",
+      "module_import_path": "sciona.atoms.bio.alphafold",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/alphafold/atoms.py",
+      "module_family": "bio",
+      "domain_family": "bio",
+      "wrapper_symbol": "coordinate_reconstruction",
+      "argument_names": [
+        "frames",
+        "torsions",
+        "state"
+      ],
+      "argument_details": [
+        {
+          "name": "frames",
+          "annotation": "np.ndarray",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "torsions",
+          "annotation": "np.ndarray",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "state",
+          "annotation": "AlphaFoldStructuralState",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "Tuple[np.ndarray, AlphaFoldStructuralState]",
+      "docstring_summary": "Converts rigid frames and torsion angles (dihedral angles between four consecutive atoms that define the protein backbone geometry) into full 3D coordinates.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/alphafold/references.json",
+        "src/sciona/atoms/bio/alphafold/cdg.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/alphafold/review_bundle.json#rows[2]",
+      "atom_fqdn": "sciona.atoms.bio.alphafold.coordinate_reconstruction@sciona/atoms/bio/alphafold/atoms.py:109",
+      "subfamily": "alphafold",
+      "source_path": "sciona/atoms/bio/alphafold/atoms.py:109"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.alphafold.equivariant_frame_update",
+      "atom_key": "sciona.atoms.bio.alphafold.equivariant_frame_update",
+      "atom_id": "sciona.atoms.bio.alphafold.equivariant_frame_update",
+      "module_import_path": "sciona.atoms.bio.alphafold",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/alphafold/atoms.py",
+      "module_family": "bio",
+      "domain_family": "bio",
+      "wrapper_symbol": "equivariant_frame_update",
+      "argument_names": [
+        "frames",
+        "nodes",
+        "state"
+      ],
+      "argument_details": [
+        {
+          "name": "frames",
+          "annotation": "np.ndarray",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "nodes",
+          "annotation": "np.ndarray",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "state",
+          "annotation": "AlphaFoldStructuralState",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "Tuple[np.ndarray, AlphaFoldStructuralState]",
+      "docstring_summary": "Updates 3D rigid frames using predicted gradients.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/alphafold/references.json",
+        "src/sciona/atoms/bio/alphafold/cdg.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/alphafold/review_bundle.json#rows[1]",
+      "atom_fqdn": "sciona.atoms.bio.alphafold.equivariant_frame_update@sciona/atoms/bio/alphafold/atoms.py:74",
+      "subfamily": "alphafold",
+      "source_path": "sciona/atoms/bio/alphafold/atoms.py:74"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.alphafold.invariant_point_attention",
+      "atom_key": "sciona.atoms.bio.alphafold.invariant_point_attention",
+      "atom_id": "sciona.atoms.bio.alphafold.invariant_point_attention",
+      "module_import_path": "sciona.atoms.bio.alphafold",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/alphafold/atoms.py",
+      "module_family": "bio",
+      "domain_family": "bio",
+      "wrapper_symbol": "invariant_point_attention",
+      "argument_names": [
+        "nodes",
+        "pairs",
+        "frames",
+        "state"
+      ],
+      "argument_details": [
+        {
+          "name": "nodes",
+          "annotation": "np.ndarray",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "pairs",
+          "annotation": "np.ndarray",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "frames",
+          "annotation": "np.ndarray",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "state",
+          "annotation": "AlphaFoldStructuralState",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "Tuple[np.ndarray, AlphaFoldStructuralState]",
+      "docstring_summary": "Equivariant (i.e., the output transforms consistently under rotations and translations of the input) attention mechanism over structured 3D point sets.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/alphafold/references.json",
+        "src/sciona/atoms/bio/alphafold/cdg.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/alphafold/review_bundle.json#rows[0]",
+      "atom_fqdn": "sciona.atoms.bio.alphafold.invariant_point_attention@sciona/atoms/bio/alphafold/atoms.py:22",
+      "subfamily": "alphafold",
+      "source_path": "sciona/atoms/bio/alphafold/atoms.py:22"
+    },
     {
       "atom_name": "sciona.atoms.bio.hpdb.iterate_pdb_atoms",
       "atom_key": "sciona.atoms.bio.hpdb.iterate_pdb_atoms",
@@ -165,6 +394,4322 @@
       "source_path": "sciona/atoms/bio/hpdb/atoms.py:121",
       "has_references": true,
       "references_status": "pass"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.mint.apc_module.apccoreevaluation",
+      "atom_key": "sciona.atoms.bio.mint.apc_module.apccoreevaluation",
+      "atom_id": "sciona.atoms.bio.mint.apc_module.apccoreevaluation",
+      "module_import_path": "sciona.atoms.bio.mint.apc_module",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/mint/apc_module.py",
+      "module_family": "mint",
+      "domain_family": "bio.mint",
+      "wrapper_symbol": "apccoreevaluation",
+      "argument_names": [
+        "x"
+      ],
+      "argument_details": [
+        {
+          "name": "x",
+          "annotation": "np.ndarray",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "np.ndarray",
+      "docstring_summary": "Apply average-product correction (APC) over the final two axes.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/mint/apc_module.py",
+        "src/sciona/atoms/bio/mint/apc_module_witnesses.py",
+        "src/sciona/atoms/bio/mint/apc_module_cdg.json",
+        "src/sciona/atoms/bio/mint/references.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/mint/review_bundle.json#rows[0]",
+      "atom_fqdn": "sciona.atoms.bio.mint.apc_module.apccoreevaluation@sciona/atoms/bio/mint/apc_module.py:13",
+      "subfamily": "mint_apc_module",
+      "source_path": "sciona/atoms/bio/mint/apc_module.py:13",
+      "description": "Apply average-product correction over the final two axes.",
+      "parameters": [
+        "x: np.ndarray with at least two dimensions"
+      ],
+      "io_specs": [
+        "returns np.ndarray preserving x.shape"
+      ],
+      "uncertainty": "low",
+      "provenance": "Matched to upstream mint/modules.py:32 apc implementation at commit 79a9956b80e221066a3007bb156e8e986cba6190.",
+      "audit_batch": "pubrev-019",
+      "audit_scope": "bio.mint.remainder"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.mint.axial_attention.row_self_attention",
+      "atom_key": "sciona.atoms.bio.mint.axial_attention.row_self_attention",
+      "atom_id": "sciona.atoms.bio.mint.axial_attention.row_self_attention",
+      "module_import_path": "sciona.atoms.bio.mint.axial_attention",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/mint/axial_attention.py",
+      "module_family": "mint",
+      "domain_family": "bio.mint",
+      "wrapper_symbol": "row_self_attention",
+      "argument_names": [
+        "x",
+        "q_proj_weight",
+        "k_proj_weight",
+        "v_proj_weight",
+        "out_proj_weight",
+        "num_heads",
+        "q_proj_bias",
+        "k_proj_bias",
+        "v_proj_bias",
+        "out_proj_bias",
+        "self_attn_mask",
+        "self_attn_padding_mask",
+        "dropout_p",
+        "max_tokens_per_msa",
+        "training"
+      ],
+      "argument_details": [
+        {
+          "name": "x",
+          "annotation": "torch.Tensor",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "q_proj_weight",
+          "annotation": "torch.Tensor",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "k_proj_weight",
+          "annotation": "torch.Tensor",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "v_proj_weight",
+          "annotation": "torch.Tensor",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "out_proj_weight",
+          "annotation": "torch.Tensor",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "num_heads",
+          "annotation": "int",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "q_proj_bias",
+          "annotation": "torch.Tensor | None",
+          "required": false,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "k_proj_bias",
+          "annotation": "torch.Tensor | None",
+          "required": false,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "v_proj_bias",
+          "annotation": "torch.Tensor | None",
+          "required": false,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "out_proj_bias",
+          "annotation": "torch.Tensor | None",
+          "required": false,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "self_attn_mask",
+          "annotation": "torch.Tensor | None",
+          "required": false,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "self_attn_padding_mask",
+          "annotation": "torch.Tensor | None",
+          "required": false,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "dropout_p",
+          "annotation": "float",
+          "required": false,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "max_tokens_per_msa",
+          "annotation": "int",
+          "required": false,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "training",
+          "annotation": "bool",
+          "required": false,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "tuple[torch.Tensor, torch.Tensor]",
+      "docstring_summary": "Compute MINT row attention for an alignment tensor using supplied projection weights.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/mint/axial_attention.py",
+        "src/sciona/atoms/bio/mint/axial_attention_witnesses.py",
+        "src/sciona/atoms/bio/mint/axial_attention_cdg.json",
+        "src/sciona/atoms/bio/mint/references.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [
+        "The atom is a stateless replay of the upstream nn.Module and requires callers to pass projection weights and biases explicitly.",
+        "self_attn_mask remains unsupported because upstream MINT RowSelfAttention raises NotImplementedError for that argument."
+      ],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "medium",
+      "risk_score": 28,
+      "risk_dimensions": {
+        "provenance": "low",
+        "semantic_drift": "low",
+        "api_change": "medium",
+        "runtime_dependency": "medium"
+      },
+      "risk_reasons": [
+        "Torch is required, and projection state is explicit rather than owned by an nn.Module instance.",
+        "self_attn_mask is intentionally unsupported to match upstream behavior."
+      ],
+      "acceptability_score": 86,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "parity_or_usage_equivalent",
+      "parity_test_status": "pass",
+      "parity_fixture_count": 3,
+      "parity_case_count": 5,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/mint/review_bundle.json#rows[1]",
+      "has_references": true,
+      "references_status": "pass",
+      "atom_fqdn": "sciona.atoms.bio.mint.axial_attention.row_self_attention@sciona/atoms/bio/mint/axial_attention.py:211",
+      "subfamily": "mint_axial_attention",
+      "source_path": "sciona/atoms/bio/mint/axial_attention.py:211",
+      "description": "Replay MINT RowSelfAttention over a 4D MSA tensor using explicit q/k/v/out projection parameters.",
+      "parameters": [
+        "x: torch.Tensor shaped (num_rows, num_cols, batch_size, embed_dim)",
+        "q_proj_weight/k_proj_weight/v_proj_weight/out_proj_weight: torch.Tensor shaped (embed_dim, embed_dim)",
+        "num_heads: int",
+        "q_proj_bias/k_proj_bias/v_proj_bias/out_proj_bias: torch.Tensor | None shaped (embed_dim,)",
+        "self_attn_mask: torch.Tensor | None (unsupported by upstream and raises NotImplementedError when supplied)",
+        "self_attn_padding_mask: torch.Tensor | None shaped (batch_size, num_rows, num_cols)",
+        "dropout_p: float = 0.0",
+        "max_tokens_per_msa: int = 65536",
+        "training: bool = False"
+      ],
+      "io_specs": [
+        "returns output torch.Tensor preserving x.shape",
+        "returns attention probabilities shaped (num_heads, batch_size, num_cols, num_cols)"
+      ],
+      "uncertainty": "low",
+      "provenance": "Positive remediation audit against upstream mint/axial_attention.py:12 RowSelfAttention at commit 79a9956b80e221066a3007bb156e8e986cba6190; focused tests compare projection, padding-mask, and no-grad batched-forward behavior to the source class.",
+      "audit_batch": "pubrev-019",
+      "audit_scope": "bio.mint.remainder"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.mint.axial_attention.rowselfattention",
+      "atom_key": "sciona.atoms.bio.mint.axial_attention.rowselfattention",
+      "atom_id": "sciona.atoms.bio.mint.axial_attention.rowselfattention",
+      "module_import_path": "sciona.atoms.bio.mint.axial_attention",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/mint/axial_attention.py",
+      "module_family": "mint",
+      "domain_family": "bio.mint",
+      "wrapper_symbol": "rowselfattention",
+      "argument_names": [
+        "x",
+        "q_proj_weight",
+        "k_proj_weight",
+        "v_proj_weight",
+        "out_proj_weight",
+        "num_heads",
+        "q_proj_bias",
+        "k_proj_bias",
+        "v_proj_bias",
+        "out_proj_bias",
+        "self_attn_mask",
+        "self_attn_padding_mask",
+        "dropout_p",
+        "max_tokens_per_msa",
+        "training"
+      ],
+      "argument_details": [
+        {
+          "name": "x",
+          "annotation": "torch.Tensor",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "q_proj_weight",
+          "annotation": "torch.Tensor",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "k_proj_weight",
+          "annotation": "torch.Tensor",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "v_proj_weight",
+          "annotation": "torch.Tensor",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "out_proj_weight",
+          "annotation": "torch.Tensor",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "num_heads",
+          "annotation": "int",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "q_proj_bias",
+          "annotation": "torch.Tensor | None",
+          "required": false,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "k_proj_bias",
+          "annotation": "torch.Tensor | None",
+          "required": false,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "v_proj_bias",
+          "annotation": "torch.Tensor | None",
+          "required": false,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "out_proj_bias",
+          "annotation": "torch.Tensor | None",
+          "required": false,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "self_attn_mask",
+          "annotation": "torch.Tensor | None",
+          "required": false,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "self_attn_padding_mask",
+          "annotation": "torch.Tensor | None",
+          "required": false,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "dropout_p",
+          "annotation": "float",
+          "required": false,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "max_tokens_per_msa",
+          "annotation": "int",
+          "required": false,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "training",
+          "annotation": "bool",
+          "required": false,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "tuple[torch.Tensor, torch.Tensor]",
+      "docstring_summary": "Compatibility entrypoint for the same MINT row attention calculation.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/mint/axial_attention.py",
+        "src/sciona/atoms/bio/mint/axial_attention_witnesses.py",
+        "src/sciona/atoms/bio/mint/axial_attention_cdg.json",
+        "src/sciona/atoms/bio/mint/references.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [
+        "This compatibility atom intentionally changes the old NumPy approximation into the upstream Torch RowSelfAttention contract because MINT has no NumPy RowSelfAttention implementation.",
+        "The atom is a stateless replay of the upstream nn.Module and requires callers to pass projection weights and biases explicitly.",
+        "self_attn_mask remains unsupported because upstream MINT RowSelfAttention raises NotImplementedError for that argument."
+      ],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "medium",
+      "risk_score": 35,
+      "risk_dimensions": {
+        "provenance": "low",
+        "semantic_drift": "low",
+        "api_change": "medium",
+        "runtime_dependency": "medium"
+      },
+      "risk_reasons": [
+        "The legacy lowercase FQDN no longer exposes a NumPy approximation because upstream MINT only defines Torch RowSelfAttention.",
+        "self_attn_mask is intentionally unsupported to match upstream behavior."
+      ],
+      "acceptability_score": 82,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "parity_or_usage_equivalent",
+      "parity_test_status": "pass",
+      "parity_fixture_count": 3,
+      "parity_case_count": 5,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/mint/review_bundle.json#rows[2]",
+      "has_references": true,
+      "references_status": "pass",
+      "atom_fqdn": "sciona.atoms.bio.mint.axial_attention.rowselfattention@sciona/atoms/bio/mint/axial_attention.py:282",
+      "subfamily": "mint_axial_attention",
+      "source_path": "sciona/atoms/bio/mint/axial_attention.py:282",
+      "description": "Backward-compatible lowercase atom exposing the same MINT RowSelfAttention replay contract.",
+      "parameters": [
+        "x: torch.Tensor shaped (num_rows, num_cols, batch_size, embed_dim)",
+        "q_proj_weight/k_proj_weight/v_proj_weight/out_proj_weight: torch.Tensor shaped (embed_dim, embed_dim)",
+        "num_heads: int",
+        "q_proj_bias/k_proj_bias/v_proj_bias/out_proj_bias: torch.Tensor | None shaped (embed_dim,)",
+        "self_attn_mask: torch.Tensor | None (unsupported by upstream and raises NotImplementedError when supplied)",
+        "self_attn_padding_mask: torch.Tensor | None shaped (batch_size, num_rows, num_cols)",
+        "dropout_p: float = 0.0",
+        "max_tokens_per_msa: int = 65536",
+        "training: bool = False"
+      ],
+      "io_specs": [
+        "returns output torch.Tensor preserving x.shape",
+        "returns attention probabilities shaped (num_heads, batch_size, num_cols, num_cols)"
+      ],
+      "uncertainty": "medium",
+      "provenance": "Positive remediation audit against upstream mint/axial_attention.py:12 RowSelfAttention at commit 79a9956b80e221066a3007bb156e8e986cba6190; focused tests verify parity through the lowercase compatibility entrypoint.",
+      "audit_batch": "pubrev-019",
+      "audit_scope": "bio.mint.remainder"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.mint.encoding_dist_mat.encodedistancematrix",
+      "atom_key": "sciona.atoms.bio.mint.encoding_dist_mat.encodedistancematrix",
+      "atom_id": "sciona.atoms.bio.mint.encoding_dist_mat.encodedistancematrix",
+      "module_import_path": "sciona.atoms.bio.mint.encoding_dist_mat",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/mint/encoding_dist_mat.py",
+      "module_family": "mint",
+      "domain_family": "bio.mint",
+      "wrapper_symbol": "encodedistancematrix",
+      "argument_names": [
+        "mat_list",
+        "max_cdr3",
+        "max_epi"
+      ],
+      "argument_details": [
+        {
+          "name": "mat_list",
+          "annotation": "Sequence[np.ndarray]",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "max_cdr3",
+          "annotation": "int",
+          "required": false,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "max_epi",
+          "annotation": "int",
+          "required": false,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "tuple[np.ndarray, np.ndarray]",
+      "docstring_summary": "Encode TCR CDR3/epitope distance matrices and their valid-value mask.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/mint/encoding_dist_mat.py",
+        "src/sciona/atoms/bio/mint/encoding_dist_mat_witnesses.py",
+        "src/sciona/atoms/bio/mint/encoding_dist_mat_cdg.json",
+        "src/sciona/atoms/bio/mint/references.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/mint/review_bundle.json#rows[3]",
+      "atom_fqdn": "sciona.atoms.bio.mint.encoding_dist_mat.encodedistancematrix@sciona/atoms/bio/mint/encoding_dist_mat.py:20",
+      "subfamily": "mint_encoding_dist_mat",
+      "source_path": "sciona/atoms/bio/mint/encoding_dist_mat.py:20",
+      "description": "Encode TCR CDR3/epitope distance matrices and validity masks.",
+      "parameters": [
+        "mat_list: Sequence[np.ndarray]",
+        "max_cdr3: int = 20",
+        "max_epi: int = 12"
+      ],
+      "io_specs": [
+        "returns tuple[encoding float32, masking bool] shaped (len(mat_list), max_cdr3, max_epi)"
+      ],
+      "uncertainty": "low",
+      "provenance": "Matched to upstream downstream/TCR-Epitope/tcr-interface/teim_utils.py:309 encoding_dist_mat at commit 79a9956b80e221066a3007bb156e8e986cba6190.",
+      "audit_batch": "pubrev-019",
+      "audit_scope": "bio.mint.remainder"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.mint.fasta_dataset.dataset_item_retrieval",
+      "atom_key": "sciona.atoms.bio.mint.fasta_dataset.dataset_item_retrieval",
+      "atom_id": "sciona.atoms.bio.mint.fasta_dataset.dataset_item_retrieval",
+      "module_import_path": "sciona.atoms.bio.mint.fasta_dataset",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/mint/fasta_dataset/atoms.py",
+      "module_family": "mint",
+      "domain_family": "bio.mint",
+      "wrapper_symbol": "dataset_item_retrieval",
+      "argument_names": [
+        "dataset_state",
+        "idx"
+      ],
+      "argument_details": [
+        {
+          "name": "dataset_state",
+          "annotation": "DatasetState",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "idx",
+          "annotation": "int",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "tuple[str, str]",
+      "docstring_summary": "Retrieve one labeled sequence by index.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/mint/fasta_dataset/atoms.py",
+        "src/sciona/atoms/bio/mint/fasta_dataset/references.json",
+        "src/sciona/atoms/bio/mint/fasta_dataset/cdg.json",
+        "src/sciona/atoms/bio/mint/fasta_dataset/matches.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/mint/fasta_dataset/review_bundle.json#rows[0]",
+      "atom_fqdn": "sciona.atoms.bio.mint.fasta_dataset.dataset_item_retrieval@sciona/atoms/bio/mint/fasta_dataset/atoms.py:62",
+      "subfamily": "fasta_dataset",
+      "source_path": "sciona/atoms/bio/mint/fasta_dataset/atoms.py:62",
+      "description": "Retrieve the label and sequence string at a valid dataset index from aligned dataset state lists.",
+      "parameters": [
+        {
+          "name": "dataset_state",
+          "kind": "positional_or_keyword",
+          "type_desc": "DatasetState",
+          "required": true,
+          "default_value_repr": "",
+          "description": "Dataset state containing aligned sequence_labels and sequence_strs lists."
+        },
+        {
+          "name": "idx",
+          "kind": "positional_or_keyword",
+          "type_desc": "int",
+          "required": true,
+          "default_value_repr": "",
+          "description": "Python list index of the sequence record to return."
+        }
+      ],
+      "io_specs": [
+        {
+          "direction": "input",
+          "name": "dataset_state",
+          "type_desc": "DatasetState",
+          "constraints": "Must contain sequence_labels and sequence_strs with equal length.",
+          "required": true,
+          "default_value_repr": "",
+          "ordinal": 0
+        },
+        {
+          "direction": "input",
+          "name": "idx",
+          "type_desc": "int",
+          "constraints": "Valid Python list index for the dataset.",
+          "required": true,
+          "default_value_repr": "",
+          "ordinal": 1
+        },
+        {
+          "direction": "output",
+          "name": "sequence_record",
+          "type_desc": "tuple[str, str]",
+          "constraints": "(label, sequence_str) from the same index.",
+          "required": true,
+          "default_value_repr": "",
+          "ordinal": 0
+        }
+      ],
+      "audit_batch": "pubrev-037",
+      "audit_scope": "sciona.atoms.bio.mint.fasta_dataset"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.mint.fasta_dataset.dataset_length_query",
+      "atom_key": "sciona.atoms.bio.mint.fasta_dataset.dataset_length_query",
+      "atom_id": "sciona.atoms.bio.mint.fasta_dataset.dataset_length_query",
+      "module_import_path": "sciona.atoms.bio.mint.fasta_dataset",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/mint/fasta_dataset/atoms.py",
+      "module_family": "mint",
+      "domain_family": "bio.mint",
+      "wrapper_symbol": "dataset_length_query",
+      "argument_names": [
+        "dataset_state"
+      ],
+      "argument_details": [
+        {
+          "name": "dataset_state",
+          "annotation": "DatasetState",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "int",
+      "docstring_summary": "Return the number of labeled sequences in dataset_state.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/mint/fasta_dataset/atoms.py",
+        "src/sciona/atoms/bio/mint/fasta_dataset/references.json",
+        "src/sciona/atoms/bio/mint/fasta_dataset/cdg.json",
+        "src/sciona/atoms/bio/mint/fasta_dataset/matches.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/mint/fasta_dataset/review_bundle.json#rows[1]",
+      "atom_fqdn": "sciona.atoms.bio.mint.fasta_dataset.dataset_length_query@sciona/atoms/bio/mint/fasta_dataset/atoms.py:47",
+      "subfamily": "fasta_dataset",
+      "source_path": "sciona/atoms/bio/mint/fasta_dataset/atoms.py:47",
+      "description": "Return the number of sequence labels in the dataset state.",
+      "parameters": [
+        {
+          "name": "dataset_state",
+          "kind": "positional_or_keyword",
+          "type_desc": "DatasetState",
+          "required": true,
+          "default_value_repr": "",
+          "description": "Dataset state containing a sequence_labels list."
+        }
+      ],
+      "io_specs": [
+        {
+          "direction": "input",
+          "name": "dataset_state",
+          "type_desc": "DatasetState",
+          "constraints": "Must contain sequence_labels.",
+          "required": true,
+          "default_value_repr": "",
+          "ordinal": 0
+        },
+        {
+          "direction": "output",
+          "name": "dataset_length",
+          "type_desc": "int",
+          "constraints": "Non-negative count of labels.",
+          "required": true,
+          "default_value_repr": "",
+          "ordinal": 0
+        }
+      ],
+      "audit_batch": "pubrev-037",
+      "audit_scope": "sciona.atoms.bio.mint.fasta_dataset"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.mint.fasta_dataset.dataset_state_initialization",
+      "atom_key": "sciona.atoms.bio.mint.fasta_dataset.dataset_state_initialization",
+      "atom_id": "sciona.atoms.bio.mint.fasta_dataset.dataset_state_initialization",
+      "module_import_path": "sciona.atoms.bio.mint.fasta_dataset",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/mint/fasta_dataset/atoms.py",
+      "module_family": "mint",
+      "domain_family": "bio.mint",
+      "wrapper_symbol": "dataset_state_initialization",
+      "argument_names": [
+        "sequence_labels",
+        "sequence_strs"
+      ],
+      "argument_details": [
+        {
+          "name": "sequence_labels",
+          "annotation": "list[str]",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "sequence_strs",
+          "annotation": "list[str]",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "DatasetState",
+      "docstring_summary": "Build a sequence dataset state snapshot from aligned in-memory inputs.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/mint/fasta_dataset/atoms.py",
+        "src/sciona/atoms/bio/mint/fasta_dataset/references.json",
+        "src/sciona/atoms/bio/mint/fasta_dataset/cdg.json",
+        "src/sciona/atoms/bio/mint/fasta_dataset/matches.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/mint/fasta_dataset/review_bundle.json#rows[2]",
+      "atom_fqdn": "sciona.atoms.bio.mint.fasta_dataset.dataset_state_initialization@sciona/atoms/bio/mint/fasta_dataset/atoms.py:25",
+      "subfamily": "fasta_dataset",
+      "source_path": "sciona/atoms/bio/mint/fasta_dataset/atoms.py:25",
+      "description": "Copy aligned sequence label and sequence string lists into an explicit dataset state dictionary.",
+      "parameters": [
+        {
+          "name": "sequence_labels",
+          "kind": "positional_or_keyword",
+          "type_desc": "list[str]",
+          "required": true,
+          "default_value_repr": "",
+          "description": "Sequence identifiers; length must match sequence_strs."
+        },
+        {
+          "name": "sequence_strs",
+          "kind": "positional_or_keyword",
+          "type_desc": "list[str]",
+          "required": true,
+          "default_value_repr": "",
+          "description": "Biological sequence strings; one sequence per label."
+        }
+      ],
+      "io_specs": [
+        {
+          "direction": "input",
+          "name": "sequence_labels",
+          "type_desc": "list[str]",
+          "constraints": "Sequence identifiers; length must match sequence_strs.",
+          "required": true,
+          "default_value_repr": "",
+          "ordinal": 0
+        },
+        {
+          "direction": "input",
+          "name": "sequence_strs",
+          "type_desc": "list[str]",
+          "constraints": "Biological sequence strings; one sequence per label.",
+          "required": true,
+          "default_value_repr": "",
+          "ordinal": 1
+        },
+        {
+          "direction": "output",
+          "name": "dataset_state",
+          "type_desc": "DatasetState",
+          "constraints": "Dictionary with copied sequence_labels and sequence_strs lists.",
+          "required": true,
+          "default_value_repr": "",
+          "ordinal": 0
+        }
+      ],
+      "audit_batch": "pubrev-037",
+      "audit_scope": "sciona.atoms.bio.mint.fasta_dataset"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.mint.fasta_dataset.token_budget_batch_planning",
+      "atom_key": "sciona.atoms.bio.mint.fasta_dataset.token_budget_batch_planning",
+      "atom_id": "sciona.atoms.bio.mint.fasta_dataset.token_budget_batch_planning",
+      "module_import_path": "sciona.atoms.bio.mint.fasta_dataset",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/mint/fasta_dataset/atoms.py",
+      "module_family": "mint",
+      "domain_family": "bio.mint",
+      "wrapper_symbol": "token_budget_batch_planning",
+      "argument_names": [
+        "dataset_state",
+        "toks_per_batch",
+        "extra_toks_per_seq"
+      ],
+      "argument_details": [
+        {
+          "name": "dataset_state",
+          "annotation": "DatasetState",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "toks_per_batch",
+          "annotation": "int",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "extra_toks_per_seq",
+          "annotation": "int",
+          "required": false,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "list[list[int]]",
+      "docstring_summary": "Plan batches under a token budget.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/mint/fasta_dataset/atoms.py",
+        "src/sciona/atoms/bio/mint/fasta_dataset/references.json",
+        "src/sciona/atoms/bio/mint/fasta_dataset/cdg.json",
+        "src/sciona/atoms/bio/mint/fasta_dataset/matches.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/mint/fasta_dataset/review_bundle.json#rows[3]",
+      "atom_fqdn": "sciona.atoms.bio.mint.fasta_dataset.token_budget_batch_planning@sciona/atoms/bio/mint/fasta_dataset/atoms.py:79",
+      "subfamily": "fasta_dataset",
+      "source_path": "sciona/atoms/bio/mint/fasta_dataset/atoms.py:79",
+      "description": "Sort sequences by length and greedily group original dataset indices under a token-budget batching rule.",
+      "parameters": [
+        {
+          "name": "dataset_state",
+          "kind": "positional_or_keyword",
+          "type_desc": "DatasetState",
+          "required": true,
+          "default_value_repr": "",
+          "description": "Dataset state whose sequence_strs lengths drive batching."
+        },
+        {
+          "name": "toks_per_batch",
+          "kind": "positional_or_keyword",
+          "type_desc": "int",
+          "required": true,
+          "default_value_repr": "",
+          "description": "Maximum token budget used by the greedy batching check."
+        },
+        {
+          "name": "extra_toks_per_seq",
+          "kind": "positional_or_keyword",
+          "type_desc": "int",
+          "required": false,
+          "default_value_repr": "0",
+          "description": "Per-sequence overhead added to each sequence length."
+        }
+      ],
+      "io_specs": [
+        {
+          "direction": "input",
+          "name": "dataset_state",
+          "type_desc": "DatasetState",
+          "constraints": "Uses sequence_strs for length-aware batching.",
+          "required": true,
+          "default_value_repr": "",
+          "ordinal": 0
+        },
+        {
+          "direction": "input",
+          "name": "toks_per_batch",
+          "type_desc": "int",
+          "constraints": "Maximum token budget used by the greedy batching check.",
+          "required": true,
+          "default_value_repr": "",
+          "ordinal": 1
+        },
+        {
+          "direction": "input",
+          "name": "extra_toks_per_seq",
+          "type_desc": "int",
+          "constraints": "Per-sequence overhead added to each sequence length.",
+          "required": false,
+          "default_value_repr": "0",
+          "ordinal": 2
+        },
+        {
+          "direction": "output",
+          "name": "batch_indices",
+          "type_desc": "list[list[int]]",
+          "constraints": "Each inner list contains original dataset indices.",
+          "required": true,
+          "default_value_repr": "",
+          "ordinal": 0
+        }
+      ],
+      "audit_batch": "pubrev-037",
+      "audit_scope": "sciona.atoms.bio.mint.fasta_dataset"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.mint.incremental_attention.enable_incremental_state_configuration",
+      "atom_key": "sciona.atoms.bio.mint.incremental_attention.enable_incremental_state_configuration",
+      "atom_id": "sciona.atoms.bio.mint.incremental_attention.enable_incremental_state_configuration",
+      "module_import_path": "sciona.atoms.bio.mint.incremental_attention",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/mint/incremental_attention.py",
+      "module_family": "mint",
+      "domain_family": "bio.mint",
+      "wrapper_symbol": "enable_incremental_state_configuration",
+      "argument_names": [
+        "cls"
+      ],
+      "argument_details": [
+        {
+          "name": "cls",
+          "annotation": "type",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "type",
+      "docstring_summary": "Decorate a class with Fairseq/MINT incremental-state behavior.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/mint/incremental_attention.py",
+        "src/sciona/atoms/bio/mint/incremental_attention_witnesses.py",
+        "src/sciona/atoms/bio/mint/incremental_attention_cdg.json",
+        "src/sciona/atoms/bio/mint/references.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [
+        "Like upstream MINT, dynamic __bases__ mutation is validated for nn.Module-style classes and may not work for arbitrary built-in/layout-incompatible classes."
+      ],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/mint/review_bundle.json#rows[4]",
+      "atom_fqdn": "sciona.atoms.bio.mint.incremental_attention.enable_incremental_state_configuration@sciona/atoms/bio/mint/incremental_attention.py:44",
+      "subfamily": "mint_incremental_attention",
+      "source_path": "sciona/atoms/bio/mint/incremental_attention.py:44",
+      "description": "Decorate an nn.Module-style class with MINT/Fairseq incremental-state behavior.",
+      "parameters": [
+        "cls: type"
+      ],
+      "io_specs": [
+        "returns the same class object with FairseqIncrementalState prepended to bases"
+      ],
+      "uncertainty": "medium",
+      "provenance": "Matched to upstream mint/multihead_attention.py FairseqIncrementalState and with_incremental_state at commit 79a9956b80e221066a3007bb156e8e986cba6190.",
+      "audit_batch": "pubrev-019",
+      "audit_scope": "bio.mint.remainder"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.mint.rotary_embedding.rotaryembedding_numpy",
+      "atom_key": "sciona.atoms.bio.mint.rotary_embedding.rotaryembedding_numpy",
+      "atom_id": "sciona.atoms.bio.mint.rotary_embedding.rotaryembedding_numpy",
+      "module_import_path": "sciona.atoms.bio.mint.rotary_embedding",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/mint/rotary_embedding.py",
+      "module_family": "mint",
+      "domain_family": "bio.mint",
+      "wrapper_symbol": "rotaryembedding_numpy",
+      "argument_names": [
+        "q",
+        "k"
+      ],
+      "argument_details": [
+        {
+          "name": "q",
+          "annotation": "np.ndarray",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "k",
+          "annotation": "np.ndarray",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "tuple[np.ndarray, np.ndarray]",
+      "docstring_summary": "Apply MINT/RoFormer rotary positional embedding to NumPy query/key arrays.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/mint/rotary_embedding.py",
+        "src/sciona/atoms/bio/mint/rotary_embedding_witnesses.py",
+        "src/sciona/atoms/bio/mint/rotary_embedding_cdg.json",
+        "src/sciona/atoms/bio/mint/references.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [
+        "NumPy variant is a deterministic replay of the upstream torch algorithm; upstream MINT only defines torch RotaryEmbedding."
+      ],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/mint/review_bundle.json#rows[5]",
+      "atom_fqdn": "sciona.atoms.bio.mint.rotary_embedding.rotaryembedding_numpy@sciona/atoms/bio/mint/rotary_embedding.py:41",
+      "subfamily": "mint_rotary_embedding",
+      "source_path": "sciona/atoms/bio/mint/rotary_embedding.py:41",
+      "description": "Apply MINT/RoFormer rotate-half rotary embedding to NumPy query/key arrays.",
+      "parameters": [
+        "q: np.ndarray",
+        "k: np.ndarray"
+      ],
+      "io_specs": [
+        "returns tuple[np.ndarray, np.ndarray] preserving q/k shapes"
+      ],
+      "uncertainty": "medium",
+      "provenance": "Matched to upstream mint/rotary_embedding.py rotate_half/apply_rotary_pos_emb/RotaryEmbedding at commit 79a9956b80e221066a3007bb156e8e986cba6190.",
+      "audit_batch": "pubrev-019",
+      "audit_scope": "bio.mint.remainder"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.mint.rotary_embedding.rotaryembedding_torch",
+      "atom_key": "sciona.atoms.bio.mint.rotary_embedding.rotaryembedding_torch",
+      "atom_id": "sciona.atoms.bio.mint.rotary_embedding.rotaryembedding_torch",
+      "module_import_path": "sciona.atoms.bio.mint.rotary_embedding",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/mint/rotary_embedding.py",
+      "module_family": "mint",
+      "domain_family": "bio.mint",
+      "wrapper_symbol": "rotaryembedding_torch",
+      "argument_names": [
+        "q",
+        "k"
+      ],
+      "argument_details": [
+        {
+          "name": "q",
+          "annotation": "torch.Tensor",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "k",
+          "annotation": "torch.Tensor",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "tuple[torch.Tensor, torch.Tensor]",
+      "docstring_summary": "Apply MINT/RoFormer rotary positional embedding to torch query/key tensors.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/mint/rotary_embedding.py",
+        "src/sciona/atoms/bio/mint/rotary_embedding_witnesses.py",
+        "src/sciona/atoms/bio/mint/rotary_embedding_cdg.json",
+        "src/sciona/atoms/bio/mint/references.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/mint/review_bundle.json#rows[6]",
+      "atom_fqdn": "sciona.atoms.bio.mint.rotary_embedding.rotaryembedding_torch@sciona/atoms/bio/mint/rotary_embedding.py:55",
+      "subfamily": "mint_rotary_embedding",
+      "source_path": "sciona/atoms/bio/mint/rotary_embedding.py:55",
+      "description": "Apply MINT/RoFormer rotate-half rotary embedding to torch query/key tensors.",
+      "parameters": [
+        "q: torch.Tensor",
+        "k: torch.Tensor"
+      ],
+      "io_specs": [
+        "returns tuple[torch.Tensor, torch.Tensor] preserving q/k shapes"
+      ],
+      "uncertainty": "low",
+      "provenance": "Matched to upstream mint/rotary_embedding.py rotate_half/apply_rotary_pos_emb/RotaryEmbedding at commit 79a9956b80e221066a3007bb156e8e986cba6190.",
+      "audit_batch": "pubrev-019",
+      "audit_scope": "bio.mint.remainder"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.add_quantum_link.addquantumlink",
+      "atom_key": "sciona.atoms.bio.molecular_docking.add_quantum_link.addquantumlink",
+      "atom_id": "sciona.atoms.bio.molecular_docking.add_quantum_link.addquantumlink",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.add_quantum_link",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/add_quantum_link.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "addquantumlink",
+      "argument_names": [
+        "G",
+        "node_A",
+        "node_B",
+        "chain_size"
+      ],
+      "argument_details": [
+        {
+          "name": "G",
+          "annotation": "Graph",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "node_A",
+          "annotation": "Node",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "node_B",
+          "annotation": "Node",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "chain_size",
+          "annotation": "int",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "Graph",
+      "docstring_summary": "Adds a specialized 'quantum link' between two nodes in a graph, potentially creating a chain of intermediate nodes based on chain_size.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/add_quantum_link.py",
+        "src/sciona/atoms/bio/molecular_docking/add_quantum_link_cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/references.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[38]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.add_quantum_link.addquantumlink@sciona/atoms/bio/molecular_docking/add_quantum_link.py:24",
+      "subfamily": "add_quantum_link",
+      "source_path": "sciona/atoms/bio/molecular_docking/add_quantum_link.py:24",
+      "audit_batch": "pubrev-005",
+      "audit_scope": "wave_1_audit_completion"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.build_complementary.constructcomplementarygraph",
+      "atom_key": "sciona.atoms.bio.molecular_docking.build_complementary.constructcomplementarygraph",
+      "atom_id": "sciona.atoms.bio.molecular_docking.build_complementary.constructcomplementarygraph",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.build_complementary",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/build_complementary.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "constructcomplementarygraph",
+      "argument_names": [
+        "graph"
+      ],
+      "argument_details": [
+        {
+          "name": "graph",
+          "annotation": "nx.Graph",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "nx.Graph",
+      "docstring_summary": "Builds the complementary graph by deriving the inverse edge set relative to the input graph's node set.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/build_complementary.py",
+        "src/sciona/atoms/bio/molecular_docking/build_complementary_cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/references.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[39]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.build_complementary.constructcomplementarygraph@sciona/atoms/bio/molecular_docking/build_complementary.py:15",
+      "subfamily": "build_complementary",
+      "source_path": "sciona/atoms/bio/molecular_docking/build_complementary.py:15",
+      "audit_batch": "pubrev-005",
+      "audit_scope": "wave_1_audit_completion"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.build_interaction_graph.networkx_weighted_graph_materialization",
+      "atom_key": "sciona.atoms.bio.molecular_docking.build_interaction_graph.networkx_weighted_graph_materialization",
+      "atom_id": "sciona.atoms.bio.molecular_docking.build_interaction_graph.networkx_weighted_graph_materialization",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.build_interaction_graph",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "networkx_weighted_graph_materialization",
+      "argument_names": [
+        "edges",
+        "nodes"
+      ],
+      "argument_details": [
+        {
+          "name": "edges",
+          "annotation": "list[tuple[object, object, float]]",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "nodes",
+          "annotation": "list[object] | set[object]",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "nx.Graph | nx.DiGraph",
+      "docstring_summary": "Args:",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py",
+        "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/references.json",
+        "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/matches.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[0]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.build_interaction_graph.networkx_weighted_graph_materialization@sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py:72",
+      "subfamily": "build_interaction_graph",
+      "source_path": "sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py:72",
+      "audit_batch": "pubrev-005",
+      "audit_scope": "wave_1_audit_completion"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.build_interaction_graph.pair_distance_compatibility_check",
+      "atom_key": "sciona.atoms.bio.molecular_docking.build_interaction_graph.pair_distance_compatibility_check",
+      "atom_id": "sciona.atoms.bio.molecular_docking.build_interaction_graph.pair_distance_compatibility_check",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.build_interaction_graph",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "pair_distance_compatibility_check",
+      "argument_names": [
+        "L_feature_min_max",
+        "R_features_distance",
+        "interaction_distance"
+      ],
+      "argument_details": [
+        {
+          "name": "L_feature_min_max",
+          "annotation": "Sequence[float] | np.ndarray",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "R_features_distance",
+          "annotation": "float | Sequence[float] | np.ndarray",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "interaction_distance",
+          "annotation": "float",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "bool",
+      "docstring_summary": "Evaluates whether a candidate left/right feature pair satisfies interaction-distance constraints.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py",
+        "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/references.json",
+        "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/matches.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[1]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.build_interaction_graph.pair_distance_compatibility_check@sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py:26",
+      "subfamily": "build_interaction_graph",
+      "source_path": "sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py:26",
+      "audit_batch": "pubrev-005",
+      "audit_scope": "wave_1_audit_completion"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.build_interaction_graph.weighted_interaction_edge_derivation",
+      "atom_key": "sciona.atoms.bio.molecular_docking.build_interaction_graph.weighted_interaction_edge_derivation",
+      "atom_id": "sciona.atoms.bio.molecular_docking.build_interaction_graph.weighted_interaction_edge_derivation",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.build_interaction_graph",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "weighted_interaction_edge_derivation",
+      "argument_names": [
+        "L_feature_pair",
+        "R_feature_pair"
+      ],
+      "argument_details": [
+        {
+          "name": "L_feature_pair",
+          "annotation": "FeaturePair",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "R_feature_pair",
+          "annotation": "FeaturePair",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "list[InteractionEdge]",
+      "docstring_summary": "Return the two physically possible interaction-edge layouts for a ligand/receptor feature pair.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py",
+        "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/references.json",
+        "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/build_interaction_graph/matches.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[2]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.build_interaction_graph.weighted_interaction_edge_derivation@sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py:57",
+      "subfamily": "build_interaction_graph",
+      "source_path": "sciona/atoms/bio/molecular_docking/build_interaction_graph/atoms.py:57",
+      "audit_batch": "pubrev-005",
+      "audit_scope": "wave_1_audit_completion"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.greedy_mapping.assemblestaticmappingcontext",
+      "atom_key": "sciona.atoms.bio.molecular_docking.greedy_mapping.assemblestaticmappingcontext",
+      "atom_id": "sciona.atoms.bio.molecular_docking.greedy_mapping.assemblestaticmappingcontext",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.greedy_mapping",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "assemblestaticmappingcontext",
+      "argument_names": [
+        "graph",
+        "lattice_instance",
+        "previously_generated_subgraphs",
+        "seed"
+      ],
+      "argument_details": [
+        {
+          "name": "graph",
+          "annotation": "Graph",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "lattice_instance",
+          "annotation": "LatticeInstance",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "previously_generated_subgraphs",
+          "annotation": "Collection[Subgraph]",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "seed",
+          "annotation": "int | None",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "MappingContext",
+      "docstring_summary": "Construct immutable algorithm context from constructor inputs so all later stages consume explicit state instead of hidden class fields.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/references.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/uncertainty.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[3]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping.assemblestaticmappingcontext@sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:29",
+      "subfamily": "greedy_mapping",
+      "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:29"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.greedy_mapping.initializefrontierfromstartnode",
+      "atom_key": "sciona.atoms.bio.molecular_docking.greedy_mapping.initializefrontierfromstartnode",
+      "atom_id": "sciona.atoms.bio.molecular_docking.greedy_mapping.initializefrontierfromstartnode",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.greedy_mapping",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "initializefrontierfromstartnode",
+      "argument_names": [
+        "mapping_context",
+        "starting_node",
+        "mapping",
+        "unmapping",
+        "unexpanded_nodes"
+      ],
+      "argument_details": [
+        {
+          "name": "mapping_context",
+          "annotation": "MappingContext",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "starting_node",
+          "annotation": "NodeId",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "mapping",
+          "annotation": "Map[GraphNode, LatticeNode]",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "unmapping",
+          "annotation": "Map[LatticeNode, GraphNode]",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "unexpanded_nodes",
+          "annotation": "Set[GraphNode]",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "MappingState",
+      "docstring_summary": "Create initial mapping/unmapping frontier state from a selected starting node.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/references.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/uncertainty.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[4]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping.initializefrontierfromstartnode@sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:57",
+      "subfamily": "greedy_mapping",
+      "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:57"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.greedy_mapping.rungreedymappingpipeline",
+      "atom_key": "sciona.atoms.bio.molecular_docking.greedy_mapping.rungreedymappingpipeline",
+      "atom_id": "sciona.atoms.bio.molecular_docking.greedy_mapping.rungreedymappingpipeline",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.greedy_mapping",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "rungreedymappingpipeline",
+      "argument_names": [
+        "mapping_context",
+        "starting_node",
+        "remove_invalid_placement_nodes",
+        "rank_nodes",
+        "initialized_mapping_state",
+        "extended_mapping_state",
+        "mapping_is_valid"
+      ],
+      "argument_details": [
+        {
+          "name": "mapping_context",
+          "annotation": "MappingContext",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "starting_node",
+          "annotation": "NodeId",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "remove_invalid_placement_nodes",
+          "annotation": "bool",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "rank_nodes",
+          "annotation": "bool",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "initialized_mapping_state",
+          "annotation": "MappingState",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "extended_mapping_state",
+          "annotation": "MappingState",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "mapping_is_valid",
+          "annotation": "bool",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "tuple[Subgraph, MappingState]",
+      "docstring_summary": "Orchestrate initialization, greedy extension, and validity checking to produce a greedy Unit Disk (UD) subgraph rooted at the starting node.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/references.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/uncertainty.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[5]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping.rungreedymappingpipeline@sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:218",
+      "subfamily": "greedy_mapping",
+      "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:218"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.greedy_mapping.scoreandextendgreedycandidates",
+      "atom_key": "sciona.atoms.bio.molecular_docking.greedy_mapping.scoreandextendgreedycandidates",
+      "atom_id": "sciona.atoms.bio.molecular_docking.greedy_mapping.scoreandextendgreedycandidates",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.greedy_mapping",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "scoreandextendgreedycandidates",
+      "argument_names": [
+        "mapping_context",
+        "considered_nodes",
+        "unexpanded_nodes",
+        "free_lattice_neighbors",
+        "mapping",
+        "unmapping",
+        "remove_invalid_placement_nodes",
+        "rank_nodes"
+      ],
+      "argument_details": [
+        {
+          "name": "mapping_context",
+          "annotation": "MappingContext",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "considered_nodes",
+          "annotation": "List[GraphNode]",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "unexpanded_nodes",
+          "annotation": "Set[GraphNode]",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "free_lattice_neighbors",
+          "annotation": "Set[LatticeNode]",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "mapping",
+          "annotation": "Map[GraphNode, LatticeNode]",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "unmapping",
+          "annotation": "Map[LatticeNode, GraphNode]",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "remove_invalid_placement_nodes",
+          "annotation": "bool",
+          "required": false,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "rank_nodes",
+          "annotation": "bool",
+          "required": false,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "tuple[MappingState, Map[GraphNode, float]]",
+      "docstring_summary": "Score candidate placements and greedily extend the mapping frontier using ranking and validity filtering flags.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/references.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/uncertainty.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[6]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping.scoreandextendgreedycandidates@sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:106",
+      "subfamily": "greedy_mapping",
+      "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:106"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.greedy_mapping.validatecurrentmapping",
+      "atom_key": "sciona.atoms.bio.molecular_docking.greedy_mapping.validatecurrentmapping",
+      "atom_id": "sciona.atoms.bio.molecular_docking.greedy_mapping.validatecurrentmapping",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.greedy_mapping",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "validatecurrentmapping",
+      "argument_names": [
+        "mapping_context",
+        "mapping",
+        "unmapping"
+      ],
+      "argument_details": [
+        {
+          "name": "mapping_context",
+          "annotation": "MappingContext",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "mapping",
+          "annotation": "Map[GraphNode, LatticeNode]",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "unmapping",
+          "annotation": "Map[LatticeNode, GraphNode]",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "bool",
+      "docstring_summary": "Evaluate whether the current mapping/unmapping pair satisfies graph-lattice consistency constraints.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/references.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping/uncertainty.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[7]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping.validatecurrentmapping@sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:176",
+      "subfamily": "greedy_mapping",
+      "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:176"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.greedy_mapping_d12.construct_mapping_state_via_greedy_expansion",
+      "atom_key": "sciona.atoms.bio.molecular_docking.greedy_mapping_d12.construct_mapping_state_via_greedy_expansion",
+      "atom_id": "sciona.atoms.bio.molecular_docking.greedy_mapping_d12.construct_mapping_state_via_greedy_expansion",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.greedy_mapping_d12",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "construct_mapping_state_via_greedy_expansion",
+      "argument_names": [
+        "problem_context",
+        "starting_node",
+        "mapping_state_in",
+        "considered_nodes",
+        "remove_invalid_placement_nodes",
+        "rank_nodes"
+      ],
+      "argument_details": [
+        {
+          "name": "problem_context",
+          "annotation": "GreedyMappingContext",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "starting_node",
+          "annotation": "NodeId",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "mapping_state_in",
+          "annotation": "MappingState",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "considered_nodes",
+          "annotation": "Collection[NodeId]",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "remove_invalid_placement_nodes",
+          "annotation": "bool",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "rank_nodes",
+          "annotation": "bool",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "tuple[MappingState, Collection[ScoredNode]]",
+      "docstring_summary": "Builds and evolves immutable mapping state: initialize seed placement, score candidate graph nodes greedily, and extend mapping/frontier with feasible placements.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/references.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/matches.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "reviewed_pending",
+      "review_priority": "review_later",
+      "review_semantic_verdict": "unknown",
+      "review_developer_semantics_verdict": "unknown",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "review_required_actions": [
+        "Backfill uncertainty evidence for greedy_mapping_d12."
+      ],
+      "review_limitations": [
+        "No uncertainty.json present for greedy_mapping_d12."
+      ],
+      "trust_blockers": [],
+      "structural_status": "unknown",
+      "semantic_status": "unknown",
+      "runtime_status": "unknown",
+      "developer_semantics_status": "unknown",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [
+        "Backfill uncertainty evidence for greedy_mapping_d12."
+      ],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[8]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping_d12.construct_mapping_state_via_greedy_expansion@sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py:57",
+      "subfamily": "greedy_mapping_d12",
+      "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py:57"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.greedy_mapping_d12.init_problem_context",
+      "atom_key": "sciona.atoms.bio.molecular_docking.greedy_mapping_d12.init_problem_context",
+      "atom_id": "sciona.atoms.bio.molecular_docking.greedy_mapping_d12.init_problem_context",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.greedy_mapping_d12",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "init_problem_context",
+      "argument_names": [
+        "graph",
+        "lattice_instance",
+        "previously_generated_subgraphs",
+        "seed"
+      ],
+      "argument_details": [
+        {
+          "name": "graph",
+          "annotation": "Graph",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "lattice_instance",
+          "annotation": "LatticeInstance",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "previously_generated_subgraphs",
+          "annotation": "Collection[Subgraph]",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "seed",
+          "annotation": "int",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "GreedyMappingContext",
+      "docstring_summary": "Bootstraps immutable problem context for all later kernels: graph topology, lattice abstraction, lattice instance, previously generated subgraphs, and seed.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/references.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/matches.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[9]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping_d12.init_problem_context@sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py:26",
+      "subfamily": "greedy_mapping_d12",
+      "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py:26",
+      "audit_batch": "pubrev-005",
+      "audit_scope": "wave_1_audit_completion"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.greedy_mapping_d12.orchestrate_generation_and_validate",
+      "atom_key": "sciona.atoms.bio.molecular_docking.greedy_mapping_d12.orchestrate_generation_and_validate",
+      "atom_id": "sciona.atoms.bio.molecular_docking.greedy_mapping_d12.orchestrate_generation_and_validate",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.greedy_mapping_d12",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "orchestrate_generation_and_validate",
+      "argument_names": [
+        "problem_context",
+        "starting_node",
+        "remove_invalid_placement_nodes",
+        "rank_nodes",
+        "mapping_state"
+      ],
+      "argument_details": [
+        {
+          "name": "problem_context",
+          "annotation": "GreedyMappingContext",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "starting_node",
+          "annotation": "NodeId",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "remove_invalid_placement_nodes",
+          "annotation": "bool",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "rank_nodes",
+          "annotation": "bool",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "mapping_state",
+          "annotation": "MappingState",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "tuple[MappingState, bool]",
+      "docstring_summary": "Entry-point orchestration kernel (GreedyMapping): drives iterative expansion, invokes validity checks, and returns final generated subgraph mapping and inverse mapping.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/references.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/greedy_mapping_d12/matches.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "reviewed_pending",
+      "review_priority": "review_later",
+      "review_semantic_verdict": "unknown",
+      "review_developer_semantics_verdict": "unknown",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "review_required_actions": [
+        "Backfill uncertainty evidence for greedy_mapping_d12."
+      ],
+      "review_limitations": [
+        "No uncertainty.json present for greedy_mapping_d12."
+      ],
+      "trust_blockers": [],
+      "structural_status": "unknown",
+      "semantic_status": "unknown",
+      "runtime_status": "unknown",
+      "developer_semantics_status": "unknown",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [
+        "Backfill uncertainty evidence for greedy_mapping_d12."
+      ],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[10]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping_d12.orchestrate_generation_and_validate@sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py:155",
+      "subfamily": "greedy_mapping_d12",
+      "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping_d12/atoms.py:155"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.aggregate_maximum_distance_as_bandwidth",
+      "atom_key": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.aggregate_maximum_distance_as_bandwidth",
+      "atom_id": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.aggregate_maximum_distance_as_bandwidth",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.minimize_bandwidth",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "aggregate_maximum_distance_as_bandwidth",
+      "argument_names": [
+        "weighted_distances"
+      ],
+      "argument_details": [
+        {
+          "name": "weighted_distances",
+          "annotation": "np.ndarray",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "float",
+      "docstring_summary": "Take the maximum weighted distance and convert it to float as the final bandwidth metric.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/uncertainty.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[11]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.aggregate_maximum_distance_as_bandwidth@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:93",
+      "subfamily": "minimize_bandwidth",
+      "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:93"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.build_sparse_graph_view",
+      "atom_key": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.build_sparse_graph_view",
+      "atom_id": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.build_sparse_graph_view",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.minimize_bandwidth",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "build_sparse_graph_view",
+      "argument_names": [
+        "thresholded_matrix"
+      ],
+      "argument_details": [
+        {
+          "name": "thresholded_matrix",
+          "annotation": "np.ndarray",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "np.ndarray",
+      "docstring_summary": "Convert the thresholded dense matrix into a Compressed Sparse Row (CSR) representation suitable for graph-based bandwidth reduction.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/uncertainty.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[12]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.build_sparse_graph_view@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:269",
+      "subfamily": "minimize_bandwidth",
+      "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:269"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.build_threshold_search_space",
+      "atom_key": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.build_threshold_search_space",
+      "atom_id": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.build_threshold_search_space",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.minimize_bandwidth",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "build_threshold_search_space",
+      "argument_names": [
+        "validated_mat"
+      ],
+      "argument_details": [
+        {
+          "name": "validated_mat",
+          "annotation": "np.ndarray",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "tuple[float, np.ndarray]",
+      "docstring_summary": "Compute matrix amplitude from absolute values and construct the truncation sweep used to explore candidate permutations.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/uncertainty.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[13]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.build_threshold_search_space@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:322",
+      "subfamily": "minimize_bandwidth",
+      "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:322"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.compute_absolute_weighted_index_distances",
+      "atom_key": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.compute_absolute_weighted_index_distances",
+      "atom_id": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.compute_absolute_weighted_index_distances",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.minimize_bandwidth",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "compute_absolute_weighted_index_distances",
+      "argument_names": [
+        "square_mat"
+      ],
+      "argument_details": [
+        {
+          "name": "square_mat",
+          "annotation": "np.ndarray",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "np.ndarray",
+      "docstring_summary": "Enumerate all entries and compute absolute weighted index distance for each element as abs(value * (row_index - col_index)).",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/uncertainty.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[14]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.compute_absolute_weighted_index_distances@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:76",
+      "subfamily": "minimize_bandwidth",
+      "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:76"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.compute_symmetric_bandwidth_reducing_order",
+      "atom_key": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.compute_symmetric_bandwidth_reducing_order",
+      "atom_id": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.compute_symmetric_bandwidth_reducing_order",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.minimize_bandwidth",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "compute_symmetric_bandwidth_reducing_order",
+      "argument_names": [
+        "sparse_matrix"
+      ],
+      "argument_details": [
+        {
+          "name": "sparse_matrix",
+          "annotation": "np.ndarray",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "np.ndarray",
+      "docstring_summary": "Run reverse Cuthill-McKee in symmetric mode on the sparse matrix and materialize the permutation as a NumPy array.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/uncertainty.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[15]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.compute_symmetric_bandwidth_reducing_order@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:287",
+      "subfamily": "minimize_bandwidth",
+      "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:287"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.enforce_threshold_sparsity",
+      "atom_key": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.enforce_threshold_sparsity",
+      "atom_id": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.enforce_threshold_sparsity",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.minimize_bandwidth",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "enforce_threshold_sparsity",
+      "argument_names": [
+        "mat",
+        "threshold"
+      ],
+      "argument_details": [
+        {
+          "name": "mat",
+          "annotation": "np.ndarray",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "threshold",
+          "annotation": "float",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "np.ndarray",
+      "docstring_summary": "Create a thresholded copy of the input matrix where all entries below the threshold are set to zero, preserving the original input matrix.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/uncertainty.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[16]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.enforce_threshold_sparsity@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:249",
+      "subfamily": "minimize_bandwidth",
+      "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:249"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.enumerate_threshold_based_permutations",
+      "atom_key": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.enumerate_threshold_based_permutations",
+      "atom_id": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.enumerate_threshold_based_permutations",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.minimize_bandwidth",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "enumerate_threshold_based_permutations",
+      "argument_names": [
+        "validated_mat",
+        "mat_amplitude",
+        "truncation_values"
+      ],
+      "argument_details": [
+        {
+          "name": "validated_mat",
+          "annotation": "np.ndarray",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "mat_amplitude",
+          "annotation": "float",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "truncation_values",
+          "annotation": "np.ndarray",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "np.ndarray",
+      "docstring_summary": "Generate candidate permutations by calling thresholded bandwidth minimization for each scaled truncation value.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/uncertainty.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[17]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.enumerate_threshold_based_permutations@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:346",
+      "subfamily": "minimize_bandwidth",
+      "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:346"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.extract_final_permutation",
+      "atom_key": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.extract_final_permutation",
+      "atom_id": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.extract_final_permutation",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.minimize_bandwidth",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "extract_final_permutation",
+      "argument_names": [
+        "terminal_state"
+      ],
+      "argument_details": [
+        {
+          "name": "terminal_state",
+          "annotation": "np.ndarray | dict[str, np.ndarray | list[int] | int]",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "list[int]",
+      "docstring_summary": "Return the accumulated permutation from the terminal state as the function result.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/uncertainty.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[18]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.extract_final_permutation@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:229",
+      "subfamily": "minimize_bandwidth",
+      "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:229"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.initialize_reduction_state",
+      "atom_key": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.initialize_reduction_state",
+      "atom_id": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.initialize_reduction_state",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.minimize_bandwidth",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "initialize_reduction_state",
+      "argument_names": [
+        "symmetric_matrix"
+      ],
+      "argument_details": [
+        {
+          "name": "symmetric_matrix",
+          "annotation": "np.ndarray",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "np.ndarray",
+      "docstring_summary": "Create the sanitized working matrix and initial optimization state for greedy bandwidth descent.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/uncertainty.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[19]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.initialize_reduction_state@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:130",
+      "subfamily": "minimize_bandwidth",
+      "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:130"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.propose_greedy_permutation_step",
+      "atom_key": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.propose_greedy_permutation_step",
+      "atom_id": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.propose_greedy_permutation_step",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.minimize_bandwidth",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "propose_greedy_permutation_step",
+      "argument_names": [
+        "iteration_state"
+      ],
+      "argument_details": [
+        {
+          "name": "iteration_state",
+          "annotation": "np.ndarray | dict[str, np.ndarray | list[int] | int]",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "tuple[np.ndarray | dict[str, np.ndarray | list[int] | int], list[int], np.ndarray, int]",
+      "docstring_summary": "From the current working matrix, compute one candidate permutation and its resulting matrix bandwidth.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/uncertainty.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[20]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.propose_greedy_permutation_step@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:158",
+      "subfamily": "minimize_bandwidth",
+      "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:158"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.select_minimum_bandwidth_permutation",
+      "atom_key": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.select_minimum_bandwidth_permutation",
+      "atom_id": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.select_minimum_bandwidth_permutation",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.minimize_bandwidth",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "select_minimum_bandwidth_permutation",
+      "argument_names": [
+        "validated_mat",
+        "candidate_permutations"
+      ],
+      "argument_details": [
+        {
+          "name": "validated_mat",
+          "annotation": "np.ndarray",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "candidate_permutations",
+          "annotation": "np.ndarray",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "list[int]",
+      "docstring_summary": "Evaluate each candidate by permuting the matrix and computing resulting bandwidth, then return the best permutation as a Python list.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/uncertainty.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[21]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.select_minimum_bandwidth_permutation@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:373",
+      "subfamily": "minimize_bandwidth",
+      "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:373"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.update_state_with_improvement_criterion",
+      "atom_key": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.update_state_with_improvement_criterion",
+      "atom_id": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.update_state_with_improvement_criterion",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.minimize_bandwidth",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "update_state_with_improvement_criterion",
+      "argument_names": [
+        "current_iteration_state",
+        "candidate_permutation",
+        "candidate_matrix",
+        "candidate_bandwidth"
+      ],
+      "argument_details": [
+        {
+          "name": "current_iteration_state",
+          "annotation": "np.ndarray | dict[str, np.ndarray | list[int] | int]",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "candidate_permutation",
+          "annotation": "list[int]",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "candidate_matrix",
+          "annotation": "np.ndarray",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "candidate_bandwidth",
+          "annotation": "int",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "tuple[np.ndarray, bool]",
+      "docstring_summary": "Apply iteration budget checks, compare candidate vs current bandwidth, and either accept the candidate state or terminate without update.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/uncertainty.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[22]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.update_state_with_improvement_criterion@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:186",
+      "subfamily": "minimize_bandwidth",
+      "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:186"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.validate_square_matrix_shape",
+      "atom_key": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.validate_square_matrix_shape",
+      "atom_id": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.validate_square_matrix_shape",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.minimize_bandwidth",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "validate_square_matrix_shape",
+      "argument_names": [
+        "mat"
+      ],
+      "argument_details": [
+        {
+          "name": "mat",
+          "annotation": "np.ndarray",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "np.ndarray",
+      "docstring_summary": "Check that the input matrix has identical row and column counts; fail if not square.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/uncertainty.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[23]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.validate_square_matrix_shape@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:58",
+      "subfamily": "minimize_bandwidth",
+      "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:58"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.validate_symmetric_input_dense",
+      "atom_key": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.validate_symmetric_input_dense",
+      "atom_id": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.validate_symmetric_input_dense",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.minimize_bandwidth",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "validate_symmetric_input",
+      "argument_names": [
+        "matrix"
+      ],
+      "argument_details": [
+        {
+          "name": "matrix",
+          "annotation": "np.ndarray",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "np.ndarray",
+      "docstring_summary": "Verify the matrix is numerically symmetric within tolerance before any reordering logic proceeds.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/uncertainty.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[24]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.validate_symmetric_input_dense@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:111",
+      "subfamily": "minimize_bandwidth",
+      "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:111"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.validate_symmetric_input_thresholded",
+      "atom_key": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.validate_symmetric_input_thresholded",
+      "atom_id": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.validate_symmetric_input_thresholded",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.minimize_bandwidth",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "validate_symmetric_input",
+      "argument_names": [
+        "mat"
+      ],
+      "argument_details": [
+        {
+          "name": "mat",
+          "annotation": "np.ndarray",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "np.ndarray",
+      "docstring_summary": "Verify the input matrix is symmetric within tolerance and fail fast if the precondition is violated.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/references.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/minimize_bandwidth/uncertainty.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[25]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.validate_symmetric_input_thresholded@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:304",
+      "subfamily": "minimize_bandwidth",
+      "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:304"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.mwis_sa.calculate_weight",
+      "atom_key": "sciona.atoms.bio.molecular_docking.mwis_sa.calculate_weight",
+      "atom_id": "sciona.atoms.bio.molecular_docking.mwis_sa.calculate_weight",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.mwis_sa",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/mwis_sa/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "calculate_weight",
+      "argument_names": [
+        "graph",
+        "node_list"
+      ],
+      "argument_details": [
+        {
+          "name": "graph",
+          "annotation": "np.ndarray",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "node_list",
+          "annotation": "list[int]",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "float",
+      "docstring_summary": "Calculates the total weight of a given list of nodes in the graph.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/references.json",
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/uncertainty.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[26]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.mwis_sa.calculate_weight@sciona/atoms/bio/molecular_docking/mwis_sa/atoms.py:66",
+      "subfamily": "mwis_sa",
+      "source_path": "sciona/atoms/bio/molecular_docking/mwis_sa/atoms.py:66"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.mwis_sa.is_independent_set",
+      "atom_key": "sciona.atoms.bio.molecular_docking.mwis_sa.is_independent_set",
+      "atom_id": "sciona.atoms.bio.molecular_docking.mwis_sa.is_independent_set",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.mwis_sa",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/mwis_sa/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "is_independent_set",
+      "argument_names": [
+        "graph",
+        "subset"
+      ],
+      "argument_details": [
+        {
+          "name": "graph",
+          "annotation": "np.ndarray",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "subset",
+          "annotation": "list[int]",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "bool",
+      "docstring_summary": "Checks if the given subset of nodes is an independent set in the graph.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/references.json",
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/uncertainty.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[27]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.mwis_sa.is_independent_set@sciona/atoms/bio/molecular_docking/mwis_sa/atoms.py:42",
+      "subfamily": "mwis_sa",
+      "source_path": "sciona/atoms/bio/molecular_docking/mwis_sa/atoms.py:42"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.mwis_sa.load_graphs_from_folder",
+      "atom_key": "sciona.atoms.bio.molecular_docking.mwis_sa.load_graphs_from_folder",
+      "atom_id": "sciona.atoms.bio.molecular_docking.mwis_sa.load_graphs_from_folder",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.mwis_sa",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/mwis_sa/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "load_graphs_from_folder",
+      "argument_names": [
+        "folder_path"
+      ],
+      "argument_details": [
+        {
+          "name": "folder_path",
+          "annotation": "str",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "list[np.ndarray]",
+      "docstring_summary": "Load graphs from folder.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/references.json",
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/uncertainty.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[28]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.mwis_sa.load_graphs_from_folder@sciona/atoms/bio/molecular_docking/mwis_sa/atoms.py:18",
+      "subfamily": "mwis_sa",
+      "source_path": "sciona/atoms/bio/molecular_docking/mwis_sa/atoms.py:18"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.mwis_sa.to_qubo",
+      "atom_key": "sciona.atoms.bio.molecular_docking.mwis_sa.to_qubo",
+      "atom_id": "sciona.atoms.bio.molecular_docking.mwis_sa.to_qubo",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.mwis_sa",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/mwis_sa/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "to_qubo",
+      "argument_names": [
+        "graph",
+        "penalty"
+      ],
+      "argument_details": [
+        {
+          "name": "graph",
+          "annotation": "np.ndarray",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "penalty",
+          "annotation": "float",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "np.ndarray",
+      "docstring_summary": "Convert a Maximum Weight Independent Set (MWIS) problem to a Quadratic Unconstrained Binary Optimization (QUBO) matrix. Encodes node weights as diagonal entries and edge penalties as off-diagonal entries so the problem can be solved by a binary optimizer.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/references.json",
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/matches.json",
+        "src/sciona/atoms/bio/molecular_docking/mwis_sa/uncertainty.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "approved",
+      "review_priority": "review_now",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantics_verdict": "pass_with_limits",
+      "trust_readiness": "reviewed_with_limits",
+      "review_required_actions": [],
+      "review_limitations": [],
+      "trust_blockers": [],
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass",
+      "developer_semantics_status": "pass",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[29]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.mwis_sa.to_qubo@sciona/atoms/bio/molecular_docking/mwis_sa/atoms.py:86",
+      "subfamily": "mwis_sa",
+      "source_path": "sciona/atoms/bio/molecular_docking/mwis_sa/atoms.py:86"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.quantum_solver.adiabaticquantumsampler",
+      "atom_key": "sciona.atoms.bio.molecular_docking.quantum_solver.adiabaticquantumsampler",
+      "atom_id": "sciona.atoms.bio.molecular_docking.quantum_solver.adiabaticquantumsampler",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.quantum_solver",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/quantum_solver/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "adiabaticquantumsampler",
+      "argument_names": [
+        "initial_register",
+        "simulation_parameters",
+        "permutation_list",
+        "backend_flags"
+      ],
+      "argument_details": [
+        {
+          "name": "initial_register",
+          "annotation": "QuantumRegister",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "simulation_parameters",
+          "annotation": "Dict",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "permutation_list",
+          "annotation": "List[Permutation]",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "backend_flags",
+          "annotation": "Dict",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "tuple[CountDistribution, QuantumRegister]",
+      "docstring_summary": "Executes the core quantum simulation loop. It evolves the quantum register through an adiabatic sequence to find low-energy states of the problem Hamiltonian, effectively sampling from the solution distribution.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver/references.json",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver/matches.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "reviewed_pending",
+      "review_priority": "review_later",
+      "review_semantic_verdict": "unknown",
+      "review_developer_semantics_verdict": "unknown",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "review_required_actions": [
+        "Backfill uncertainty evidence for quantum_solver."
+      ],
+      "review_limitations": [
+        "No uncertainty.json present for quantum_solver."
+      ],
+      "trust_blockers": [],
+      "structural_status": "unknown",
+      "semantic_status": "unknown",
+      "runtime_status": "unknown",
+      "developer_semantics_status": "unknown",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [
+        "Backfill uncertainty evidence for quantum_solver."
+      ],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[30]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver.adiabaticquantumsampler@sciona/atoms/bio/molecular_docking/quantum_solver/atoms.py:78",
+      "subfamily": "quantum_solver",
+      "source_path": "sciona/atoms/bio/molecular_docking/quantum_solver/atoms.py:78"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.quantum_solver.quantumproblemdefinition",
+      "atom_key": "sciona.atoms.bio.molecular_docking.quantum_solver.quantumproblemdefinition",
+      "atom_id": "sciona.atoms.bio.molecular_docking.quantum_solver.quantumproblemdefinition",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.quantum_solver",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/quantum_solver/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "quantumproblemdefinition",
+      "argument_names": [
+        "graph",
+        "coordinates_layout",
+        "num_sol",
+        "display_info"
+      ],
+      "argument_details": [
+        {
+          "name": "graph",
+          "annotation": "ProblemGraph",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "coordinates_layout",
+          "annotation": "RegisterCoordinates",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "num_sol",
+          "annotation": "Integer",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "display_info",
+          "annotation": "Boolean",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "tuple[QuantumRegister, Dict, List[Permutation], Dict, Integer]",
+      "docstring_summary": "Initializes the quantum annealing problem. It computes simulation parameters like the minimum and maximum coupling strengths (u) based on the graph and register coordinates, and prepares the initial state for the solver.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver/references.json",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver/matches.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "reviewed_pending",
+      "review_priority": "review_later",
+      "review_semantic_verdict": "unknown",
+      "review_developer_semantics_verdict": "unknown",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "review_required_actions": [
+        "Backfill uncertainty evidence for quantum_solver."
+      ],
+      "review_limitations": [
+        "No uncertainty.json present for quantum_solver."
+      ],
+      "trust_blockers": [],
+      "structural_status": "unknown",
+      "semantic_status": "unknown",
+      "runtime_status": "unknown",
+      "developer_semantics_status": "unknown",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [
+        "Backfill uncertainty evidence for quantum_solver."
+      ],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[31]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver.quantumproblemdefinition@sciona/atoms/bio/molecular_docking/quantum_solver/atoms.py:30",
+      "subfamily": "quantum_solver",
+      "source_path": "sciona/atoms/bio/molecular_docking/quantum_solver/atoms.py:30"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.quantum_solver.solutionextraction",
+      "atom_key": "sciona.atoms.bio.molecular_docking.quantum_solver.solutionextraction",
+      "atom_id": "sciona.atoms.bio.molecular_docking.quantum_solver.solutionextraction",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.quantum_solver",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/quantum_solver/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "solutionextraction",
+      "argument_names": [
+        "measurement_counts",
+        "final_register",
+        "num_solutions"
+      ],
+      "argument_details": [
+        {
+          "name": "measurement_counts",
+          "annotation": "CountDistribution",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "final_register",
+          "annotation": "QuantumRegister",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "num_solutions",
+          "annotation": "Integer",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "List[Solution]",
+      "docstring_summary": "Processes the raw results from the quantum sampler. It interprets the measurement count distribution to extract the top solutions for the optimization problem.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver/references.json",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver/matches.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "reviewed_pending",
+      "review_priority": "review_later",
+      "review_semantic_verdict": "unknown",
+      "review_developer_semantics_verdict": "unknown",
+      "trust_readiness": "blocked_on_uncertainty_backfill",
+      "review_required_actions": [
+        "Backfill uncertainty evidence for quantum_solver."
+      ],
+      "review_limitations": [
+        "No uncertainty.json present for quantum_solver."
+      ],
+      "trust_blockers": [],
+      "structural_status": "unknown",
+      "semantic_status": "unknown",
+      "runtime_status": "unknown",
+      "developer_semantics_status": "unknown",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [
+        "Backfill uncertainty evidence for quantum_solver."
+      ],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[32]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver.solutionextraction@sciona/atoms/bio/molecular_docking/quantum_solver/atoms.py:144",
+      "subfamily": "quantum_solver",
+      "source_path": "sciona/atoms/bio/molecular_docking/quantum_solver/atoms.py:144"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.adiabaticpulseassembler",
+      "atom_key": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.adiabaticpulseassembler",
+      "atom_id": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.adiabaticpulseassembler",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.quantum_solver_d12",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "adiabaticpulseassembler",
+      "argument_names": [
+        "register",
+        "parameters"
+      ],
+      "argument_details": [
+        {
+          "name": "register",
+          "annotation": "QuantumRegister",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "parameters",
+          "annotation": "dict[str, float]",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "PulseSequence",
+      "docstring_summary": "Build the time-dependent adiabatic pulse sequence for the neutral-atom device.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/references.json",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/matches.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "reviewed_pending",
+      "review_priority": "review_later",
+      "review_semantic_verdict": "unknown",
+      "review_developer_semantics_verdict": "unknown",
+      "trust_readiness": "blocked_on_semantic_remediation",
+      "review_required_actions": [
+        "Implement the source-aligned Pulser adiabatic pulse assembly path or explicitly rename/re-document the atom as a non-Pulser placeholder before publication."
+      ],
+      "review_limitations": [
+        "Current implementation returns a plain dict classical stand-in instead of constructing Pulser waveforms, DMM detuning map, channels, pulse, and locked Sequence described by the source evidence."
+      ],
+      "trust_blockers": [],
+      "structural_status": "unknown",
+      "semantic_status": "unknown",
+      "runtime_status": "unknown",
+      "developer_semantics_status": "unknown",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [
+        "Implement the source-aligned Pulser adiabatic pulse assembly path or explicitly rename/re-document the atom as a non-Pulser placeholder before publication."
+      ],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[33]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.adiabaticpulseassembler@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:176",
+      "subfamily": "quantum_solver_d12",
+      "source_path": "sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:176",
+      "audit_batch": "pubrev-028",
+      "audit_scope": "quantum_solver_d12_publishability_wave"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.interactionboundscomputer",
+      "atom_key": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.interactionboundscomputer",
+      "atom_id": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.interactionboundscomputer",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.quantum_solver_d12",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "interactionboundscomputer",
+      "argument_names": [
+        "register_coord",
+        "graph"
+      ],
+      "argument_details": [
+        {
+          "name": "register_coord",
+          "annotation": "dict[str, np.ndarray]",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "graph",
+          "annotation": "nx.Graph",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "tuple[float, float]",
+      "docstring_summary": "Compute the min and max interaction energy bounds across all atom pairs.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/references.json",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/matches.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "reviewed_pending",
+      "review_priority": "review_later",
+      "review_semantic_verdict": "unknown",
+      "review_developer_semantics_verdict": "unknown",
+      "trust_readiness": "blocked_on_semantic_remediation",
+      "review_required_actions": [
+        "Reconcile the return contract with source semantics by deriving the advertised pulse parameter bounds, with evidence for edge/complement distance handling and uncertainty."
+      ],
+      "review_limitations": [
+        "Current implementation returns raw u_min/u_max interaction bounds and clamps u_max, but source evidence expects pulse parameter bound derivation for detuning_maximum and amplitude_maximum from register geometry and graph topology."
+      ],
+      "trust_blockers": [],
+      "structural_status": "unknown",
+      "semantic_status": "unknown",
+      "runtime_status": "unknown",
+      "developer_semantics_status": "unknown",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [
+        "Reconcile the return contract with source semantics by deriving the advertised pulse parameter bounds, with evidence for edge/complement distance handling and uncertainty."
+      ],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[34]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.interactionboundscomputer@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:119",
+      "subfamily": "quantum_solver_d12",
+      "source_path": "sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:119",
+      "audit_batch": "pubrev-028",
+      "audit_scope": "quantum_solver_d12_publishability_wave"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantumcircuitsampler",
+      "atom_key": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantumcircuitsampler",
+      "atom_id": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantumcircuitsampler",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.quantum_solver_d12",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "quantumcircuitsampler",
+      "argument_names": [
+        "parameters",
+        "register",
+        "list_perm",
+        "run_qutip",
+        "run_emu_mps",
+        "run_sv"
+      ],
+      "argument_details": [
+        {
+          "name": "parameters",
+          "annotation": "dict[str, float]",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "register",
+          "annotation": "QuantumRegister",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "list_perm",
+          "annotation": "list[int]",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "run_qutip",
+          "annotation": "bool",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "run_emu_mps",
+          "annotation": "bool",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "run_sv",
+          "annotation": "bool",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "dict[str, int]",
+      "docstring_summary": "Run the adiabatic pulse sequence on the chosen quantum backend and return bitstring counts.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/references.json",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/matches.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "reviewed_pending",
+      "review_priority": "review_later",
+      "review_semantic_verdict": "unknown",
+      "review_developer_semantics_verdict": "unknown",
+      "trust_readiness": "blocked_on_semantic_remediation",
+      "review_required_actions": [
+        "Replace the classical sampler stand-in with the advertised backend execution path and permutation restoration, or re-document the atom as a classical approximation before publication."
+      ],
+      "review_limitations": [
+        "Current implementation ignores backend flags as quantum backends and generates deterministic classical greedy/SA counts instead of executing the adiabatic pulse sequence through qutip, tensor-network, or state-vector simulation."
+      ],
+      "trust_blockers": [],
+      "structural_status": "unknown",
+      "semantic_status": "unknown",
+      "runtime_status": "unknown",
+      "developer_semantics_status": "unknown",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [
+        "Replace the classical sampler stand-in with the advertised backend execution path and permutation restoration, or re-document the atom as a classical approximation before publication."
+      ],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[35]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantumcircuitsampler@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:210",
+      "subfamily": "quantum_solver_d12",
+      "source_path": "sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:210",
+      "audit_batch": "pubrev-028",
+      "audit_scope": "quantum_solver_d12_publishability_wave"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantumsolutionextractor",
+      "atom_key": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantumsolutionextractor",
+      "atom_id": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantumsolutionextractor",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.quantum_solver_d12",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "quantumsolutionextractor",
+      "argument_names": [
+        "count_dist",
+        "register",
+        "num_solutions"
+      ],
+      "argument_details": [
+        {
+          "name": "count_dist",
+          "annotation": "dict[str, int]",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "register",
+          "annotation": "QuantumRegister",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "num_solutions",
+          "annotation": "int",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "tuple[list[list[str]], list[int]]",
+      "docstring_summary": "Post-processes the raw measurement count distribution to decode, rank, and filter the top-k bitstring solutions.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/references.json",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/matches.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "reviewed_pending",
+      "review_priority": "review_later",
+      "review_semantic_verdict": "unknown",
+      "review_developer_semantics_verdict": "unknown",
+      "trust_readiness": "blocked_on_semantic_remediation",
+      "review_required_actions": [
+        "Add source-aligned extraction semantics, including register/qubit mapping evidence and focused tests, before publication."
+      ],
+      "review_limitations": [
+        "Current implementation ranks bitstrings and maps set bits to labels, but source evidence describes node-set solution objects tied to Pulser register mapping; no focused evidence proves the wrapper preserves the advertised solution extraction contract."
+      ],
+      "trust_blockers": [],
+      "structural_status": "unknown",
+      "semantic_status": "unknown",
+      "runtime_status": "unknown",
+      "developer_semantics_status": "unknown",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [
+        "Add source-aligned extraction semantics, including register/qubit mapping evidence and focused tests, before publication."
+      ],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[36]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantumsolutionextractor@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:285",
+      "subfamily": "quantum_solver_d12",
+      "source_path": "sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:285",
+      "audit_batch": "pubrev-028",
+      "audit_scope": "quantum_solver_d12_publishability_wave"
+    },
+    {
+      "atom_name": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantumsolverorchestrator",
+      "atom_key": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantumsolverorchestrator",
+      "atom_id": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantumsolverorchestrator",
+      "module_import_path": "sciona.atoms.bio.molecular_docking.quantum_solver_d12",
+      "module_path": "/Users/conrad/personal/sciona-atoms-bio/src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py",
+      "module_family": "molecular_docking",
+      "domain_family": "bio.molecular_docking",
+      "wrapper_symbol": "quantumsolverorchestrator",
+      "argument_names": [
+        "graph",
+        "coordinates_layout",
+        "num_sol",
+        "display_info"
+      ],
+      "argument_details": [
+        {
+          "name": "graph",
+          "annotation": "nx.Graph",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "coordinates_layout",
+          "annotation": "dict[str, np.ndarray]",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "num_sol",
+          "annotation": "int",
+          "required": true,
+          "kind": "positional_or_keyword"
+        },
+        {
+          "name": "display_info",
+          "annotation": "bool",
+          "required": true,
+          "kind": "positional_or_keyword"
+        }
+      ],
+      "uses_varargs": false,
+      "uses_kwargs": false,
+      "return_annotation": "tuple[list, dict[str, int]]",
+      "docstring_summary": "Solve the Maximum Weight Independent Set (MWIS) problem end-to-end on a neutral-atom quantum device.",
+      "has_docstring": true,
+      "authoritative_sources": [
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/references.json",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/cdg.json",
+        "src/sciona/atoms/bio/molecular_docking/quantum_solver_d12/matches.json"
+      ],
+      "source_kind": "hand_written",
+      "review_status": "reviewed_pending",
+      "review_priority": "review_later",
+      "review_semantic_verdict": "unknown",
+      "review_developer_semantics_verdict": "unknown",
+      "trust_readiness": "blocked_on_semantic_remediation",
+      "review_required_actions": [
+        "Implement the end-to-end neutral-atom MWIS pipeline described by matches/cdg evidence, or re-scope the atom as a classical heuristic before publication."
+      ],
+      "review_limitations": [
+        "Current implementation bypasses Pulser register construction, bandwidth optimization, pulse parameter packaging, adiabatic backend sampling, and solution extraction; it directly runs a classical greedy/SA loop."
+      ],
+      "trust_blockers": [],
+      "structural_status": "unknown",
+      "semantic_status": "unknown",
+      "runtime_status": "unknown",
+      "developer_semantics_status": "unknown",
+      "overall_verdict": "unknown",
+      "risk_tier": "low",
+      "risk_score": 0,
+      "risk_dimensions": {},
+      "risk_reasons": [],
+      "acceptability_score": 70,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "unknown",
+      "parity_test_status": "unknown",
+      "parity_fixture_count": 0,
+      "parity_case_count": 0,
+      "required_actions": [
+        "Implement the end-to-end neutral-atom MWIS pipeline described by matches/cdg evidence, or re-scope the atom as a classical heuristic before publication."
+      ],
+      "blocking_findings": [],
+      "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[37]",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantumsolverorchestrator@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:37",
+      "subfamily": "quantum_solver_d12",
+      "source_path": "sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:37",
+      "audit_batch": "pubrev-028",
+      "audit_scope": "quantum_solver_d12_publishability_wave"
     }
   ]
 }

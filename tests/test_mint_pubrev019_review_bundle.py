@@ -13,16 +13,15 @@ REFERENCES = ROOT / "references.json"
 
 PUBLISHABLE_PUBREV019_FQDNS = {
     "sciona.atoms.bio.mint.apc_module.apccoreevaluation",
+    "sciona.atoms.bio.mint.axial_attention.row_self_attention",
+    "sciona.atoms.bio.mint.axial_attention.rowselfattention",
     "sciona.atoms.bio.mint.encoding_dist_mat.encodedistancematrix",
     "sciona.atoms.bio.mint.incremental_attention.enable_incremental_state_configuration",
     "sciona.atoms.bio.mint.rotary_embedding.rotaryembedding_numpy",
     "sciona.atoms.bio.mint.rotary_embedding.rotaryembedding_torch",
 }
 
-HELD_PUBREV019_FQDNS = {
-    "sciona.atoms.bio.mint.axial_attention.row_self_attention",
-    "sciona.atoms.bio.mint.axial_attention.rowselfattention",
-}
+HELD_PUBREV019_FQDNS: set[str] = set()
 
 
 def _bundle() -> dict:
@@ -47,8 +46,8 @@ def test_mint_pubrev019_review_bundle_covers_references_and_sources() -> None:
     assert bundle["provider_repo"] == "sciona-atoms-bio"
     assert bundle["family"] == "bio.mint"
     assert bundle["review_status"] == "reviewed"
-    assert bundle["semantic_verdict"] == "partial_safe_subset_publishable"
-    assert bundle["trust_readiness"] == "partial_safe_subset_ready"
+    assert bundle["semantic_verdict"] == "publishable_candidate_after_axial_attention_remediation"
+    assert bundle["trust_readiness"] == "ready_for_manifest_merge"
     assert {row["atom_fqdn"] for row in bundle["rows"]} == reference_keys
     assert set(_rows_by_base_fqdn()) == PUBLISHABLE_PUBREV019_FQDNS | HELD_PUBREV019_FQDNS
 
@@ -90,21 +89,23 @@ def test_mint_pubrev019_publishable_rows_are_manifest_ready() -> None:
         )
 
 
-def test_mint_pubrev019_axial_attention_rows_are_held_with_remediation() -> None:
+def test_mint_pubrev019_axial_attention_rows_are_remediated_and_ready() -> None:
     rows = _rows_by_base_fqdn()
     bundle_text = json.dumps(_bundle())
 
-    for fqdn in HELD_PUBREV019_FQDNS:
+    for fqdn in {
+        "sciona.atoms.bio.mint.axial_attention.row_self_attention",
+        "sciona.atoms.bio.mint.axial_attention.rowselfattention",
+    }:
         row = rows[fqdn]
         assert row["review_status"] == "reviewed"
-        assert row["semantic_verdict"] == "held_requires_remediation"
-        assert row["trust_readiness"] == "blocked_on_semantic_remediation"
-        assert row["trust_readiness"] != "ready_for_manifest_merge"
+        assert row["semantic_verdict"] == "publishable_candidate"
+        assert row["trust_readiness"] == "ready_for_manifest_merge"
         assert row["limitations"]
-        assert row["required_actions"]
+        assert row["required_actions"] == []
         assert "RowSelfAttention" in json.dumps(row)
-        assert "q/k/v/out" in json.dumps(row) or "projections" in json.dumps(row)
+        assert "q/k/v/out" in json.dumps(row) or "projection" in json.dumps(row)
         assert fqdn in bundle_text
 
-    assert "shared REMEDIATION.md" in bundle_text
+    assert "source_aligned" in bundle_text
     assert "4D MSA" in bundle_text
