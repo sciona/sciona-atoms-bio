@@ -12,6 +12,15 @@ dependencies = [
   "sciona",
 ]
 
+[project.optional-dependencies]
+quantum = [
+  "emu-mps==2.7.2",
+  "emu-sv==2.7.2",
+  "pulser==1.7.2",
+  "pulser-simulation==1.7.2",
+  "qutip==5.2.3",
+]
+
 [tool.setuptools]
 package-dir = {"" = "src"}
 

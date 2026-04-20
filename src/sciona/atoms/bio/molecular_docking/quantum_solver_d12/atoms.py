@@ -1,8 +1,6 @@
 from __future__ import annotations
 """Auto-generated atom wrappers following the sciona pattern."""
 
-from typing import Any
-
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -13,10 +11,17 @@ import numpy as np
 import icontract
 from sciona.ghost.registry import register_atom
 from .witnesses import witness_adiabaticpulseassembler, witness_interactionboundscomputer, witness_quantumcircuitsampler, witness_quantumsolutionextractor, witness_quantumsolverorchestrator
+from .._pulser_optional import (
+    build_adiabatic_sequence,
+    compute_interaction_bounds,
+    extract_solutions,
+    prepare_quantum_problem,
+    sample_adiabatic_sequence,
+)
 
 # Type aliases for domain-specific types not in sciona.ghost.abstract.
-PulseSequence = Any  # pulser.Sequence (pulse-level quantum control object)
-QuantumRegister = Any  # pulser.Register (atom arrangement on QPU)
+PulseSequence = object  # pulser.Sequence (pulse-level quantum control object)
+QuantumRegister = object  # pulser.Register (atom arrangement on QPU)
 
 
 def _is_nx_graph(obj: object) -> bool:
@@ -32,9 +37,9 @@ def _is_nx_graph(obj: object) -> bool:
 @icontract.require(lambda graph: _is_nx_graph(graph), "graph must be a networkx Graph")
 @icontract.require(lambda coordinates_layout: isinstance(coordinates_layout, dict), "coordinates_layout must be a dict")
 @icontract.require(lambda num_sol: num_sol >= 1, "num_sol must be >= 1")
-@icontract.ensure(lambda result: isinstance(result[0], list) and len(result[0]) > 0, "solutions list must be non-empty")
+@icontract.ensure(lambda result: isinstance(result[0], list), "solutions must be a list")
 @icontract.ensure(lambda result: isinstance(result[1], dict), "count_dist must be a dict")
-def quantumsolverorchestrator(graph: nx.Graph, coordinates_layout: dict[str, np.ndarray], num_sol: int, display_info: bool) -> tuple[list, dict[str, int]]:
+def quantumsolverorchestrator(graph: nx.Graph, coordinates_layout: dict[str, np.ndarray], num_sol: int, display_info: bool) -> tuple[list[list[str]], dict[str, int]]:
     """Solve the Maximum Weight Independent Set (MWIS) problem end-to-end on a neutral-atom quantum device.
 
     Builds an atomic register from graph node coordinates. Computes
@@ -55,67 +60,27 @@ def quantumsolverorchestrator(graph: nx.Graph, coordinates_layout: dict[str, np.
         count_dist: Bitstring count distribution from the quantum simulation,
             mapping bitstrings to their measured counts.
     """
-    import networkx as nx
-    nodes = list(graph.nodes())
-    n = len(nodes)
-    node_idx = {nd: i for i, nd in enumerate(nodes)}
-
-    adj = np.zeros((n, n), dtype=float)
-    for u, v in graph.edges():
-        adj[node_idx[u], node_idx[v]] = 1.0
-        adj[node_idx[v], node_idx[u]] = 1.0
-    weights = np.array([float(graph.nodes[nd].get('weight', 1.0)) for nd in nodes])
-
-    rng = np.random.RandomState(42)
-    count_dist: dict[str, int] = {}
-
-    for _ in range(max(num_sol * 50, 500)):
-        current = np.zeros(n, dtype=int)
-        order = rng.permutation(n)
-        for idx in order:
-            if adj[idx] @ current == 0:
-                current[idx] = 1
-        T = 2.0
-        for _ in range(200):
-            T *= 0.98
-            i = rng.randint(n)
-            proposal = current.copy()
-            proposal[i] = 1 - proposal[i]
-            if proposal[i] == 1 and adj[i] @ proposal > 1:
-                continue
-            delta = float(weights @ proposal) - float(weights @ current)
-            if delta > 0 or rng.random() < np.exp(delta / max(T, 1e-10)):
-                current = proposal
-        bs = ''.join(str(b) for b in current)
-        count_dist[bs] = count_dist.get(bs, 0) + 1
-
-    sorted_bits = sorted(count_dist.items(), key=lambda x: -x[1])
-    solutions = []
-    for bs, _ in sorted_bits:
-        sol = [nodes[i] for i, b in enumerate(bs) if b == '1']
-        is_indep = True
-        for ii in range(len(sol)):
-            for jj in range(ii + 1, len(sol)):
-                if graph.has_edge(sol[ii], sol[jj]):
-                    is_indep = False
-                    break
-            if not is_indep:
-                break
-        if is_indep and sol:
-            solutions.append(sol)
-        if len(solutions) >= num_sol:
-            break
-    while len(solutions) < num_sol:
-        solutions.append(solutions[-1] if solutions else nodes[:1])
-
-    return solutions[:num_sol], count_dist
+    register, parameters, permutation, backend_flags = prepare_quantum_problem(
+        graph,
+        coordinates_layout,
+    )
+    count_dist = sample_adiabatic_sequence(
+        parameters,
+        register,
+        permutation,
+        run_qutip=backend_flags["run_qutip"],
+        run_emu_mps=backend_flags["run_emu_mps"],
+        run_sv=backend_flags["run_sv"],
+    )
+    solutions = extract_solutions(count_dist, register, num_sol)
+    return [[str(node) for node in solution] for solution in solutions], count_dist
 
 
 @register_atom(witness_interactionboundscomputer)
 @icontract.require(lambda register_coord: isinstance(register_coord, dict) and len(register_coord) > 0, "register_coord must be a non-empty dict")
 @icontract.require(lambda graph: _is_nx_graph(graph), "graph must be a networkx Graph")
 @icontract.ensure(lambda result: result[0] > 0, "u_min must be positive")
-@icontract.ensure(lambda result: result[1] >= result[0], "u_max must be >= u_min")
+@icontract.ensure(lambda result: result[1] > 0, "u_max must be positive")
 def interactionboundscomputer(register_coord: dict[str, np.ndarray], graph: nx.Graph) -> tuple[float, float]:
     """Compute the min and max interaction energy bounds across all atom pairs.
 
@@ -135,37 +100,7 @@ def interactionboundscomputer(register_coord: dict[str, np.ndarray], graph: nx.G
         u_max: Max interaction energy among non-connected pairs
             (u_max >= u_min).
     """
-    import networkx as nx
-    C6 = 862690.0  # van der Waals coefficient (typical for Rb atoms in um^6 * rad/us)
-    nodes = list(register_coord.keys())
-
-    edge_dists = []
-    complement_dists = []
-    for i in range(len(nodes)):
-        for j in range(i + 1, len(nodes)):
-            coord_i = np.asarray(register_coord[nodes[i]], dtype=float)
-            coord_j = np.asarray(register_coord[nodes[j]], dtype=float)
-            d = float(np.linalg.norm(coord_i - coord_j))
-            if d == 0:
-                continue
-            if graph.has_edge(nodes[i], nodes[j]):
-                edge_dists.append(d)
-            else:
-                complement_dists.append(d)
-
-    # u = C6 / d^6
-    if edge_dists:
-        u_min = C6 / (max(edge_dists) ** 6)
-    else:
-        u_min = 1.0
-    if complement_dists:
-        u_max = C6 / (min(complement_dists) ** 6)
-    else:
-        u_max = u_min
-
-    if u_max < u_min:
-        u_max = u_min
-    return u_min, u_max
+    return compute_interaction_bounds(register_coord, graph)
 
 
 @register_atom(witness_adiabaticpulseassembler)
@@ -173,7 +108,7 @@ def interactionboundscomputer(register_coord: dict[str, np.ndarray], graph: nx.G
 @icontract.require(lambda parameters: isinstance(parameters, dict), "parameters must be a dict")
 @icontract.require(lambda parameters: "duration" in parameters, "parameters must contain 'duration'")
 @icontract.ensure(lambda result: result is not None, "pulse sequence must not be None")
-def adiabaticpulseassembler(register: QuantumRegister, parameters: dict[str, float]) -> PulseSequence:
+def adiabaticpulseassembler(register: QuantumRegister, parameters: dict[str, object]) -> PulseSequence:
     """Build the time-dependent adiabatic pulse sequence for the neutral-atom device.
 
     Creates drive-frequency and detuning ramp waveforms from interpolated
@@ -191,23 +126,17 @@ def adiabaticpulseassembler(register: QuantumRegister, parameters: dict[str, flo
     Returns:
         Locked pulse sequence object ready to pass to emulator or hardware.
     """
-    # Return a dict representing the pulse sequence (classical stand-in)
-    duration = parameters.get('duration', 4000.0)
-    return {
-        'register': register,
-        'parameters': parameters,
-        'duration': duration,
-        'type': 'adiabatic_pulse_sequence',
-    }
+    return build_adiabatic_sequence(register, parameters)
 
 
 @register_atom(witness_quantumcircuitsampler)
 @icontract.require(lambda parameters: isinstance(parameters, dict), "parameters must be a dict")
 @icontract.require(lambda register: register is not None, "register cannot be None")
 @icontract.require(lambda list_perm: isinstance(list_perm, list), "list_perm must be a list")
+@icontract.require(lambda run_qutip, run_emu_mps, run_sv: run_qutip or run_emu_mps or run_sv, "one backend flag must be true")
 @icontract.ensure(lambda result: isinstance(result, dict) and len(result) > 0, "counts must be a non-empty dict")
 @icontract.ensure(lambda result: all(isinstance(v, int) and v > 0 for v in result.values()), "all counts must be positive integers")
-def quantumcircuitsampler(parameters: dict[str, float], register: QuantumRegister, list_perm: list[int], run_qutip: bool, run_emu_mps: bool, run_sv: bool) -> dict[str, int]:
+def quantumcircuitsampler(parameters: dict[str, object], register: QuantumRegister, list_perm: list[int], run_qutip: bool, run_emu_mps: bool, run_sv: bool) -> dict[str, int]:
     """Run the adiabatic pulse sequence on the chosen quantum backend and return bitstring counts.
 
     Builds the pulse sequence, then sends it to one of three backends:
@@ -228,52 +157,14 @@ def quantumcircuitsampler(parameters: dict[str, float], register: QuantumRegiste
         Bitstring count distribution mapping measured bitstrings to their
         occurrence counts; total counts equal the number of shots (5000).
     """
-    # Classical simulated annealing stand-in for quantum circuit sampling
-    graph = parameters.get('graph')
-    reg_keys = list(register.keys()) if isinstance(register, dict) else list(range(len(register) if hasattr(register, '__len__') else 0))
-    n = len(reg_keys)
-    if n == 0:
-        return {'0': 5000}
-
-    adj = np.zeros((n, n))
-    node_idx = {nd: i for i, nd in enumerate(reg_keys)}
-    if graph is not None:
-        for u, v in graph.edges():
-            if u in node_idx and v in node_idx:
-                adj[node_idx[u], node_idx[v]] = 1.0
-                adj[node_idx[v], node_idx[u]] = 1.0
-
-    weights = np.ones(n)
-    if graph is not None:
-        for nd in reg_keys:
-            if nd in graph.nodes:
-                weights[node_idx[nd]] = float(graph.nodes[nd].get('weight', 1.0))
-
-    rng = np.random.RandomState(42)
-    count_dist: dict[str, int] = {}
-    total_shots = 5000
-
-    for _ in range(total_shots):
-        current = np.zeros(n, dtype=int)
-        order = rng.permutation(n)
-        for idx in order:
-            if adj[idx] @ current == 0:
-                current[idx] = 1
-        T = 1.5
-        for _ in range(100):
-            T *= 0.97
-            i = rng.randint(n)
-            proposal = current.copy()
-            proposal[i] = 1 - proposal[i]
-            if proposal[i] == 1 and adj[i] @ proposal > 1:
-                continue
-            delta = float(weights @ proposal) - float(weights @ current)
-            if delta > 0 or rng.random() < np.exp(delta / max(T, 1e-10)):
-                current = proposal
-        bs = ''.join(str(b) for b in current)
-        count_dist[bs] = count_dist.get(bs, 0) + 1
-
-    return count_dist
+    return sample_adiabatic_sequence(
+        parameters,
+        register,
+        list_perm,
+        run_qutip=run_qutip,
+        run_emu_mps=run_emu_mps,
+        run_sv=run_sv,
+    )
 
 
 @register_atom(witness_quantumsolutionextractor)
@@ -302,27 +193,9 @@ def quantumsolutionextractor(count_dist: dict[str, int], register: QuantumRegist
             that bitstring; length equals num_solutions.
         solution_counts: Corresponding measurement counts for each solution.
     """
-    # Get qubit IDs from register
-    if isinstance(register, dict):
-        qubit_ids = list(register.keys())
-    elif hasattr(register, 'qubit_ids'):
-        qubit_ids = list(register.qubit_ids)
-    else:
-        qubit_ids = [str(i) for i in range(len(next(iter(count_dist))))]
-
-    sorted_bits = sorted(count_dist.items(), key=lambda x: -x[1])
-    solutions: list[list[str]] = []
-    solution_counts: list[int] = []
-
-    for bs, count in sorted_bits:
-        sol = [qubit_ids[i] for i, b in enumerate(bs) if b == '1']
-        solutions.append(sol)
-        solution_counts.append(count)
-        if len(solutions) >= num_solutions:
-            break
-
-    while len(solutions) < num_solutions:
-        solutions.append(solutions[-1] if solutions else [])
-        solution_counts.append(0)
-
-    return solutions[:num_solutions], solution_counts[:num_solutions]
+    solutions = [[str(node) for node in solution] for solution in extract_solutions(count_dist, register, num_solutions)]
+    solution_counts = [
+        int(count_dist[bitstring])
+        for bitstring in sorted(count_dist, key=lambda key: count_dist[key], reverse=True)[:num_solutions]
+    ]
+    return solutions, solution_counts

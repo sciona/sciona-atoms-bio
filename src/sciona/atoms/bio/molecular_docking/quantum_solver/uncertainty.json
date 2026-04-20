@@ -1,0 +1,14 @@
+{
+  "atom": "quantum_solver",
+  "estimates": [
+    {
+      "mode": "empirical",
+      "scalar_factor": 1.0,
+      "confidence": 0.65,
+      "n_trials": 2,
+      "epsilon": 1e-08,
+      "input_regime": "two-node weighted graph fixture with Pulser state-vector emulator sampling and top-solution extraction",
+      "notes": "optional quantum backend coverage validates real Pulser Register construction, adiabatic sequence sampling, count conservation, and decoded solution shape for the source-aligned wrapper path"
+    }
+  ]
+}

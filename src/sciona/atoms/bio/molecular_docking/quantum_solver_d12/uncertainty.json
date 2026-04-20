@@ -1,0 +1,14 @@
+{
+  "atom": "quantum_solver_d12",
+  "estimates": [
+    {
+      "mode": "empirical",
+      "scalar_factor": 1.0,
+      "confidence": 0.65,
+      "n_trials": 2,
+      "epsilon": 1e-08,
+      "input_regime": "two-node weighted graph fixture with Pulser sequence assembly, interaction-bound derivation, state-vector emulator sampling, and top-solution extraction",
+      "notes": "optional quantum backend coverage validates Pulser sequence construction with Rydberg and DMM channels, positive interaction bounds, shot-count conservation, and decoded solution/count outputs"
+    }
+  ]
+}

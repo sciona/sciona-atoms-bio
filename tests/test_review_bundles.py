@@ -31,13 +31,13 @@ REMEDIATED_CLASSICAL_FQDNS = {
     "sciona.atoms.bio.molecular_docking.map_to_udg.graphtoudgmapping",
 }
 
-HELD_PUBREV005_FQDNS = {
+QUANTUM_PUBREV005_FQDNS = {
     "sciona.atoms.bio.molecular_docking.quantum_solver.adiabaticquantumsampler",
     "sciona.atoms.bio.molecular_docking.quantum_solver.quantumproblemdefinition",
     "sciona.atoms.bio.molecular_docking.quantum_solver.solutionextraction",
 }
 
-HELD_PUBREV028_FQDNS = {
+QUANTUM_PUBREV028_FQDNS = {
     "sciona.atoms.bio.molecular_docking.quantum_solver_d12.adiabaticpulseassembler",
     "sciona.atoms.bio.molecular_docking.quantum_solver_d12.interactionboundscomputer",
     "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantumcircuitsampler",
@@ -65,8 +65,8 @@ def test_molecular_docking_review_bundle_pubrev005_safe_rows_are_ready() -> None
 
     assert bundle["family"] == "bio.molecular_docking"
     assert bundle["provider_repo"] == "sciona-atoms-bio"
-    assert bundle["review_status"] == "partial"
-    assert bundle["trust_readiness"] == "partial_safe_subset_ready"
+    assert bundle["review_status"] == "reviewed"
+    assert bundle["trust_readiness"] == "ready_for_manifest_merge"
 
     for fqdn in SAFE_PUBREV005_FQDNS:
         row = rows[fqdn]
@@ -98,35 +98,47 @@ def test_molecular_docking_review_bundle_pubrev005_safe_rows_are_ready() -> None
         assert source_lines[int(line_text) - 1].lstrip().startswith(f"def {function_name}(")
 
 
-def test_molecular_docking_review_bundle_pubrev005_holds_not_ready() -> None:
+def test_molecular_docking_review_bundle_pubrev005_quantum_rows_are_ready() -> None:
     rows = _rows_by_base_fqdn()
     remediation = REMEDIATION.read_text()
 
-    for fqdn in HELD_PUBREV005_FQDNS:
+    for fqdn in QUANTUM_PUBREV005_FQDNS:
+        row = rows[fqdn]
         assert fqdn in remediation
-        if fqdn in rows:
-            assert rows[fqdn]["trust_readiness"] != "ready_for_manifest_merge"
+        assert row["review_status"] == "reviewed"
+        assert row["semantic_verdict"] == "publishable_candidate"
+        assert row["developer_semantic_verdict"] == "source_aligned_optional_pulser_backend"
+        assert row["trust_readiness"] == "ready_for_manifest_merge"
+        assert row["audit_batch"] == "pubrev-005-quantum-optional"
+        assert row["audit_scope"] == "quantum_optional_dependency_remediation"
+        assert row["limitations"]
+        assert row["required_actions"] == []
+        source_rel, _, line_text = row["source_path"].partition(":")
+        assert line_text
+        assert (REPO_ROOT / "src" / source_rel).exists()
+        for source in row["authoritative_sources"]:
+            assert (REPO_ROOT / source).exists()
 
     for fqdn in REMEDIATED_CLASSICAL_FQDNS:
         assert fqdn in remediation
         assert rows[fqdn]["trust_readiness"] == "ready_for_manifest_merge"
 
 
-def test_molecular_docking_review_bundle_pubrev028_quantum_solver_d12_holds_not_ready() -> None:
+def test_molecular_docking_review_bundle_pubrev028_quantum_solver_d12_rows_are_ready() -> None:
     rows = _rows_by_base_fqdn()
     remediation = REMEDIATION.read_text()
 
-    for fqdn in HELD_PUBREV028_FQDNS:
+    for fqdn in QUANTUM_PUBREV028_FQDNS:
         row = rows[fqdn]
         assert fqdn in remediation
         assert row["review_status"] == "reviewed"
-        assert row["semantic_verdict"] == "held_requires_remediation"
-        assert row["trust_readiness"] == "blocked_on_semantic_remediation"
-        assert row["audit_batch"] == "pubrev-028"
-        assert row["audit_scope"] == "quantum_solver_d12_publishability_wave"
+        assert row["semantic_verdict"] == "publishable_candidate"
+        assert row["developer_semantic_verdict"] == "source_aligned_optional_pulser_backend"
+        assert row["trust_readiness"] == "ready_for_manifest_merge"
+        assert row["audit_batch"] == "pubrev-028-quantum-optional"
+        assert row["audit_scope"] == "quantum_optional_dependency_remediation"
         assert row["limitations"]
-        assert row["required_actions"]
-        assert row["trust_readiness"] != "ready_for_manifest_merge"
+        assert row["required_actions"] == []
 
         source_rel, _, line_text = row["source_path"].partition(":")
         assert line_text
