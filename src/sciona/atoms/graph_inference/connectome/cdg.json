@@ -1,0 +1,109 @@
+{
+  "nodes": [
+    {
+      "node_id": "connectome_root",
+      "name": "Graph Inference Connectome Atoms",
+      "description": "Algorithmic primitives for neural circuit reconstruction from calcium fluorescence time series",
+      "status": "decomposed",
+      "children": [
+        "calcium_lowpass_filter",
+        "fluorescence_hard_threshold",
+        "global_activity_sample_reweighting",
+        "temporal_precedence_directivity",
+        "score_matrix_normalization"
+      ],
+      "depth": 0
+    },
+    {
+      "node_id": "calcium_lowpass_filter",
+      "name": "calcium_lowpass_filter",
+      "description": "Apply a causal or acausal weighted moving average to a time series matrix using circular shift",
+      "concept_type": "signal_filter",
+      "status": "atomic",
+      "type_signature": "(X: NDArray[np.float64], kernel: str = 'symmetric_3') -> NDArray[np.float64]",
+      "depth": 1,
+      "inputs": [
+        {"name": "X", "type_desc": "NDArray[np.float64]", "required": true},
+        {"name": "kernel", "type_desc": "str", "required": false}
+      ],
+      "outputs": [
+        {"name": "result", "type_desc": "NDArray[np.float64]"}
+      ]
+    },
+    {
+      "node_id": "fluorescence_hard_threshold",
+      "name": "fluorescence_hard_threshold",
+      "description": "Zero all values below a threshold, keeping values above unchanged, to isolate co-activation events",
+      "concept_type": "signal_filter",
+      "status": "atomic",
+      "type_signature": "(X: NDArray[np.float64], threshold: float = 0.11) -> NDArray[np.float64]",
+      "depth": 1,
+      "inputs": [
+        {"name": "X", "type_desc": "NDArray[np.float64]", "required": true},
+        {"name": "threshold", "type_desc": "float", "required": false}
+      ],
+      "outputs": [
+        {"name": "result", "type_desc": "NDArray[np.float64]"}
+      ]
+    },
+    {
+      "node_id": "global_activity_sample_reweighting",
+      "name": "global_activity_sample_reweighting",
+      "description": "Nonlinear per-timestep reweighting that suppresses global burst periods and amplifies selective co-activation",
+      "concept_type": "signal_transform",
+      "status": "atomic",
+      "type_signature": "(X: NDArray[np.float64]) -> NDArray[np.float64]",
+      "depth": 1,
+      "inputs": [
+        {"name": "X", "type_desc": "NDArray[np.float64]", "required": true}
+      ],
+      "outputs": [
+        {"name": "result", "type_desc": "NDArray[np.float64]"}
+      ]
+    },
+    {
+      "node_id": "temporal_precedence_directivity",
+      "name": "temporal_precedence_directivity",
+      "description": "Compute asymmetric directional connectivity score via temporal lag counting in a specific response interval",
+      "concept_type": "analysis",
+      "status": "atomic",
+      "type_signature": "(X: NDArray[np.float64], low: float = 0.2, high: float = 0.5) -> NDArray[np.float64]",
+      "depth": 1,
+      "inputs": [
+        {"name": "X", "type_desc": "NDArray[np.float64]", "required": true},
+        {"name": "low", "type_desc": "float", "required": false},
+        {"name": "high", "type_desc": "float", "required": false}
+      ],
+      "outputs": [
+        {"name": "result", "type_desc": "NDArray[np.float64]"}
+      ]
+    },
+    {
+      "node_id": "score_matrix_normalization",
+      "name": "score_matrix_normalization",
+      "description": "Normalize a score matrix to [0, 1] with diagonal set to minimum, removing self-connections",
+      "concept_type": "signal_transform",
+      "status": "atomic",
+      "type_signature": "(X: NDArray[np.float64]) -> NDArray[np.float64]",
+      "depth": 1,
+      "inputs": [
+        {"name": "X", "type_desc": "NDArray[np.float64]", "required": true}
+      ],
+      "outputs": [
+        {"name": "result", "type_desc": "NDArray[np.float64]"}
+      ]
+    }
+  ],
+  "edges": [
+    {"source_id": "calcium_lowpass_filter", "target_id": "fluorescence_hard_threshold", "edge_type": "data_dependency"},
+    {"source_id": "fluorescence_hard_threshold", "target_id": "global_activity_sample_reweighting", "edge_type": "data_dependency"},
+    {"source_id": "global_activity_sample_reweighting", "target_id": "temporal_precedence_directivity", "edge_type": "data_dependency"},
+    {"source_id": "temporal_precedence_directivity", "target_id": "score_matrix_normalization", "edge_type": "data_dependency"}
+  ],
+  "metadata": {
+    "source": "agent_ingestion",
+    "source_repo": "https://github.com/asutera/kaggle-connectomics",
+    "source_license": "BSD-3-Clause",
+    "competition": "Kaggle Connectomics (1st place, Team AAAGV)"
+  }
+}

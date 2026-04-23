@@ -204,6 +204,75 @@
         "confidence": "high",
         "notes": "Repository citation for the upstream implementation used by this atom."
       }
+    },
+    "sutera2014connectomics": {
+      "ref_id": "sutera2014connectomics",
+      "type": "paper",
+      "title": "Simple connectome inference from partial correlation statistics in calcium imaging",
+      "authors": [
+        "Antonio Sutera",
+        "Arnaud Joly",
+        "Vincent Francois-Lavet",
+        "Aaron Qiu",
+        "Gilles Louppe",
+        "Damien Ernst",
+        "Pierre Geurts"
+      ],
+      "year": 2014,
+      "venue": "arXiv",
+      "match_metadata": {
+        "similarity_score": null,
+        "match_type": "manual",
+        "matched_nodes": [],
+        "confidence": "high",
+        "notes": "1st place Kaggle Connectomics solution paper describing all 5 atoms."
+      },
+      "doi": "10.48550/arXiv.1406.7865",
+      "url": "https://arxiv.org/abs/1406.7865"
+    },
+    "stetter2012reconstruction": {
+      "ref_id": "stetter2012reconstruction",
+      "type": "paper",
+      "title": "Model-Free Reconstruction of Excitatory Neuronal Connectivity from Calcium Imaging Signals",
+      "authors": [
+        "Olav Stetter",
+        "Demian Battaglia",
+        "Jordi Soriano",
+        "Theo Geisel"
+      ],
+      "year": 2012,
+      "venue": "PLoS Computational Biology",
+      "match_metadata": {
+        "similarity_score": null,
+        "match_type": "manual",
+        "matched_nodes": [],
+        "confidence": "high",
+        "notes": "Origin of burst reweighting concept adapted by Sutera et al."
+      },
+      "doi": "10.1371/journal.pcbi.1002653",
+      "url": "https://doi.org/10.1371/journal.pcbi.1002653"
+    },
+    "repo_connectomics_1st": {
+      "ref_id": "repo_connectomics_1st",
+      "type": "repository",
+      "title": "kaggle-connectomics",
+      "authors": [
+        "Aaron Qiu",
+        "Antonio Sutera",
+        "Arnaud Joly",
+        "Gilles Louppe",
+        "Vincent Francois-Lavet"
+      ],
+      "year": 2014,
+      "venue": "GitHub",
+      "url": "https://github.com/asutera/kaggle-connectomics",
+      "match_metadata": {
+        "similarity_score": null,
+        "match_type": "manual",
+        "matched_nodes": [],
+        "confidence": "high",
+        "notes": "BSD 3-Clause source repository for 1st-place Kaggle Connectomics solution."
+      }
     }
   }
 }

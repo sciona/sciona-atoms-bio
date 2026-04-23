@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.1",
+  "atoms": {
+    "sciona.atoms.graph_inference.connectome.calcium_lowpass_filter@sciona/atoms/graph_inference/connectome/atoms.py:44": {
+      "references": [
+        {
+          "ref_id": "sutera2014connectomics",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Functions f1-f4 from PCA.py in the 1st-place Kaggle Connectomics solution."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "sciona.atoms.graph_inference.connectome.fluorescence_hard_threshold@sciona/atoms/graph_inference/connectome/atoms.py:99": {
+      "references": [
+        {
+          "ref_id": "sutera2014connectomics",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Function h from PCA.py; threshold swept over 120 values and ensembled."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "sciona.atoms.graph_inference.connectome.global_activity_sample_reweighting@sciona/atoms/graph_inference/connectome/atoms.py:136": {
+      "references": [
+        {
+          "ref_id": "sutera2014connectomics",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Function w from PCA.py; key winning technique for burst deconfounding."
+          }
+        },
+        {
+          "ref_id": "stetter2012reconstruction",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Original concept of global burst reweighting; the specific (x+1)^(1+1/S) form is novel to Sutera et al."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "sciona.atoms.graph_inference.connectome.temporal_precedence_directivity@sciona/atoms/graph_inference/connectome/atoms.py:190": {
+      "references": [
+        {
+          "ref_id": "sutera2014connectomics",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Function make_prediction_directivity from directivity.py; temporal lag detection with [+0.2, +0.5] interval."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "sciona.atoms.graph_inference.connectome.score_matrix_normalization@sciona/atoms/graph_inference/connectome/atoms.py:252": {
+      "references": [
+        {
+          "ref_id": "sutera2014connectomics",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Function scale from utils.py; min-diagonal + min-max normalization."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    }
+  }
+}
