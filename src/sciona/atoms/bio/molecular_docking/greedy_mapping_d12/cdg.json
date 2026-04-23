@@ -285,7 +285,7 @@
       "parent_id": "construct_mapping_state_via_greedy_expansion",
       "name": "score_and_rank_candidates_greedily",
       "description": "Optionally call greedy_node_scoring and produce ranked unplaced nodes; also emit scored node records for downstream observability/output.",
-      "concept_type": "custom",
+      "concept_type": "greedy",
       "inputs": [
         {
           "name": "problem_context",

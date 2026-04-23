@@ -68,7 +68,7 @@
       "parent_id": "bandwidthmetricevaluation",
       "name": "ValidateSquareMatrixShape",
       "description": "Check that the input matrix has identical row and column counts; fail if not square.",
-      "concept_type": "custom",
+      "concept_type": "analysis",
       "inputs": [
         {
           "name": "mat",
@@ -239,7 +239,7 @@
       "parent_id": "corebandwidthreduction",
       "name": "InitializeReductionState",
       "description": "Create the sanitized working matrix and initial optimization state for greedy bandwidth descent.",
-      "concept_type": "custom",
+      "concept_type": "greedy",
       "inputs": [
         {
           "name": "symmetric_matrix",
@@ -373,7 +373,7 @@
       "parent_id": "corebandwidthreduction",
       "name": "ExtractFinalPermutation",
       "description": "Return the accumulated permutation from the terminal state as the function result.",
-      "concept_type": "custom",
+      "concept_type": "combinatorics",
       "inputs": [
         {
           "name": "terminal_state",
@@ -590,7 +590,7 @@
       "parent_id": "globalbandwidthoptimization",
       "name": "validate_symmetric_input",
       "description": "Verify the input matrix is symmetric within tolerance and fail fast if the precondition is violated.",
-      "concept_type": "custom",
+      "concept_type": "analysis",
       "inputs": [
         {
           "name": "mat",
@@ -623,7 +623,7 @@
       "parent_id": "globalbandwidthoptimization",
       "name": "build_threshold_search_space",
       "description": "Compute matrix amplitude from absolute values and construct the truncation sweep used to explore candidate permutations.",
-      "concept_type": "custom",
+      "concept_type": "combinatorics",
       "inputs": [
         {
           "name": "validated_mat",
@@ -704,7 +704,7 @@
       "parent_id": "globalbandwidthoptimization",
       "name": "select_minimum_bandwidth_permutation",
       "description": "Evaluate each candidate by permuting the matrix and computing resulting bandwidth, then return the best permutation as a Python list.",
-      "concept_type": "custom",
+      "concept_type": "combinatorics",
       "inputs": [
         {
           "name": "validated_mat",

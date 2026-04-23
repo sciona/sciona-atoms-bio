@@ -141,7 +141,7 @@
       "parent_id": "weighted_interaction_edge_derivation",
       "name": "resolve_interaction_distance_threshold",
       "description": "Determine the effective interaction-distance tolerance by replacing a missing input threshold with the configured epsilon default.",
-      "concept_type": "custom",
+      "concept_type": "analysis",
       "inputs": [
         {
           "name": "interaction_distance",
@@ -179,7 +179,7 @@
       "parent_id": "weighted_interaction_edge_derivation",
       "name": "construct_weighted_interaction_nodes",
       "description": "Create all candidate interaction nodes as the Cartesian product of left/right features, assigning each node a potential-based weight from feature-family abbreviations.",
-      "concept_type": "custom",
+      "concept_type": "data_assembly",
       "inputs": [
         {
           "name": "L_features",
@@ -222,7 +222,7 @@
       "parent_id": "weighted_interaction_edge_derivation",
       "name": "derive_compatible_node_pair_edges",
       "description": "Enumerate unique unordered node pairs, fetch corresponding left min-max and right scalar distances, and retain only pairs whose distances satisfy the interaction-matching criterion.",
-      "concept_type": "custom",
+      "concept_type": "graph_optimization",
       "inputs": [
         {
           "name": "nodes",
@@ -342,7 +342,7 @@
       "is_opaque": false,
       "is_external": false,
       "parallelizable": false,
-      "conceptual_summary": "Weighted Relational Topology Materialization. Transforms two finite collections\u2014entity identifiers and weighted pairwise relations\u2014into an explicit adjacency-based topology object. The procedure first materializes the vertex set, then inserts each relation as an edge annotated by a scalar weight, preserving the provided connectivity pattern. It performs structural encoding rather than optimization or inference, yielding a directly queryable weighted graph representation.. Applications: Neuroscience: materializing weighted synaptic connectivity maps between recorded neural units, Infrastructure engineering: constructing weighted utility or transport connectivity networks from link measurements, Computational biology: encoding weighted interaction topologies among molecular entities, Distributed systems: representing weighted communication latency graphs between compute nodes",
+      "conceptual_summary": "Weighted Relational Topology Materialization. Transforms two finite collections—entity identifiers and weighted pairwise relations—into an explicit adjacency-based topology object. The procedure first materializes the vertex set, then inserts each relation as an edge annotated by a scalar weight, preserving the provided connectivity pattern. It performs structural encoding rather than optimization or inference, yielding a directly queryable weighted graph representation.. Applications: Neuroscience: materializing weighted synaptic connectivity maps between recorded neural units, Infrastructure engineering: constructing weighted utility or transport connectivity networks from link measurements, Computational biology: encoding weighted interaction topologies among molecular entities, Distributed systems: representing weighted communication latency graphs between compute nodes",
       "critic_notes": "",
       "decomposition_rationale": ""
     }

@@ -31,7 +31,7 @@
       "parent_id": "FastaBatchedDataset_root",
       "name": "dataset_state_initialization",
       "description": "Copy aligned sequence labels and sequence strings into an explicit dataset state.",
-      "concept_type": "custom",
+      "concept_type": "state_init",
       "inputs": [
         {
           "name": "sequence_labels",
@@ -75,7 +75,7 @@
       "parent_id": "FastaBatchedDataset_root",
       "name": "dataset_length_query",
       "description": "Return the number of labeled sequences in dataset_state.",
-      "concept_type": "custom",
+      "concept_type": "state_init",
       "inputs": [
         {
           "name": "dataset_state",

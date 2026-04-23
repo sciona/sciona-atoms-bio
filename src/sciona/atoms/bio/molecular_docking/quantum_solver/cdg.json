@@ -106,7 +106,7 @@
       "parent_id": "quantumproblemdefinition",
       "name": "ExtractGraphProperties",
       "description": "Extracts node weights and a corresponding list of node identifiers from the input graph.",
-      "concept_type": "custom",
+      "concept_type": "data_extraction",
       "inputs": [
         {
           "name": "graph",
@@ -144,7 +144,7 @@
       "parent_id": "quantumproblemdefinition",
       "name": "CreateInitialRegister",
       "description": "Builds the quantum register by assigning physical coordinates to each node (qubit) from the graph.",
-      "concept_type": "custom",
+      "concept_type": "data_assembly",
       "inputs": [
         {
           "name": "node_ids",
@@ -235,7 +235,7 @@
       "parent_id": "quantumproblemdefinition",
       "name": "CalculateHamiltonianScale",
       "description": "Determines the global energy scale for the Hamiltonian by calculating the interaction strength for the shortest non-connected qubit pair, which defines the Rydberg blockade radius.",
-      "concept_type": "custom",
+      "concept_type": "sampler",
       "inputs": [
         {
           "name": "register_coordinates",
@@ -273,7 +273,7 @@
       "parent_id": "quantumproblemdefinition",
       "name": "FormulateDetuningProblem",
       "description": "Encodes the problem's objective function into the hardware by normalizing weights and mapping them to a local detuning field (DMM) and global detuning strength.",
-      "concept_type": "custom",
+      "concept_type": "signal_transform",
       "inputs": [
         {
           "name": "permuted_weights",
@@ -379,7 +379,7 @@
       "parent_id": "quantumproblemdefinition",
       "name": "DecodeSolutions",
       "description": "Processes the raw measurement counts from the simulation, sorting them by probability and converting the most frequent results into valid Maximum-Weight Independent Set (MWIS) solutions.",
-      "concept_type": "custom",
+      "concept_type": "sorting",
       "inputs": [
         {
           "name": "measurement_counts",
@@ -518,7 +518,7 @@
       "parent_id": "adiabaticquantumsampler",
       "name": "initialize_simulation_backend",
       "description": "Initializes and configures the appropriate quantum simulation backend (QuTip, State Vector, or MPS) for the given pulse sequence, based on runtime flags. This involves setting up backend-specific configurations like time steps, observables, and log levels.",
-      "concept_type": "custom",
+      "concept_type": "state_init",
       "inputs": [
         {
           "name": "adiabatic_sequence",
@@ -632,7 +632,7 @@
       "parent_id": "q_solver_root",
       "name": "SolutionExtraction",
       "description": "Processes the raw results from the quantum sampler. It interprets the measurement count distribution to extract the top solutions for the optimization problem.",
-      "concept_type": "custom",
+      "concept_type": "data_extraction",
       "inputs": [
         {
           "name": "measurement_counts",

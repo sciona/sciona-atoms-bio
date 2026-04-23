@@ -31,7 +31,7 @@
       "parent_id": "mwis_SA_root",
       "name": "Load Graphs From Folder",
       "description": "Load all molecular interaction graphs from a directory",
-      "concept_type": "custom",
+      "concept_type": "data_extraction",
       "inputs": [
         {
           "name": "folder_path",
@@ -64,7 +64,7 @@
       "parent_id": "mwis_SA_root",
       "name": "Is Independent Set",
       "description": "Checks if the given subset of nodes is an independent set in the graph.\n\n:param graph: The input graph.\n:param subset: The list of nodes to check.\n:return: True if the subset is an independent set, False otherwise.",
-      "concept_type": "custom",
+      "concept_type": "combinatorics",
       "inputs": [
         {
           "name": "graph",
@@ -102,7 +102,7 @@
       "parent_id": "mwis_SA_root",
       "name": "Calculate Weight",
       "description": "Calculates the total weight of a given list of nodes in the graph.\n\n:param node_list: List of nodes.\n:return: Total weight of the nodes.",
-      "concept_type": "custom",
+      "concept_type": "analysis",
       "inputs": [
         {
           "name": "graph",
@@ -140,7 +140,7 @@
       "parent_id": "mwis_SA_root",
       "name": "To Qubo",
       "description": "Convert a MISInstance to a qubo matrix.\n\nQUBO formulation:\nMinimize:\n    Q(x) = -∑_{i ∈ V} w_i x_i  +  λ ∑_{(i, j) ∈ E} x_i x_j\n\nArgs:\n    penalty (float, optional): Penalty factor. Defaults to None.\n\nRaises:\n    ValueError: When penalty is strictly inferior to 2 x max(weight).\n\nReturns:\n    np.ndarray: The QUBO matrix formulation of MIS.",
-      "concept_type": "custom",
+      "concept_type": "optimization",
       "inputs": [
         {
           "name": "graph",

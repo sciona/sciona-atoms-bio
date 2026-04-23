@@ -32,7 +32,7 @@
       "parent_id": "GreedyMapping_root",
       "name": "AssembleStaticMappingContext",
       "description": "Construct immutable algorithm context from constructor inputs so all later stages consume explicit state instead of hidden class fields.",
-      "concept_type": "custom",
+      "concept_type": "data_assembly",
       "inputs": [
         {
           "name": "graph",
@@ -255,7 +255,7 @@
       "parent_id": "scoreandextendgreedycandidates",
       "name": "ComputeGreedyCandidateScores",
       "description": "Optionally invoke the greedy scoring heuristic for unplaced nodes and expose deterministic candidate scores for downstream ranking/reporting.",
-      "concept_type": "custom",
+      "concept_type": "greedy",
       "inputs": [
         {
           "name": "mapping_context",
@@ -439,7 +439,7 @@
       "parent_id": "scoreandextendgreedycandidates",
       "name": "BuildExtendedMappingStateWithPruningPolicy",
       "description": "Apply invalid-placement pruning policy to residual unplaced nodes and construct the final extended mapping state while carrying candidate scores.",
-      "concept_type": "custom",
+      "concept_type": "data_assembly",
       "inputs": [
         {
           "name": "mapping_context",
@@ -512,7 +512,7 @@
       "parent_id": "GreedyMapping_root",
       "name": "ValidateCurrentMapping",
       "description": "Evaluate whether the current mapping/unmapping pair satisfies graph-lattice consistency constraints.",
-      "concept_type": "custom",
+      "concept_type": "analysis",
       "inputs": [
         {
           "name": "mapping_context",
@@ -628,7 +628,7 @@
       "parent_id": "rungreedymappingpipeline",
       "name": "InitializeSeedPlacement",
       "description": "Create empty bidirectional mapping state and place the starting graph node on its initial lattice node via initialization logic.",
-      "concept_type": "custom",
+      "concept_type": "state_init",
       "inputs": [
         {
           "name": "mapping_context",
@@ -772,7 +772,7 @@
       "parent_id": "rungreedymappingpipeline",
       "name": "BuildGreedySubgraphResult",
       "description": "Materialize pipeline outputs from the validated state, producing the greedy subgraph mapping and final state.",
-      "concept_type": "custom",
+      "concept_type": "greedy",
       "inputs": [
         {
           "name": "extended_mapping_state",

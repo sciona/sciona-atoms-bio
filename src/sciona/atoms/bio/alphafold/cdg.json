@@ -32,7 +32,7 @@
       "parent_id": "AlphaFold_root",
       "name": "invariant_point_attention",
       "description": "Equivariant (i.e., the output transforms consistently under rotations and translations of the input) attention mechanism over structured 3D point sets.",
-      "concept_type": "custom",
+      "concept_type": "signal_transform",
       "inputs": [
         {
           "name": "nodes",
@@ -92,7 +92,7 @@
       "parent_id": "AlphaFold_root",
       "name": "equivariant_frame_update",
       "description": "Updates 3D rigid frames using predicted gradients.",
-      "concept_type": "custom",
+      "concept_type": "analysis",
       "inputs": [
         {
           "name": "frames",
@@ -145,7 +145,7 @@
       "parent_id": "AlphaFold_root",
       "name": "coordinate_reconstruction",
       "description": "Converts rigid frames and torsion angles (dihedral angles between four consecutive atoms that define the protein backbone geometry) into full 3D coordinates.",
-      "concept_type": "custom",
+      "concept_type": "geometry",
       "inputs": [
         {
           "name": "frames",
