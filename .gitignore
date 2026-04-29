@@ -11,3 +11,4 @@ src/sciona/atoms/**/debug_*.py
 src/sciona/atoms/**/shared_context_metrics.json
 src/sciona/atoms/**/trace.jsonl
 src/sciona/atoms/**/verification_failure.json
+data/audit_manifest.json
