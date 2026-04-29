@@ -273,6 +273,121 @@
         "confidence": "high",
         "notes": "BSD 3-Clause source repository for 1st-place Kaggle Connectomics solution."
       }
+    },
+    "dicom2022voiLut": {
+      "ref_id": "dicom2022voiLut",
+      "type": "standard",
+      "title": "DICOM Part 3 C.11.2 VOI LUT Module",
+      "authors": [
+        "DICOM Standards Committee"
+      ],
+      "year": 2022,
+      "venue": "DICOM Standard",
+      "url": "https://dicom.nema.org/medical/dicom/2022e/output/chtml/part03/sect_C.11.2.html",
+      "match_metadata": {
+        "similarity_score": null,
+        "match_type": "manual",
+        "matched_nodes": [],
+        "confidence": "high",
+        "notes": "Reference semantics for DICOM VOI window center/width handling and the associated intensity metadata used by preprocessing atoms."
+      }
+    },
+    "scipyNdimage2026": {
+      "ref_id": "scipyNdimage2026",
+      "type": "documentation",
+      "title": "Multidimensional image processing (scipy.ndimage)",
+      "authors": [
+        "SciPy Developers"
+      ],
+      "year": 2026,
+      "venue": "SciPy Documentation",
+      "url": "https://docs.scipy.org/doc/scipy/tutorial/ndimage.html",
+      "match_metadata": {
+        "similarity_score": null,
+        "match_type": "manual",
+        "matched_nodes": [],
+        "confidence": "high",
+        "notes": "BSD-licensed SciPy ndimage operations used for interpolation, rotation, and connected-component labeling."
+      }
+    },
+    "numpy2026": {
+      "ref_id": "numpy2026",
+      "type": "documentation",
+      "title": "NumPy Reference",
+      "authors": [
+        "NumPy Developers"
+      ],
+      "year": 2026,
+      "venue": "NumPy Documentation",
+      "url": "https://numpy.org/doc/stable/reference/",
+      "match_metadata": {
+        "similarity_score": null,
+        "match_type": "manual",
+        "matched_nodes": [],
+        "confidence": "high",
+        "notes": "BSD-licensed NumPy array, indexing, padding, reduction, and byte-buffer primitives used by preprocessing atoms."
+      }
+    },
+    "macenko2009stainNormalization": {
+      "ref_id": "macenko2009stainNormalization",
+      "type": "paper",
+      "title": "A Method for Normalizing Histology Slides for Quantitative Analysis",
+      "authors": [
+        "Marc Macenko",
+        "Marc Niethammer",
+        "J. S. Marron",
+        "David Borland",
+        "John T. Woosley",
+        "Xiaojun Guan",
+        "Charles Schmitt",
+        "Nancy E. Thomas"
+      ],
+      "year": 2009,
+      "venue": "IEEE International Symposium on Biomedical Imaging",
+      "url": "https://www.cs.unc.edu/~mn/sites/default/files/macenko2009.pdf",
+      "match_metadata": {
+        "similarity_score": null,
+        "match_type": "manual",
+        "matched_nodes": [],
+        "confidence": "high",
+        "notes": "Canonical optical-density SVD and robust angular percentile method for H&E stain normalization."
+      }
+    },
+    "fondue2024resolutionInvariantDenoising": {
+      "ref_id": "fondue2024resolutionInvariantDenoising",
+      "type": "paper",
+      "title": "FONDUE: Robust resolution-invariant denoising of MR images using Nested UNets",
+      "authors": [],
+      "year": 2024,
+      "venue": "Imaging Neuroscience",
+      "doi": "10.1162/imag_a_00374",
+      "url": "https://direct.mit.edu/imag/article/doi/10.1162/imag_a_00374/125037/FONDUE-Robust-resolution-invariant-denoising-of-MR",
+      "match_metadata": {
+        "similarity_score": null,
+        "match_type": "manual",
+        "matched_nodes": [],
+        "confidence": "medium",
+        "notes": "Research packet source for neighboring-slice context in medical-image preprocessing; the atom implements only deterministic array assembly."
+      }
+    },
+    "passengerScreening2017Data": {
+      "ref_id": "passengerScreening2017Data",
+      "type": "dataset",
+      "title": "Passenger Screening Algorithm Challenge Data",
+      "authors": [
+        "Kaggle",
+        "U.S. Department of Homeland Security"
+      ],
+      "year": 2017,
+      "venue": "Kaggle Competition",
+      "url": "https://www.kaggle.com/c/passenger-screening-algorithm-challenge/data",
+      "match_metadata": {
+        "similarity_score": null,
+        "match_type": "manual",
+        "matched_nodes": [],
+        "confidence": "medium",
+        "notes": "Competition data specification cited by the research packet for A3D payload layout; atoms accept bytes and explicit metadata rather than reading files."
+      }
     }
   }
 }

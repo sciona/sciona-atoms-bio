@@ -1,0 +1,201 @@
+{
+  "schema_version": "1.1",
+  "atoms": {
+    "sciona.atoms.medical_imaging_3d.preprocessing.dicom_to_hounsfield@sciona/atoms/medical_imaging_3d/preprocessing/atoms.py:101": {
+      "references": [
+        {
+          "ref_id": "dicom2022voiLut",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "standard_semantics",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "The rescale slope/intercept transform is the pure numeric DICOM intensity conversion step before VOI windowing."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "sciona.atoms.medical_imaging_3d.preprocessing.dicom_window@sciona/atoms/medical_imaging_3d/preprocessing/atoms.py:117": {
+      "references": [
+        {
+          "ref_id": "dicom2022voiLut",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "standard_semantics",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Implements the DICOM VOI LUT LINEAR and LINEAR_EXACT windowing equations over already-loaded grayscale arrays."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "sciona.atoms.medical_imaging_3d.preprocessing.resample_volume@sciona/atoms/medical_imaging_3d/preprocessing/atoms.py:162": {
+      "references": [
+        {
+          "ref_id": "scipyNdimage2026",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "library_semantics",
+            "matched_nodes": [
+              "scipy.ndimage.map_coordinates"
+            ],
+            "confidence": "high",
+            "notes": "Uses SciPy coordinate interpolation to sample a target physical voxel grid from a source 3D volume."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "sciona.atoms.medical_imaging_3d.preprocessing.macenko_stain_vectors@sciona/atoms/medical_imaging_3d/preprocessing/atoms.py:189": {
+      "references": [
+        {
+          "ref_id": "macenko2009stainNormalization",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "paper_semantics",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Implements the optical-density transform, tissue filtering, SVD plane, and robust angular percentile basis estimate described by Macenko et al."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "sciona.atoms.medical_imaging_3d.preprocessing.macenko_normalize@sciona/atoms/medical_imaging_3d/preprocessing/atoms.py:210": {
+      "references": [
+        {
+          "ref_id": "macenko2009stainNormalization",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "paper_semantics",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Uses source Macenko concentrations and a caller-provided target stain matrix for deterministic RGB reconstruction."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "sciona.atoms.medical_imaging_3d.preprocessing.max_intensity_projection@sciona/atoms/medical_imaging_3d/preprocessing/atoms.py:236": {
+      "references": [
+        {
+          "ref_id": "scipyNdimage2026",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "library_semantics",
+            "matched_nodes": [
+              "scipy.ndimage.rotate"
+            ],
+            "confidence": "high",
+            "notes": "Uses SciPy rotation followed by a NumPy maximum reduction to build deterministic multi-view projections."
+          }
+        },
+        {
+          "ref_id": "numpy2026",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "library_semantics",
+            "matched_nodes": [
+              "numpy.max"
+            ],
+            "confidence": "high",
+            "notes": "The projection step is a maximum reduction along the requested view axis."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "sciona.atoms.medical_imaging_3d.preprocessing.extract_25d_slices@sciona/atoms/medical_imaging_3d/preprocessing/atoms.py:263": {
+      "references": [
+        {
+          "ref_id": "fondue2024resolutionInvariantDenoising",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "paper_semantics",
+            "matched_nodes": [],
+            "confidence": "medium",
+            "notes": "The paper motivates 2.5D neighboring-slice context for resolution-aware medical image denoising; this atom implements the pure slice-stack assembly."
+          }
+        },
+        {
+          "ref_id": "numpy2026",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "library_semantics",
+            "matched_nodes": [
+              "numpy.pad",
+              "numpy.moveaxis"
+            ],
+            "confidence": "high",
+            "notes": "Boundary handling and axis normalization are implemented with NumPy indexing primitives."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "sciona.atoms.medical_imaging_3d.preprocessing.crop_to_mask@sciona/atoms/medical_imaging_3d/preprocessing/atoms.py:288": {
+      "references": [
+        {
+          "ref_id": "numpy2026",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "library_semantics",
+            "matched_nodes": [
+              "numpy.argwhere"
+            ],
+            "confidence": "high",
+            "notes": "The atom uses NumPy coordinate extraction and bounded slicing to compute a mask-derived crop without file or model state."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "sciona.atoms.medical_imaging_3d.preprocessing.filter_small_components@sciona/atoms/medical_imaging_3d/preprocessing/atoms.py:305": {
+      "references": [
+        {
+          "ref_id": "scipyNdimage2026",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "library_semantics",
+            "matched_nodes": [
+              "scipy.ndimage.label"
+            ],
+            "confidence": "high",
+            "notes": "Connected components are labeled with SciPy and filtered by component size."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "sciona.atoms.medical_imaging_3d.preprocessing.parse_a3d_volume@sciona/atoms/medical_imaging_3d/preprocessing/atoms.py:325": {
+      "references": [
+        {
+          "ref_id": "passengerScreening2017Data",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "data_spec_semantics",
+            "matched_nodes": [],
+            "confidence": "medium",
+            "notes": "Implements the pure memory conversion boundary for A3D uint16 payloads using explicit caller-provided shape and scale metadata."
+          }
+        },
+        {
+          "ref_id": "numpy2026",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "library_semantics",
+            "matched_nodes": [
+              "numpy.frombuffer",
+              "numpy.transpose"
+            ],
+            "confidence": "high",
+            "notes": "The byte payload is interpreted and rearranged entirely with NumPy primitives."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    }
+  }
+}
