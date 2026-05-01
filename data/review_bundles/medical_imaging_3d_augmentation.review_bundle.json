@@ -1,0 +1,234 @@
+{
+  "schema_version": "1.0",
+  "bundle_id": "sciona.atoms.review_bundle.medical_imaging_3d.augmentation.v1",
+  "provider_repo": "sciona-atoms-bio",
+  "family": "medical_imaging_3d.augmentation",
+  "family_batch": "medical_imaging_3d_augmentation",
+  "review_status": "reviewed",
+  "review_semantic_verdict": "pass_with_limits",
+  "review_developer_semantic_verdict": "pass_with_limits",
+  "trust_readiness": "catalog_ready",
+  "authoritative_sources": [
+    "src/sciona/atoms/medical_imaging_3d/augmentation/atoms.py",
+    "src/sciona/atoms/medical_imaging_3d/augmentation/witnesses.py",
+    "src/sciona/atoms/medical_imaging_3d/augmentation/cdg.json",
+    "src/sciona/atoms/medical_imaging_3d/augmentation/references.json",
+    "tests/test_medical_imaging_3d_augmentation_behavior.py",
+    "tests/test_medical_imaging_3d_augmentation_references_metadata.py",
+    "tests/test_medical_imaging_3d_augmentation_review_bundle.py"
+  ],
+  "limitations": [
+    "Atoms operate on in-memory arrays and do not update scanner affine metadata or physical voxel spacing headers.",
+    "Modality-specific parameter policies, such as restricting Vesuvius surface-volume rotations to Z-axis quarter turns, remain caller responsibilities.",
+    "Severe downscaling does not apply a separate anti-aliasing prefilter."
+  ],
+  "blocking_findings": [],
+  "required_actions": [],
+  "review_record_path": "data/review_bundles/medical_imaging_3d_augmentation.review_bundle.json",
+  "rows": [
+    {
+      "atom_name": "sciona.atoms.medical_imaging_3d.augmentation.random_rotate_3d",
+      "atom_key": "sciona.atoms.medical_imaging_3d.augmentation.random_rotate_3d",
+      "source_path": "sciona/atoms/medical_imaging_3d/augmentation/atoms.py:165",
+      "source_paths": [
+        "src/sciona/atoms/medical_imaging_3d/augmentation/atoms.py",
+        "src/sciona/atoms/medical_imaging_3d/augmentation/witnesses.py",
+        "src/sciona/atoms/medical_imaging_3d/augmentation/cdg.json",
+        "src/sciona/atoms/medical_imaging_3d/augmentation/references.json"
+      ],
+      "review_status": "reviewed",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantic_verdict": "pass_with_limits",
+      "trust_readiness": "catalog_ready",
+      "review_record_path": "data/review_bundles/medical_imaging_3d_augmentation.review_bundle.json",
+      "overall_verdict": "pass",
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass_with_limits",
+      "developer_semantics_status": "pass_with_limits",
+      "risk_tier": "medium",
+      "risk_score": 35,
+      "risk_dimensions": {
+        "provenance": "low",
+        "semantic_drift": "medium",
+        "runtime": "low",
+        "domain_misuse": "medium"
+      },
+      "risk_reasons": [
+        "Rotation is mathematically valid for 3D arrays but some surface-volume workflows must restrict allowed axes."
+      ],
+      "acceptability_score": 86,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "positive_path",
+      "parity_test_status": "pass",
+      "parity_fixture_count": 1,
+      "parity_case_count": 2,
+      "review_limitations": [
+        "Does not update affine metadata or voxel spacing.",
+        "Boundary values are extended with nearest-neighbor mode."
+      ],
+      "review_required_actions": [],
+      "trust_blockers": [],
+      "has_references": true,
+      "references_status": "pass",
+      "limitations": [
+        "Caller must choose physically valid angle ranges for the imaging modality."
+      ],
+      "blocking_findings": [],
+      "required_actions": []
+    },
+    {
+      "atom_name": "sciona.atoms.medical_imaging_3d.augmentation.elastic_deform_3d",
+      "atom_key": "sciona.atoms.medical_imaging_3d.augmentation.elastic_deform_3d",
+      "source_path": "sciona/atoms/medical_imaging_3d/augmentation/atoms.py:183",
+      "source_paths": [
+        "src/sciona/atoms/medical_imaging_3d/augmentation/atoms.py",
+        "src/sciona/atoms/medical_imaging_3d/augmentation/witnesses.py",
+        "src/sciona/atoms/medical_imaging_3d/augmentation/cdg.json",
+        "src/sciona/atoms/medical_imaging_3d/augmentation/references.json"
+      ],
+      "review_status": "reviewed",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantic_verdict": "pass_with_limits",
+      "trust_readiness": "catalog_ready",
+      "review_record_path": "data/review_bundles/medical_imaging_3d_augmentation.review_bundle.json",
+      "overall_verdict": "pass",
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass_with_limits",
+      "developer_semantics_status": "pass_with_limits",
+      "risk_tier": "medium",
+      "risk_score": 42,
+      "risk_dimensions": {
+        "provenance": "medium",
+        "semantic_drift": "medium",
+        "runtime": "low",
+        "domain_misuse": "medium"
+      },
+      "risk_reasons": [
+        "Elastic deformation strength is highly modality dependent."
+      ],
+      "acceptability_score": 83,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "positive_path",
+      "parity_test_status": "pass",
+      "parity_fixture_count": 1,
+      "parity_case_count": 2,
+      "review_limitations": [
+        "Does not model physical tissue mechanics.",
+        "Callers must avoid large alpha values for rigid cryo-ET structures."
+      ],
+      "review_required_actions": [],
+      "trust_blockers": [],
+      "has_references": true,
+      "references_status": "pass",
+      "limitations": [
+        "Parameter ranges are caller supplied and not inferred from voxel spacing."
+      ],
+      "blocking_findings": [],
+      "required_actions": []
+    },
+    {
+      "atom_name": "sciona.atoms.medical_imaging_3d.augmentation.scale_volume_3d",
+      "atom_key": "sciona.atoms.medical_imaging_3d.augmentation.scale_volume_3d",
+      "source_path": "sciona/atoms/medical_imaging_3d/augmentation/atoms.py:207",
+      "source_paths": [
+        "src/sciona/atoms/medical_imaging_3d/augmentation/atoms.py",
+        "src/sciona/atoms/medical_imaging_3d/augmentation/witnesses.py",
+        "src/sciona/atoms/medical_imaging_3d/augmentation/cdg.json",
+        "src/sciona/atoms/medical_imaging_3d/augmentation/references.json"
+      ],
+      "review_status": "reviewed",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantic_verdict": "pass_with_limits",
+      "trust_readiness": "catalog_ready",
+      "review_record_path": "data/review_bundles/medical_imaging_3d_augmentation.review_bundle.json",
+      "overall_verdict": "pass",
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass_with_limits",
+      "developer_semantics_status": "pass_with_limits",
+      "risk_tier": "low",
+      "risk_score": 30,
+      "risk_dimensions": {
+        "provenance": "low",
+        "semantic_drift": "low",
+        "runtime": "low",
+        "domain_misuse": "medium"
+      },
+      "risk_reasons": [
+        "Scaling preserves shape but does not update physical spacing metadata."
+      ],
+      "acceptability_score": 88,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "positive_path",
+      "parity_test_status": "pass",
+      "parity_fixture_count": 1,
+      "parity_case_count": 2,
+      "review_limitations": [
+        "Zero padding is used after shrinkage.",
+        "No separate anti-aliasing pass is applied."
+      ],
+      "review_required_actions": [],
+      "trust_blockers": [],
+      "has_references": true,
+      "references_status": "pass",
+      "limitations": [
+        "Caller must keep scale factors within modality-specific biological limits."
+      ],
+      "blocking_findings": [],
+      "required_actions": []
+    },
+    {
+      "atom_name": "sciona.atoms.medical_imaging_3d.augmentation.add_gaussian_noise_3d",
+      "atom_key": "sciona.atoms.medical_imaging_3d.augmentation.add_gaussian_noise_3d",
+      "source_path": "sciona/atoms/medical_imaging_3d/augmentation/atoms.py:225",
+      "source_paths": [
+        "src/sciona/atoms/medical_imaging_3d/augmentation/atoms.py",
+        "src/sciona/atoms/medical_imaging_3d/augmentation/witnesses.py",
+        "src/sciona/atoms/medical_imaging_3d/augmentation/cdg.json",
+        "src/sciona/atoms/medical_imaging_3d/augmentation/references.json"
+      ],
+      "review_status": "reviewed",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantic_verdict": "pass_with_limits",
+      "trust_readiness": "catalog_ready",
+      "review_record_path": "data/review_bundles/medical_imaging_3d_augmentation.review_bundle.json",
+      "overall_verdict": "pass",
+      "structural_status": "pass",
+      "semantic_status": "pass",
+      "runtime_status": "pass_with_limits",
+      "developer_semantics_status": "pass_with_limits",
+      "risk_tier": "low",
+      "risk_score": 24,
+      "risk_dimensions": {
+        "provenance": "low",
+        "semantic_drift": "low",
+        "runtime": "low",
+        "domain_misuse": "medium"
+      },
+      "risk_reasons": [
+        "Noise level must be calibrated to normalized intensity units or target SNR."
+      ],
+      "acceptability_score": 91,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "positive_path",
+      "parity_test_status": "pass",
+      "parity_fixture_count": 1,
+      "parity_case_count": 2,
+      "review_limitations": [
+        "Integer inputs are rounded and clipped back to the original dtype.",
+        "No SNR estimation is performed internally."
+      ],
+      "review_required_actions": [],
+      "trust_blockers": [],
+      "has_references": true,
+      "references_status": "pass",
+      "limitations": [
+        "Caller must choose std from the target imaging modality and normalization."
+      ],
+      "blocking_findings": [],
+      "required_actions": []
+    }
+  ]
+}

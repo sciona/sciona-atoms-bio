@@ -1,0 +1,353 @@
+{
+  "nodes": [
+    {
+      "node_id": "medical_imaging_3d_augmentation_root",
+      "parent_id": null,
+      "name": "medical_imaging_3d_augmentation",
+      "description": "Shape-preserving 3D augmentation operations for medical and tomographic volumes.",
+      "concept_type": "sampler",
+      "inputs": [],
+      "outputs": [],
+      "status": "decomposed",
+      "children": [
+        "random_rotate_3d",
+        "elastic_deform_3d",
+        "scale_volume_3d",
+        "add_gaussian_noise_3d"
+      ],
+      "depth": 0,
+      "type_signature": "",
+      "matched_primitive": null,
+      "primitive_binding_confidence": 0.0,
+      "primitive_binding_source": "",
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": false,
+      "conceptual_summary": "Stateless augmentation atoms from the 3D volumetric augmentation research packet.",
+      "critic_notes": "",
+      "decomposition_rationale": "Each atom accepts an in-memory array and explicit parameters, including seeds for random operations, and returns one transformed array.",
+      "fixed_point_max_iterations": 0,
+      "fixed_point_convergence_field": "",
+      "map_window_size": 0,
+      "map_hop_size": 0,
+      "boundary_kind": "none",
+      "boundary_port_name": ""
+    },
+    {
+      "node_id": "random_rotate_3d",
+      "parent_id": "medical_imaging_3d_augmentation_root",
+      "name": "random_rotate_3d",
+      "description": "Rotates a 3D volume around the geometric center with one inverse affine interpolation pass.",
+      "concept_type": "sampler",
+      "inputs": [
+        {
+          "name": "volume",
+          "type_desc": "NDArray[np.number]",
+          "constraints": "real numeric array with at least three non-empty spatial axes",
+          "data_kind": "medical_volume",
+          "time_basis": "",
+          "provenance": "pre-loaded cryo-ET, CT, MRI, or tomographic patch",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "angles_deg",
+          "type_desc": "tuple[float, float, float]",
+          "constraints": "three finite Euler angles in degrees",
+          "data_kind": "augmentation_parameter",
+          "time_basis": "",
+          "provenance": "training augmentation schedule",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "order",
+          "type_desc": "int",
+          "constraints": "scipy spline order in [0, 5]",
+          "data_kind": "configuration",
+          "time_basis": "",
+          "provenance": "interpolation policy",
+          "required": false,
+          "default_value_repr": "1"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type_desc": "NDArray[np.float64]",
+          "constraints": "same shape as volume",
+          "data_kind": "augmented_volume",
+          "time_basis": "",
+          "provenance": "centered inverse affine resampling",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 1,
+      "type_signature": "(volume: NDArray[np.number], angles_deg: tuple[float, float, float], order: int = 1) -> NDArray[np.float64]",
+      "matched_primitive": null,
+      "primitive_binding_confidence": 0.0,
+      "primitive_binding_source": "",
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": true,
+      "conceptual_summary": "Builds a 3D Euler rotation matrix and samples around the volume center.",
+      "critic_notes": "For Vesuvius-style surface volumes, callers should restrict angles to Z-axis quarter-turns or use a specialized policy layer.",
+      "decomposition_rationale": "The atom isolates only the numeric resampling operation and does not choose augmentation probabilities.",
+      "fixed_point_max_iterations": 0,
+      "fixed_point_convergence_field": "",
+      "map_window_size": 0,
+      "map_hop_size": 0,
+      "boundary_kind": "none",
+      "boundary_port_name": ""
+    },
+    {
+      "node_id": "elastic_deform_3d",
+      "parent_id": "medical_imaging_3d_augmentation_root",
+      "name": "elastic_deform_3d",
+      "description": "Warps a volume with a seeded, Gaussian-smoothed displacement field.",
+      "concept_type": "sampler",
+      "inputs": [
+        {
+          "name": "volume",
+          "type_desc": "NDArray[np.number]",
+          "constraints": "real numeric array with at least three non-empty spatial axes",
+          "data_kind": "medical_volume",
+          "time_basis": "",
+          "provenance": "pre-loaded cryo-ET, CT, MRI, or tomographic patch",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "sigma",
+          "type_desc": "float",
+          "constraints": "positive finite smoothing width",
+          "data_kind": "augmentation_parameter",
+          "time_basis": "",
+          "provenance": "training augmentation schedule",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "alpha",
+          "type_desc": "float",
+          "constraints": "non-negative finite displacement amplitude",
+          "data_kind": "augmentation_parameter",
+          "time_basis": "",
+          "provenance": "training augmentation schedule",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "seed",
+          "type_desc": "int",
+          "constraints": "integer seed for local random generator",
+          "data_kind": "random_seed",
+          "time_basis": "",
+          "provenance": "caller-supplied reproducibility seed",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "order",
+          "type_desc": "int",
+          "constraints": "scipy spline order in [0, 5]",
+          "data_kind": "configuration",
+          "time_basis": "",
+          "provenance": "interpolation policy",
+          "required": false,
+          "default_value_repr": "1"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type_desc": "NDArray[np.float64]",
+          "constraints": "same shape as volume",
+          "data_kind": "augmented_volume",
+          "time_basis": "",
+          "provenance": "seeded displacement-field coordinate mapping",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 1,
+      "type_signature": "(volume: NDArray[np.number], sigma: float, alpha: float, seed: int, order: int = 1) -> NDArray[np.float64]",
+      "matched_primitive": null,
+      "primitive_binding_confidence": 0.0,
+      "primitive_binding_source": "",
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": true,
+      "conceptual_summary": "Samples a local random displacement tensor, smooths it, and maps coordinates through SciPy interpolation.",
+      "critic_notes": "Large alpha values are unsuitable for rigid molecular structures such as cryo-ET flagellar motors.",
+      "decomposition_rationale": "The atom implements deterministic field construction and sampling while leaving modality-specific parameter ranges to callers.",
+      "fixed_point_max_iterations": 0,
+      "fixed_point_convergence_field": "",
+      "map_window_size": 0,
+      "map_hop_size": 0,
+      "boundary_kind": "none",
+      "boundary_port_name": ""
+    },
+    {
+      "node_id": "scale_volume_3d",
+      "parent_id": "medical_imaging_3d_augmentation_root",
+      "name": "scale_volume_3d",
+      "description": "Zooms the last three axes and restores the original bounds by center crop or zero padding.",
+      "concept_type": "sampler",
+      "inputs": [
+        {
+          "name": "volume",
+          "type_desc": "NDArray[np.number]",
+          "constraints": "real numeric array with at least three non-empty spatial axes",
+          "data_kind": "medical_volume",
+          "time_basis": "",
+          "provenance": "pre-loaded cryo-ET, CT, MRI, or tomographic patch",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "scale_factors",
+          "type_desc": "tuple[float, float, float]",
+          "constraints": "three positive finite values",
+          "data_kind": "augmentation_parameter",
+          "time_basis": "",
+          "provenance": "training augmentation schedule",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "order",
+          "type_desc": "int",
+          "constraints": "scipy spline order in [0, 5]",
+          "data_kind": "configuration",
+          "time_basis": "",
+          "provenance": "interpolation policy",
+          "required": false,
+          "default_value_repr": "1"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type_desc": "NDArray[np.float64]",
+          "constraints": "same shape as volume",
+          "data_kind": "augmented_volume",
+          "time_basis": "",
+          "provenance": "scipy zoom followed by deterministic recentering",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 1,
+      "type_signature": "(volume: NDArray[np.number], scale_factors: tuple[float, float, float], order: int = 1) -> NDArray[np.float64]",
+      "matched_primitive": null,
+      "primitive_binding_confidence": 0.0,
+      "primitive_binding_source": "",
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": true,
+      "conceptual_summary": "Uses SciPy zoom, then crops or pads symmetrically to maintain batchable tensor dimensions.",
+      "critic_notes": "No anti-aliasing prefilter is applied before severe downscaling.",
+      "decomposition_rationale": "The atom separates pure dimensional augmentation from downstream model batching and spacing metadata.",
+      "fixed_point_max_iterations": 0,
+      "fixed_point_convergence_field": "",
+      "map_window_size": 0,
+      "map_hop_size": 0,
+      "boundary_kind": "none",
+      "boundary_port_name": ""
+    },
+    {
+      "node_id": "add_gaussian_noise_3d",
+      "parent_id": "medical_imaging_3d_augmentation_root",
+      "name": "add_gaussian_noise_3d",
+      "description": "Adds seeded Gaussian intensity noise without touching global random state.",
+      "concept_type": "sampler",
+      "inputs": [
+        {
+          "name": "volume",
+          "type_desc": "NDArray[np.number]",
+          "constraints": "real numeric array with at least three non-empty spatial axes",
+          "data_kind": "medical_volume",
+          "time_basis": "",
+          "provenance": "pre-loaded cryo-ET, CT, MRI, or tomographic patch",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "mean",
+          "type_desc": "float",
+          "constraints": "finite",
+          "data_kind": "augmentation_parameter",
+          "time_basis": "",
+          "provenance": "training augmentation schedule",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "std",
+          "type_desc": "float",
+          "constraints": "non-negative finite",
+          "data_kind": "augmentation_parameter",
+          "time_basis": "",
+          "provenance": "training augmentation schedule",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "seed",
+          "type_desc": "int",
+          "constraints": "integer seed for local random generator",
+          "data_kind": "random_seed",
+          "time_basis": "",
+          "provenance": "caller-supplied reproducibility seed",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type_desc": "NDArray[np.number]",
+          "constraints": "same shape and dtype as volume",
+          "data_kind": "augmented_volume",
+          "time_basis": "",
+          "provenance": "local NumPy generator normal sample added to volume",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 1,
+      "type_signature": "(volume: NDArray[np.number], mean: float, std: float, seed: int) -> NDArray[np.number]",
+      "matched_primitive": null,
+      "primitive_binding_confidence": 0.0,
+      "primitive_binding_source": "",
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": true,
+      "conceptual_summary": "Creates an isolated NumPy generator and adds one Gaussian noise tensor.",
+      "critic_notes": "Callers must choose std from modality-specific normalization or SNR calibration.",
+      "decomposition_rationale": "The atom isolates deterministic intensity perturbation and avoids global RNG coupling.",
+      "fixed_point_max_iterations": 0,
+      "fixed_point_convergence_field": "",
+      "map_window_size": 0,
+      "map_hop_size": 0,
+      "boundary_kind": "none",
+      "boundary_port_name": ""
+    }
+  ],
+  "edges": []
+}

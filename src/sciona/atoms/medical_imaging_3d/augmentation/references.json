@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.1",
+  "atoms": {
+    "sciona.atoms.medical_imaging_3d.augmentation.random_rotate_3d@sciona/atoms/medical_imaging_3d/augmentation/atoms.py:165": {
+      "references": [
+        {
+          "ref_id": "scipySpatialTransform2026",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "library_semantics",
+            "matched_nodes": [
+              "scipy.spatial.transform.Rotation.from_euler"
+            ],
+            "confidence": "high",
+            "notes": "The atom uses SciPy Euler-angle rotations to construct the 3D matrix for centered volume rotation."
+          }
+        },
+        {
+          "ref_id": "scipyNdimage2026",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "library_semantics",
+            "matched_nodes": [
+              "scipy.ndimage.affine_transform"
+            ],
+            "confidence": "high",
+            "notes": "The atom applies the inverse matrix and center offset through SciPy affine interpolation over the last three axes."
+          }
+        },
+        {
+          "ref_id": "repo_scipy",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "source_repository",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "Repository provenance for the BSD-licensed SciPy routines used by the rotation atom."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "sciona.atoms.medical_imaging_3d.augmentation.elastic_deform_3d@sciona/atoms/medical_imaging_3d/augmentation/atoms.py:183": {
+      "references": [
+        {
+          "ref_id": "ronneberger2015unet",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "paper_semantics",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "The atom implements the smooth displacement-field style elastic augmentation introduced for biomedical segmentation."
+          }
+        },
+        {
+          "ref_id": "repo_elasticdeform",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "reference_implementation",
+            "matched_nodes": [],
+            "confidence": "medium",
+            "notes": "The implementation follows the same high-level dense coordinate deformation boundary using local NumPy/SciPy operations."
+          }
+        },
+        {
+          "ref_id": "scipyNdimage2026",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "library_semantics",
+            "matched_nodes": [
+              "scipy.ndimage.gaussian_filter",
+              "scipy.ndimage.map_coordinates"
+            ],
+            "confidence": "high",
+            "notes": "Gaussian smoothing and coordinate sampling are performed with SciPy ndimage primitives."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "sciona.atoms.medical_imaging_3d.augmentation.scale_volume_3d@sciona/atoms/medical_imaging_3d/augmentation/atoms.py:207": {
+      "references": [
+        {
+          "ref_id": "scipyNdimage2026",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "library_semantics",
+            "matched_nodes": [
+              "scipy.ndimage.zoom"
+            ],
+            "confidence": "high",
+            "notes": "The spatial zoom step uses SciPy spline interpolation before deterministic center crop or zero padding."
+          }
+        },
+        {
+          "ref_id": "numpy2026",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "library_semantics",
+            "matched_nodes": [
+              "numpy.pad"
+            ],
+            "confidence": "high",
+            "notes": "NumPy padding restores the original spatial bounds after downscaling."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "sciona.atoms.medical_imaging_3d.augmentation.add_gaussian_noise_3d@sciona/atoms/medical_imaging_3d/augmentation/atoms.py:225": {
+      "references": [
+        {
+          "ref_id": "numpy2026",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "library_semantics",
+            "matched_nodes": [
+              "numpy.random.default_rng",
+              "Generator.normal"
+            ],
+            "confidence": "high",
+            "notes": "The atom uses an isolated NumPy generator to produce deterministic additive Gaussian noise from the caller-provided seed."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    }
+  }
+}

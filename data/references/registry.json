@@ -388,6 +388,80 @@
         "confidence": "medium",
         "notes": "Competition data specification cited by the research packet for A3D payload layout; atoms accept bytes and explicit metadata rather than reading files."
       }
+    },
+    "scipySpatialTransform2026": {
+      "ref_id": "scipySpatialTransform2026",
+      "type": "documentation",
+      "title": "Spatial transformations (scipy.spatial.transform)",
+      "authors": [
+        "SciPy Developers"
+      ],
+      "year": 2026,
+      "venue": "SciPy Documentation",
+      "url": "https://docs.scipy.org/doc/scipy/reference/spatial.transform.html",
+      "match_metadata": {
+        "similarity_score": null,
+        "match_type": "manual",
+        "matched_nodes": [],
+        "confidence": "high",
+        "notes": "Reference for scipy.spatial.transform.Rotation Euler-angle matrix construction used by the rotation augmentation atom."
+      }
+    },
+    "repo_scipy": {
+      "ref_id": "repo_scipy",
+      "type": "repository",
+      "title": "SciPy",
+      "authors": [
+        "SciPy Developers"
+      ],
+      "year": null,
+      "venue": "GitHub",
+      "url": "https://github.com/scipy/scipy",
+      "match_metadata": {
+        "similarity_score": null,
+        "match_type": "manual",
+        "matched_nodes": [],
+        "confidence": "high",
+        "notes": "BSD-licensed upstream repository for ndimage interpolation and spatial transform primitives used by the augmentation atoms."
+      }
+    },
+    "ronneberger2015unet": {
+      "ref_id": "ronneberger2015unet",
+      "type": "paper",
+      "title": "U-Net: Convolutional Networks for Biomedical Image Segmentation",
+      "authors": [
+        "Olaf Ronneberger",
+        "Philipp Fischer",
+        "Thomas Brox"
+      ],
+      "year": 2015,
+      "venue": "Medical Image Computing and Computer-Assisted Intervention",
+      "url": "https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/",
+      "match_metadata": {
+        "similarity_score": null,
+        "match_type": "manual",
+        "matched_nodes": [],
+        "confidence": "high",
+        "notes": "Biomedical segmentation paper that popularized smooth elastic deformation as a data augmentation strategy."
+      }
+    },
+    "repo_elasticdeform": {
+      "ref_id": "repo_elasticdeform",
+      "type": "repository",
+      "title": "elasticdeform",
+      "authors": [
+        "Guido van Tulder"
+      ],
+      "year": null,
+      "venue": "GitHub",
+      "url": "https://github.com/gvtulder/elasticdeform",
+      "match_metadata": {
+        "similarity_score": null,
+        "match_type": "manual",
+        "matched_nodes": [],
+        "confidence": "medium",
+        "notes": "MIT-licensed reference implementation for N-dimensional elastic deformation; the local atom uses a compact NumPy/SciPy implementation."
+      }
     }
   }
 }
