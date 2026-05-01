@@ -47,12 +47,48 @@
       "description": "Applies DICOM rescale slope and intercept to numeric pixel values.",
       "concept_type": "signal_transform",
       "inputs": [
-        {"name": "pixel_array", "type_desc": "NDArray[np.number]", "constraints": "numeric array", "data_kind": "medical_image_intensity", "time_basis": "", "provenance": "pre-loaded DICOM PixelData", "required": true, "default_value_repr": ""},
-        {"name": "slope", "type_desc": "float", "constraints": "finite", "data_kind": "dicom_metadata", "time_basis": "", "provenance": "DICOM RescaleSlope", "required": true, "default_value_repr": ""},
-        {"name": "intercept", "type_desc": "float", "constraints": "finite", "data_kind": "dicom_metadata", "time_basis": "", "provenance": "DICOM RescaleIntercept", "required": true, "default_value_repr": ""}
+        {
+          "name": "pixel_array",
+          "type_desc": "NDArray[np.number]",
+          "constraints": "numeric array",
+          "data_kind": "medical_image_intensity",
+          "time_basis": "",
+          "provenance": "pre-loaded DICOM PixelData",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "slope",
+          "type_desc": "float",
+          "constraints": "finite",
+          "data_kind": "dicom_metadata",
+          "time_basis": "",
+          "provenance": "DICOM RescaleSlope",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "intercept",
+          "type_desc": "float",
+          "constraints": "finite",
+          "data_kind": "dicom_metadata",
+          "time_basis": "",
+          "provenance": "DICOM RescaleIntercept",
+          "required": true,
+          "default_value_repr": ""
+        }
       ],
       "outputs": [
-        {"name": "result", "type_desc": "NDArray[np.float64]", "constraints": "same shape as pixel_array", "data_kind": "physical_intensity", "time_basis": "", "provenance": "linear DICOM rescale transform", "required": true, "default_value_repr": ""}
+        {
+          "name": "result",
+          "type_desc": "NDArray[np.float64]",
+          "constraints": "same shape as pixel_array",
+          "data_kind": "physical_intensity",
+          "time_basis": "",
+          "provenance": "linear DICOM rescale transform",
+          "required": true,
+          "default_value_repr": ""
+        }
       ],
       "status": "atomic",
       "children": [],
@@ -82,15 +118,78 @@
       "description": "Maps grayscale DICOM intensities into a bounded output interval with LINEAR or LINEAR_EXACT VOI windowing.",
       "concept_type": "signal_transform",
       "inputs": [
-        {"name": "pixel_array", "type_desc": "NDArray[np.number]", "constraints": "1D, 2D, or 3D grayscale numeric array", "data_kind": "medical_image_intensity", "time_basis": "", "provenance": "pre-loaded DICOM pixels or HU values", "required": true, "default_value_repr": ""},
-        {"name": "window_center", "type_desc": "float", "constraints": "finite", "data_kind": "dicom_metadata", "time_basis": "", "provenance": "DICOM WindowCenter", "required": true, "default_value_repr": ""},
-        {"name": "window_width", "type_desc": "float", "constraints": "positive finite", "data_kind": "dicom_metadata", "time_basis": "", "provenance": "DICOM WindowWidth", "required": true, "default_value_repr": ""},
-        {"name": "exact", "type_desc": "bool", "constraints": "selects LINEAR_EXACT if true", "data_kind": "configuration", "time_basis": "", "provenance": "VOI LUT function choice", "required": false, "default_value_repr": "False"},
-        {"name": "y_min", "type_desc": "float", "constraints": "finite lower bound", "data_kind": "configuration", "time_basis": "", "provenance": "display output range", "required": false, "default_value_repr": "0.0"},
-        {"name": "y_max", "type_desc": "float", "constraints": "finite upper bound greater than y_min", "data_kind": "configuration", "time_basis": "", "provenance": "display output range", "required": false, "default_value_repr": "255.0"}
+        {
+          "name": "pixel_array",
+          "type_desc": "NDArray[np.number]",
+          "constraints": "1D, 2D, or 3D grayscale numeric array",
+          "data_kind": "medical_image_intensity",
+          "time_basis": "",
+          "provenance": "pre-loaded DICOM pixels or HU values",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "window_center",
+          "type_desc": "float",
+          "constraints": "finite",
+          "data_kind": "dicom_metadata",
+          "time_basis": "",
+          "provenance": "DICOM WindowCenter",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "window_width",
+          "type_desc": "float",
+          "constraints": "positive finite",
+          "data_kind": "dicom_metadata",
+          "time_basis": "",
+          "provenance": "DICOM WindowWidth",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "exact",
+          "type_desc": "bool",
+          "constraints": "selects LINEAR_EXACT if true",
+          "data_kind": "configuration",
+          "time_basis": "",
+          "provenance": "VOI LUT function choice",
+          "required": false,
+          "default_value_repr": "False"
+        },
+        {
+          "name": "y_min",
+          "type_desc": "float",
+          "constraints": "finite lower bound",
+          "data_kind": "configuration",
+          "time_basis": "",
+          "provenance": "display output range",
+          "required": false,
+          "default_value_repr": "0.0"
+        },
+        {
+          "name": "y_max",
+          "type_desc": "float",
+          "constraints": "finite upper bound greater than y_min",
+          "data_kind": "configuration",
+          "time_basis": "",
+          "provenance": "display output range",
+          "required": false,
+          "default_value_repr": "255.0"
+        }
       ],
       "outputs": [
-        {"name": "result", "type_desc": "NDArray[np.float64]", "constraints": "same shape as pixel_array and bounded by y_min/y_max", "data_kind": "windowed_intensity", "time_basis": "", "provenance": "DICOM VOI LUT transform", "required": true, "default_value_repr": ""}
+        {
+          "name": "result",
+          "type_desc": "NDArray[np.float64]",
+          "constraints": "same shape as pixel_array and bounded by y_min/y_max",
+          "data_kind": "windowed_intensity",
+          "time_basis": "",
+          "provenance": "DICOM VOI LUT transform",
+          "required": true,
+          "default_value_repr": ""
+        }
       ],
       "status": "atomic",
       "children": [],
@@ -111,7 +210,11 @@
       "map_window_size": 0,
       "map_hop_size": 0,
       "boundary_kind": "none",
-      "boundary_port_name": ""
+      "boundary_port_name": "",
+      "aliases": [
+        "dicom_windowing",
+        "hounsfield_window"
+      ]
     },
     {
       "node_id": "resample_volume",
@@ -120,13 +223,58 @@
       "description": "Resamples a 3D volume from current physical spacing to target spacing using coordinate interpolation.",
       "concept_type": "signal_transform",
       "inputs": [
-        {"name": "volume", "type_desc": "NDArray[np.number]", "constraints": "3D numeric array", "data_kind": "medical_volume", "time_basis": "", "provenance": "pre-loaded CT/MRI/mmWave volume", "required": true, "default_value_repr": ""},
-        {"name": "current_spacing", "type_desc": "tuple[float, float, float]", "constraints": "three positive finite values", "data_kind": "voxel_spacing", "time_basis": "", "provenance": "image metadata", "required": true, "default_value_repr": ""},
-        {"name": "target_spacing", "type_desc": "tuple[float, float, float]", "constraints": "three positive finite values", "data_kind": "voxel_spacing", "time_basis": "", "provenance": "model preprocessing configuration", "required": true, "default_value_repr": ""},
-        {"name": "order", "type_desc": "int", "constraints": "scipy spline order in [0, 5]", "data_kind": "configuration", "time_basis": "", "provenance": "interpolation setting", "required": false, "default_value_repr": "1"}
+        {
+          "name": "volume",
+          "type_desc": "NDArray[np.number]",
+          "constraints": "3D numeric array",
+          "data_kind": "medical_volume",
+          "time_basis": "",
+          "provenance": "pre-loaded CT/MRI/mmWave volume",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "current_spacing",
+          "type_desc": "tuple[float, float, float]",
+          "constraints": "three positive finite values",
+          "data_kind": "voxel_spacing",
+          "time_basis": "",
+          "provenance": "image metadata",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "target_spacing",
+          "type_desc": "tuple[float, float, float]",
+          "constraints": "three positive finite values",
+          "data_kind": "voxel_spacing",
+          "time_basis": "",
+          "provenance": "model preprocessing configuration",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "order",
+          "type_desc": "int",
+          "constraints": "scipy spline order in [0, 5]",
+          "data_kind": "configuration",
+          "time_basis": "",
+          "provenance": "interpolation setting",
+          "required": false,
+          "default_value_repr": "1"
+        }
       ],
       "outputs": [
-        {"name": "result", "type_desc": "NDArray[np.float64]", "constraints": "shape round(volume.shape * current_spacing / target_spacing)", "data_kind": "resampled_volume", "time_basis": "", "provenance": "scipy coordinate interpolation", "required": true, "default_value_repr": ""}
+        {
+          "name": "result",
+          "type_desc": "NDArray[np.float64]",
+          "constraints": "shape round(volume.shape * current_spacing / target_spacing)",
+          "data_kind": "resampled_volume",
+          "time_basis": "",
+          "provenance": "scipy coordinate interpolation",
+          "required": true,
+          "default_value_repr": ""
+        }
       ],
       "status": "atomic",
       "children": [],
@@ -147,7 +295,11 @@
       "map_window_size": 0,
       "map_hop_size": 0,
       "boundary_kind": "none",
-      "boundary_port_name": ""
+      "boundary_port_name": "",
+      "aliases": [
+        "multi_resolution_upsampling",
+        "spatial_resampling"
+      ]
     },
     {
       "node_id": "macenko_stain_vectors",
@@ -156,13 +308,58 @@
       "description": "Estimates two RGB optical-density stain vectors and per-pixel concentrations from an H&E image.",
       "concept_type": "signal_transform",
       "inputs": [
-        {"name": "image", "type_desc": "NDArray[np.number]", "constraints": "RGB image with shape (..., 3)", "data_kind": "histology_rgb", "time_basis": "", "provenance": "pre-loaded H&E slide crop", "required": true, "default_value_repr": ""},
-        {"name": "alpha", "type_desc": "float", "constraints": "percentile in [0, 50]", "data_kind": "configuration", "time_basis": "", "provenance": "Macenko robust angle percentile", "required": false, "default_value_repr": "1.0"},
-        {"name": "beta", "type_desc": "float", "constraints": "positive tissue optical-density threshold", "data_kind": "configuration", "time_basis": "", "provenance": "Macenko tissue filter", "required": false, "default_value_repr": "0.15"},
-        {"name": "luminosity", "type_desc": "float", "constraints": "positive white reference intensity", "data_kind": "configuration", "time_basis": "", "provenance": "scanner intensity convention", "required": false, "default_value_repr": "255.0"}
+        {
+          "name": "image",
+          "type_desc": "NDArray[np.number]",
+          "constraints": "RGB image with shape (..., 3)",
+          "data_kind": "histology_rgb",
+          "time_basis": "",
+          "provenance": "pre-loaded H&E slide crop",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "alpha",
+          "type_desc": "float",
+          "constraints": "percentile in [0, 50]",
+          "data_kind": "configuration",
+          "time_basis": "",
+          "provenance": "Macenko robust angle percentile",
+          "required": false,
+          "default_value_repr": "1.0"
+        },
+        {
+          "name": "beta",
+          "type_desc": "float",
+          "constraints": "positive tissue optical-density threshold",
+          "data_kind": "configuration",
+          "time_basis": "",
+          "provenance": "Macenko tissue filter",
+          "required": false,
+          "default_value_repr": "0.15"
+        },
+        {
+          "name": "luminosity",
+          "type_desc": "float",
+          "constraints": "positive white reference intensity",
+          "data_kind": "configuration",
+          "time_basis": "",
+          "provenance": "scanner intensity convention",
+          "required": false,
+          "default_value_repr": "255.0"
+        }
       ],
       "outputs": [
-        {"name": "result", "type_desc": "tuple[NDArray[np.float64], NDArray[np.float64]]", "constraints": "stain matrix has shape (3, 2); concentrations have two columns", "data_kind": "stain_basis", "time_basis": "", "provenance": "Macenko SVD estimate", "required": true, "default_value_repr": ""}
+        {
+          "name": "result",
+          "type_desc": "tuple[NDArray[np.float64], NDArray[np.float64]]",
+          "constraints": "stain matrix has shape (3, 2); concentrations have two columns",
+          "data_kind": "stain_basis",
+          "time_basis": "",
+          "provenance": "Macenko SVD estimate",
+          "required": true,
+          "default_value_repr": ""
+        }
       ],
       "status": "atomic",
       "children": [],
@@ -192,14 +389,68 @@
       "description": "Reconstructs an RGB histology image using source Macenko concentrations and an explicit target stain matrix.",
       "concept_type": "signal_transform",
       "inputs": [
-        {"name": "image", "type_desc": "NDArray[np.number]", "constraints": "RGB image with shape (..., 3)", "data_kind": "histology_rgb", "time_basis": "", "provenance": "pre-loaded H&E slide crop", "required": true, "default_value_repr": ""},
-        {"name": "target_stain_matrix", "type_desc": "NDArray[np.float64]", "constraints": "shape (3, 2), finite", "data_kind": "stain_basis", "time_basis": "", "provenance": "reference image or explicit target basis", "required": true, "default_value_repr": ""},
-        {"name": "alpha", "type_desc": "float", "constraints": "percentile in [0, 50]", "data_kind": "configuration", "time_basis": "", "provenance": "Macenko robust angle percentile", "required": false, "default_value_repr": "1.0"},
-        {"name": "beta", "type_desc": "float", "constraints": "positive tissue optical-density threshold", "data_kind": "configuration", "time_basis": "", "provenance": "Macenko tissue filter", "required": false, "default_value_repr": "0.15"},
-        {"name": "luminosity", "type_desc": "float", "constraints": "positive white reference intensity", "data_kind": "configuration", "time_basis": "", "provenance": "scanner intensity convention", "required": false, "default_value_repr": "255.0"}
+        {
+          "name": "image",
+          "type_desc": "NDArray[np.number]",
+          "constraints": "RGB image with shape (..., 3)",
+          "data_kind": "histology_rgb",
+          "time_basis": "",
+          "provenance": "pre-loaded H&E slide crop",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "target_stain_matrix",
+          "type_desc": "NDArray[np.float64]",
+          "constraints": "shape (3, 2), finite",
+          "data_kind": "stain_basis",
+          "time_basis": "",
+          "provenance": "reference image or explicit target basis",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "alpha",
+          "type_desc": "float",
+          "constraints": "percentile in [0, 50]",
+          "data_kind": "configuration",
+          "time_basis": "",
+          "provenance": "Macenko robust angle percentile",
+          "required": false,
+          "default_value_repr": "1.0"
+        },
+        {
+          "name": "beta",
+          "type_desc": "float",
+          "constraints": "positive tissue optical-density threshold",
+          "data_kind": "configuration",
+          "time_basis": "",
+          "provenance": "Macenko tissue filter",
+          "required": false,
+          "default_value_repr": "0.15"
+        },
+        {
+          "name": "luminosity",
+          "type_desc": "float",
+          "constraints": "positive white reference intensity",
+          "data_kind": "configuration",
+          "time_basis": "",
+          "provenance": "scanner intensity convention",
+          "required": false,
+          "default_value_repr": "255.0"
+        }
       ],
       "outputs": [
-        {"name": "result", "type_desc": "NDArray[np.uint8]", "constraints": "same shape as image", "data_kind": "normalized_histology_rgb", "time_basis": "", "provenance": "Macenko concentration reconstruction", "required": true, "default_value_repr": ""}
+        {
+          "name": "result",
+          "type_desc": "NDArray[np.uint8]",
+          "constraints": "same shape as image",
+          "data_kind": "normalized_histology_rgb",
+          "time_basis": "",
+          "provenance": "Macenko concentration reconstruction",
+          "required": true,
+          "default_value_repr": ""
+        }
       ],
       "status": "atomic",
       "children": [],
@@ -229,14 +480,68 @@
       "description": "Rotates a 3D volume and collapses it to a 2D maximum-intensity projection.",
       "concept_type": "data_assembly",
       "inputs": [
-        {"name": "volume", "type_desc": "NDArray[np.number]", "constraints": "3D numeric array", "data_kind": "medical_volume", "time_basis": "", "provenance": "pre-loaded CT/MRI/mmWave volume", "required": true, "default_value_repr": ""},
-        {"name": "angle", "type_desc": "float", "constraints": "finite degrees", "data_kind": "configuration", "time_basis": "", "provenance": "multi-view projection setting", "required": true, "default_value_repr": ""},
-        {"name": "rotation_axes", "type_desc": "tuple[int, int]", "constraints": "two distinct axes in {0, 1, 2}", "data_kind": "configuration", "time_basis": "", "provenance": "projection geometry", "required": false, "default_value_repr": "(1, 2)"},
-        {"name": "projection_axis", "type_desc": "int", "constraints": "axis in {0, 1, 2}", "data_kind": "configuration", "time_basis": "", "provenance": "projection geometry", "required": false, "default_value_repr": "0"},
-        {"name": "order", "type_desc": "int", "constraints": "scipy spline order in [0, 5]", "data_kind": "configuration", "time_basis": "", "provenance": "interpolation setting", "required": false, "default_value_repr": "1"}
+        {
+          "name": "volume",
+          "type_desc": "NDArray[np.number]",
+          "constraints": "3D numeric array",
+          "data_kind": "medical_volume",
+          "time_basis": "",
+          "provenance": "pre-loaded CT/MRI/mmWave volume",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "angle",
+          "type_desc": "float",
+          "constraints": "finite degrees",
+          "data_kind": "configuration",
+          "time_basis": "",
+          "provenance": "multi-view projection setting",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "rotation_axes",
+          "type_desc": "tuple[int, int]",
+          "constraints": "two distinct axes in {0, 1, 2}",
+          "data_kind": "configuration",
+          "time_basis": "",
+          "provenance": "projection geometry",
+          "required": false,
+          "default_value_repr": "(1, 2)"
+        },
+        {
+          "name": "projection_axis",
+          "type_desc": "int",
+          "constraints": "axis in {0, 1, 2}",
+          "data_kind": "configuration",
+          "time_basis": "",
+          "provenance": "projection geometry",
+          "required": false,
+          "default_value_repr": "0"
+        },
+        {
+          "name": "order",
+          "type_desc": "int",
+          "constraints": "scipy spline order in [0, 5]",
+          "data_kind": "configuration",
+          "time_basis": "",
+          "provenance": "interpolation setting",
+          "required": false,
+          "default_value_repr": "1"
+        }
       ],
       "outputs": [
-        {"name": "result", "type_desc": "NDArray[np.float64]", "constraints": "2D projection", "data_kind": "projection_image", "time_basis": "", "provenance": "scipy rotation and numpy maximum", "required": true, "default_value_repr": ""}
+        {
+          "name": "result",
+          "type_desc": "NDArray[np.float64]",
+          "constraints": "2D projection",
+          "data_kind": "projection_image",
+          "time_basis": "",
+          "provenance": "scipy rotation and numpy maximum",
+          "required": true,
+          "default_value_repr": ""
+        }
       ],
       "status": "atomic",
       "children": [],
@@ -266,14 +571,68 @@
       "description": "Stacks a central slice and neighboring slices into a channel-first 2.5D tensor.",
       "concept_type": "data_assembly",
       "inputs": [
-        {"name": "volume", "type_desc": "NDArray[np.number]", "constraints": "at least 3D", "data_kind": "medical_volume", "time_basis": "", "provenance": "pre-loaded scan volume", "required": true, "default_value_repr": ""},
-        {"name": "center_idx", "type_desc": "int", "constraints": "valid index along axis", "data_kind": "slice_index", "time_basis": "", "provenance": "slice sampling policy", "required": true, "default_value_repr": ""},
-        {"name": "num_adjacent", "type_desc": "int", "constraints": "non-negative", "data_kind": "configuration", "time_basis": "", "provenance": "2.5D context width", "required": true, "default_value_repr": ""},
-        {"name": "axis", "type_desc": "int", "constraints": "valid volume axis", "data_kind": "configuration", "time_basis": "", "provenance": "volume orientation", "required": false, "default_value_repr": "0"},
-        {"name": "mode", "type_desc": "str", "constraints": "numpy.pad mode", "data_kind": "configuration", "time_basis": "", "provenance": "boundary padding choice", "required": false, "default_value_repr": "\"edge\""}
+        {
+          "name": "volume",
+          "type_desc": "NDArray[np.number]",
+          "constraints": "at least 3D",
+          "data_kind": "medical_volume",
+          "time_basis": "",
+          "provenance": "pre-loaded scan volume",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "center_idx",
+          "type_desc": "int",
+          "constraints": "valid index along axis",
+          "data_kind": "slice_index",
+          "time_basis": "",
+          "provenance": "slice sampling policy",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "num_adjacent",
+          "type_desc": "int",
+          "constraints": "non-negative",
+          "data_kind": "configuration",
+          "time_basis": "",
+          "provenance": "2.5D context width",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "axis",
+          "type_desc": "int",
+          "constraints": "valid volume axis",
+          "data_kind": "configuration",
+          "time_basis": "",
+          "provenance": "volume orientation",
+          "required": false,
+          "default_value_repr": "0"
+        },
+        {
+          "name": "mode",
+          "type_desc": "str",
+          "constraints": "numpy.pad mode",
+          "data_kind": "configuration",
+          "time_basis": "",
+          "provenance": "boundary padding choice",
+          "required": false,
+          "default_value_repr": "\"edge\""
+        }
       ],
       "outputs": [
-        {"name": "result", "type_desc": "NDArray[np.number]", "constraints": "first dimension is 2 * num_adjacent + 1", "data_kind": "slice_stack", "time_basis": "", "provenance": "numpy indexing and padding", "required": true, "default_value_repr": ""}
+        {
+          "name": "result",
+          "type_desc": "NDArray[np.number]",
+          "constraints": "first dimension is 2 * num_adjacent + 1",
+          "data_kind": "slice_stack",
+          "time_basis": "",
+          "provenance": "numpy indexing and padding",
+          "required": true,
+          "default_value_repr": ""
+        }
       ],
       "status": "atomic",
       "children": [],
@@ -303,12 +662,48 @@
       "description": "Crops a 3D volume to the bounding box of non-zero mask voxels with optional margin.",
       "concept_type": "data_assembly",
       "inputs": [
-        {"name": "volume", "type_desc": "NDArray[np.number]", "constraints": "3D array", "data_kind": "medical_volume", "time_basis": "", "provenance": "pre-loaded scan volume", "required": true, "default_value_repr": ""},
-        {"name": "mask", "type_desc": "NDArray[np.bool_ | np.integer]", "constraints": "same shape as volume and contains at least one selected voxel", "data_kind": "segmentation_mask", "time_basis": "", "provenance": "brain or tissue mask", "required": true, "default_value_repr": ""},
-        {"name": "margin", "type_desc": "int", "constraints": "non-negative voxel margin", "data_kind": "configuration", "time_basis": "", "provenance": "cropping policy", "required": false, "default_value_repr": "0"}
+        {
+          "name": "volume",
+          "type_desc": "NDArray[np.number]",
+          "constraints": "3D array",
+          "data_kind": "medical_volume",
+          "time_basis": "",
+          "provenance": "pre-loaded scan volume",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "mask",
+          "type_desc": "NDArray[np.bool_ | np.integer]",
+          "constraints": "same shape as volume and contains at least one selected voxel",
+          "data_kind": "segmentation_mask",
+          "time_basis": "",
+          "provenance": "brain or tissue mask",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "margin",
+          "type_desc": "int",
+          "constraints": "non-negative voxel margin",
+          "data_kind": "configuration",
+          "time_basis": "",
+          "provenance": "cropping policy",
+          "required": false,
+          "default_value_repr": "0"
+        }
       ],
       "outputs": [
-        {"name": "result", "type_desc": "tuple[NDArray[np.number], tuple[tuple[int, int], tuple[int, int], tuple[int, int]]]", "constraints": "cropped volume and half-open source bounds", "data_kind": "cropped_volume", "time_basis": "", "provenance": "mask bounding box", "required": true, "default_value_repr": ""}
+        {
+          "name": "result",
+          "type_desc": "tuple[NDArray[np.number], tuple[tuple[int, int], tuple[int, int], tuple[int, int]]]",
+          "constraints": "cropped volume and half-open source bounds",
+          "data_kind": "cropped_volume",
+          "time_basis": "",
+          "provenance": "mask bounding box",
+          "required": true,
+          "default_value_repr": ""
+        }
       ],
       "status": "atomic",
       "children": [],
@@ -338,12 +733,48 @@
       "description": "Removes connected components smaller than a requested voxel count from a binary mask.",
       "concept_type": "signal_transform",
       "inputs": [
-        {"name": "mask", "type_desc": "NDArray[np.bool_ | np.integer]", "constraints": "binary-valued array", "data_kind": "segmentation_mask", "time_basis": "", "provenance": "model output or thresholded mask", "required": true, "default_value_repr": ""},
-        {"name": "min_size", "type_desc": "int", "constraints": "positive component size threshold", "data_kind": "configuration", "time_basis": "", "provenance": "postprocessing policy", "required": true, "default_value_repr": ""},
-        {"name": "structure", "type_desc": "NDArray[np.integer] | None", "constraints": "optional scipy connectivity structure", "data_kind": "configuration", "time_basis": "", "provenance": "connectivity policy", "required": false, "default_value_repr": "None"}
+        {
+          "name": "mask",
+          "type_desc": "NDArray[np.bool_ | np.integer]",
+          "constraints": "binary-valued array",
+          "data_kind": "segmentation_mask",
+          "time_basis": "",
+          "provenance": "model output or thresholded mask",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "min_size",
+          "type_desc": "int",
+          "constraints": "positive component size threshold",
+          "data_kind": "configuration",
+          "time_basis": "",
+          "provenance": "postprocessing policy",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "structure",
+          "type_desc": "NDArray[np.integer] | None",
+          "constraints": "optional scipy connectivity structure",
+          "data_kind": "configuration",
+          "time_basis": "",
+          "provenance": "connectivity policy",
+          "required": false,
+          "default_value_repr": "None"
+        }
       ],
       "outputs": [
-        {"name": "result", "type_desc": "NDArray[np.bool_]", "constraints": "same shape as mask and binary", "data_kind": "filtered_mask", "time_basis": "", "provenance": "scipy connected-component labeling", "required": true, "default_value_repr": ""}
+        {
+          "name": "result",
+          "type_desc": "NDArray[np.bool_]",
+          "constraints": "same shape as mask and binary",
+          "data_kind": "filtered_mask",
+          "time_basis": "",
+          "provenance": "scipy connected-component labeling",
+          "required": true,
+          "default_value_repr": ""
+        }
       ],
       "status": "atomic",
       "children": [],
@@ -373,12 +804,48 @@
       "description": "Converts an in-memory Passenger Screening A3D uint16 byte payload into a scaled z-y-x float32 volume.",
       "concept_type": "data_extraction",
       "inputs": [
-        {"name": "byte_stream", "type_desc": "bytes", "constraints": "length equals product(shape_yzx) * uint16 itemsize", "data_kind": "raw_binary_payload", "time_basis": "", "provenance": "memory-loaded A3D file content", "required": true, "default_value_repr": ""},
-        {"name": "data_scale_factor", "type_desc": "float", "constraints": "finite scalar multiplier", "data_kind": "scanner_metadata", "time_basis": "", "provenance": "A3D header metadata", "required": true, "default_value_repr": ""},
-        {"name": "shape_yzx", "type_desc": "tuple[int, int, int]", "constraints": "positive y-z-x dimensions", "data_kind": "scanner_metadata", "time_basis": "", "provenance": "A3D layout specification", "required": false, "default_value_repr": "(660, 512, 512)"}
+        {
+          "name": "byte_stream",
+          "type_desc": "bytes",
+          "constraints": "length equals product(shape_yzx) * uint16 itemsize",
+          "data_kind": "raw_binary_payload",
+          "time_basis": "",
+          "provenance": "memory-loaded A3D file content",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "data_scale_factor",
+          "type_desc": "float",
+          "constraints": "finite scalar multiplier",
+          "data_kind": "scanner_metadata",
+          "time_basis": "",
+          "provenance": "A3D header metadata",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "shape_yzx",
+          "type_desc": "tuple[int, int, int]",
+          "constraints": "positive y-z-x dimensions",
+          "data_kind": "scanner_metadata",
+          "time_basis": "",
+          "provenance": "A3D layout specification",
+          "required": false,
+          "default_value_repr": "(660, 512, 512)"
+        }
       ],
       "outputs": [
-        {"name": "result", "type_desc": "NDArray[np.float32]", "constraints": "shape (shape_yzx[1], shape_yzx[0], shape_yzx[2])", "data_kind": "medical_volume", "time_basis": "", "provenance": "numpy frombuffer reshape transpose scale", "required": true, "default_value_repr": ""}
+        {
+          "name": "result",
+          "type_desc": "NDArray[np.float32]",
+          "constraints": "shape (shape_yzx[1], shape_yzx[0], shape_yzx[2])",
+          "data_kind": "medical_volume",
+          "time_basis": "",
+          "provenance": "numpy frombuffer reshape transpose scale",
+          "required": true,
+          "default_value_repr": ""
+        }
       ],
       "status": "atomic",
       "children": [],
