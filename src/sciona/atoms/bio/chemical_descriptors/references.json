@@ -1,0 +1,113 @@
+{
+  "schema_version": "1.1",
+  "atoms": {
+    "sciona.atoms.bio.chemical_descriptors.smiles_to_mol@sciona/atoms/bio/chemical_descriptors/atoms.py:75": {
+      "references": [
+        {
+          "ref_id": "rdkitMolFromSmiles2026",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "documentation_alignment",
+            "matched_nodes": [
+              "rdkit.Chem.rdmolfiles.MolFromSmiles"
+            ],
+            "confidence": "high",
+            "notes": "The atom delegates SMILES parsing and sanitization to RDKit MolFromSmiles and raises a Python ValueError for parse failures."
+          }
+        },
+        {
+          "ref_id": "repo_rdkit",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "repository_dependency",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "RDKit is the BSD-3-Clause upstream implementation used for molecule parsing."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "sciona.atoms.bio.chemical_descriptors.compute_descriptors@sciona/atoms/bio/chemical_descriptors/atoms.py:103": {
+      "references": [
+        {
+          "ref_id": "rdkitDescriptors2026",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "documentation_alignment",
+            "matched_nodes": [
+              "rdkit.Chem.Descriptors"
+            ],
+            "confidence": "high",
+            "notes": "The atom resolves named continuous descriptors from rdkit.Chem.Descriptors and returns them as a finite NumPy vector."
+          }
+        },
+        {
+          "ref_id": "wu2018moleculenet",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "domain_context",
+            "matched_nodes": [],
+            "confidence": "medium",
+            "notes": "MoleculeNet provides QSAR benchmark context for descriptor-based molecular feature vectors."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "sciona.atoms.bio.chemical_descriptors.morgan_fingerprint@sciona/atoms/bio/chemical_descriptors/atoms.py:134": {
+      "references": [
+        {
+          "ref_id": "rdkitMorgan2026",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "documentation_alignment",
+            "matched_nodes": [
+              "rdkit.Chem.rdMolDescriptors.GetMorganFingerprintAsBitVect"
+            ],
+            "confidence": "high",
+            "notes": "The atom calls RDKit's Morgan bit-vector implementation and converts the result to a dense NumPy binary vector."
+          }
+        },
+        {
+          "ref_id": "rogers2010ecfp",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "algorithm_context",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "The ECFP paper describes the circular fingerprint family used by Morgan fingerprints."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "sciona.atoms.bio.chemical_descriptors.maccs_keys@sciona/atoms/bio/chemical_descriptors/atoms.py:157": {
+      "references": [
+        {
+          "ref_id": "rdkitMaccs2026",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "documentation_alignment",
+            "matched_nodes": [
+              "rdkit.Chem.MACCSkeys.GenMACCSKeys"
+            ],
+            "confidence": "high",
+            "notes": "The atom calls RDKit's MACCS key generator and removes RDKit's unused padding bit to expose the public 166-bit key vector."
+          }
+        },
+        {
+          "ref_id": "repo_rdkit",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "repository_dependency",
+            "matched_nodes": [],
+            "confidence": "high",
+            "notes": "RDKit is the BSD-3-Clause upstream implementation used for MACCS key generation."
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    }
+  }
+}

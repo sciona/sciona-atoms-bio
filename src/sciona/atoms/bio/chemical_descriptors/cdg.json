@@ -1,0 +1,232 @@
+{
+  "nodes": [
+    {
+      "node_id": "chemical_descriptor_extraction_root",
+      "parent_id": null,
+      "name": "chemical_descriptor_extraction",
+      "description": "Parse SMILES strings once and derive numeric molecular descriptors and fingerprints from the resulting molecule graph.",
+      "concept_type": "data_extraction",
+      "inputs": [],
+      "outputs": [],
+      "status": "decomposed",
+      "children": [
+        "smiles_to_mol",
+        "compute_descriptors",
+        "morgan_fingerprint",
+        "maccs_keys"
+      ],
+      "depth": 0,
+      "type_signature": "",
+      "matched_primitive": null,
+      "primitive_binding_confidence": 0.0,
+      "primitive_binding_source": "",
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": false,
+      "parallelizable": true,
+      "conceptual_summary": "SMILES parsing followed by reusable descriptor and fingerprint feature extraction.",
+      "critic_notes": "",
+      "decomposition_rationale": "The research packet separates molecule graph construction from descriptor, Morgan fingerprint, and MACCS key analyses so one parsed molecule can feed multiple feature families."
+    },
+    {
+      "node_id": "smiles_to_mol",
+      "parent_id": "chemical_descriptor_extraction_root",
+      "name": "smiles_to_mol",
+      "description": "Parse a non-empty SMILES string into a sanitized RDKit molecule graph.",
+      "concept_type": "data_extraction",
+      "inputs": [
+        {
+          "name": "smiles",
+          "type_desc": "str",
+          "constraints": "Non-empty SMILES string accepted by RDKit sanitization.",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type_desc": "object",
+          "constraints": "RDKit molecule object with at least one heavy atom.",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 1,
+      "type_signature": "(smiles: str) -> object",
+      "matched_primitive": "rdkit.Chem.MolFromSmiles",
+      "primitive_binding_confidence": 0.95,
+      "primitive_binding_source": "research/20_chemical_descriptors.md",
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": true,
+      "parallelizable": true,
+      "conceptual_summary": "SMILES string validation and molecule graph materialization.",
+      "critic_notes": "",
+      "decomposition_rationale": "Parsing is isolated so downstream descriptor atoms do not repeatedly tokenize and sanitize the same molecule."
+    },
+    {
+      "node_id": "compute_descriptors",
+      "parent_id": "chemical_descriptor_extraction_root",
+      "name": "compute_descriptors",
+      "description": "Compute a compact RDKit descriptor vector for a molecule graph.",
+      "concept_type": "analysis",
+      "inputs": [
+        {
+          "name": "mol",
+          "type_desc": "object",
+          "constraints": "RDKit molecule object with at least one atom.",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "descriptor_names",
+          "type_desc": "Sequence[str] | None",
+          "constraints": "Optional non-empty descriptor names resolvable in rdkit.Chem.Descriptors.",
+          "required": false,
+          "default_value_repr": "None"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type_desc": "NDArray[np.float64]",
+          "constraints": "One-dimensional finite descriptor vector.",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 1,
+      "type_signature": "(mol: object, descriptor_names: Sequence[str] | None = None) -> NDArray[np.float64]",
+      "matched_primitive": "rdkit.Chem.Descriptors",
+      "primitive_binding_confidence": 0.9,
+      "primitive_binding_source": "research/20_chemical_descriptors.md",
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": true,
+      "parallelizable": true,
+      "conceptual_summary": "Continuous molecular feature extraction for QSAR-style models.",
+      "critic_notes": "",
+      "decomposition_rationale": "Continuous descriptors are a separate feature type from hashed and structural-key fingerprints."
+    },
+    {
+      "node_id": "morgan_fingerprint",
+      "parent_id": "chemical_descriptor_extraction_root",
+      "name": "morgan_fingerprint",
+      "description": "Compute a dense binary Morgan circular fingerprint from a molecule graph.",
+      "concept_type": "analysis",
+      "inputs": [
+        {
+          "name": "mol",
+          "type_desc": "object",
+          "constraints": "RDKit molecule object with at least one atom.",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "radius",
+          "type_desc": "int",
+          "constraints": "Non-negative circular-neighborhood radius.",
+          "required": false,
+          "default_value_repr": "2"
+        },
+        {
+          "name": "n_bits",
+          "type_desc": "int",
+          "constraints": "Positive output bit-vector length.",
+          "required": false,
+          "default_value_repr": "1024"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type_desc": "NDArray[np.int_]",
+          "constraints": "Binary vector of length n_bits.",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 1,
+      "type_signature": "(mol: object, radius: int = 2, n_bits: int = 1024) -> NDArray[np.int_]",
+      "matched_primitive": "rdkit.Chem.rdMolDescriptors.GetMorganFingerprintAsBitVect",
+      "primitive_binding_confidence": 0.95,
+      "primitive_binding_source": "research/20_chemical_descriptors.md",
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": true,
+      "parallelizable": true,
+      "conceptual_summary": "Circular substructure hashing converted into a NumPy binary vector.",
+      "critic_notes": "",
+      "decomposition_rationale": "Morgan fingerprints are a distinct hashed structural representation from continuous descriptors and MACCS keys."
+    },
+    {
+      "node_id": "maccs_keys",
+      "parent_id": "chemical_descriptor_extraction_root",
+      "name": "maccs_keys",
+      "description": "Compute the public 166-bit MACCS structural key vector from a molecule graph.",
+      "concept_type": "analysis",
+      "inputs": [
+        {
+          "name": "mol",
+          "type_desc": "object",
+          "constraints": "RDKit molecule object with at least one atom.",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type_desc": "NDArray[np.int_]",
+          "constraints": "Binary vector containing the 166 public MACCS structural keys.",
+          "required": true,
+          "default_value_repr": ""
+        }
+      ],
+      "status": "atomic",
+      "children": [],
+      "depth": 1,
+      "type_signature": "(mol: object) -> NDArray[np.int_]",
+      "matched_primitive": "rdkit.Chem.MACCSkeys.GenMACCSKeys",
+      "primitive_binding_confidence": 0.95,
+      "primitive_binding_source": "research/20_chemical_descriptors.md",
+      "is_optional": false,
+      "is_opaque": false,
+      "is_external": true,
+      "parallelizable": true,
+      "conceptual_summary": "Dictionary-based structural key extraction with the unused RDKit padding bit removed.",
+      "critic_notes": "",
+      "decomposition_rationale": "MACCS keys provide a human-interpretable structural fingerprint separate from Morgan hash features."
+    }
+  ],
+  "edges": [
+    {
+      "source": "smiles_to_mol",
+      "target": "compute_descriptors",
+      "label": "mol"
+    },
+    {
+      "source": "smiles_to_mol",
+      "target": "morgan_fingerprint",
+      "label": "mol"
+    },
+    {
+      "source": "smiles_to_mol",
+      "target": "maccs_keys",
+      "label": "mol"
+    }
+  ],
+  "metadata": {
+    "provider_repo": "sciona-atoms-bio",
+    "research_source": "research/20_chemical_descriptors.md",
+    "solution_stage": "neurips_open_polymer_1st/chemical_descriptor_extraction",
+    "primary_dependency": "rdkit"
+  }
+}

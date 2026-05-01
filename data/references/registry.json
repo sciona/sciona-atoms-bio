@@ -462,6 +462,142 @@
         "confidence": "medium",
         "notes": "MIT-licensed reference implementation for N-dimensional elastic deformation; the local atom uses a compact NumPy/SciPy implementation."
       }
+    },
+    "repo_rdkit": {
+      "ref_id": "repo_rdkit",
+      "type": "repository",
+      "title": "RDKit",
+      "authors": [
+        "RDKit Developers"
+      ],
+      "year": null,
+      "venue": "GitHub",
+      "url": "https://github.com/rdkit/rdkit",
+      "match_metadata": {
+        "similarity_score": null,
+        "match_type": "manual",
+        "matched_nodes": [],
+        "confidence": "high",
+        "notes": "BSD-3-Clause cheminformatics toolkit used by the chemical descriptor atoms for SMILES parsing, descriptors, Morgan fingerprints, and MACCS keys."
+      }
+    },
+    "rdkitMolFromSmiles2026": {
+      "ref_id": "rdkitMolFromSmiles2026",
+      "type": "documentation",
+      "title": "rdkit.Chem.rdmolfiles.MolFromSmiles",
+      "authors": [
+        "RDKit Developers"
+      ],
+      "year": 2026,
+      "venue": "RDKit Documentation",
+      "url": "https://www.rdkit.org/docs/source/rdkit.Chem.rdmolfiles.html#rdkit.Chem.rdmolfiles.MolFromSmiles",
+      "match_metadata": {
+        "similarity_score": null,
+        "match_type": "manual",
+        "matched_nodes": [],
+        "confidence": "high",
+        "notes": "API reference for constructing sanitized molecule objects from SMILES strings."
+      }
+    },
+    "rdkitDescriptors2026": {
+      "ref_id": "rdkitDescriptors2026",
+      "type": "documentation",
+      "title": "rdkit.Chem.Descriptors module",
+      "authors": [
+        "RDKit Developers"
+      ],
+      "year": 2026,
+      "venue": "RDKit Documentation",
+      "url": "https://www.rdkit.org/docs/source/rdkit.Chem.Descriptors.html",
+      "match_metadata": {
+        "similarity_score": null,
+        "match_type": "manual",
+        "matched_nodes": [],
+        "confidence": "high",
+        "notes": "API reference for RDKit molecular descriptor functions used by compute_descriptors."
+      }
+    },
+    "rdkitMorgan2026": {
+      "ref_id": "rdkitMorgan2026",
+      "type": "documentation",
+      "title": "rdkit.Chem.rdMolDescriptors.GetMorganFingerprintAsBitVect",
+      "authors": [
+        "RDKit Developers"
+      ],
+      "year": 2026,
+      "venue": "RDKit Documentation",
+      "url": "https://www.rdkit.org/docs/source/rdkit.Chem.rdMolDescriptors.html#rdkit.Chem.rdMolDescriptors.GetMorganFingerprintAsBitVect",
+      "match_metadata": {
+        "similarity_score": null,
+        "match_type": "manual",
+        "matched_nodes": [],
+        "confidence": "high",
+        "notes": "API reference for RDKit Morgan circular fingerprint bit-vector generation."
+      }
+    },
+    "rdkitMaccs2026": {
+      "ref_id": "rdkitMaccs2026",
+      "type": "documentation",
+      "title": "rdkit.Chem.MACCSkeys module",
+      "authors": [
+        "RDKit Developers"
+      ],
+      "year": 2026,
+      "venue": "RDKit Documentation",
+      "url": "https://www.rdkit.org/docs/source/rdkit.Chem.MACCSkeys.html",
+      "match_metadata": {
+        "similarity_score": null,
+        "match_type": "manual",
+        "matched_nodes": [],
+        "confidence": "high",
+        "notes": "API reference for RDKit public MACCS structural key generation."
+      }
+    },
+    "rogers2010ecfp": {
+      "ref_id": "rogers2010ecfp",
+      "type": "paper",
+      "title": "Extended-Connectivity Fingerprints",
+      "authors": [
+        "David Rogers",
+        "Mathew Hahn"
+      ],
+      "year": 2010,
+      "venue": "Journal of Chemical Information and Modeling",
+      "doi": "10.1021/ci100050t",
+      "url": "https://doi.org/10.1021/ci100050t",
+      "match_metadata": {
+        "similarity_score": null,
+        "match_type": "manual",
+        "matched_nodes": [],
+        "confidence": "high",
+        "notes": "Primary paper for the circular fingerprint algorithm family represented by Morgan/ECFP fingerprints."
+      }
+    },
+    "wu2018moleculenet": {
+      "ref_id": "wu2018moleculenet",
+      "type": "paper",
+      "title": "MoleculeNet: a benchmark for molecular machine learning",
+      "authors": [
+        "Zhenqin Wu",
+        "Bharath Ramsundar",
+        "Evan N. Feinberg",
+        "Joseph Gomes",
+        "Caleb Geniesse",
+        "Aneesh S. Pappu",
+        "Karl Leswing",
+        "Vijay Pande"
+      ],
+      "year": 2018,
+      "venue": "Chemical Science",
+      "doi": "10.1039/C7SC02664A",
+      "url": "https://doi.org/10.1039/C7SC02664A",
+      "match_metadata": {
+        "similarity_score": null,
+        "match_type": "manual",
+        "matched_nodes": [],
+        "confidence": "medium",
+        "notes": "Benchmark context for descriptor and fingerprint representations in molecular machine learning."
+      }
     }
   }
 }

@@ -1,0 +1,247 @@
+{
+  "schema_version": "1.0",
+  "bundle_id": "sciona.atoms.review_bundle.bio.chemical_descriptors.v1",
+  "provider_repo": "sciona-atoms-bio",
+  "family_batch": "bio_chemical_descriptors",
+  "family": "bio.chemical_descriptors",
+  "review_status": "reviewed",
+  "review_semantic_verdict": "pass_with_limits",
+  "review_developer_semantic_verdict": "pass_with_limits",
+  "trust_readiness": "catalog_ready",
+  "authoritative_sources": [
+    {
+      "kind": "local_atom_source",
+      "path": "src/sciona/atoms/bio/chemical_descriptors/atoms.py"
+    },
+    {
+      "kind": "local_metadata",
+      "path": "src/sciona/atoms/bio/chemical_descriptors/cdg.json"
+    },
+    {
+      "kind": "local_metadata",
+      "path": "src/sciona/atoms/bio/chemical_descriptors/references.json"
+    },
+    {
+      "kind": "local_test",
+      "path": "tests/test_chemical_descriptors_behavior.py"
+    },
+    {
+      "kind": "local_test",
+      "path": "tests/test_chemical_descriptors_review_bundle.py"
+    }
+  ],
+  "limitations": [
+    "RDKit must be installed in the runtime environment before calling the atoms.",
+    "smiles_to_mol raises ValueError for invalid SMILES instead of returning RDKit's raw None sentinel.",
+    "maccs_keys drops RDKit's unused bit-zero padding and returns the 166 public keys."
+  ],
+  "blocking_findings": [],
+  "required_actions": [],
+  "review_record_path": "data/review_bundles/chemical_descriptors.review_bundle.json",
+  "rows": [
+    {
+      "atom_key": "sciona.atoms.bio.chemical_descriptors.smiles_to_mol",
+      "atom_name": "sciona.atoms.bio.chemical_descriptors.smiles_to_mol",
+      "review_status": "reviewed",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantic_verdict": "pass_with_limits",
+      "trust_readiness": "catalog_ready",
+      "source_path": "sciona/atoms/bio/chemical_descriptors/atoms.py:75",
+      "source_paths": [
+        "src/sciona/atoms/bio/chemical_descriptors/atoms.py",
+        "rdkit.Chem.rdmolfiles.MolFromSmiles"
+      ],
+      "review_record_path": "data/review_bundles/chemical_descriptors.review_bundle.json#rows[0]",
+      "overall_verdict": "pass",
+      "structural_status": "pass",
+      "semantic_status": "pass_with_limits",
+      "runtime_status": "pass_with_limits",
+      "developer_semantics_status": "pass_with_limits",
+      "risk_tier": "medium",
+      "risk_score": 24,
+      "risk_dimensions": {
+        "provenance": "low",
+        "semantic_drift": "low",
+        "api_change": "low",
+        "runtime_dependency": "medium"
+      },
+      "risk_reasons": [
+        "RDKit is a required runtime dependency and is imported lazily.",
+        "Invalid SMILES are converted from RDKit None results into ValueError."
+      ],
+      "acceptability_score": 88,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "usage_equivalent",
+      "parity_test_status": "skip_without_rdkit",
+      "parity_fixture_count": 1,
+      "parity_case_count": 2,
+      "review_limitations": [
+        "Requires RDKit at runtime.",
+        "Invalid SMILES are rejected with ValueError."
+      ],
+      "review_required_actions": [],
+      "trust_blockers": [],
+      "has_references": true,
+      "references_status": "pass",
+      "limitations": [
+        "Requires RDKit at runtime.",
+        "Invalid SMILES are rejected with ValueError."
+      ],
+      "blocking_findings": [],
+      "required_actions": []
+    },
+    {
+      "atom_key": "sciona.atoms.bio.chemical_descriptors.compute_descriptors",
+      "atom_name": "sciona.atoms.bio.chemical_descriptors.compute_descriptors",
+      "review_status": "reviewed",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantic_verdict": "pass_with_limits",
+      "trust_readiness": "catalog_ready",
+      "source_path": "sciona/atoms/bio/chemical_descriptors/atoms.py:103",
+      "source_paths": [
+        "src/sciona/atoms/bio/chemical_descriptors/atoms.py",
+        "rdkit.Chem.Descriptors"
+      ],
+      "review_record_path": "data/review_bundles/chemical_descriptors.review_bundle.json#rows[1]",
+      "overall_verdict": "pass",
+      "structural_status": "pass",
+      "semantic_status": "pass_with_limits",
+      "runtime_status": "pass_with_limits",
+      "developer_semantics_status": "pass_with_limits",
+      "risk_tier": "medium",
+      "risk_score": 26,
+      "risk_dimensions": {
+        "provenance": "low",
+        "semantic_drift": "medium",
+        "api_change": "low",
+        "runtime_dependency": "medium"
+      },
+      "risk_reasons": [
+        "Descriptor values depend on RDKit's descriptor implementations.",
+        "Custom descriptor names are resolved dynamically against rdkit.Chem.Descriptors."
+      ],
+      "acceptability_score": 86,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "usage_equivalent",
+      "parity_test_status": "skip_without_rdkit",
+      "parity_fixture_count": 1,
+      "parity_case_count": 3,
+      "review_limitations": [
+        "Requires RDKit at runtime.",
+        "Default descriptor set is intentionally compact rather than exhaustive."
+      ],
+      "review_required_actions": [],
+      "trust_blockers": [],
+      "has_references": true,
+      "references_status": "pass",
+      "limitations": [
+        "Requires RDKit at runtime.",
+        "Default descriptor set is intentionally compact rather than exhaustive."
+      ],
+      "blocking_findings": [],
+      "required_actions": []
+    },
+    {
+      "atom_key": "sciona.atoms.bio.chemical_descriptors.morgan_fingerprint",
+      "atom_name": "sciona.atoms.bio.chemical_descriptors.morgan_fingerprint",
+      "review_status": "reviewed",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantic_verdict": "pass_with_limits",
+      "trust_readiness": "catalog_ready",
+      "source_path": "sciona/atoms/bio/chemical_descriptors/atoms.py:134",
+      "source_paths": [
+        "src/sciona/atoms/bio/chemical_descriptors/atoms.py",
+        "rdkit.Chem.rdMolDescriptors.GetMorganFingerprintAsBitVect"
+      ],
+      "review_record_path": "data/review_bundles/chemical_descriptors.review_bundle.json#rows[2]",
+      "overall_verdict": "pass",
+      "structural_status": "pass",
+      "semantic_status": "pass_with_limits",
+      "runtime_status": "pass_with_limits",
+      "developer_semantics_status": "pass_with_limits",
+      "risk_tier": "medium",
+      "risk_score": 25,
+      "risk_dimensions": {
+        "provenance": "low",
+        "semantic_drift": "low",
+        "api_change": "low",
+        "runtime_dependency": "medium"
+      },
+      "risk_reasons": [
+        "Output bit positions are RDKit-version dependent for the selected Morgan implementation.",
+        "RDKit is imported lazily and required at runtime."
+      ],
+      "acceptability_score": 87,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "usage_equivalent",
+      "parity_test_status": "skip_without_rdkit",
+      "parity_fixture_count": 1,
+      "parity_case_count": 2,
+      "review_limitations": [
+        "Requires RDKit at runtime.",
+        "Uses folded bit vectors, so hash collisions are possible."
+      ],
+      "review_required_actions": [],
+      "trust_blockers": [],
+      "has_references": true,
+      "references_status": "pass",
+      "limitations": [
+        "Requires RDKit at runtime.",
+        "Uses folded bit vectors, so hash collisions are possible."
+      ],
+      "blocking_findings": [],
+      "required_actions": []
+    },
+    {
+      "atom_key": "sciona.atoms.bio.chemical_descriptors.maccs_keys",
+      "atom_name": "sciona.atoms.bio.chemical_descriptors.maccs_keys",
+      "review_status": "reviewed",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantic_verdict": "pass_with_limits",
+      "trust_readiness": "catalog_ready",
+      "source_path": "sciona/atoms/bio/chemical_descriptors/atoms.py:157",
+      "source_paths": [
+        "src/sciona/atoms/bio/chemical_descriptors/atoms.py",
+        "rdkit.Chem.MACCSkeys.GenMACCSKeys"
+      ],
+      "review_record_path": "data/review_bundles/chemical_descriptors.review_bundle.json#rows[3]",
+      "overall_verdict": "pass",
+      "structural_status": "pass",
+      "semantic_status": "pass_with_limits",
+      "runtime_status": "pass_with_limits",
+      "developer_semantics_status": "pass_with_limits",
+      "risk_tier": "medium",
+      "risk_score": 24,
+      "risk_dimensions": {
+        "provenance": "low",
+        "semantic_drift": "low",
+        "api_change": "low",
+        "runtime_dependency": "medium"
+      },
+      "risk_reasons": [
+        "RDKit is imported lazily and required at runtime.",
+        "The atom intentionally removes the unused RDKit padding bit."
+      ],
+      "acceptability_score": 88,
+      "acceptability_band": "acceptable_with_limits_candidate",
+      "parity_coverage_level": "usage_equivalent",
+      "parity_test_status": "skip_without_rdkit",
+      "parity_fixture_count": 1,
+      "parity_case_count": 2,
+      "review_limitations": [
+        "Requires RDKit at runtime.",
+        "Returns 166 public keys rather than RDKit's padded 167-bit vector."
+      ],
+      "review_required_actions": [],
+      "trust_blockers": [],
+      "has_references": true,
+      "references_status": "pass",
+      "limitations": [
+        "Requires RDKit at runtime.",
+        "Returns 166 public keys rather than RDKit's padded 167-bit vector."
+      ],
+      "blocking_findings": [],
+      "required_actions": []
+    }
+  ]
+}
