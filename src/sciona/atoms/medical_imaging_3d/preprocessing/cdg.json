@@ -380,7 +380,19 @@
       "map_window_size": 0,
       "map_hop_size": 0,
       "boundary_kind": "none",
-      "boundary_port_name": ""
+      "boundary_port_name": "",
+      "common_patterns": [
+        {
+          "pattern_id": "macenko_stain_pipeline",
+          "description": "Estimate stain vectors then normalize histopathology image colors",
+          "atoms": [
+            "macenko_stain_vectors",
+            "macenko_normalize"
+          ],
+          "ordering": "sequential",
+          "when": "Stage describes stain normalization"
+        }
+      ]
     },
     {
       "node_id": "macenko_normalize",
@@ -471,7 +483,19 @@
       "map_window_size": 0,
       "map_hop_size": 0,
       "boundary_kind": "none",
-      "boundary_port_name": ""
+      "boundary_port_name": "",
+      "common_patterns": [
+        {
+          "pattern_id": "macenko_stain_pipeline",
+          "description": "Estimate stain vectors then normalize histopathology image colors",
+          "atoms": [
+            "macenko_stain_vectors",
+            "macenko_normalize"
+          ],
+          "ordering": "sequential",
+          "when": "Stage describes stain normalization"
+        }
+      ]
     },
     {
       "node_id": "max_intensity_projection",
