@@ -3,8 +3,6 @@ from __future__ import annotations
 """RDKit-backed atoms for SMILES parsing and chemical feature extraction."""
 
 from collections.abc import Sequence
-from importlib import import_module
-from types import ModuleType
 
 import icontract
 import numpy as np
@@ -17,7 +15,6 @@ from sciona.atoms.bio.chemical_descriptors.witnesses import (
     witness_smiles_to_mol,
 )
 from sciona.ghost.registry import register_atom
-
 
 DEFAULT_DESCRIPTOR_NAMES: tuple[str, ...] = (
     "MolLogP",
@@ -42,8 +39,9 @@ DEFAULT_DESCRIPTOR_NAMES: tuple[str, ...] = (
     "FpDensityMorgan1",
 )
 
-
 def _load_rdkit_module(module_name: str) -> ModuleType:
+    from importlib import import_module
+    from types import ModuleType
     try:
         return import_module(module_name)
     except ImportError as exc:
@@ -52,22 +50,18 @@ def _load_rdkit_module(module_name: str) -> ModuleType:
             "sciona matcher environment before calling this function."
         ) from exc
 
-
 def _has_heavy_atoms(mol: object) -> bool:
     get_num_heavy_atoms = getattr(mol, "GetNumHeavyAtoms", None)
     return callable(get_num_heavy_atoms) and int(get_num_heavy_atoms()) > 0
-
 
 def _has_valid_mol_surface(mol: object) -> bool:
     get_num_atoms = getattr(mol, "GetNumAtoms", None)
     return callable(get_num_atoms) and int(get_num_atoms()) > 0
 
-
 def _descriptor_tuple(descriptor_names: Sequence[str] | None) -> tuple[str, ...]:
     if descriptor_names is None:
         return DEFAULT_DESCRIPTOR_NAMES
     return tuple(descriptor_names)
-
 
 @register_atom(witness_smiles_to_mol)
 @icontract.require(lambda smiles: bool(smiles.strip()), "smiles must be a non-empty string")
@@ -84,7 +78,6 @@ def smiles_to_mol(smiles: str) -> object:
     if mol is None:
         raise ValueError(f"invalid SMILES string: {smiles!r}")
     return mol
-
 
 @register_atom(witness_compute_descriptors)
 @icontract.require(lambda mol: _has_valid_mol_surface(mol), "mol must be an RDKit molecule")
@@ -124,7 +117,6 @@ def compute_descriptors(
         raise ValueError("RDKit descriptor calculation produced a non-finite value")
     return result
 
-
 @register_atom(witness_morgan_fingerprint)
 @icontract.require(lambda mol: _has_valid_mol_surface(mol), "mol must be an RDKit molecule")
 @icontract.require(lambda radius: radius >= 0, "radius must be non-negative")
@@ -148,7 +140,6 @@ def morgan_fingerprint(mol: object, radius: int = 2, n_bits: int = 1024) -> NDAr
     result = np.zeros((n_bits,), dtype=np.int_)
     data_structs.ConvertToNumpyArray(bit_vector, result)
     return result
-
 
 @register_atom(witness_maccs_keys)
 @icontract.require(lambda mol: _has_valid_mol_surface(mol), "mol must be an RDKit molecule")

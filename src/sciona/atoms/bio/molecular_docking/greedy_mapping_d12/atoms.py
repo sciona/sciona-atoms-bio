@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import math
-import random
 from collections.abc import Collection, Hashable, Iterable, Mapping
 from typing import cast
 
@@ -23,13 +22,11 @@ NodeId = Hashable
 MappingState = dict[str, object]
 ScoredNode = dict[str, object]
 
-
 def _as_lattice_graph(lattice_instance: object) -> nx.Graph:
     lattice = getattr(lattice_instance, "lattice", lattice_instance)
     if not hasattr(lattice, "nodes") or not hasattr(lattice, "neighbors"):
         raise TypeError("lattice_instance must expose a NetworkX-like lattice graph")
     return cast(nx.Graph, lattice)
-
 
 def _ordered_nodes(graph: nx.Graph) -> list[Hashable]:
     nodes = list(graph.nodes())
@@ -37,7 +34,6 @@ def _ordered_nodes(graph: nx.Graph) -> list[Hashable]:
         return sorted(nodes)
     except TypeError:
         return nodes
-
 
 def _copy_state(mapping_state: MappingState) -> MappingState:
     return {
@@ -50,22 +46,17 @@ def _copy_state(mapping_state: MappingState) -> MappingState:
         "rng_counter": int(cast(int, mapping_state.get("rng_counter", 0))),
     }
 
-
 def _mapping(state: MappingState) -> dict[Hashable, Hashable]:
     return cast(dict[Hashable, Hashable], state["mapping"])
-
 
 def _unmapping(state: MappingState) -> dict[Hashable, Hashable]:
     return cast(dict[Hashable, Hashable], state["unmapping"])
 
-
 def _unexpanded(state: MappingState) -> set[Hashable]:
     return cast(set[Hashable], state["unexpanded_nodes"])
 
-
 def _removed(state: MappingState) -> set[Hashable]:
     return cast(set[Hashable], state["removed_nodes"])
-
 
 def _lattice_start_node(lattice: nx.Graph, used_sites: set[Hashable]) -> Hashable:
     nodes = _ordered_nodes(lattice)
@@ -86,14 +77,12 @@ def _lattice_start_node(lattice: nx.Graph, used_sites: set[Hashable]) -> Hashabl
             return nodes[candidate_index]
     raise ValueError("no free lattice site is available for the starting node")
 
-
 def _average_lattice_degree(lattice_instance: object, lattice: nx.Graph) -> float:
     if hasattr(lattice_instance, "avg_degree"):
         return float(getattr(lattice_instance, "avg_degree"))
     if lattice.number_of_nodes() == 0:
         return 0.0
     return float(sum(dict(lattice.degree()).values()) / lattice.number_of_nodes())
-
 
 def _score_candidates(
     graph: nx.Graph,
@@ -105,6 +94,7 @@ def _score_candidates(
     remove_invalid_placement_nodes: bool,
     rng: random.Random,
 ) -> list[ScoredNode]:
+    import random
     graph_n = max(graph.number_of_nodes(), 1)
     avg_degree = _average_lattice_degree(lattice_instance, lattice)
     scored_nodes: list[ScoredNode] = []
@@ -133,7 +123,6 @@ def _score_candidates(
         )
 
     return scored_nodes
-
 
 def _place_candidates_on_frontier(
     graph: nx.Graph,
@@ -184,7 +173,6 @@ def _place_candidates_on_frontier(
     if remove_invalid_placement_nodes:
         removed_nodes.update(unplaced_nodes)
 
-
 def _validate_mapping(context: GreedyMappingContext, state: MappingState) -> bool:
     graph = cast(nx.Graph, context["graph"])
     lattice = cast(nx.Graph, context["lattice"])
@@ -212,7 +200,6 @@ def _validate_mapping(context: GreedyMappingContext, state: MappingState) -> boo
 
     return True
 
-
 @register_atom(witness_init_problem_context)
 @icontract.require(lambda graph: graph is not None, "graph cannot be None")
 @icontract.require(lambda lattice_instance: lattice_instance is not None, "lattice_instance cannot be None")
@@ -234,7 +221,6 @@ def init_problem_context(
         "seed": int(seed),
     }
 
-
 @register_atom(witness_construct_mapping_state_via_greedy_expansion)
 @icontract.require(lambda problem_context: problem_context is not None, "problem_context cannot be None")
 @icontract.require(lambda starting_node: starting_node is not None, "starting_node cannot be None")
@@ -249,6 +235,7 @@ def construct_mapping_state_via_greedy_expansion(
     remove_invalid_placement_nodes: bool,
     rank_nodes: bool,
 ) -> tuple[MappingState, list[ScoredNode]]:
+    import random
     """Advance one D12 greedy-lattice mapping step without mutating the input state."""
     graph = cast(nx.Graph, problem_context["graph"])
     lattice = _as_lattice_graph(problem_context["lattice"])
@@ -303,7 +290,6 @@ def construct_mapping_state_via_greedy_expansion(
     )
 
     return state, scored_nodes
-
 
 @register_atom(witness_orchestrate_generation_and_validate)
 @icontract.require(lambda problem_context: problem_context is not None, "problem_context cannot be None")
