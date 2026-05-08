@@ -31,7 +31,7 @@ from .._pulser_optional import (
 @icontract.require(lambda num_sol: num_sol is not None, "num_sol cannot be None")
 @icontract.require(lambda display_info: display_info is not None, "display_info cannot be None")
 @icontract.ensure(lambda result: all(r is not None for r in result), "QuantumProblemDefinition all outputs must not be None")
-def quantumproblemdefinition(graph: ProblemGraph, coordinates_layout: RegisterCoordinates, num_sol: Integer, display_info: Boolean) -> tuple[QuantumRegister, dict[str, object], list[Permutation], dict[str, bool], Integer]:
+def quantum_problem_definition(graph: ProblemGraph, coordinates_layout: RegisterCoordinates, num_sol: Integer, display_info: Boolean) -> tuple[QuantumRegister, dict[str, object], list[Permutation], dict[str, bool], Integer]:
     """Initializes the quantum annealing problem. It computes simulation parameters like the minimum and maximum coupling strengths (u) based on the graph and register coordinates, and prepares the initial state for the solver.
 
     Args:
@@ -59,7 +59,7 @@ def quantumproblemdefinition(graph: ProblemGraph, coordinates_layout: RegisterCo
 @icontract.require(lambda permutation_list: permutation_list is not None, "permutation_list cannot be None")
 @icontract.require(lambda backend_flags: backend_flags is not None, "backend_flags cannot be None")
 @icontract.ensure(lambda result: all(r is not None for r in result), "AdiabaticQuantumSampler all outputs must not be None")
-def adiabaticquantumsampler(initial_register: QuantumRegister, simulation_parameters: dict[str, object], permutation_list: list[Permutation], backend_flags: dict[str, bool]) -> tuple[CountDistribution, QuantumRegister]:
+def adiabatic_quantum_sampler(initial_register: QuantumRegister, simulation_parameters: dict[str, object], permutation_list: list[Permutation], backend_flags: dict[str, bool]) -> tuple[CountDistribution, QuantumRegister]:
     """Executes the core quantum simulation loop. It evolves the quantum register through an adiabatic sequence to find low-energy states of the problem Hamiltonian, effectively sampling from the solution distribution.
 
     Args:
@@ -87,7 +87,7 @@ def adiabaticquantumsampler(initial_register: QuantumRegister, simulation_parame
 @icontract.require(lambda final_register: final_register is not None, "final_register cannot be None")
 @icontract.require(lambda num_solutions: num_solutions is not None, "num_solutions cannot be None")
 @icontract.ensure(lambda result: result is not None, "SolutionExtraction output must not be None")
-def solutionextraction(measurement_counts: CountDistribution, final_register: QuantumRegister, num_solutions: Integer) -> list[Solution]:
+def solution_extraction(measurement_counts: CountDistribution, final_register: QuantumRegister, num_solutions: Integer) -> list[Solution]:
     """Processes the raw results from the quantum sampler. It interprets the measurement count distribution to extract the top solutions for the optimization problem.
 
     Args:

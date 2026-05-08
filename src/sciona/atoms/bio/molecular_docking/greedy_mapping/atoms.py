@@ -26,7 +26,7 @@ MappingState = Any
 @icontract.require(lambda previously_generated_subgraphs: previously_generated_subgraphs is not None, "previously_generated_subgraphs cannot be None")
 @icontract.require(lambda seed: seed is not None, "seed cannot be None")
 @icontract.ensure(lambda result: result is not None, "AssembleStaticMappingContext output must not be None")
-def assemblestaticmappingcontext(graph: Graph, lattice_instance: LatticeInstance, previously_generated_subgraphs: Collection[Subgraph], seed: int|None) -> MappingContext:
+def assemble_static_mapping_context(graph: Graph, lattice_instance: LatticeInstance, previously_generated_subgraphs: Collection[Subgraph], seed: int|None) -> MappingContext:
     """Construct immutable algorithm context from constructor inputs so all later stages consume explicit state instead of hidden class fields.
 
     Args:
@@ -54,7 +54,7 @@ def assemblestaticmappingcontext(graph: Graph, lattice_instance: LatticeInstance
 @icontract.require(lambda unmapping: unmapping is not None, "unmapping cannot be None")
 @icontract.require(lambda unexpanded_nodes: unexpanded_nodes is not None, "unexpanded_nodes cannot be None")
 @icontract.ensure(lambda result: result is not None, "InitializeFrontierFromStartNode output must not be None")
-def initializefrontierfromstartnode(mapping_context: MappingContext, starting_node: NodeId, mapping: Map[GraphNode,LatticeNode], unmapping: Map[LatticeNode,GraphNode], unexpanded_nodes: Set[GraphNode]) -> MappingState:
+def initialize_frontier_from_start_node(mapping_context: MappingContext, starting_node: NodeId, mapping: Map[GraphNode,LatticeNode], unmapping: Map[LatticeNode,GraphNode], unexpanded_nodes: Set[GraphNode]) -> MappingState:
     """Create initial mapping/unmapping frontier state from a selected starting node.
 
     Args:
@@ -103,7 +103,7 @@ def initializefrontierfromstartnode(mapping_context: MappingContext, starting_no
 @icontract.require(lambda remove_invalid_placement_nodes: remove_invalid_placement_nodes is not None, "remove_invalid_placement_nodes cannot be None")
 @icontract.require(lambda rank_nodes: rank_nodes is not None, "rank_nodes cannot be None")
 @icontract.ensure(lambda result: all(r is not None for r in result), "ScoreAndExtendGreedyCandidates all outputs must not be None")
-def scoreandextendgreedycandidates(mapping_context: MappingContext, considered_nodes: List[GraphNode], unexpanded_nodes: Set[GraphNode], free_lattice_neighbors: Set[LatticeNode], mapping: Map[GraphNode,LatticeNode], unmapping: Map[LatticeNode,GraphNode], remove_invalid_placement_nodes: bool = True, rank_nodes: bool = True) -> tuple[MappingState, Map[GraphNode,float]]:
+def score_and_extend_greedy_candidates(mapping_context: MappingContext, considered_nodes: List[GraphNode], unexpanded_nodes: Set[GraphNode], free_lattice_neighbors: Set[LatticeNode], mapping: Map[GraphNode,LatticeNode], unmapping: Map[LatticeNode,GraphNode], remove_invalid_placement_nodes: bool = True, rank_nodes: bool = True) -> tuple[MappingState, Map[GraphNode,float]]:
     """Score candidate placements and greedily extend the mapping frontier using ranking and validity filtering flags.
 
     Args:
@@ -173,7 +173,7 @@ def scoreandextendgreedycandidates(mapping_context: MappingContext, considered_n
 @icontract.require(lambda mapping: mapping is not None, "mapping cannot be None")
 @icontract.require(lambda unmapping: unmapping is not None, "unmapping cannot be None")
 @icontract.ensure(lambda result: result is not None, "ValidateCurrentMapping output must not be None")
-def validatecurrentmapping(mapping_context: MappingContext, mapping: Map[GraphNode,LatticeNode], unmapping: Map[LatticeNode,GraphNode]) -> bool:
+def validate_current_mapping(mapping_context: MappingContext, mapping: Map[GraphNode,LatticeNode], unmapping: Map[LatticeNode,GraphNode]) -> bool:
     """Evaluate whether the current mapping/unmapping pair satisfies graph-lattice consistency constraints.
 
     Args:
@@ -215,7 +215,7 @@ def validatecurrentmapping(mapping_context: MappingContext, mapping: Map[GraphNo
 @icontract.require(lambda extended_mapping_state: extended_mapping_state is not None, "extended_mapping_state cannot be None")
 @icontract.require(lambda mapping_is_valid: mapping_is_valid is not None, "mapping_is_valid cannot be None")
 @icontract.ensure(lambda result: all(r is not None for r in result), "RunGreedyMappingPipeline all outputs must not be None")
-def rungreedymappingpipeline(mapping_context: MappingContext, starting_node: NodeId, remove_invalid_placement_nodes: bool, rank_nodes: bool, initialized_mapping_state: MappingState, extended_mapping_state: MappingState, mapping_is_valid: bool) -> tuple[Subgraph, MappingState]:
+def run_greedy_mapping_pipeline(mapping_context: MappingContext, starting_node: NodeId, remove_invalid_placement_nodes: bool, rank_nodes: bool, initialized_mapping_state: MappingState, extended_mapping_state: MappingState, mapping_is_valid: bool) -> tuple[Subgraph, MappingState]:
     """Orchestrate initialization, greedy extension, and validity checking to produce a greedy Unit Disk (UD) subgraph rooted at the starting node.
 
     Args:

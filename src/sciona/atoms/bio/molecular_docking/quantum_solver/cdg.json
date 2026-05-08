@@ -10,9 +10,9 @@
       "outputs": [],
       "status": "decomposed",
       "children": [
-        "quantumproblemdefinition",
-        "adiabaticquantumsampler",
-        "solutionextraction"
+        "quantum_problem_definition",
+        "adiabatic_quantum_sampler",
+        "solution_extraction"
       ],
       "depth": 0,
       "type_signature": "",
@@ -26,7 +26,7 @@
       "decomposition_rationale": ""
     },
     {
-      "node_id": "quantumproblemdefinition",
+      "node_id": "quantum_problem_definition",
       "parent_id": "q_solver_root",
       "name": "QuantumProblemDefinition",
       "description": "Initializes the quantum annealing problem. It computes simulation parameters like the minimum and maximum coupling strengths (u) based on the graph and register coordinates, and prepares the initial state for the solver.",
@@ -103,7 +103,7 @@
     },
     {
       "node_id": "extractgraphproperties",
-      "parent_id": "quantumproblemdefinition",
+      "parent_id": "quantum_problem_definition",
       "name": "ExtractGraphProperties",
       "description": "Extracts node weights and a corresponding list of node identifiers from the input graph.",
       "concept_type": "data_extraction",
@@ -141,7 +141,7 @@
     },
     {
       "node_id": "createinitialregister",
-      "parent_id": "quantumproblemdefinition",
+      "parent_id": "quantum_problem_definition",
       "name": "CreateInitialRegister",
       "description": "Builds the quantum register by assigning physical coordinates to each node (qubit) from the graph.",
       "concept_type": "data_assembly",
@@ -184,7 +184,7 @@
     },
     {
       "node_id": "optimizeregisterlayout",
-      "parent_id": "quantumproblemdefinition",
+      "parent_id": "quantum_problem_definition",
       "name": "OptimizeRegisterLayout",
       "description": "Finds and applies a permutation to the register and weights to minimize the interaction bandwidth, aiming to improve simulation efficiency.",
       "concept_type": "graph_optimization",
@@ -232,7 +232,7 @@
     },
     {
       "node_id": "calculatehamiltonianscale",
-      "parent_id": "quantumproblemdefinition",
+      "parent_id": "quantum_problem_definition",
       "name": "CalculateHamiltonianScale",
       "description": "Determines the global energy scale for the Hamiltonian by calculating the interaction strength for the shortest non-connected qubit pair, which defines the Rydberg blockade radius.",
       "concept_type": "sampler",
@@ -270,7 +270,7 @@
     },
     {
       "node_id": "formulatedetuningproblem",
-      "parent_id": "quantumproblemdefinition",
+      "parent_id": "quantum_problem_definition",
       "name": "FormulateDetuningProblem",
       "description": "Encodes the problem's objective function into the hardware by normalizing weights and mapping them to a local detuning field (DMM) and global detuning strength.",
       "concept_type": "signal_transform",
@@ -318,7 +318,7 @@
     },
     {
       "node_id": "executequantumannealing",
-      "parent_id": "quantumproblemdefinition",
+      "parent_id": "quantum_problem_definition",
       "name": "ExecuteQuantumAnnealing",
       "description": "Performs the quantum evolution by running a simulation. It selects an appropriate backend (State Vector or Matrix Product State) based on the number of atoms and constructs the final DMM map.",
       "concept_type": "sampler",
@@ -376,7 +376,7 @@
     },
     {
       "node_id": "decodesolutions",
-      "parent_id": "quantumproblemdefinition",
+      "parent_id": "quantum_problem_definition",
       "name": "DecodeSolutions",
       "description": "Processes the raw measurement counts from the simulation, sorting them by probability and converting the most frequent results into valid Maximum-Weight Independent Set (MWIS) solutions.",
       "concept_type": "sorting",
@@ -418,7 +418,7 @@
       "decomposition_rationale": ""
     },
     {
-      "node_id": "adiabaticquantumsampler",
+      "node_id": "adiabatic_quantum_sampler",
       "parent_id": "q_solver_root",
       "name": "AdiabaticQuantumSampler",
       "description": "Executes the core quantum simulation loop. It evolves the quantum register through an adiabatic sequence to find low-energy states of the problem Hamiltonian, effectively sampling from the solution distribution.",
@@ -477,7 +477,7 @@
     },
     {
       "node_id": "build_adiabatic_sequence",
-      "parent_id": "adiabaticquantumsampler",
+      "parent_id": "adiabatic_quantum_sampler",
       "name": "build_adiabatic_sequence",
       "description": "Constructs the adiabatic pulse sequence based on simulation parameters and register geometry. This includes defining the amplitude and detuning waveforms for the global Rydberg channel and configuring the local detuning map.",
       "concept_type": "prior_init",
@@ -515,7 +515,7 @@
     },
     {
       "node_id": "initialize_simulation_backend",
-      "parent_id": "adiabaticquantumsampler",
+      "parent_id": "adiabatic_quantum_sampler",
       "name": "initialize_simulation_backend",
       "description": "Initializes and configures the appropriate quantum simulation backend (QuTip, State Vector, or MPS) for the given pulse sequence, based on runtime flags. This involves setting up backend-specific configurations like time steps, observables, and log levels.",
       "concept_type": "state_init",
@@ -553,7 +553,7 @@
     },
     {
       "node_id": "run_quantum_simulation",
-      "parent_id": "adiabaticquantumsampler",
+      "parent_id": "adiabatic_quantum_sampler",
       "name": "run_quantum_simulation",
       "description": "Executes the simulation on the configured backend to produce raw results, which may include final state vectors or bitstring measurements over time.",
       "concept_type": "sampler",
@@ -586,7 +586,7 @@
     },
     {
       "node_id": "process_simulation_results",
-      "parent_id": "adiabaticquantumsampler",
+      "parent_id": "adiabatic_quantum_sampler",
       "name": "process_simulation_results",
       "description": "Extracts final measurement counts from the raw simulation results by sampling the final state. For the MPS backend, it also applies an inverse permutation to the sampled bitstrings to align them with the original qubit order.",
       "concept_type": "posterior_update",
@@ -628,9 +628,9 @@
       "decomposition_rationale": ""
     },
     {
-      "node_id": "solutionextraction",
+      "node_id": "solution_extraction",
       "parent_id": "q_solver_root",
-      "name": "SolutionExtraction",
+      "name": "solution_extraction",
       "description": "Processes the raw results from the quantum sampler. It interprets the measurement count distribution to extract the top solutions for the optimization problem.",
       "concept_type": "data_extraction",
       "inputs": [
@@ -826,8 +826,8 @@
       "requires_glue": false
     },
     {
-      "source_id": "quantumproblemdefinition",
-      "target_id": "adiabaticquantumsampler",
+      "source_id": "quantum_problem_definition",
+      "target_id": "adiabatic_quantum_sampler",
       "output_name": "initial_register",
       "input_name": "initial_register",
       "source_type": "QuantumRegister",
@@ -835,8 +835,8 @@
       "requires_glue": false
     },
     {
-      "source_id": "quantumproblemdefinition",
-      "target_id": "adiabaticquantumsampler",
+      "source_id": "quantum_problem_definition",
+      "target_id": "adiabatic_quantum_sampler",
       "output_name": "simulation_parameters",
       "input_name": "simulation_parameters",
       "source_type": "Dict",
@@ -844,8 +844,8 @@
       "requires_glue": false
     },
     {
-      "source_id": "quantumproblemdefinition",
-      "target_id": "adiabaticquantumsampler",
+      "source_id": "quantum_problem_definition",
+      "target_id": "adiabatic_quantum_sampler",
       "output_name": "permutation_list",
       "input_name": "permutation_list",
       "source_type": "List[Permutation]",
@@ -853,8 +853,8 @@
       "requires_glue": false
     },
     {
-      "source_id": "quantumproblemdefinition",
-      "target_id": "adiabaticquantumsampler",
+      "source_id": "quantum_problem_definition",
+      "target_id": "adiabatic_quantum_sampler",
       "output_name": "backend_flags",
       "input_name": "backend_flags",
       "source_type": "Dict",
@@ -862,8 +862,8 @@
       "requires_glue": false
     },
     {
-      "source_id": "quantumproblemdefinition",
-      "target_id": "solutionextraction",
+      "source_id": "quantum_problem_definition",
+      "target_id": "solution_extraction",
       "output_name": "num_solutions_passthrough",
       "input_name": "num_solutions",
       "source_type": "Integer",
@@ -871,8 +871,8 @@
       "requires_glue": false
     },
     {
-      "source_id": "adiabaticquantumsampler",
-      "target_id": "solutionextraction",
+      "source_id": "adiabatic_quantum_sampler",
+      "target_id": "solution_extraction",
       "output_name": "measurement_counts",
       "input_name": "measurement_counts",
       "source_type": "CountDistribution",
@@ -880,8 +880,8 @@
       "requires_glue": false
     },
     {
-      "source_id": "adiabaticquantumsampler",
-      "target_id": "solutionextraction",
+      "source_id": "adiabatic_quantum_sampler",
+      "target_id": "solution_extraction",
       "output_name": "final_register",
       "input_name": "final_register",
       "source_type": "QuantumRegister",

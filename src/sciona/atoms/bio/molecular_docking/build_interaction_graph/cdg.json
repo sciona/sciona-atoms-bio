@@ -28,7 +28,7 @@
     {
       "node_id": "pair_distance_compatibility_check",
       "parent_id": "build_weighted_binding_interaction_graph_root",
-      "name": "Pair Distance Compatibility Check",
+      "name": "pair_distance_compatibility_check",
       "description": "Evaluates whether a candidate left/right feature pair satisfies interaction-distance constraints.",
       "concept_type": "geometry",
       "inputs": [
@@ -311,7 +311,7 @@
     {
       "node_id": "networkx_weighted_graph_materialization",
       "parent_id": "build_weighted_binding_interaction_graph_root",
-      "name": "NetworkX Weighted Graph Materialization",
+      "name": "networkx_weighted_graph_materialization",
       "description": "Constructs the final weighted NetworkX graph from derived nodes and edges.",
       "concept_type": "graph_optimization",
       "inputs": [

@@ -146,7 +146,7 @@
       "audit_scope": "wave_1_audit_completion"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping.assemblestaticmappingcontext@sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:29",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping.assemble_static_mapping_context@sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:29",
       "subfamily": "greedy_mapping",
       "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:29",
       "review_status": "reviewed",
@@ -164,7 +164,7 @@
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[3]"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping.initializefrontierfromstartnode@sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:57",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping.initialize_frontier_from_start_node@sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:57",
       "subfamily": "greedy_mapping",
       "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:57",
       "review_status": "reviewed",
@@ -182,7 +182,7 @@
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[4]"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping.rungreedymappingpipeline@sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:218",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping.run_greedy_mapping_pipeline@sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:218",
       "subfamily": "greedy_mapping",
       "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:218",
       "review_status": "reviewed",
@@ -200,7 +200,7 @@
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[5]"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping.scoreandextendgreedycandidates@sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:106",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping.score_and_extend_greedy_candidates@sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:106",
       "subfamily": "greedy_mapping",
       "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:106",
       "review_status": "reviewed",
@@ -218,7 +218,7 @@
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[6]"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping.validatecurrentmapping@sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:176",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.greedy_mapping.validate_current_mapping@sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:176",
       "subfamily": "greedy_mapping",
       "source_path": "sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:176",
       "review_status": "reviewed",
@@ -640,7 +640,7 @@
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[29]"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver.adiabaticquantumsampler@sciona/atoms/bio/molecular_docking/quantum_solver/atoms.py:62",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver.adiabatic_quantum_sampler@sciona/atoms/bio/molecular_docking/quantum_solver/atoms.py:62",
       "subfamily": "quantum_solver",
       "source_path": "sciona/atoms/bio/molecular_docking/quantum_solver/atoms.py:62",
       "review_status": "reviewed",
@@ -666,7 +666,7 @@
       "audit_scope": "quantum_optional_dependency_remediation"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver.quantumproblemdefinition@sciona/atoms/bio/molecular_docking/quantum_solver/atoms.py:34",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver.quantum_problem_definition@sciona/atoms/bio/molecular_docking/quantum_solver/atoms.py:34",
       "subfamily": "quantum_solver",
       "source_path": "sciona/atoms/bio/molecular_docking/quantum_solver/atoms.py:34",
       "review_status": "reviewed",
@@ -692,7 +692,7 @@
       "audit_scope": "quantum_optional_dependency_remediation"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver.solutionextraction@sciona/atoms/bio/molecular_docking/quantum_solver/atoms.py:90",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver.solution_extraction@sciona/atoms/bio/molecular_docking/quantum_solver/atoms.py:90",
       "subfamily": "quantum_solver",
       "source_path": "sciona/atoms/bio/molecular_docking/quantum_solver/atoms.py:90",
       "review_status": "reviewed",
@@ -718,7 +718,7 @@
       "audit_scope": "quantum_optional_dependency_remediation"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.adiabaticpulseassembler@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:111",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.adiabatic_pulse_assembler@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:111",
       "subfamily": "quantum_solver_d12",
       "source_path": "sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:111",
       "review_status": "reviewed",
@@ -744,7 +744,7 @@
       "audit_scope": "quantum_optional_dependency_remediation"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.interactionboundscomputer@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:84",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.interaction_bounds_computer@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:84",
       "subfamily": "quantum_solver_d12",
       "source_path": "sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:84",
       "review_status": "reviewed",
@@ -770,7 +770,7 @@
       "audit_scope": "quantum_optional_dependency_remediation"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantumcircuitsampler@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:139",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantum_circuit_sampler@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:139",
       "subfamily": "quantum_solver_d12",
       "source_path": "sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:139",
       "review_status": "reviewed",
@@ -796,7 +796,7 @@
       "audit_scope": "quantum_optional_dependency_remediation"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantumsolutionextractor@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:176",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantum_solution_extractor@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:176",
       "subfamily": "quantum_solver_d12",
       "source_path": "sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:176",
       "review_status": "reviewed",
@@ -822,7 +822,7 @@
       "audit_scope": "quantum_optional_dependency_remediation"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantumsolverorchestrator@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:42",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantum_solver_orchestrator@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:42",
       "subfamily": "quantum_solver_d12",
       "source_path": "sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:42",
       "review_status": "reviewed",

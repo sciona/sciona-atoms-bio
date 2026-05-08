@@ -10,16 +10,16 @@
       "outputs": [],
       "status": "decomposed",
       "children": [
-        "quantumsolverorchestrator",
-        "interactionboundscomputer",
-        "adiabaticpulseassembler",
-        "quantumcircuitsampler",
-        "quantumsolutionextractor"
+        "quantum_solver_orchestrator",
+        "interaction_bounds_computer",
+        "adiabatic_pulse_assembler",
+        "quantum_circuit_sampler",
+        "quantum_solution_extractor"
       ],
       "depth": 0,
       "type_signature": "",
       "matched_primitive": null,
-      "primitive_binding_confidence": 0.0,
+      "primitive_binding_confidence": 0,
       "primitive_binding_source": "",
       "is_optional": false,
       "is_opaque": false,
@@ -30,27 +30,63 @@
       "decomposition_rationale": ""
     },
     {
-      "node_id": "quantumsolverorchestrator",
+      "node_id": "quantum_solver_orchestrator",
       "parent_id": "q_solver_root",
-      "name": "QuantumSolverOrchestrator",
+      "name": "quantum_solver_orchestrator",
       "description": "Coordinate the end-to-end neutral-atom MWIS solve and return ranked solutions with raw counts.",
       "concept_type": "conditional_routing",
       "inputs": [
-        {"name": "graph", "type_desc": "Graph", "constraints": "weighted graph", "required": true, "default_value_repr": ""},
-        {"name": "coordinates_layout", "type_desc": "dict[str, ndarray]", "constraints": "node coordinates", "required": true, "default_value_repr": ""},
-        {"name": "num_sol", "type_desc": "int", "constraints": ">= 1", "required": true, "default_value_repr": ""},
-        {"name": "display_info", "type_desc": "bool", "constraints": "diagnostic flag", "required": true, "default_value_repr": ""}
+        {
+          "name": "graph",
+          "type_desc": "Graph",
+          "constraints": "weighted graph",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "coordinates_layout",
+          "type_desc": "dict[str, ndarray]",
+          "constraints": "node coordinates",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "num_sol",
+          "type_desc": "int",
+          "constraints": ">= 1",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "display_info",
+          "type_desc": "bool",
+          "constraints": "diagnostic flag",
+          "required": true,
+          "default_value_repr": ""
+        }
       ],
       "outputs": [
-        {"name": "solutions", "type_desc": "list[list[str]]", "constraints": "len <= num_sol", "required": true, "default_value_repr": ""},
-        {"name": "count_dist", "type_desc": "dict[str, int]", "constraints": "non-empty", "required": true, "default_value_repr": ""}
+        {
+          "name": "solutions",
+          "type_desc": "list[list[str]]",
+          "constraints": "len <= num_sol",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "count_dist",
+          "type_desc": "dict[str, int]",
+          "constraints": "non-empty",
+          "required": true,
+          "default_value_repr": ""
+        }
       ],
       "status": "atomic",
       "children": [],
       "depth": 1,
       "type_signature": "(graph: Graph, coordinates_layout: dict[str, ndarray], num_sol: int, display_info: bool) -> tuple[list[list[str]], dict[str, int]]",
       "matched_primitive": null,
-      "primitive_binding_confidence": 0.0,
+      "primitive_binding_confidence": 0,
       "primitive_binding_source": "",
       "is_optional": false,
       "is_opaque": false,
@@ -61,25 +97,49 @@
       "decomposition_rationale": ""
     },
     {
-      "node_id": "interactionboundscomputer",
+      "node_id": "interaction_bounds_computer",
       "parent_id": "q_solver_root",
-      "name": "InteractionBoundsComputer",
+      "name": "interaction_bounds_computer",
       "description": "Compute minimum and maximum interaction bounds from register coordinates and graph structure.",
       "concept_type": "geometry",
       "inputs": [
-        {"name": "register_coord", "type_desc": "dict[str, ndarray]", "constraints": "non-empty", "required": true, "default_value_repr": ""},
-        {"name": "graph", "type_desc": "Graph", "constraints": "weighted graph", "required": true, "default_value_repr": ""}
+        {
+          "name": "register_coord",
+          "type_desc": "dict[str, ndarray]",
+          "constraints": "non-empty",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "graph",
+          "type_desc": "Graph",
+          "constraints": "weighted graph",
+          "required": true,
+          "default_value_repr": ""
+        }
       ],
       "outputs": [
-        {"name": "u_min", "type_desc": "float", "constraints": "> 0", "required": true, "default_value_repr": ""},
-        {"name": "u_max", "type_desc": "float", "constraints": ">= u_min", "required": true, "default_value_repr": ""}
+        {
+          "name": "u_min",
+          "type_desc": "float",
+          "constraints": "> 0",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "u_max",
+          "type_desc": "float",
+          "constraints": ">= u_min",
+          "required": true,
+          "default_value_repr": ""
+        }
       ],
       "status": "atomic",
       "children": [],
       "depth": 1,
       "type_signature": "(register_coord: dict[str, ndarray], graph: Graph) -> tuple[float, float]",
       "matched_primitive": null,
-      "primitive_binding_confidence": 0.0,
+      "primitive_binding_confidence": 0,
       "primitive_binding_source": "",
       "is_optional": false,
       "is_opaque": false,
@@ -90,24 +150,42 @@
       "decomposition_rationale": ""
     },
     {
-      "node_id": "adiabaticpulseassembler",
+      "node_id": "adiabatic_pulse_assembler",
       "parent_id": "q_solver_root",
-      "name": "AdiabaticPulseAssembler",
+      "name": "adiabatic_pulse_assembler",
       "description": "Build the pulse-sequence payload for the neutral-atom backend.",
       "concept_type": "data_assembly",
       "inputs": [
-        {"name": "register", "type_desc": "QuantumRegister", "constraints": "valid register", "required": true, "default_value_repr": ""},
-        {"name": "parameters", "type_desc": "dict[str, float]", "constraints": "contains duration", "required": true, "default_value_repr": ""}
+        {
+          "name": "register",
+          "type_desc": "QuantumRegister",
+          "constraints": "valid register",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "parameters",
+          "type_desc": "dict[str, float]",
+          "constraints": "contains duration",
+          "required": true,
+          "default_value_repr": ""
+        }
       ],
       "outputs": [
-        {"name": "pulse_sequence", "type_desc": "PulseSequence", "constraints": "non-null", "required": true, "default_value_repr": ""}
+        {
+          "name": "pulse_sequence",
+          "type_desc": "PulseSequence",
+          "constraints": "non-null",
+          "required": true,
+          "default_value_repr": ""
+        }
       ],
       "status": "atomic",
       "children": [],
       "depth": 1,
       "type_signature": "(register: QuantumRegister, parameters: dict[str, float]) -> PulseSequence",
       "matched_primitive": null,
-      "primitive_binding_confidence": 0.0,
+      "primitive_binding_confidence": 0,
       "primitive_binding_source": "",
       "is_optional": false,
       "is_opaque": false,
@@ -118,28 +196,70 @@
       "decomposition_rationale": ""
     },
     {
-      "node_id": "quantumcircuitsampler",
+      "node_id": "quantum_circuit_sampler",
       "parent_id": "q_solver_root",
-      "name": "QuantumCircuitSampler",
+      "name": "quantum_circuit_sampler",
       "description": "Execute the configured quantum schedule and return measurement counts.",
       "concept_type": "sampling",
       "inputs": [
-        {"name": "parameters", "type_desc": "dict[str, float]", "constraints": "sampling parameters", "required": true, "default_value_repr": ""},
-        {"name": "register", "type_desc": "QuantumRegister", "constraints": "valid register", "required": true, "default_value_repr": ""},
-        {"name": "list_perm", "type_desc": "list[int]", "constraints": "permutation", "required": true, "default_value_repr": ""},
-        {"name": "run_qutip", "type_desc": "bool", "constraints": "backend flag", "required": true, "default_value_repr": ""},
-        {"name": "run_emu_mps", "type_desc": "bool", "constraints": "backend flag", "required": true, "default_value_repr": ""},
-        {"name": "run_sv", "type_desc": "bool", "constraints": "backend flag", "required": true, "default_value_repr": ""}
+        {
+          "name": "parameters",
+          "type_desc": "dict[str, float]",
+          "constraints": "sampling parameters",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "register",
+          "type_desc": "QuantumRegister",
+          "constraints": "valid register",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "list_perm",
+          "type_desc": "list[int]",
+          "constraints": "permutation",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "run_qutip",
+          "type_desc": "bool",
+          "constraints": "backend flag",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "run_emu_mps",
+          "type_desc": "bool",
+          "constraints": "backend flag",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "run_sv",
+          "type_desc": "bool",
+          "constraints": "backend flag",
+          "required": true,
+          "default_value_repr": ""
+        }
       ],
       "outputs": [
-        {"name": "count_dist", "type_desc": "dict[str, int]", "constraints": "non-empty", "required": true, "default_value_repr": ""}
+        {
+          "name": "count_dist",
+          "type_desc": "dict[str, int]",
+          "constraints": "non-empty",
+          "required": true,
+          "default_value_repr": ""
+        }
       ],
       "status": "atomic",
       "children": [],
       "depth": 1,
       "type_signature": "(parameters: dict[str, float], register: QuantumRegister, list_perm: list[int], run_qutip: bool, run_emu_mps: bool, run_sv: bool) -> dict[str, int]",
       "matched_primitive": null,
-      "primitive_binding_confidence": 0.0,
+      "primitive_binding_confidence": 0,
       "primitive_binding_source": "",
       "is_optional": false,
       "is_opaque": false,
@@ -150,26 +270,56 @@
       "decomposition_rationale": ""
     },
     {
-      "node_id": "quantumsolutionextractor",
+      "node_id": "quantum_solution_extractor",
       "parent_id": "q_solver_root",
-      "name": "QuantumSolutionExtractor",
+      "name": "quantum_solution_extractor",
       "description": "Rank measured bitstrings and extract the requested top solutions.",
       "concept_type": "ranking",
       "inputs": [
-        {"name": "count_dist", "type_desc": "dict[str, int]", "constraints": "measurement counts", "required": true, "default_value_repr": ""},
-        {"name": "register", "type_desc": "QuantumRegister", "constraints": "valid register", "required": true, "default_value_repr": ""},
-        {"name": "num_sol", "type_desc": "int", "constraints": ">= 1", "required": true, "default_value_repr": ""}
+        {
+          "name": "count_dist",
+          "type_desc": "dict[str, int]",
+          "constraints": "measurement counts",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "register",
+          "type_desc": "QuantumRegister",
+          "constraints": "valid register",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "num_sol",
+          "type_desc": "int",
+          "constraints": ">= 1",
+          "required": true,
+          "default_value_repr": ""
+        }
       ],
       "outputs": [
-        {"name": "solutions", "type_desc": "list[list[str]]", "constraints": "len <= num_sol", "required": true, "default_value_repr": ""},
-        {"name": "count_dist", "type_desc": "dict[str, int]", "constraints": "forwarded counts", "required": true, "default_value_repr": ""}
+        {
+          "name": "solutions",
+          "type_desc": "list[list[str]]",
+          "constraints": "len <= num_sol",
+          "required": true,
+          "default_value_repr": ""
+        },
+        {
+          "name": "count_dist",
+          "type_desc": "dict[str, int]",
+          "constraints": "forwarded counts",
+          "required": true,
+          "default_value_repr": ""
+        }
       ],
       "status": "atomic",
       "children": [],
       "depth": 1,
       "type_signature": "(count_dist: dict[str, int], register: QuantumRegister, num_sol: int) -> tuple[list[list[str]], dict[str, int]]",
       "matched_primitive": null,
-      "primitive_binding_confidence": 0.0,
+      "primitive_binding_confidence": 0,
       "primitive_binding_source": "",
       "is_optional": false,
       "is_opaque": false,

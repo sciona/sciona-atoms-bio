@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "atoms": {
-    "sciona.atoms.bio.molecular_docking.quantum_solver_d12.adiabaticpulseassembler@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:111": {
+    "sciona.atoms.bio.molecular_docking.quantum_solver_d12.adiabatic_pulse_assembler@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:111": {
       "references": [
         {
           "ref_id": "moleculardocking2025",
@@ -26,7 +26,7 @@
       ],
       "auto_attribution_runs": []
     },
-    "sciona.atoms.bio.molecular_docking.quantum_solver_d12.interactionboundscomputer@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:84": {
+    "sciona.atoms.bio.molecular_docking.quantum_solver_d12.interaction_bounds_computer@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:84": {
       "references": [
         {
           "ref_id": "moleculardocking2025",
@@ -51,7 +51,7 @@
       ],
       "auto_attribution_runs": []
     },
-    "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantumcircuitsampler@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:139": {
+    "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantum_circuit_sampler@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:139": {
       "references": [
         {
           "ref_id": "moleculardocking2025",
@@ -76,7 +76,7 @@
       ],
       "auto_attribution_runs": []
     },
-    "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantumsolutionextractor@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:176": {
+    "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantum_solution_extractor@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:176": {
       "references": [
         {
           "ref_id": "moleculardocking2025",
@@ -101,7 +101,7 @@
       ],
       "auto_attribution_runs": []
     },
-    "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantumsolverorchestrator@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:42": {
+    "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantum_solver_orchestrator@sciona/atoms/bio/molecular_docking/quantum_solver_d12/atoms.py:42": {
       "references": [
         {
           "ref_id": "moleculardocking2025",

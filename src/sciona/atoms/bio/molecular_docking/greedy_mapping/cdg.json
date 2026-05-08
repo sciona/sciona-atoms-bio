@@ -10,11 +10,11 @@
       "outputs": [],
       "status": "decomposed",
       "children": [
-        "assemblestaticmappingcontext",
-        "initializefrontierfromstartnode",
-        "scoreandextendgreedycandidates",
-        "validatecurrentmapping",
-        "rungreedymappingpipeline"
+        "assemble_static_mapping_context",
+        "initialize_frontier_from_start_node",
+        "score_and_extend_greedy_candidates",
+        "validate_current_mapping",
+        "run_greedy_mapping_pipeline"
       ],
       "depth": 0,
       "type_signature": "",
@@ -28,9 +28,9 @@
       "decomposition_rationale": ""
     },
     {
-      "node_id": "assemblestaticmappingcontext",
+      "node_id": "assemble_static_mapping_context",
       "parent_id": "GreedyMapping_root",
-      "name": "AssembleStaticMappingContext",
+      "name": "assemble_static_mapping_context",
       "description": "Construct immutable algorithm context from constructor inputs so all later stages consume explicit state instead of hidden class fields.",
       "concept_type": "data_assembly",
       "inputs": [
@@ -76,9 +76,9 @@
       "decomposition_rationale": ""
     },
     {
-      "node_id": "initializefrontierfromstartnode",
+      "node_id": "initialize_frontier_from_start_node",
       "parent_id": "GreedyMapping_root",
-      "name": "InitializeFrontierFromStartNode",
+      "name": "initialize_frontier_from_start_node",
       "description": "Create initial mapping/unmapping frontier state from a selected starting node.",
       "concept_type": "graph_traversal",
       "inputs": [
@@ -129,7 +129,7 @@
       "decomposition_rationale": ""
     },
     {
-      "node_id": "scoreandextendgreedycandidates",
+      "node_id": "score_and_extend_greedy_candidates",
       "parent_id": "GreedyMapping_root",
       "name": "ScoreAndExtendGreedyCandidates",
       "description": "Score candidate placements and greedily extend the mapping frontier using ranking and validity filtering flags.",
@@ -209,7 +209,7 @@
     },
     {
       "node_id": "deriveplacementfrontierinputs",
-      "parent_id": "scoreandextendgreedycandidates",
+      "parent_id": "score_and_extend_greedy_candidates",
       "name": "DerivePlacementFrontierInputs",
       "description": "Partition considered graph nodes into already-placed and currently-unplaced candidates to define the extension frontier.",
       "concept_type": "set_theory",
@@ -252,7 +252,7 @@
     },
     {
       "node_id": "computegreedycandidatescores",
-      "parent_id": "scoreandextendgreedycandidates",
+      "parent_id": "score_and_extend_greedy_candidates",
       "name": "ComputeGreedyCandidateScores",
       "description": "Optionally invoke the greedy scoring heuristic for unplaced nodes and expose deterministic candidate scores for downstream ranking/reporting.",
       "concept_type": "greedy",
@@ -310,7 +310,7 @@
     },
     {
       "node_id": "prioritizeunplacednodes",
-      "parent_id": "scoreandextendgreedycandidates",
+      "parent_id": "score_and_extend_greedy_candidates",
       "name": "PrioritizeUnplacedNodes",
       "description": "Choose candidate traversal order by sorting on heuristic ranking scores when enabled, otherwise keep original order.",
       "concept_type": "sorting",
@@ -353,7 +353,7 @@
     },
     {
       "node_id": "greedyassignfrontierplacements",
-      "parent_id": "scoreandextendgreedycandidates",
+      "parent_id": "score_and_extend_greedy_candidates",
       "name": "GreedyAssignFrontierPlacements",
       "description": "Greedily iterate free lattice neighbors and assign the first candidate node that passes both mapped-lattice-neighbor and mapped-graph-neighbor edge-consistency checks.",
       "concept_type": "greedy",
@@ -436,7 +436,7 @@
     },
     {
       "node_id": "buildextendedmappingstatewithpruningpolicy",
-      "parent_id": "scoreandextendgreedycandidates",
+      "parent_id": "score_and_extend_greedy_candidates",
       "name": "BuildExtendedMappingStateWithPruningPolicy",
       "description": "Apply invalid-placement pruning policy to residual unplaced nodes and construct the final extended mapping state while carrying candidate scores.",
       "concept_type": "data_assembly",
@@ -508,9 +508,9 @@
       "decomposition_rationale": ""
     },
     {
-      "node_id": "validatecurrentmapping",
+      "node_id": "validate_current_mapping",
       "parent_id": "GreedyMapping_root",
-      "name": "ValidateCurrentMapping",
+      "name": "validate_current_mapping",
       "description": "Evaluate whether the current mapping/unmapping pair satisfies graph-lattice consistency constraints.",
       "concept_type": "analysis",
       "inputs": [
@@ -551,7 +551,7 @@
       "decomposition_rationale": ""
     },
     {
-      "node_id": "rungreedymappingpipeline",
+      "node_id": "run_greedy_mapping_pipeline",
       "parent_id": "GreedyMapping_root",
       "name": "RunGreedyMappingPipeline",
       "description": "Orchestrate initialization, greedy extension, and validity checking to produce a greedy UD subgraph rooted at the starting node.",
@@ -625,7 +625,7 @@
     },
     {
       "node_id": "initializeseedplacement",
-      "parent_id": "rungreedymappingpipeline",
+      "parent_id": "run_greedy_mapping_pipeline",
       "name": "InitializeSeedPlacement",
       "description": "Create empty bidirectional mapping state and place the starting graph node on its initial lattice node via initialization logic.",
       "concept_type": "state_init",
@@ -673,7 +673,7 @@
     },
     {
       "node_id": "rungreedyfrontierexpansion",
-      "parent_id": "rungreedymappingpipeline",
+      "parent_id": "run_greedy_mapping_pipeline",
       "name": "RunGreedyFrontierExpansion",
       "description": "Iteratively consume unexpanded nodes, derive free lattice neighbors and graph neighbors, invoke greedy extension, and advance cursor until no frontier nodes remain.",
       "concept_type": "greedy",
@@ -731,7 +731,7 @@
     },
     {
       "node_id": "evaluatefinalmappingvalidity",
-      "parent_id": "rungreedymappingpipeline",
+      "parent_id": "run_greedy_mapping_pipeline",
       "name": "EvaluateFinalMappingValidity",
       "description": "Check whether the final bidirectional mapping state is globally consistent.",
       "concept_type": "analysis",
@@ -769,7 +769,7 @@
     },
     {
       "node_id": "buildgreedysubgraphresult",
-      "parent_id": "rungreedymappingpipeline",
+      "parent_id": "run_greedy_mapping_pipeline",
       "name": "BuildGreedySubgraphResult",
       "description": "Materialize pipeline outputs from the validated state, producing the greedy subgraph mapping and final state.",
       "concept_type": "greedy",
@@ -966,8 +966,8 @@
       "requires_glue": false
     },
     {
-      "source_id": "assemblestaticmappingcontext",
-      "target_id": "initializefrontierfromstartnode",
+      "source_id": "assemble_static_mapping_context",
+      "target_id": "initialize_frontier_from_start_node",
       "output_name": "mapping_context",
       "input_name": "mapping_context",
       "source_type": "MappingContext",
@@ -975,8 +975,8 @@
       "requires_glue": false
     },
     {
-      "source_id": "assemblestaticmappingcontext",
-      "target_id": "scoreandextendgreedycandidates",
+      "source_id": "assemble_static_mapping_context",
+      "target_id": "score_and_extend_greedy_candidates",
       "output_name": "mapping_context",
       "input_name": "mapping_context",
       "source_type": "MappingContext",
@@ -984,8 +984,8 @@
       "requires_glue": false
     },
     {
-      "source_id": "assemblestaticmappingcontext",
-      "target_id": "validatecurrentmapping",
+      "source_id": "assemble_static_mapping_context",
+      "target_id": "validate_current_mapping",
       "output_name": "mapping_context",
       "input_name": "mapping_context",
       "source_type": "MappingContext",
@@ -993,8 +993,8 @@
       "requires_glue": false
     },
     {
-      "source_id": "assemblestaticmappingcontext",
-      "target_id": "rungreedymappingpipeline",
+      "source_id": "assemble_static_mapping_context",
+      "target_id": "run_greedy_mapping_pipeline",
       "output_name": "mapping_context",
       "input_name": "mapping_context",
       "source_type": "MappingContext",
@@ -1002,8 +1002,8 @@
       "requires_glue": false
     },
     {
-      "source_id": "initializefrontierfromstartnode",
-      "target_id": "scoreandextendgreedycandidates",
+      "source_id": "initialize_frontier_from_start_node",
+      "target_id": "score_and_extend_greedy_candidates",
       "output_name": "initialized_mapping_state",
       "input_name": "mapping",
       "source_type": "MappingState",
@@ -1011,8 +1011,8 @@
       "requires_glue": false
     },
     {
-      "source_id": "initializefrontierfromstartnode",
-      "target_id": "rungreedymappingpipeline",
+      "source_id": "initialize_frontier_from_start_node",
+      "target_id": "run_greedy_mapping_pipeline",
       "output_name": "initialized_mapping_state",
       "input_name": "initialized_mapping_state",
       "source_type": "MappingState",
@@ -1020,8 +1020,8 @@
       "requires_glue": false
     },
     {
-      "source_id": "scoreandextendgreedycandidates",
-      "target_id": "rungreedymappingpipeline",
+      "source_id": "score_and_extend_greedy_candidates",
+      "target_id": "run_greedy_mapping_pipeline",
       "output_name": "extended_mapping_state",
       "input_name": "extended_mapping_state",
       "source_type": "MappingState",
@@ -1029,8 +1029,8 @@
       "requires_glue": false
     },
     {
-      "source_id": "validatecurrentmapping",
-      "target_id": "rungreedymappingpipeline",
+      "source_id": "validate_current_mapping",
+      "target_id": "run_greedy_mapping_pipeline",
       "output_name": "mapping_is_valid",
       "input_name": "mapping_is_valid",
       "source_type": "bool",

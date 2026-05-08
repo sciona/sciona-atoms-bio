@@ -1,7 +1,7 @@
 [
   {
     "pdg_node": {
-      "predicate_id": "assemblestaticmappingcontext",
+      "predicate_id": "assemble_static_mapping_context",
       "statement": "(graph: Graph, lattice_instance: LatticeInstance, previously_generated_subgraphs: Collection[Subgraph], seed: int|None) -> MappingContext",
       "informal_desc": "Construct immutable algorithm context from constructor inputs so all later stages consume explicit state instead of hidden class fields.",
       "prover": "python",
@@ -10,7 +10,7 @@
     "verified_match": {
       "candidate": {
         "declaration": {
-          "name": "assemblestaticmappingcontext",
+          "name": "assemble_static_mapping_context",
           "type_signature": "(graph: Graph, lattice_instance: LatticeInstance, previously_generated_subgraphs: Collection[Subgraph], seed: int|None) -> MappingContext",
           "docstring": "Construct immutable algorithm context from constructor inputs so all later stages consume explicit state instead of hidden class fields.",
           "conceptual_summary": "ImmutableCompositeStateAssembler. Aggregates multiple externally supplied data structures and an optional deterministic control scalar into a single explicit state record. The transform is structural: it preserves each input by reference/value while reifying them as immutable fields, eliminating implicit ambient state. The result is a canonical context object that downstream procedures can consume with fixed, reproducible access semantics.. Applications: Computational biology: package interaction network, folding-topology constraints, prior motif candidates, and optional randomization seed into a reproducible experiment context, Robotics planning: package environment connectivity map, kinematic constraint manifold, prior trajectory fragments, and tie-break seed into a fixed planning context, Distributed systems optimization: package service dependency graph, resource-topology model, prior allocation subplans, and deterministic seed into an immutable scheduling context, Materials simulation: package atomic connectivity structure, lattice/mesh topology instance, previously sampled local configurations, and seed into a reproducible simulation context",
@@ -30,7 +30,7 @@
     "all_candidates": [
       {
         "declaration": {
-          "name": "assemblestaticmappingcontext",
+          "name": "assemble_static_mapping_context",
           "type_signature": "(graph: Graph, lattice_instance: LatticeInstance, previously_generated_subgraphs: Collection[Subgraph], seed: int|None) -> MappingContext",
           "docstring": "Construct immutable algorithm context from constructor inputs so all later stages consume explicit state instead of hidden class fields.",
           "conceptual_summary": "ImmutableCompositeStateAssembler. Aggregates multiple externally supplied data structures and an optional deterministic control scalar into a single explicit state record. The transform is structural: it preserves each input by reference/value while reifying them as immutable fields, eliminating implicit ambient state. The result is a canonical context object that downstream procedures can consume with fixed, reproducible access semantics.. Applications: Computational biology: package interaction network, folding-topology constraints, prior motif candidates, and optional randomization seed into a reproducible experiment context, Robotics planning: package environment connectivity map, kinematic constraint manifold, prior trajectory fragments, and tie-break seed into a fixed planning context, Distributed systems optimization: package service dependency graph, resource-topology model, prior allocation subplans, and deterministic seed into an immutable scheduling context, Materials simulation: package atomic connectivity structure, lattice/mesh topology instance, previously sampled local configurations, and seed into a reproducible simulation context",
@@ -46,7 +46,7 @@
       {
         "candidate": {
           "declaration": {
-            "name": "assemblestaticmappingcontext",
+            "name": "assemble_static_mapping_context",
             "type_signature": "(graph: Graph, lattice_instance: LatticeInstance, previously_generated_subgraphs: Collection[Subgraph], seed: int|None) -> MappingContext",
             "docstring": "Construct immutable algorithm context from constructor inputs so all later stages consume explicit state instead of hidden class fields.",
             "conceptual_summary": "ImmutableCompositeStateAssembler. Aggregates multiple externally supplied data structures and an optional deterministic control scalar into a single explicit state record. The transform is structural: it preserves each input by reference/value while reifying them as immutable fields, eliminating implicit ambient state. The result is a canonical context object that downstream procedures can consume with fixed, reproducible access semantics.. Applications: Computational biology: package interaction network, folding-topology constraints, prior motif candidates, and optional randomization seed into a reproducible experiment context, Robotics planning: package environment connectivity map, kinematic constraint manifold, prior trajectory fragments, and tie-break seed into a fixed planning context, Distributed systems optimization: package service dependency graph, resource-topology model, prior allocation subplans, and deterministic seed into an immutable scheduling context, Materials simulation: package atomic connectivity structure, lattice/mesh topology instance, previously sampled local configurations, and seed into a reproducible simulation context",
@@ -67,7 +67,7 @@
   },
   {
     "pdg_node": {
-      "predicate_id": "initializefrontierfromstartnode",
+      "predicate_id": "initialize_frontier_from_start_node",
       "statement": "(mapping_context: MappingContext, starting_node: NodeId, mapping: Map[GraphNode,LatticeNode], unmapping: Map[LatticeNode,GraphNode], unexpanded_nodes: Set[GraphNode]) -> MappingState",
       "informal_desc": "Create initial mapping/unmapping frontier state from a selected starting node.",
       "prover": "python",
@@ -76,7 +76,7 @@
     "verified_match": {
       "candidate": {
         "declaration": {
-          "name": "initializefrontierfromstartnode",
+          "name": "initialize_frontier_from_start_node",
           "type_signature": "(mapping_context: MappingContext, starting_node: NodeId, mapping: Map[GraphNode,LatticeNode], unmapping: Map[LatticeNode,GraphNode], unexpanded_nodes: Set[GraphNode]) -> MappingState",
           "docstring": "Create initial mapping/unmapping frontier state from a selected starting node.",
           "conceptual_summary": "SeedBidirectionalCorrespondenceFrontier. Initializes a search state by anchoring a partial correspondence between two relational structures at a selected source element. It takes an existing forward map, its inverse map, and a set of unexpanded source elements, then returns a new immutable state where correspondence consistency constraints are preserved. The result is a frontier-ready state for subsequent expansion steps in a correspondence-construction process.. Applications: Bootstrapping residue-contact-graph to template-topology alignment in computational biology, Seeding component-netlist to physical-layout correspondence in electronic design automation, Initializing landmark-topology matching between sensed environment graphs and prior maps in robotics, Starting entity-alignment search between heterogeneous knowledge graphs in information systems",
@@ -96,7 +96,7 @@
     "all_candidates": [
       {
         "declaration": {
-          "name": "initializefrontierfromstartnode",
+          "name": "initialize_frontier_from_start_node",
           "type_signature": "(mapping_context: MappingContext, starting_node: NodeId, mapping: Map[GraphNode,LatticeNode], unmapping: Map[LatticeNode,GraphNode], unexpanded_nodes: Set[GraphNode]) -> MappingState",
           "docstring": "Create initial mapping/unmapping frontier state from a selected starting node.",
           "conceptual_summary": "SeedBidirectionalCorrespondenceFrontier. Initializes a search state by anchoring a partial correspondence between two relational structures at a selected source element. It takes an existing forward map, its inverse map, and a set of unexpanded source elements, then returns a new immutable state where correspondence consistency constraints are preserved. The result is a frontier-ready state for subsequent expansion steps in a correspondence-construction process.. Applications: Bootstrapping residue-contact-graph to template-topology alignment in computational biology, Seeding component-netlist to physical-layout correspondence in electronic design automation, Initializing landmark-topology matching between sensed environment graphs and prior maps in robotics, Starting entity-alignment search between heterogeneous knowledge graphs in information systems",
@@ -112,7 +112,7 @@
       {
         "candidate": {
           "declaration": {
-            "name": "initializefrontierfromstartnode",
+            "name": "initialize_frontier_from_start_node",
             "type_signature": "(mapping_context: MappingContext, starting_node: NodeId, mapping: Map[GraphNode,LatticeNode], unmapping: Map[LatticeNode,GraphNode], unexpanded_nodes: Set[GraphNode]) -> MappingState",
             "docstring": "Create initial mapping/unmapping frontier state from a selected starting node.",
             "conceptual_summary": "SeedBidirectionalCorrespondenceFrontier. Initializes a search state by anchoring a partial correspondence between two relational structures at a selected source element. It takes an existing forward map, its inverse map, and a set of unexpanded source elements, then returns a new immutable state where correspondence consistency constraints are preserved. The result is a frontier-ready state for subsequent expansion steps in a correspondence-construction process.. Applications: Bootstrapping residue-contact-graph to template-topology alignment in computational biology, Seeding component-netlist to physical-layout correspondence in electronic design automation, Initializing landmark-topology matching between sensed environment graphs and prior maps in robotics, Starting entity-alignment search between heterogeneous knowledge graphs in information systems",
@@ -463,7 +463,7 @@
   },
   {
     "pdg_node": {
-      "predicate_id": "validatecurrentmapping",
+      "predicate_id": "validate_current_mapping",
       "statement": "(mapping_context: MappingContext, mapping: Map[GraphNode,LatticeNode], unmapping: Map[LatticeNode,GraphNode]) -> bool",
       "informal_desc": "Evaluate whether the current mapping/unmapping pair satisfies graph-lattice consistency constraints.",
       "prover": "python",
@@ -472,7 +472,7 @@
     "verified_match": {
       "candidate": {
         "declaration": {
-          "name": "validatecurrentmapping",
+          "name": "validate_current_mapping",
           "type_signature": "(mapping_context: MappingContext, mapping: Map[GraphNode,LatticeNode], unmapping: Map[LatticeNode,GraphNode]) -> bool",
           "docstring": "Evaluate whether the current mapping/unmapping pair satisfies graph-lattice consistency constraints.",
           "conceptual_summary": "Bidirectional Relation Consistency Validator. Consumes a candidate pair of forward and reverse mappings between two discrete relational structures and tests whether they satisfy a shared constraint system. It verifies inverse coherence (round-trip consistency) and structural admissibility against topology/order constraints encoded in the context object. The result is a single feasibility predicate indicating whether the mapping pair is a valid structure-preserving correspondence.. Applications: Verifying correspondence between segmented regions in multimodal medical images under anatomical adjacency constraints, Checking consistency of symbol-to-state alignments in compiler intermediate-representation lowering with reverse traceability guarantees, Validating entity alignment between heterogeneous knowledge graphs while preserving ontology hierarchy relations, Confirming mesh-to-skeleton attachment maps in computational biomechanics with inverse lookup and topology constraints",
@@ -492,7 +492,7 @@
     "all_candidates": [
       {
         "declaration": {
-          "name": "validatecurrentmapping",
+          "name": "validate_current_mapping",
           "type_signature": "(mapping_context: MappingContext, mapping: Map[GraphNode,LatticeNode], unmapping: Map[LatticeNode,GraphNode]) -> bool",
           "docstring": "Evaluate whether the current mapping/unmapping pair satisfies graph-lattice consistency constraints.",
           "conceptual_summary": "Bidirectional Relation Consistency Validator. Consumes a candidate pair of forward and reverse mappings between two discrete relational structures and tests whether they satisfy a shared constraint system. It verifies inverse coherence (round-trip consistency) and structural admissibility against topology/order constraints encoded in the context object. The result is a single feasibility predicate indicating whether the mapping pair is a valid structure-preserving correspondence.. Applications: Verifying correspondence between segmented regions in multimodal medical images under anatomical adjacency constraints, Checking consistency of symbol-to-state alignments in compiler intermediate-representation lowering with reverse traceability guarantees, Validating entity alignment between heterogeneous knowledge graphs while preserving ontology hierarchy relations, Confirming mesh-to-skeleton attachment maps in computational biomechanics with inverse lookup and topology constraints",
@@ -508,7 +508,7 @@
       {
         "candidate": {
           "declaration": {
-            "name": "validatecurrentmapping",
+            "name": "validate_current_mapping",
             "type_signature": "(mapping_context: MappingContext, mapping: Map[GraphNode,LatticeNode], unmapping: Map[LatticeNode,GraphNode]) -> bool",
             "docstring": "Evaluate whether the current mapping/unmapping pair satisfies graph-lattice consistency constraints.",
             "conceptual_summary": "Bidirectional Relation Consistency Validator. Consumes a candidate pair of forward and reverse mappings between two discrete relational structures and tests whether they satisfy a shared constraint system. It verifies inverse coherence (round-trip consistency) and structural admissibility against topology/order constraints encoded in the context object. The result is a single feasibility predicate indicating whether the mapping pair is a valid structure-preserving correspondence.. Applications: Verifying correspondence between segmented regions in multimodal medical images under anatomical adjacency constraints, Checking consistency of symbol-to-state alignments in compiler intermediate-representation lowering with reverse traceability guarantees, Validating entity alignment between heterogeneous knowledge graphs while preserving ontology hierarchy relations, Confirming mesh-to-skeleton attachment maps in computational biomechanics with inverse lookup and topology constraints",

@@ -727,7 +727,7 @@
   },
   {
     "pdg_node": {
-      "predicate_id": "solutionextraction",
+      "predicate_id": "solution_extraction",
       "statement": "(measurement_counts: CountDistribution, final_register: QuantumRegister, num_solutions: Integer) -> List[Solution]",
       "informal_desc": "Processes the raw results from the quantum sampler. It interprets the measurement count distribution to extract the top solutions for the optimization problem.",
       "prover": "python",
@@ -736,7 +736,7 @@
     "verified_match": {
       "candidate": {
         "declaration": {
-          "name": "solutionextraction",
+          "name": "solution_extraction",
           "type_signature": "(measurement_counts: CountDistribution, final_register: QuantumRegister, num_solutions: Integer) -> List[Solution]",
           "docstring": "Processes the raw results from the quantum sampler. It interprets the measurement count distribution to extract the top solutions for the optimization problem.",
           "conceptual_summary": "MostProbableStateDecoder. Filters a discrete probability distribution to identify the 'K' most frequently observed states. It then decodes these high-frequency states from a raw format into a structured representation, effectively reducing a large outcome space to a small set of the most likely results.. Applications: Genomics: Identifying the most common genetic variants in a population from sequencing count data., Natural Language Processing: Extracting the most likely candidate words from a language model's output probability distribution for use in beam search decoding., Failure Analysis: Pinpointing the most frequent error codes from system logs to prioritize investigation of system failure modes., Market Research: Determining the most popular product choices from a large set of customer transaction data.",
@@ -756,7 +756,7 @@
     "all_candidates": [
       {
         "declaration": {
-          "name": "solutionextraction",
+          "name": "solution_extraction",
           "type_signature": "(measurement_counts: CountDistribution, final_register: QuantumRegister, num_solutions: Integer) -> List[Solution]",
           "docstring": "Processes the raw results from the quantum sampler. It interprets the measurement count distribution to extract the top solutions for the optimization problem.",
           "conceptual_summary": "MostProbableStateDecoder. Filters a discrete probability distribution to identify the 'K' most frequently observed states. It then decodes these high-frequency states from a raw format into a structured representation, effectively reducing a large outcome space to a small set of the most likely results.. Applications: Genomics: Identifying the most common genetic variants in a population from sequencing count data., Natural Language Processing: Extracting the most likely candidate words from a language model's output probability distribution for use in beam search decoding., Failure Analysis: Pinpointing the most frequent error codes from system logs to prioritize investigation of system failure modes., Market Research: Determining the most popular product choices from a large set of customer transaction data.",
@@ -772,7 +772,7 @@
       {
         "candidate": {
           "declaration": {
-            "name": "solutionextraction",
+            "name": "solution_extraction",
             "type_signature": "(measurement_counts: CountDistribution, final_register: QuantumRegister, num_solutions: Integer) -> List[Solution]",
             "docstring": "Processes the raw results from the quantum sampler. It interprets the measurement count distribution to extract the top solutions for the optimization problem.",
             "conceptual_summary": "MostProbableStateDecoder. Filters a discrete probability distribution to identify the 'K' most frequently observed states. It then decodes these high-frequency states from a raw format into a structured representation, effectively reducing a large outcome space to a small set of the most likely results.. Applications: Genomics: Identifying the most common genetic variants in a population from sequencing count data., Natural Language Processing: Extracting the most likely candidate words from a language model's output probability distribution for use in beam search decoding., Failure Analysis: Pinpointing the most frequent error codes from system logs to prioritize investigation of system failure modes., Market Research: Determining the most popular product choices from a large set of customer transaction data.",

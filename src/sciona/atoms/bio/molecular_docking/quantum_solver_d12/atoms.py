@@ -39,7 +39,7 @@ def _is_nx_graph(obj: object) -> bool:
 @icontract.require(lambda num_sol: num_sol >= 1, "num_sol must be >= 1")
 @icontract.ensure(lambda result: isinstance(result[0], list), "solutions must be a list")
 @icontract.ensure(lambda result: isinstance(result[1], dict), "count_dist must be a dict")
-def quantumsolverorchestrator(graph: nx.Graph, coordinates_layout: dict[str, np.ndarray], num_sol: int, display_info: bool) -> tuple[list[list[str]], dict[str, int]]:
+def quantum_solver_orchestrator(graph: nx.Graph, coordinates_layout: dict[str, np.ndarray], num_sol: int, display_info: bool) -> tuple[list[list[str]], dict[str, int]]:
     """Solve the Maximum Weight Independent Set (MWIS) problem end-to-end on a neutral-atom quantum device.
 
     Builds an atomic register from graph node coordinates. Computes
@@ -81,7 +81,7 @@ def quantumsolverorchestrator(graph: nx.Graph, coordinates_layout: dict[str, np.
 @icontract.require(lambda graph: _is_nx_graph(graph), "graph must be a networkx Graph")
 @icontract.ensure(lambda result: result[0] > 0, "u_min must be positive")
 @icontract.ensure(lambda result: result[1] > 0, "u_max must be positive")
-def interactionboundscomputer(register_coord: dict[str, np.ndarray], graph: nx.Graph) -> tuple[float, float]:
+def interaction_bounds_computer(register_coord: dict[str, np.ndarray], graph: nx.Graph) -> tuple[float, float]:
     """Compute the min and max interaction energy bounds across all atom pairs.
 
     u_min is the weakest interaction between connected nodes (largest edge
@@ -108,7 +108,7 @@ def interactionboundscomputer(register_coord: dict[str, np.ndarray], graph: nx.G
 @icontract.require(lambda parameters: isinstance(parameters, dict), "parameters must be a dict")
 @icontract.require(lambda parameters: "duration" in parameters, "parameters must contain 'duration'")
 @icontract.ensure(lambda result: result is not None, "pulse sequence must not be None")
-def adiabaticpulseassembler(register: QuantumRegister, parameters: dict[str, object]) -> PulseSequence:
+def adiabatic_pulse_assembler(register: QuantumRegister, parameters: dict[str, object]) -> PulseSequence:
     """Build the time-dependent adiabatic pulse sequence for the neutral-atom device.
 
     Creates drive-frequency and detuning ramp waveforms from interpolated
@@ -136,7 +136,7 @@ def adiabaticpulseassembler(register: QuantumRegister, parameters: dict[str, obj
 @icontract.require(lambda run_qutip, run_emu_mps, run_sv: run_qutip or run_emu_mps or run_sv, "one backend flag must be true")
 @icontract.ensure(lambda result: isinstance(result, dict) and len(result) > 0, "counts must be a non-empty dict")
 @icontract.ensure(lambda result: all(isinstance(v, int) and v > 0 for v in result.values()), "all counts must be positive integers")
-def quantumcircuitsampler(parameters: dict[str, object], register: QuantumRegister, list_perm: list[int], run_qutip: bool, run_emu_mps: bool, run_sv: bool) -> dict[str, int]:
+def quantum_circuit_sampler(parameters: dict[str, object], register: QuantumRegister, list_perm: list[int], run_qutip: bool, run_emu_mps: bool, run_sv: bool) -> dict[str, int]:
     """Run the adiabatic pulse sequence on the chosen quantum backend and return bitstring counts.
 
     Builds the pulse sequence, then sends it to one of three backends:
@@ -173,7 +173,7 @@ def quantumcircuitsampler(parameters: dict[str, object], register: QuantumRegist
 @icontract.require(lambda num_solutions: num_solutions >= 1, "num_solutions must be >= 1")
 @icontract.ensure(lambda result: isinstance(result[0], list), "solutions must be a list")
 @icontract.ensure(lambda result: isinstance(result[1], list), "solution_counts must be a list")
-def quantumsolutionextractor(count_dist: dict[str, int], register: QuantumRegister, num_solutions: int) -> tuple[list[list[str]], list[int]]:
+def quantum_solution_extractor(count_dist: dict[str, int], register: QuantumRegister, num_solutions: int) -> tuple[list[list[str]], list[int]]:
     """Post-processes the raw measurement count distribution to decode, rank, and filter the top-k bitstring solutions.
 
     Sorts bitstrings by descending count, decodes each bitstring into a list of

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "atoms": {
-    "sciona.atoms.bio.molecular_docking.greedy_mapping.assemblestaticmappingcontext@sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:29": {
+    "sciona.atoms.bio.molecular_docking.greedy_mapping.assemble_static_mapping_context@sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:29": {
       "references": [
         {
           "ref_id": "moleculardocking2025",
@@ -26,7 +26,7 @@
       ],
       "auto_attribution_runs": []
     },
-    "sciona.atoms.bio.molecular_docking.greedy_mapping.initializefrontierfromstartnode@sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:57": {
+    "sciona.atoms.bio.molecular_docking.greedy_mapping.initialize_frontier_from_start_node@sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:57": {
       "references": [
         {
           "ref_id": "moleculardocking2025",
@@ -51,7 +51,7 @@
       ],
       "auto_attribution_runs": []
     },
-    "sciona.atoms.bio.molecular_docking.greedy_mapping.rungreedymappingpipeline@sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:218": {
+    "sciona.atoms.bio.molecular_docking.greedy_mapping.run_greedy_mapping_pipeline@sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:218": {
       "references": [
         {
           "ref_id": "moleculardocking2025",
@@ -76,7 +76,7 @@
       ],
       "auto_attribution_runs": []
     },
-    "sciona.atoms.bio.molecular_docking.greedy_mapping.scoreandextendgreedycandidates@sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:106": {
+    "sciona.atoms.bio.molecular_docking.greedy_mapping.score_and_extend_greedy_candidates@sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:106": {
       "references": [
         {
           "ref_id": "moleculardocking2025",
@@ -101,7 +101,7 @@
       ],
       "auto_attribution_runs": []
     },
-    "sciona.atoms.bio.molecular_docking.greedy_mapping.validatecurrentmapping@sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:176": {
+    "sciona.atoms.bio.molecular_docking.greedy_mapping.validate_current_mapping@sciona/atoms/bio/molecular_docking/greedy_mapping/atoms.py:176": {
       "references": [
         {
           "ref_id": "moleculardocking2025",
