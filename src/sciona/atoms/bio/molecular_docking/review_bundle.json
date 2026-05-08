@@ -298,7 +298,7 @@
       "audit_scope": "classical_molecular_docking_remediation"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.aggregate_maximum_distance_as_bandwidth@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:93",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.aggregate_maximum_distance_as_bandwidth@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:87",
       "subfamily": "minimize_bandwidth",
       "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:93",
       "review_status": "reviewed",
@@ -316,7 +316,7 @@
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[11]"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.build_sparse_graph_view@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:269",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.build_sparse_graph_view@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:263",
       "subfamily": "minimize_bandwidth",
       "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:269",
       "review_status": "reviewed",
@@ -334,7 +334,7 @@
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[12]"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.build_threshold_search_space@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:322",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.build_threshold_search_space@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:316",
       "subfamily": "minimize_bandwidth",
       "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:322",
       "review_status": "reviewed",
@@ -352,7 +352,7 @@
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[13]"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.compute_absolute_weighted_index_distances@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:76",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.compute_absolute_weighted_index_distances@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:70",
       "subfamily": "minimize_bandwidth",
       "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:76",
       "review_status": "reviewed",
@@ -370,7 +370,7 @@
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[14]"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.compute_symmetric_bandwidth_reducing_order@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:287",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.compute_symmetric_bandwidth_reducing_order@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:281",
       "subfamily": "minimize_bandwidth",
       "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:287",
       "review_status": "reviewed",
@@ -388,7 +388,7 @@
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[15]"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.enforce_threshold_sparsity@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:249",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.enforce_threshold_sparsity@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:243",
       "subfamily": "minimize_bandwidth",
       "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:249",
       "review_status": "reviewed",
@@ -406,7 +406,7 @@
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[16]"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.enumerate_threshold_based_permutations@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:346",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.enumerate_threshold_based_permutations@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:340",
       "subfamily": "minimize_bandwidth",
       "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:346",
       "review_status": "reviewed",
@@ -424,7 +424,7 @@
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[17]"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.extract_final_permutation@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:229",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.extract_final_permutation@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:223",
       "subfamily": "minimize_bandwidth",
       "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:229",
       "review_status": "reviewed",
@@ -442,7 +442,7 @@
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[18]"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.initialize_reduction_state@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:130",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.initialize_reduction_state@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:124",
       "subfamily": "minimize_bandwidth",
       "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:130",
       "review_status": "reviewed",
@@ -460,7 +460,7 @@
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[19]"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.propose_greedy_permutation_step@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:158",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.propose_greedy_permutation_step@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:152",
       "subfamily": "minimize_bandwidth",
       "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:158",
       "review_status": "reviewed",
@@ -478,7 +478,7 @@
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[20]"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.select_minimum_bandwidth_permutation@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:373",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.select_minimum_bandwidth_permutation@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:367",
       "subfamily": "minimize_bandwidth",
       "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:373",
       "review_status": "reviewed",
@@ -496,7 +496,7 @@
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[21]"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.update_state_with_improvement_criterion@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:186",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.update_state_with_improvement_criterion@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:180",
       "subfamily": "minimize_bandwidth",
       "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:186",
       "review_status": "reviewed",
@@ -514,7 +514,7 @@
       "review_record_path": "src/sciona/atoms/bio/molecular_docking/review_bundle.json#rows[22]"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.validate_square_matrix_shape@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:58",
+      "atom_fqdn": "sciona.atoms.bio.molecular_docking.minimize_bandwidth.validate_square_matrix_shape@sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:52",
       "subfamily": "minimize_bandwidth",
       "source_path": "sciona/atoms/bio/molecular_docking/minimize_bandwidth/atoms.py:58",
       "review_status": "reviewed",

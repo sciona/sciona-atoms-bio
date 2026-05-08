@@ -24,7 +24,7 @@
   ],
   "rows": [
     {
-      "atom_fqdn": "sciona.atoms.bio.alphafold.invariant_point_attention@sciona/atoms/bio/alphafold/atoms.py:22",
+      "atom_fqdn": "sciona.atoms.bio.alphafold.invariant_point_attention@sciona/atoms/bio/alphafold/atoms.py:21",
       "subfamily": "alphafold",
       "source_path": "sciona/atoms/bio/alphafold/atoms.py:22",
       "review_status": "reviewed",
@@ -40,7 +40,7 @@
       "review_record_path": "src/sciona/atoms/bio/alphafold/review_bundle.json#rows[0]"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.alphafold.equivariant_frame_update@sciona/atoms/bio/alphafold/atoms.py:74",
+      "atom_fqdn": "sciona.atoms.bio.alphafold.equivariant_frame_update@sciona/atoms/bio/alphafold/atoms.py:79",
       "subfamily": "alphafold",
       "source_path": "sciona/atoms/bio/alphafold/atoms.py:74",
       "review_status": "reviewed",
@@ -56,7 +56,7 @@
       "review_record_path": "src/sciona/atoms/bio/alphafold/review_bundle.json#rows[1]"
     },
     {
-      "atom_fqdn": "sciona.atoms.bio.alphafold.coordinate_reconstruction@sciona/atoms/bio/alphafold/atoms.py:109",
+      "atom_fqdn": "sciona.atoms.bio.alphafold.coordinate_reconstruction@sciona/atoms/bio/alphafold/atoms.py:125",
       "subfamily": "alphafold",
       "source_path": "sciona/atoms/bio/alphafold/atoms.py:109",
       "review_status": "reviewed",
