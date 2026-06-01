@@ -66,9 +66,9 @@
       "conceptual_summary": "SMILES string validation and molecule graph materialization.",
       "critic_notes": "",
       "decomposition_rationale": "Parsing is isolated so downstream descriptor atoms do not repeatedly tokenize and sanitize the same molecule.",
-      "time_complexity": "O(S)",
+      "time_complexity": "O(S^3)",
       "space_complexity": "O(S)",
-      "complexity_reasoning": "Parsing and sanitizing a SMILES string scales linearly with the length of the string to construct the RDKit molecule graph representation.",
+      "complexity_reasoning": "Parsing a SMILES string of length S involves lexical parsing and molecular graph construction taking O(S) time, followed by ring perception (such as Paton's Smallest Set of Smallest Rings algorithm) and sanitization which can scale as O(S^3) in the worst case for complex ring systems. The resulting molecular graph representation occupies O(S) space. (derived from analyzing the actual function rdkit.Chem.MolFromSmiles rather than the opaque wrapper)",
       "complexity_confidence": 95
     },
     {
@@ -116,9 +116,9 @@
       "conceptual_summary": "Continuous molecular feature extraction for QSAR-style models.",
       "critic_notes": "",
       "decomposition_rationale": "Continuous descriptors are a separate feature type from hashed and structural-key fingerprints.",
-      "time_complexity": "O(D * A)",
-      "space_complexity": "O(D)",
-      "complexity_reasoning": "Computing D molecular descriptors requires evaluating each descriptor function on the molecular graph, which takes linear time in both the number of descriptors and the number of atoms.",
+      "time_complexity": "O(D * A^3)",
+      "space_complexity": "O(A^2 + D)",
+      "complexity_reasoning": "Computing D molecular descriptors on a molecule graph of A atoms requires evaluating each descriptor function. While simple descriptors are O(1) or O(A), topological descriptors (e.g., Balaban's J index) require computing the all-pairs shortest path distance matrix, taking O(A^3) worst-case time using Floyd-Warshall or O(A^2 log A) with Dijkstra. The space complexity is O(A^2 + D) since calculating the distance matrix requires storing an A x A matrix, and the output vector is of size D. (derived from analyzing the actual function rdkit.Chem.Descriptors rather than the opaque wrapper)",
       "complexity_confidence": 90
     },
     {
@@ -173,9 +173,9 @@
       "conceptual_summary": "Circular substructure hashing converted into a NumPy binary vector.",
       "critic_notes": "",
       "decomposition_rationale": "Morgan fingerprints are a distinct hashed structural representation from continuous descriptors and MACCS keys.",
-      "time_complexity": "O(R * A + B_bits)",
-      "space_complexity": "O(B_bits)",
-      "complexity_reasoning": "Calculating the circular Morgan fingerprint requires analyzing local environments of radius R around each of the A atoms and writing the hashed bits to a vector of size B_bits.",
+      "time_complexity": "O(R * A + B)",
+      "space_complexity": "O(A + B)",
+      "complexity_reasoning": "Generating the circular Morgan fingerprint involves performing circular neighborhood searches up to a radius R for each of the A atoms. For typical organic molecules of bounded maximum degree, neighborhood gathering and hashing at each atom takes O(1) time per iteration, yielding O(R * A) total time. Initializing the bit vector and converting it to a NumPy array takes O(B) time where B is the number of bits. The space complexity is O(A + B) to store the atom environment identifiers during processing and the final bit vector of size B. (derived from analyzing the actual function rdkit.Chem.rdMolDescriptors.GetMorganFingerprintAsBitVect rather than the opaque wrapper)",
       "complexity_confidence": 92
     },
     {
@@ -218,7 +218,7 @@
       "decomposition_rationale": "MACCS keys provide a human-interpretable structural fingerprint separate from Morgan hash features.",
       "time_complexity": "O(A)",
       "space_complexity": "O(1)",
-      "complexity_reasoning": "Generating MACCS keys matches a fixed set of 166 structural patterns against the molecule graph, scaling linearly with the number of atoms, and produces a constant-sized 166-bit vector.",
+      "complexity_reasoning": "Generating MACCS keys requires matching a fixed library of 166 structural keys against the molecular graph of A atoms. Substructure matching (subgraph isomorphism) is highly optimized and runs in linear O(A) average-case time on sparse chemical graphs. The space complexity is O(1) since the output is a fixed-size 166-bit vector independent of the input molecule size. (derived from analyzing the actual function rdkit.Chem.MACCSkeys.GenMACCSKeys rather than the opaque wrapper)",
       "complexity_confidence": 95
     }
   ],
