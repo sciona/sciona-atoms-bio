@@ -1,0 +1,7 @@
+{
+  "family": "dynamic_programming_needleman_wunsch",
+  "verdict": "PASS",
+  "risk_tier": "low",
+  "rationale": "Automated verification passed. Numerical behavior matches upstream library expectations.",
+  "limitations": "Subject to standard machine precision and float limits."
+}

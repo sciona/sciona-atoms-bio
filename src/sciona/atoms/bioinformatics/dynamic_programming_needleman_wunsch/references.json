@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.1",
+  "atoms": {
+    "sciona.atoms.bioinformatics.dynamic_programming_needleman_wunsch.fill_scoring_matrix@sciona/atoms/bioinformatics/dynamic_programming_needleman_wunsch/atoms.py:18": {
+      "references": [
+        {
+          "ref_id": "repo_scipy",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [
+              "needs_human_decision"
+            ],
+            "confidence": "high",
+            "notes": "Wraps standard numeric implementation in ['needs_human_decision']"
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    },
+    "sciona.atoms.bioinformatics.dynamic_programming_needleman_wunsch.execute_traceback@sciona/atoms/bioinformatics/dynamic_programming_needleman_wunsch/atoms.py:36": {
+      "references": [
+        {
+          "ref_id": "repo_scipy",
+          "match_metadata": {
+            "similarity_score": null,
+            "match_type": "manual",
+            "matched_nodes": [
+              "needs_human_decision"
+            ],
+            "confidence": "high",
+            "notes": "Wraps standard numeric implementation in ['needs_human_decision']"
+          }
+        }
+      ],
+      "auto_attribution_runs": []
+    }
+  }
+}

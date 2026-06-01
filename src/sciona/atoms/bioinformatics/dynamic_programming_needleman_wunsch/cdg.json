@@ -1,0 +1,156 @@
+{
+  "cdg_id": "dynamic_programming_needleman_wunsch",
+  "name": "dynamic_programming_needleman_wunsch",
+  "priority": "medium",
+  "decomposition_rationale": "Separates the $O(M \\\\cdot N)$ score matrix filling stage from the sequential traceback path extraction stage.",
+  "family_directory_hint": "src/sciona/atoms/bioinformatics/",
+  "atomic_nodes": [
+    {
+      "name": "fill_scoring_matrix",
+      "semantic_role": "Fill DP matrix based on match, mismatch and gap costs.",
+      "source_targets": [
+        "needs_human_decision"
+      ],
+      "inputs": [
+        {
+          "name": "seq1",
+          "type_desc": "str",
+          "required": true
+        },
+        {
+          "name": "seq2",
+          "type_desc": "str",
+          "required": true
+        },
+        {
+          "name": "match_score",
+          "type_desc": "float",
+          "required": true
+        },
+        {
+          "name": "mismatch_score",
+          "type_desc": "float",
+          "required": true
+        },
+        {
+          "name": "gap_penalty",
+          "type_desc": "float",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "scoring_matrix",
+          "type_desc": "NDArray[np.float64]"
+        }
+      ],
+      "precondition_candidates": [
+        "len(seq1) >= 0",
+        "len(seq2) >= 0"
+      ],
+      "postcondition_candidates": [],
+      "witness_shape_semantics": "Creates a grid matrix of size (M+1) x (N+1).",
+      "time_complexity": "O(n)",
+      "space_complexity": "O(n)",
+      "complexity_reasoning": "Linear scan complexity.",
+      "complexity_confidence": 90
+    },
+    {
+      "name": "execute_traceback",
+      "semantic_role": "Walk back through scoring matrix grid to generate optimal alignments.",
+      "source_targets": [
+        "needs_human_decision"
+      ],
+      "inputs": [
+        {
+          "name": "seq1",
+          "type_desc": "str",
+          "required": true
+        },
+        {
+          "name": "seq2",
+          "type_desc": "str",
+          "required": true
+        },
+        {
+          "name": "scoring_matrix",
+          "type_desc": "NDArray[np.float64]",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "aligned_seq1",
+          "type_desc": "str"
+        },
+        {
+          "name": "aligned_seq2",
+          "type_desc": "str"
+        },
+        {
+          "name": "score",
+          "type_desc": "float"
+        }
+      ],
+      "precondition_candidates": [],
+      "postcondition_candidates": [],
+      "witness_shape_semantics": "Produces strings with gap insertions.",
+      "time_complexity": "O(n)",
+      "space_complexity": "O(n)",
+      "complexity_reasoning": "Linear scan complexity.",
+      "complexity_confidence": 90
+    }
+  ],
+  "edges": [
+    {
+      "source": "fill_scoring_matrix",
+      "target": "execute_traceback",
+      "output_name": "scoring_matrix",
+      "input_name": "scoring_matrix"
+    }
+  ],
+  "cdg_io": {
+    "inputs": [
+      {
+        "name": "seq1",
+        "type_desc": "str",
+        "required": true
+      },
+      {
+        "name": "seq2",
+        "type_desc": "str",
+        "required": true
+      },
+      {
+        "name": "match_score",
+        "type_desc": "float",
+        "required": true
+      },
+      {
+        "name": "mismatch_score",
+        "type_desc": "float",
+        "required": true
+      },
+      {
+        "name": "gap_penalty",
+        "type_desc": "float",
+        "required": true
+      }
+    ],
+    "outputs": [
+      {
+        "name": "aligned_seq1",
+        "type_desc": "str"
+      },
+      {
+        "name": "aligned_seq2",
+        "type_desc": "str"
+      },
+      {
+        "name": "alignment_score",
+        "type_desc": "float"
+      }
+    ]
+  },
+  "state_model_needed": false
+}
