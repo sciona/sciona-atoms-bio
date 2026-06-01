@@ -68,7 +68,11 @@
       "parallelizable": false,
       "conceptual_summary": "Aligned sequence-state constructor. The operation snapshots two same-length collections into an explicit dictionary state while preserving index alignment.",
       "critic_notes": "This atom covers the in-memory constructor path only; FASTA file parsing is not implemented by this registered function.",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(N)",
+      "space_complexity": "O(N)",
+      "complexity_reasoning": "The function copies the input lists of sequence labels and strings into a dictionary, which runs in linear time and space relative to the number of sequences N.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "dataset_length_query",
@@ -105,7 +109,11 @@
       "parallelizable": false,
       "conceptual_summary": "Labeled collection cardinality extractor.",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(1)",
+      "space_complexity": "O(1)",
+      "complexity_reasoning": "Querying the length of a list in Python is a constant-time operation requiring no additional memory.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "dataset_item_retrieval",
@@ -149,7 +157,11 @@
       "parallelizable": false,
       "conceptual_summary": "Aligned pair index lookup.",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(1)",
+      "space_complexity": "O(1)",
+      "complexity_reasoning": "Retrieving elements from lists by index is a constant-time operation in Python and uses constant auxiliary space.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "token_budget_batch_planning",
@@ -200,7 +212,11 @@
       "parallelizable": false,
       "conceptual_summary": "Length-constrained sequential packing. Sequences are sorted by length, then greedily appended until the current maximum adjusted length times batch size would exceed the budget.",
       "critic_notes": "The implementation mirrors FastaBatchedDataset.get_batch_indices and does not reject a single sequence whose adjusted length exceeds the budget.",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(N log N)",
+      "space_complexity": "O(N)",
+      "complexity_reasoning": "The time complexity is dominated by sorting the sequence sizes, which takes O(N log N) time, and the space complexity is linear in the number of sequences N to store sizes and batch indices.",
+      "complexity_confidence": 98
     }
   ],
   "edges": [

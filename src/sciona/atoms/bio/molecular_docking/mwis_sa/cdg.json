@@ -57,7 +57,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(F * N^2)",
+      "space_complexity": "O(F * N^2)",
+      "complexity_reasoning": "Loading files from a folder and parsing them as NumPy arrays scales linearly with the number of files F and quadratically with the average matrix dimension N.",
+      "complexity_confidence": 95
     },
     {
       "node_id": "is_independent_set",
@@ -95,7 +99,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(K^2)",
+      "space_complexity": "O(1)",
+      "complexity_reasoning": "Checking if a subset of size K forms an independent set requires validating the absence of edges for all pairs of nodes in the subset, taking O(K^2) time.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "calculate_weight",
@@ -133,13 +141,17 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(K)",
+      "space_complexity": "O(1)",
+      "complexity_reasoning": "Summing the weights of K nodes requires O(K) diagonal matrix lookups, running in linear time and requiring constant space.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "to_qubo",
       "parent_id": "mwis_SA_root",
       "name": "to_qubo",
-      "description": "Convert a MISInstance to a qubo matrix.\n\nQUBO formulation:\nMinimize:\n    Q(x) = -∑_{i ∈ V} w_i x_i  +  λ ∑_{(i, j) ∈ E} x_i x_j\n\nArgs:\n    penalty (float, optional): Penalty factor. Defaults to None.\n\nRaises:\n    ValueError: When penalty is strictly inferior to 2 x max(weight).\n\nReturns:\n    np.ndarray: The QUBO matrix formulation of MIS.",
+      "description": "Convert a MISInstance to a qubo matrix.\n\nQUBO formulation:\nMinimize:\n    Q(x) = -\u2211_{i \u2208 V} w_i x_i  +  \u03bb \u2211_{(i, j) \u2208 E} x_i x_j\n\nArgs:\n    penalty (float, optional): Penalty factor. Defaults to None.\n\nRaises:\n    ValueError: When penalty is strictly inferior to 2 x max(weight).\n\nReturns:\n    np.ndarray: The QUBO matrix formulation of MIS.",
       "concept_type": "optimization",
       "inputs": [
         {
@@ -171,7 +183,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(N^2)",
+      "space_complexity": "O(N^2)",
+      "complexity_reasoning": "Generating the QUBO matrix requires constructing an N x N matrix and checking edge existence for all node pairs, which scales quadratically with the graph size N.",
+      "complexity_confidence": 98
     }
   ],
   "edges": [],

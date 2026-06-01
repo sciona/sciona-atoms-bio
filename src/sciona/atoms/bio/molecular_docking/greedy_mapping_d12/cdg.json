@@ -85,7 +85,11 @@
       "parallelizable": false,
       "conceptual_summary": "Deterministic Immutable Context Bootstrap. Aggregates multiple heterogeneous structural inputs into a single immutable state carrier that is passed unchanged across later computational kernels. The transform performs no optimization or inference; it formalizes boundary conditions by binding a read-only relational topology, a discrete embedding/placement scaffold context, historical substructure constraints, and a reproducibility token into one canonical context object. This creates a stable reference frame so downstream greedy or stochastic procedures can be evaluated consistently.. Applications: Initializing a molecular conformation search pipeline with a fixed bond graph, spatial discretization schema, prior sampled motifs, and a random seed, Bootstrapping robotic path-planning with workspace connectivity, occupancy grid instance, previously explored trajectory fragments, and deterministic rollout seed, Preparing a distributed scheduling optimizer using system dependency topology, resource-slot lattice instance, prior allocation patterns, and reproducible simulation seed",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(S_p)",
+      "space_complexity": "O(S_p)",
+      "complexity_reasoning": "Constructing the immutable problem context copies the sequence of previously generated subgraphs into a list, taking linear time and space relative to the subgraphs count.",
+      "complexity_confidence": 95
     },
     {
       "node_id": "construct_mapping_state_via_greedy_expansion",
@@ -232,7 +236,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(V_L log V_L)",
+      "space_complexity": "O(V_L)",
+      "complexity_reasoning": "Computing a center-biased available lattice node requires sorting and filtering the lattice nodes, running in O(V_L log V_L) time and linear space.",
+      "complexity_confidence": 95
     },
     {
       "node_id": "select_unplaced_candidates",
@@ -278,7 +286,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(N_c)",
+      "space_complexity": "O(N_c)",
+      "complexity_reasoning": "Filtering the considered nodes down to those not yet placed or removed runs in linear time and space relative to the number of candidates.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "score_and_rank_candidates_greedily",
@@ -352,7 +364,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(N_u * V_G + N_u log N_u)",
+      "space_complexity": "O(N_u)",
+      "complexity_reasoning": "Computing heuristic scores for unplaced candidates performs graph degree and non-adjacency checks, running in bilinear time relative to candidates and graph size, with log-linear sorting.",
+      "complexity_confidence": 92
     },
     {
       "node_id": "greedily_place_feasible_candidates_on_frontier",
@@ -412,7 +428,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(N_u * d_G)",
+      "space_complexity": "O(N_u)",
+      "complexity_reasoning": "Greedily placing candidates on the lattice frontier verifies graph and lattice adjacency constraints for all candidates, scaling with candidate pool size and average graph degree.",
+      "complexity_confidence": 90
     },
     {
       "node_id": "finalize_mapping_state_with_optional_pruning",
@@ -479,7 +499,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(N_u)",
+      "space_complexity": "O(N_u)",
+      "complexity_reasoning": "Finalizing the mapping state applies the optional pruning policy to unplaced nodes, scaling linearly in time and space with the number of unplaced nodes.",
+      "complexity_confidence": 95
     },
     {
       "node_id": "orchestrate_generation_and_validate",
@@ -604,7 +628,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(V_L log V_L)",
+      "space_complexity": "O(V_L)",
+      "complexity_reasoning": "Initializing the state with a starting anchor requires sorting and searching for the center-biased lattice index, scaling as O(V_L log V_L) time and linear space.",
+      "complexity_confidence": 95
     },
     {
       "node_id": "greedy_expand_frontier",
@@ -664,7 +692,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(V^2 + V * V_L)",
+      "space_complexity": "O(V + V_L)",
+      "complexity_reasoning": "Expanding the greedy frontier iterates over the graph vertices and evaluates placements on the lattice, taking quadratic time and linear space relative to graph and lattice sizes.",
+      "complexity_confidence": 90
     },
     {
       "node_id": "assess_mapping_validity",
@@ -710,7 +742,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(M + E_graph + E_lattice)",
+      "space_complexity": "O(1)",
+      "complexity_reasoning": "Assessing validity verifies bidirectional edge preservation across graph and lattice structures, scaling linearly with the number of edges in both structures.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "emit_final_generation_result",
@@ -763,7 +799,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(1)",
+      "space_complexity": "O(1)",
+      "complexity_reasoning": "Packaging and returning the final generation results requires constant time and space.",
+      "complexity_confidence": 99
     }
   ],
   "edges": [

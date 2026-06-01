@@ -60,7 +60,11 @@
       "parallelizable": false,
       "conceptual_summary": "Computes MINT's rotate-half rotary embedding with cached-table-equivalent sinusoidal factors.",
       "critic_notes": "NumPy replay helper for the upstream torch RotaryEmbedding semantics; no trainable state is introduced.",
-      "decomposition_rationale": "Leaf atom."
+      "decomposition_rationale": "Leaf atom.",
+      "time_complexity": "O(S)",
+      "space_complexity": "O(S)",
+      "complexity_reasoning": "The rotary embedding calculates sinusoids of shape (T, D) and applies element-wise multiplication and half-dimension rotation, scaling linearly with the total input size S.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "rotaryembedding_torch",
@@ -98,7 +102,11 @@
       "parallelizable": false,
       "conceptual_summary": "Computes MINT's rotate-half rotary embedding for torch tensors.",
       "critic_notes": "pubrev-019 remediated prior interleaved-pair rotation and duplicate-def FQDN drift to match upstream MINT rotary_embedding.py.",
-      "decomposition_rationale": "Leaf atom."
+      "decomposition_rationale": "Leaf atom.",
+      "time_complexity": "O(S)",
+      "space_complexity": "O(S)",
+      "complexity_reasoning": "The rotary embedding calculates sinusoids of shape (T, D) and applies element-wise multiplication and half-dimension rotation, scaling linearly with the total input size S.",
+      "complexity_confidence": 98
     }
   ],
   "edges": []

@@ -94,7 +94,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(1)",
+      "space_complexity": "O(1)",
+      "complexity_reasoning": "Validating the shape dimensions of a NumPy array requires constant time and space.",
+      "complexity_confidence": 99
     },
     {
       "node_id": "computeabsoluteweightedindexdistances",
@@ -127,7 +131,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(N^2)",
+      "space_complexity": "O(N^2)",
+      "complexity_reasoning": "Generating index grids and performing element-wise matrix arithmetic scales quadratically with the matrix dimension N.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "aggregatemaximumdistanceasbandwidth",
@@ -160,7 +168,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(N^2)",
+      "space_complexity": "O(1)",
+      "complexity_reasoning": "Finding the maximum value in a 2D grid matrix of size N x N requires scanning all N^2 elements once.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "corebandwidthreduction",
@@ -232,7 +244,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(N^2)",
+      "space_complexity": "O(N^2)",
+      "complexity_reasoning": "Verifying symmetry requires comparing the input matrix with its transpose, scaling quadratically with the dimension N.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "initializereductionstate",
@@ -265,7 +281,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(N^2)",
+      "space_complexity": "O(N^2)",
+      "complexity_reasoning": "Initializing the optimization state requires copying the matrix and locating non-zero elements, taking quadratic time and space.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "proposegreedypermutationstep",
@@ -313,7 +333,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(N^2)",
+      "space_complexity": "O(N^2)",
+      "complexity_reasoning": "Running Cuthill-McKee and permuting the matrix scale quadratically with the matrix dimension N.",
+      "complexity_confidence": 95
     },
     {
       "node_id": "updatestatewithimprovementcriterion",
@@ -366,7 +390,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(N^2)",
+      "space_complexity": "O(N^2)",
+      "complexity_reasoning": "Updating the iteration state requires copying the permuted matrix and composing permutations, scaling quadratically with the matrix dimension N.",
+      "complexity_confidence": 95
     },
     {
       "node_id": "extractfinalpermutation",
@@ -399,7 +427,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(N)",
+      "space_complexity": "O(N)",
+      "complexity_reasoning": "Extracting the final permutation list of length N takes linear time and space relative to the matrix dimension.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "thresholdconstrainedbandwidthreduction",
@@ -479,7 +511,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(N^2)",
+      "space_complexity": "O(N^2)",
+      "complexity_reasoning": "Creating a thresholded copy of the matrix requires inspecting and modifying all N^2 elements.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "buildsparsegraphview",
@@ -512,7 +548,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(N^2)",
+      "space_complexity": "O(N^2)",
+      "complexity_reasoning": "Copying the dense matrix representation takes quadratic time and space with respect to its dimension N.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "computesymmetricbandwidthreducingorder",
@@ -545,7 +585,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(N^2)",
+      "space_complexity": "O(N)",
+      "complexity_reasoning": "Reverse Cuthill-McKee ordering runs in linear time relative to the number of vertices and non-zero edges, which is at most O(N^2).",
+      "complexity_confidence": 95
     },
     {
       "node_id": "globalbandwidthoptimization",
@@ -616,7 +660,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(N^2)",
+      "space_complexity": "O(N^2)",
+      "complexity_reasoning": "Verifying symmetry requires comparing the input matrix with its transpose, scaling quadratically with the dimension N.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "build_threshold_search_space",
@@ -654,7 +702,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(N^2)",
+      "space_complexity": "O(1)",
+      "complexity_reasoning": "Computing the range of absolute matrix values takes quadratic time in matrix dimension N, while the search space size is constant.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "enumerate_threshold_based_permutations",
@@ -697,7 +749,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(N^2)",
+      "space_complexity": "O(N)",
+      "complexity_reasoning": "Generating candidate permutations runs RCM on a constant number of thresholded matrix copies, scaling quadratically with the dimension N.",
+      "complexity_confidence": 95
     },
     {
       "node_id": "select_minimum_bandwidth_permutation",
@@ -735,7 +791,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(N^2)",
+      "space_complexity": "O(N^2)",
+      "complexity_reasoning": "Selecting the optimal permutation evaluates matrix bandwidth for a constant number of candidate permutations, taking quadratic time and space.",
+      "complexity_confidence": 95
     }
   ],
   "edges": [

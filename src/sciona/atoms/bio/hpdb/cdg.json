@@ -70,7 +70,11 @@
       "parallelizable": false,
       "conceptual_summary": "Recursive atom traversal with an optional element filter.",
       "critic_notes": "",
-      "decomposition_rationale": "Corresponds to hPDB_ingest.py hPDBIterable.iter_atoms."
+      "decomposition_rationale": "Corresponds to hPDB_ingest.py hPDBIterable.iter_atoms.",
+      "time_complexity": "O(N)",
+      "space_complexity": "O(N)",
+      "complexity_reasoning": "The function recursively traverses the hierarchical PDB elements down to the atoms, performing a constant-time check on each atom, leading to linear time and space complexity with respect to the total number of atoms N.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "iterate_pdb_residues",
@@ -116,7 +120,11 @@
       "parallelizable": false,
       "conceptual_summary": "Recursive residue traversal with an optional contained-atom element filter.",
       "critic_notes": "",
-      "decomposition_rationale": "Corresponds to hPDB_ingest.py hPDBIterable.iter_residues."
+      "decomposition_rationale": "Corresponds to hPDB_ingest.py hPDBIterable.iter_residues.",
+      "time_complexity": "O(N)",
+      "space_complexity": "O(R)",
+      "complexity_reasoning": "The function recursively visits all residues under the hierarchy and checks their constituent atoms for the chemical element filter, resulting in linear time in the total number of atoms N and linear space in the number of residues R.",
+      "complexity_confidence": 98
     }
   ],
   "edges": [],

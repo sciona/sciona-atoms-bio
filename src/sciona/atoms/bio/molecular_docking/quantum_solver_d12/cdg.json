@@ -94,7 +94,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(T_steps * 2^V + V^2)",
+      "space_complexity": "O(2^V)",
+      "complexity_reasoning": "Solving the MWIS problem end-to-end involves calculating pairwise distances to set bounds and emulating an adiabatic quantum pulse sequence of exponential space-time complexity O(2^V).",
+      "complexity_confidence": 95
     },
     {
       "node_id": "interaction_bounds_computer",
@@ -147,7 +151,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(V^2)",
+      "space_complexity": "O(V)",
+      "complexity_reasoning": "Computing pairwise distances for all qubits to determine the interaction bounds scales quadratically with the number of vertices V.",
+      "complexity_confidence": 95
     },
     {
       "node_id": "adiabatic_pulse_assembler",
@@ -193,7 +201,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(V)",
+      "space_complexity": "O(V)",
+      "complexity_reasoning": "Assembling the time-dependent adiabatic pulse sequence maps waveforms over V qubits, running in linear time and space relative to V.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "quantum_circuit_sampler",
@@ -267,7 +279,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(T_steps * 2^V)",
+      "space_complexity": "O(2^V)",
+      "complexity_reasoning": "Sampling the adiabatic sequence on a classical computer requires emulating a quantum state vector of size 2^V, taking exponential time and space.",
+      "complexity_confidence": 95
     },
     {
       "node_id": "quantum_solution_extractor",
@@ -327,7 +343,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(S_out log S_out + K * V)",
+      "space_complexity": "O(K * V)",
+      "complexity_reasoning": "Extracting the top K solutions sorts the measurement outcomes and decodes bitstrings of length V, scaling log-linearly with unique states and linearly with K * V.",
+      "complexity_confidence": 95
     }
   ],
   "edges": [],

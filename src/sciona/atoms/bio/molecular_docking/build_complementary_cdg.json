@@ -54,7 +54,11 @@
       "parallelizable": false,
       "conceptual_summary": "Direct callable atom in the consolidated module.",
       "critic_notes": "Signature derived from the Python wrapper definition.",
-      "decomposition_rationale": "Leaf atom."
+      "decomposition_rationale": "Leaf atom.",
+      "time_complexity": "O(V^2)",
+      "space_complexity": "O(V^2)",
+      "complexity_reasoning": "Computing the complementary graph requires checking and populating the existence of edges for all pairs of nodes, resulting in quadratic time and space complexity with respect to the number of nodes V.",
+      "complexity_confidence": 98
     }
   ],
   "edges": []

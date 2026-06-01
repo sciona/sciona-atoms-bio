@@ -59,7 +59,11 @@
       "parallelizable": false,
       "conceptual_summary": "Greedy weighted independent-set selector. It orders molecular interaction nodes by weight divided by one plus conflict degree, then adds a node only when it has no conflict edge to the current selection.",
       "critic_notes": "Contract narrowed during remediation to match the upstream Molecular-Docking classical MIS helpers instead of claiming connected-subgraph selection.",
-      "decomposition_rationale": "Leaf atom."
+      "decomposition_rationale": "Leaf atom.",
+      "time_complexity": "O(N^2)",
+      "space_complexity": "O(N^2)",
+      "complexity_reasoning": "Computing degrees and running the greedy selection loop with pairwise conflict screening takes quadratic time and space with respect to the number of interaction vertices N.",
+      "complexity_confidence": 98
     }
   ],
   "edges": []

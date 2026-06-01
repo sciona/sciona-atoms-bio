@@ -54,7 +54,11 @@
       "parallelizable": false,
       "conceptual_summary": "Unit-disk embedding certification. It preserves the input node and edge set, writes a radius-one 2D position mapping, and rejects embeddings where the unit-disk rule would add or drop an edge.",
       "critic_notes": "Remediated from an unsafe spectral-layout edge generator to an edge-preserving certification contract.",
-      "decomposition_rationale": "Leaf atom."
+      "decomposition_rationale": "Leaf atom.",
+      "time_complexity": "O(V^2 + E_num)",
+      "space_complexity": "O(V + E_num)",
+      "complexity_reasoning": "Evaluating UDG certification requires checking Euclidean distances for all O(V^2) node pairs against the edge set, taking quadratic time in the number of nodes V, and linear space to store graph attributes.",
+      "complexity_confidence": 98
     }
   ],
   "edges": []

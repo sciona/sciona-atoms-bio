@@ -103,7 +103,11 @@
       "map_window_size": 0,
       "map_hop_size": 0,
       "boundary_kind": "none",
-      "boundary_port_name": ""
+      "boundary_port_name": "",
+      "time_complexity": "O(S)",
+      "space_complexity": "O(S)",
+      "complexity_reasoning": "3D volume rotation performs an inverse affine transformation via spline interpolation for each voxel, scaling linearly with the total number of array elements S.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "elastic_deform_3d",
@@ -194,7 +198,11 @@
       "map_window_size": 0,
       "map_hop_size": 0,
       "boundary_kind": "none",
-      "boundary_port_name": ""
+      "boundary_port_name": "",
+      "time_complexity": "O(S)",
+      "space_complexity": "O(S)",
+      "complexity_reasoning": "Applying 3D elastic deformation constructs a smoothed displacement field and performs coordinate mapping via spline interpolation, scaling linearly with the total number of array elements S.",
+      "complexity_confidence": 95
     },
     {
       "node_id": "scale_volume_3d",
@@ -265,7 +273,11 @@
       "map_window_size": 0,
       "map_hop_size": 0,
       "boundary_kind": "none",
-      "boundary_port_name": ""
+      "boundary_port_name": "",
+      "time_complexity": "O(S)",
+      "space_complexity": "O(S)",
+      "complexity_reasoning": "Volumetric scaling zooms the spatial axes and crops or pads back to the original size, scaling linearly with the total number of array elements S.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "add_gaussian_noise_3d",
@@ -346,7 +358,11 @@
       "map_window_size": 0,
       "map_hop_size": 0,
       "boundary_kind": "none",
-      "boundary_port_name": ""
+      "boundary_port_name": "",
+      "time_complexity": "O(S)",
+      "space_complexity": "O(S)",
+      "complexity_reasoning": "Adding Gaussian noise generates a random noise array of the same shape and adds it to the volume, running in linear time and space relative to the total number of elements S.",
+      "complexity_confidence": 98
     }
   ],
   "edges": []

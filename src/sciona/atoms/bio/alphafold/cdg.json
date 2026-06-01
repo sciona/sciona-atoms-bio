@@ -85,7 +85,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(N^2 * (d_n + d_p))",
+      "space_complexity": "O(N^2 * d_p + N * d_n)",
+      "complexity_reasoning": "The time complexity is dominated by the O(N^2 * d_n) matrix multiplications and the O(N^2 * d_p) mean operations on pair features, while the space complexity is dominated by storing the pair features and N x N attention matrices.",
+      "complexity_confidence": 95
     },
     {
       "node_id": "equivariant_frame_update",
@@ -138,7 +142,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(N * d)",
+      "space_complexity": "O(N * d)",
+      "complexity_reasoning": "The function copies the rigid frames and applies a slice of node features to update translations, requiring linear time and space relative to the sequence length N and node feature dimension d.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "coordinate_reconstruction",
@@ -191,7 +199,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(N * T)",
+      "space_complexity": "O(N)",
+      "complexity_reasoning": "The function iterates through the N residues to reconstruct coordinates for a fixed maximum of 37 atoms using the torsion angles, taking linear time and space with respect to the sequence length N.",
+      "complexity_confidence": 95
     }
   ],
   "edges": [],

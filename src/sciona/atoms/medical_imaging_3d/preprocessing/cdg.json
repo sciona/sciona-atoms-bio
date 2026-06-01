@@ -109,7 +109,11 @@
       "map_window_size": 0,
       "map_hop_size": 0,
       "boundary_kind": "none",
-      "boundary_port_name": ""
+      "boundary_port_name": "",
+      "time_complexity": "O(S)",
+      "space_complexity": "O(S)",
+      "complexity_reasoning": "Rescaling DICOM pixels to Hounsfield units performs a linear transformation on all array elements, running in linear time and space relative to the array size S.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "dicom_window",
@@ -214,7 +218,11 @@
       "aliases": [
         "dicom_windowing",
         "hounsfield_window"
-      ]
+      ],
+      "time_complexity": "O(S)",
+      "space_complexity": "O(S)",
+      "complexity_reasoning": "Grayscale windowing maps and clips input intensities element-wise, running in linear time and space relative to the input array size S.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "resample_volume",
@@ -299,7 +307,11 @@
       "aliases": [
         "multi_resolution_upsampling",
         "spatial_resampling"
-      ]
+      ],
+      "time_complexity": "O(V_target)",
+      "space_complexity": "O(V_target)",
+      "complexity_reasoning": "Resampling a 3D volume generates a coordinate grid and interpolates voxel values for all target coordinates, scaling linearly with the target volume size V_target.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "macenko_stain_vectors",
@@ -392,7 +404,11 @@
           "ordering": "sequential",
           "when": "Stage describes stain normalization"
         }
-      ]
+      ],
+      "time_complexity": "O(P log P)",
+      "space_complexity": "O(P)",
+      "complexity_reasoning": "Estimating H&E stain vectors converts the image to optical density, performs singular value decomposition and percentile computations on tissue pixels, and solves a least-squares problem, scaling as O(P log P) time and O(P) space.",
+      "complexity_confidence": 92
     },
     {
       "node_id": "macenko_normalize",
@@ -495,7 +511,11 @@
           "ordering": "sequential",
           "when": "Stage describes stain normalization"
         }
-      ]
+      ],
+      "time_complexity": "O(P log P)",
+      "space_complexity": "O(P)",
+      "complexity_reasoning": "Normalizing H&E stains estimates source concentrations and reconstructs the RGB image using a target stain basis, running in O(P log P) time and linear space.",
+      "complexity_confidence": 95
     },
     {
       "node_id": "max_intensity_projection",
@@ -586,7 +606,11 @@
       "map_window_size": 0,
       "map_hop_size": 0,
       "boundary_kind": "none",
-      "boundary_port_name": ""
+      "boundary_port_name": "",
+      "time_complexity": "O(V)",
+      "space_complexity": "O(V)",
+      "complexity_reasoning": "Computing a maximum intensity projection rotates the 3D volume and performs a maximum reduction along the projection axis, running in linear time and space relative to the volume size V.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "extract_25d_slices",
@@ -677,7 +701,11 @@
       "map_window_size": 0,
       "map_hop_size": 0,
       "boundary_kind": "none",
-      "boundary_port_name": ""
+      "boundary_port_name": "",
+      "time_complexity": "O(S_out)",
+      "space_complexity": "O(S_out)",
+      "complexity_reasoning": "Extracting 2.5D slices pads the spatial volume and copies the requested contiguous slice subset, taking linear time and space with respect to the output stack size S_out.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "crop_to_mask",
@@ -748,7 +776,11 @@
       "map_window_size": 0,
       "map_hop_size": 0,
       "boundary_kind": "none",
-      "boundary_port_name": ""
+      "boundary_port_name": "",
+      "time_complexity": "O(V)",
+      "space_complexity": "O(V)",
+      "complexity_reasoning": "Cropping to a binary mask searches all mask voxels to locate the bounding box and slices the input volume, running in linear time and space relative to the volume size V.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "filter_small_components",
@@ -819,7 +851,11 @@
       "map_window_size": 0,
       "map_hop_size": 0,
       "boundary_kind": "none",
-      "boundary_port_name": ""
+      "boundary_port_name": "",
+      "time_complexity": "O(V)",
+      "space_complexity": "O(V)",
+      "complexity_reasoning": "Filtering small components performs connected-component labeling and size aggregation over the mask grid, running in linear time and space relative to the mask size V.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "parse_a3d_volume",
@@ -890,7 +926,11 @@
       "map_window_size": 0,
       "map_hop_size": 0,
       "boundary_kind": "none",
-      "boundary_port_name": ""
+      "boundary_port_name": "",
+      "time_complexity": "O(V)",
+      "space_complexity": "O(V)",
+      "complexity_reasoning": "Parsing the A3D byte payload reshapes, transposes, and scales the voxel intensities, running in linear time and space relative to the output volume size V.",
+      "complexity_confidence": 98
     }
   ],
   "edges": [],

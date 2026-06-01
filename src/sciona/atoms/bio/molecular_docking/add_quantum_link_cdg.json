@@ -69,7 +69,11 @@
       "parallelizable": false,
       "conceptual_summary": "Direct callable atom in the consolidated module.",
       "critic_notes": "Signature derived from the Python wrapper definition.",
-      "decomposition_rationale": "Leaf atom."
+      "decomposition_rationale": "Leaf atom.",
+      "time_complexity": "O(V + E + K)",
+      "space_complexity": "O(V + E + K)",
+      "complexity_reasoning": "The function copies the input graph and inserts a path of length K between the target nodes, scaling linearly with the size of the graph (V + E) and the chain size K.",
+      "complexity_confidence": 95
     }
   ],
   "edges": []

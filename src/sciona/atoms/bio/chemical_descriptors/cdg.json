@@ -65,7 +65,11 @@
       "parallelizable": true,
       "conceptual_summary": "SMILES string validation and molecule graph materialization.",
       "critic_notes": "",
-      "decomposition_rationale": "Parsing is isolated so downstream descriptor atoms do not repeatedly tokenize and sanitize the same molecule."
+      "decomposition_rationale": "Parsing is isolated so downstream descriptor atoms do not repeatedly tokenize and sanitize the same molecule.",
+      "time_complexity": "O(S)",
+      "space_complexity": "O(S)",
+      "complexity_reasoning": "Parsing and sanitizing a SMILES string scales linearly with the length of the string to construct the RDKit molecule graph representation.",
+      "complexity_confidence": 95
     },
     {
       "node_id": "compute_descriptors",
@@ -111,7 +115,11 @@
       "parallelizable": true,
       "conceptual_summary": "Continuous molecular feature extraction for QSAR-style models.",
       "critic_notes": "",
-      "decomposition_rationale": "Continuous descriptors are a separate feature type from hashed and structural-key fingerprints."
+      "decomposition_rationale": "Continuous descriptors are a separate feature type from hashed and structural-key fingerprints.",
+      "time_complexity": "O(D * A)",
+      "space_complexity": "O(D)",
+      "complexity_reasoning": "Computing D molecular descriptors requires evaluating each descriptor function on the molecular graph, which takes linear time in both the number of descriptors and the number of atoms.",
+      "complexity_confidence": 90
     },
     {
       "node_id": "morgan_fingerprint",
@@ -164,7 +172,11 @@
       "parallelizable": true,
       "conceptual_summary": "Circular substructure hashing converted into a NumPy binary vector.",
       "critic_notes": "",
-      "decomposition_rationale": "Morgan fingerprints are a distinct hashed structural representation from continuous descriptors and MACCS keys."
+      "decomposition_rationale": "Morgan fingerprints are a distinct hashed structural representation from continuous descriptors and MACCS keys.",
+      "time_complexity": "O(R * A + B_bits)",
+      "space_complexity": "O(B_bits)",
+      "complexity_reasoning": "Calculating the circular Morgan fingerprint requires analyzing local environments of radius R around each of the A atoms and writing the hashed bits to a vector of size B_bits.",
+      "complexity_confidence": 92
     },
     {
       "node_id": "maccs_keys",
@@ -203,7 +215,11 @@
       "parallelizable": true,
       "conceptual_summary": "Dictionary-based structural key extraction with the unused RDKit padding bit removed.",
       "critic_notes": "",
-      "decomposition_rationale": "MACCS keys provide a human-interpretable structural fingerprint separate from Morgan hash features."
+      "decomposition_rationale": "MACCS keys provide a human-interpretable structural fingerprint separate from Morgan hash features.",
+      "time_complexity": "O(A)",
+      "space_complexity": "O(1)",
+      "complexity_reasoning": "Generating MACCS keys matches a fixed set of 166 structural patterns against the molecule graph, scaling linearly with the number of atoms, and produces a constant-sized 166-bit vector.",
+      "complexity_confidence": 95
     }
   ],
   "edges": [

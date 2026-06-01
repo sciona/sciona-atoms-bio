@@ -124,7 +124,11 @@
       "parallelizable": false,
       "conceptual_summary": "Source-aligned stateless replay of upstream MINT RowSelfAttention.",
       "critic_notes": "The atom follows upstream projection, row aggregation, padding mask, attention shape, and no-grad batched-forward semantics; self_attn_mask remains unsupported because upstream raises NotImplementedError.",
-      "decomposition_rationale": "Leaf atom."
+      "decomposition_rationale": "Leaf atom.",
+      "time_complexity": "O(R * B * C * D * (C + D))",
+      "space_complexity": "O(R * B * C * D + H * B * C^2)",
+      "complexity_reasoning": "The time complexity is dominated by the linear projection layers and the multi-head attention einsum operations, while the space complexity is dominated by storing the projections and the attention weight matrix.",
+      "complexity_confidence": 95
     },
     {
       "node_id": "rowselfattention",
@@ -226,7 +230,11 @@
       "parallelizable": false,
       "conceptual_summary": "Compatibility FQDN for the source-aligned RowSelfAttention core.",
       "critic_notes": "This replaces the previous NumPy approximation; upstream MINT defines only the Torch module, so the remediated lowercase atom intentionally uses the Torch source contract.",
-      "decomposition_rationale": "Leaf atom."
+      "decomposition_rationale": "Leaf atom.",
+      "time_complexity": "O(R * B * C * D * (C + D))",
+      "space_complexity": "O(R * B * C * D + H * B * C^2)",
+      "complexity_reasoning": "The time complexity is dominated by the linear projection layers and the multi-head attention einsum operations, while the space complexity is dominated by storing the projections and the attention weight matrix.",
+      "complexity_confidence": 95
     }
   ],
   "edges": []

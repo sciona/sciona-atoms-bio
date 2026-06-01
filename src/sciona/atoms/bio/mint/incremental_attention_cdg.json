@@ -54,7 +54,11 @@
       "parallelizable": false,
       "conceptual_summary": "Prepends the Fairseq-style incremental-state mixin, adding UUID-scoped external-state get/set helpers.",
       "critic_notes": "pubrev-019 remediated prior hidden instance-dict state drift to the upstream with_incremental_state/FairseqIncrementalState pattern.",
-      "decomposition_rationale": "Leaf atom."
+      "decomposition_rationale": "Leaf atom.",
+      "time_complexity": "O(1)",
+      "space_complexity": "O(1)",
+      "complexity_reasoning": "Prepending a mixin class to the bases of a Python class is a metadata mutation that runs in constant time and requires constant auxiliary space.",
+      "complexity_confidence": 98
     }
   ],
   "edges": []

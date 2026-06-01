@@ -90,7 +90,11 @@
       "map_window_size": 0,
       "map_hop_size": 0,
       "boundary_kind": "none",
-      "boundary_port_name": ""
+      "boundary_port_name": "",
+      "time_complexity": "O(C * N)",
+      "space_complexity": "O(C * N)",
+      "complexity_reasoning": "Combining nodule probabilities with a leaky noisy-or gate performs element-wise subtraction and multiplication along the nodule dimension, taking linear time and space relative to the input array size.",
+      "complexity_confidence": 98
     }
   ],
   "edges": [],

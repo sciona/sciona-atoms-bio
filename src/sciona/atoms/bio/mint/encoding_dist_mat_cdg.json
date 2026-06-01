@@ -64,7 +64,11 @@
       "parallelizable": false,
       "conceptual_summary": "Places each source matrix in the upstream MINT CDR3-centered/epitope-offset location and returns both values and mask.",
       "critic_notes": "pubrev-019 remediated prior top-left padding and missing-mask drift against upstream tcr-interface teim_utils.encoding_dist_mat.",
-      "decomposition_rationale": "Leaf atom."
+      "decomposition_rationale": "Leaf atom.",
+      "time_complexity": "O(N * C * E)",
+      "space_complexity": "O(N * C * E)",
+      "complexity_reasoning": "The function initializes and populates output and mask arrays of shape (N, C, E) by copying each input matrix, resulting in linear time and space complexity with respect to the total output dimensions.",
+      "complexity_confidence": 98
     }
   ],
   "edges": []

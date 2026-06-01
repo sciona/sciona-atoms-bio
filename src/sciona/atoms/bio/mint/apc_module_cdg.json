@@ -54,7 +54,11 @@
       "parallelizable": false,
       "conceptual_summary": "Computes x - (row_sum * col_sum / total_sum), preserving input shape.",
       "critic_notes": "pubrev-019 remediated prior Autoregressive Predictive Coding drift to the average-product correction used by upstream MINT.",
-      "decomposition_rationale": "Leaf atom."
+      "decomposition_rationale": "Leaf atom.",
+      "time_complexity": "O(S)",
+      "space_complexity": "O(S)",
+      "complexity_reasoning": "The function performs reductions and element-wise arithmetic operations over the entire input array, scaling linearly in time and space with the total number of elements S.",
+      "complexity_confidence": 98
     }
   ],
   "edges": []

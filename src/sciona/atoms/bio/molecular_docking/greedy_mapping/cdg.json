@@ -73,7 +73,11 @@
       "parallelizable": false,
       "conceptual_summary": "ImmutableCompositeStateAssembler. Aggregates multiple externally supplied data structures and an optional deterministic control scalar into a single explicit state record. The transform is structural: it preserves each input by reference/value while reifying them as immutable fields, eliminating implicit ambient state. The result is a canonical context object that downstream procedures can consume with fixed, reproducible access semantics.. Applications: Computational biology: package interaction network, folding-topology constraints, prior motif candidates, and optional randomization seed into a reproducible experiment context, Robotics planning: package environment connectivity map, kinematic constraint manifold, prior trajectory fragments, and tie-break seed into a fixed planning context, Distributed systems optimization: package service dependency graph, resource-topology model, prior allocation subplans, and deterministic seed into an immutable scheduling context, Materials simulation: package atomic connectivity structure, lattice/mesh topology instance, previously sampled local configurations, and seed into a reproducible simulation context",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(S_p)",
+      "space_complexity": "O(S_p)",
+      "complexity_reasoning": "The function packages the input structures into a dictionary and copies the list of previously generated subgraphs, running in linear time and space relative to the number of subgraphs S_p.",
+      "complexity_confidence": 95
     },
     {
       "node_id": "initialize_frontier_from_start_node",
@@ -126,7 +130,11 @@
       "parallelizable": false,
       "conceptual_summary": "SeedBidirectionalCorrespondenceFrontier. Initializes a search state by anchoring a partial correspondence between two relational structures at a selected source element. It takes an existing forward map, its inverse map, and a set of unexpanded source elements, then returns a new immutable state where correspondence consistency constraints are preserved. The result is a frontier-ready state for subsequent expansion steps in a correspondence-construction process.. Applications: Bootstrapping residue-contact-graph to template-topology alignment in computational biology, Seeding component-netlist to physical-layout correspondence in electronic design automation, Initializing landmark-topology matching between sensed environment graphs and prior maps in robotics, Starting entity-alignment search between heterogeneous knowledge graphs in information systems",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(V_L + M + U + E)",
+      "space_complexity": "O(V_L + M + U + E)",
+      "complexity_reasoning": "Initializing the frontier copies the partial mapping state and filters available lattice nodes, running in linear time and space with respect to the lattice size and partial mapping sizes.",
+      "complexity_confidence": 95
     },
     {
       "node_id": "score_and_extend_greedy_candidates",
@@ -248,7 +256,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(N_c)",
+      "space_complexity": "O(N_c)",
+      "complexity_reasoning": "Partitioning the considered nodes into placed and unplaced sets requires iterating through the considered nodes list once, taking linear time and space.",
+      "complexity_confidence": 95
     },
     {
       "node_id": "computegreedycandidatescores",
@@ -306,7 +318,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(N_u * d)",
+      "space_complexity": "O(N_u)",
+      "complexity_reasoning": "Computing greedy candidate scores iterates through each unplaced node and checks its neighbors against the current mapping, scaling linearly with the number of unplaced nodes and average graph degree.",
+      "complexity_confidence": 95
     },
     {
       "node_id": "prioritizeunplacednodes",
@@ -349,7 +365,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(N_u log N_u)",
+      "space_complexity": "O(N_u)",
+      "complexity_reasoning": "Prioritizing the unplaced nodes requires sorting them by score, which takes O(N_u log N_u) time and linear space.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "greedyassignfrontierplacements",
@@ -432,7 +452,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(N_u * N_f)",
+      "space_complexity": "O(N_u + N_f + M)",
+      "complexity_reasoning": "Greedily assigning placements checks candidate nodes against free lattice sites, scaling as the product of candidate and site pool sizes in the worst case.",
+      "complexity_confidence": 90
     },
     {
       "node_id": "buildextendedmappingstatewithpruningpolicy",
@@ -505,7 +529,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(N_u + M)",
+      "space_complexity": "O(N_u + M)",
+      "complexity_reasoning": "Constructing the final extended mapping state and applying pruning policies runs in linear time and space with respect to the node sets.",
+      "complexity_confidence": 95
     },
     {
       "node_id": "validate_current_mapping",
@@ -548,7 +576,11 @@
       "parallelizable": false,
       "conceptual_summary": "Bidirectional Relation Consistency Validator. Consumes a candidate pair of forward and reverse mappings between two discrete relational structures and tests whether they satisfy a shared constraint system. It verifies inverse coherence (round-trip consistency) and structural admissibility against topology/order constraints encoded in the context object. The result is a single feasibility predicate indicating whether the mapping pair is a valid structure-preserving correspondence.. Applications: Verifying correspondence between segmented regions in multimodal medical images under anatomical adjacency constraints, Checking consistency of symbol-to-state alignments in compiler intermediate-representation lowering with reverse traceability guarantees, Validating entity alignment between heterogeneous knowledge graphs while preserving ontology hierarchy relations, Confirming mesh-to-skeleton attachment maps in computational biomechanics with inverse lookup and topology constraints",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(M + U + E_graph)",
+      "space_complexity": "O(1)",
+      "complexity_reasoning": "Validating the current mapping checks bijectivity and ensures every graph edge between mapped nodes is preserved in the lattice, taking linear time in the mapping sizes and graph edges.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "run_greedy_mapping_pipeline",
@@ -669,7 +701,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(V_L)",
+      "space_complexity": "O(V_L)",
+      "complexity_reasoning": "Seeding the initial placement requires finding an available lattice site for the starting node, taking linear time and space with respect to the lattice size.",
+      "complexity_confidence": 95
     },
     {
       "node_id": "rungreedyfrontierexpansion",
@@ -727,7 +763,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(V^2 + V * V_L)",
+      "space_complexity": "O(V + V_L)",
+      "complexity_reasoning": "Running the greedy expansion pipeline iteratively scores and assigns nodes to the frontier, running in quadratic time relative to the number of nodes in the graph and lattice.",
+      "complexity_confidence": 90
     },
     {
       "node_id": "evaluatefinalmappingvalidity",
@@ -765,7 +805,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(M + E_graph)",
+      "space_complexity": "O(1)",
+      "complexity_reasoning": "Checking the final mapping's consistency takes linear time in the number of mapped vertices and graph edges, requiring constant auxiliary space.",
+      "complexity_confidence": 95
     },
     {
       "node_id": "buildgreedysubgraphresult",
@@ -808,7 +852,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(M + E_sub)",
+      "space_complexity": "O(M + E_sub)",
+      "complexity_reasoning": "Materializing the greedy subgraph output copies the mapped vertices and their induced edges, taking linear time and space in the size of the subgraph.",
+      "complexity_confidence": 95
     }
   ],
   "edges": [

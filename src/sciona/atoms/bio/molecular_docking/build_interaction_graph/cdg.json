@@ -66,7 +66,11 @@
       "parallelizable": false,
       "conceptual_summary": "Interval-Constrained Pairwise Metric Predicate. This operation performs a feasibility test over pairwise metric relationships by comparing candidate distance values against a bounded admissible interval and a non-negative reference distance. It maps numeric distance descriptors from two entities into a single Boolean decision indicating whether the pair is geometrically compatible under the specified constraints. Conceptually, it is a constraint-satisfaction projection from continuous metric space to a binary validity state.. Applications: Robotics: validating whether two manipulator waypoints can be connected under kinematic separation bounds, Computational biology: checking whether candidate residue pairs satisfy allowable spatial separation ranges in structural modeling, Wireless systems: testing whether transmitter-receiver candidate links meet admissible range constraints for connectivity, 3D computer vision: screening feature correspondences by verifying epipolar or depth-consistent distance envelopes",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(N_L + N_R)",
+      "space_complexity": "O(N_L + N_R)",
+      "complexity_reasoning": "The function copies the input distance arrays and performs minimum, maximum, and element-wise comparison checks, which scale linearly with the sizes of the inputs.",
+      "complexity_confidence": 95
     },
     {
       "node_id": "weighted_interaction_edge_derivation",
@@ -172,7 +176,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(1)",
+      "space_complexity": "O(1)",
+      "complexity_reasoning": "Resolving a distance threshold using a constant-time fallback check requires constant time and space.",
+      "complexity_confidence": 99
     },
     {
       "node_id": "construct_weighted_interaction_nodes",
@@ -215,7 +223,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(L * R)",
+      "space_complexity": "O(L * R)",
+      "complexity_reasoning": "Creating a Cartesian product of left and right feature sets requires iterating over all pairs, running in bilinear time and space with respect to the sizes of the input sets.",
+      "complexity_confidence": 95
     },
     {
       "node_id": "derive_compatible_node_pair_edges",
@@ -268,7 +280,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(M^2)",
+      "space_complexity": "O(M^2)",
+      "complexity_reasoning": "Enumerating and evaluating compatibility for all unique unordered pairs of M interaction nodes takes quadratic time and space with respect to M.",
+      "complexity_confidence": 95
     },
     {
       "node_id": "assemble_weighted_interaction_graph",
@@ -306,7 +322,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(M + E_comp)",
+      "space_complexity": "O(M + E_comp)",
+      "complexity_reasoning": "Assembling a NetworkX graph from a set of edges and nodes runs in linear time and space relative to the number of vertices and compatible edges.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "networkx_weighted_graph_materialization",
@@ -342,9 +362,13 @@
       "is_opaque": false,
       "is_external": false,
       "parallelizable": false,
-      "conceptual_summary": "Weighted Relational Topology Materialization. Transforms two finite collections—entity identifiers and weighted pairwise relations—into an explicit adjacency-based topology object. The procedure first materializes the vertex set, then inserts each relation as an edge annotated by a scalar weight, preserving the provided connectivity pattern. It performs structural encoding rather than optimization or inference, yielding a directly queryable weighted graph representation.. Applications: Neuroscience: materializing weighted synaptic connectivity maps between recorded neural units, Infrastructure engineering: constructing weighted utility or transport connectivity networks from link measurements, Computational biology: encoding weighted interaction topologies among molecular entities, Distributed systems: representing weighted communication latency graphs between compute nodes",
+      "conceptual_summary": "Weighted Relational Topology Materialization. Transforms two finite collections\u2014entity identifiers and weighted pairwise relations\u2014into an explicit adjacency-based topology object. The procedure first materializes the vertex set, then inserts each relation as an edge annotated by a scalar weight, preserving the provided connectivity pattern. It performs structural encoding rather than optimization or inference, yielding a directly queryable weighted graph representation.. Applications: Neuroscience: materializing weighted synaptic connectivity maps between recorded neural units, Infrastructure engineering: constructing weighted utility or transport connectivity networks from link measurements, Computational biology: encoding weighted interaction topologies among molecular entities, Distributed systems: representing weighted communication latency graphs between compute nodes",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(V + E)",
+      "space_complexity": "O(V + E)",
+      "complexity_reasoning": "Initializing a NetworkX graph and populating it with nodes and weighted edges scales linearly with the number of nodes and edges.",
+      "complexity_confidence": 98
     }
   ],
   "edges": [

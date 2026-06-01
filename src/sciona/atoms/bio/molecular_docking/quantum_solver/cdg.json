@@ -137,7 +137,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(V)",
+      "space_complexity": "O(V)",
+      "complexity_reasoning": "Extracting node weights and IDs from the graph structure scales linearly with the number of vertices V.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "createinitialregister",
@@ -180,7 +184,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(V)",
+      "space_complexity": "O(V)",
+      "complexity_reasoning": "Creating the initial register maps graph nodes to physical coordinates in linear time and space relative to V.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "optimizeregisterlayout",
@@ -228,7 +236,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(V^2)",
+      "space_complexity": "O(V)",
+      "complexity_reasoning": "Permuting the register to minimize interaction bandwidth involves running the Cuthill-McKee algorithm, running in quadratic time relative to the number of nodes V.",
+      "complexity_confidence": 95
     },
     {
       "node_id": "calculatehamiltonianscale",
@@ -266,7 +278,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(V^2)",
+      "space_complexity": "O(1)",
+      "complexity_reasoning": "Calculating the energy scale computes pairwise distances among all qubits to find interaction bounds, running in quadratic time in V.",
+      "complexity_confidence": 95
     },
     {
       "node_id": "formulatedetuningproblem",
@@ -314,7 +330,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(V)",
+      "space_complexity": "O(V)",
+      "complexity_reasoning": "Formulating local detuning fields performs element-wise operations on node weights, scaling linearly with the number of qubits V.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "executequantumannealing",
@@ -372,7 +392,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(T_steps * 2^V)",
+      "space_complexity": "O(2^V)",
+      "complexity_reasoning": "Running the quantum annealing simulation on a classical backend requires tracking a state vector of size 2^V, leading to exponential complexity.",
+      "complexity_confidence": 95
     },
     {
       "node_id": "decodesolutions",
@@ -415,7 +439,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(S_out log S_out + K * V)",
+      "space_complexity": "O(K * V)",
+      "complexity_reasoning": "Decoding the measurement counts to extract top solutions scales log-linearly with unique counts and linearly with the product of qubits V and solutions K.",
+      "complexity_confidence": 95
     },
     {
       "node_id": "adiabatic_quantum_sampler",
@@ -511,7 +539,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(V)",
+      "space_complexity": "O(V)",
+      "complexity_reasoning": "Building the pulse sequence maps detuning values over V qubits, running in linear time and space with respect to V.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "initialize_simulation_backend",
@@ -549,7 +581,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(1)",
+      "space_complexity": "O(1)",
+      "complexity_reasoning": "Configuring the simulation backend options runs in constant time and space.",
+      "complexity_confidence": 98
     },
     {
       "node_id": "run_quantum_simulation",
@@ -582,7 +618,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(T_steps * 2^V)",
+      "space_complexity": "O(2^V)",
+      "complexity_reasoning": "Running the quantum annealing simulation on a classical backend requires tracking a state vector of size 2^V, leading to exponential complexity.",
+      "complexity_confidence": 95
     },
     {
       "node_id": "process_simulation_results",
@@ -625,7 +665,11 @@
       "parallelizable": false,
       "conceptual_summary": "",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(S_out log S_out + K * V)",
+      "space_complexity": "O(K * V)",
+      "complexity_reasoning": "Decoding the measurement counts to extract top solutions scales log-linearly with unique counts and linearly with the product of qubits V and solutions K.",
+      "complexity_confidence": 95
     },
     {
       "node_id": "solution_extraction",
@@ -668,7 +712,11 @@
       "parallelizable": false,
       "conceptual_summary": "MostProbableStateDecoder. Filters a discrete probability distribution to identify the 'K' most frequently observed states. It then decodes these high-frequency states from a raw format into a structured representation, effectively reducing a large outcome space to a small set of the most likely results.. Applications: Genomics: Identifying the most common genetic variants in a population from sequencing count data., Natural Language Processing: Extracting the most likely candidate words from a language model's output probability distribution for use in beam search decoding., Failure Analysis: Pinpointing the most frequent error codes from system logs to prioritize investigation of system failure modes., Market Research: Determining the most popular product choices from a large set of customer transaction data.",
       "critic_notes": "",
-      "decomposition_rationale": ""
+      "decomposition_rationale": "",
+      "time_complexity": "O(S_out log S_out + K * V)",
+      "space_complexity": "O(K * V)",
+      "complexity_reasoning": "Sorting the unique measurement outcomes and decoding the top K bitstrings of length V scales log-linearly with the number of unique states and linearly with the product of solutions K and qubits V.",
+      "complexity_confidence": 95
     }
   ],
   "edges": [
