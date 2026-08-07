@@ -22,10 +22,10 @@ def test_alphafold_review_bundle_covers_all_rows() -> None:
     assert bundle["bundle_id"] == "bio.alphafold.family_batch.review.v1"
     assert bundle["provider_repo"] == "sciona-atoms-bio"
     assert bundle["family"] == "bio.alphafold"
-    assert bundle["review_status"] == "reviewed"
+    assert bundle["review_status"] == "reviewed_pending"
     assert bundle["semantic_verdict"] == "publishable_candidate"
     assert bundle["developer_semantic_verdict"] == "source_aligned_with_evidence"
-    assert bundle["trust_readiness"] == "ready_for_manifest_merge"
+    assert bundle["trust_readiness"] == "needs_followup"
     assert bundle["authoritative_sources"] == [
         "src/sciona/atoms/bio/alphafold/references.json",
         "src/sciona/atoms/bio/alphafold/cdg.json",
@@ -33,19 +33,24 @@ def test_alphafold_review_bundle_covers_all_rows() -> None:
     for rel in bundle["authoritative_sources"]:
         assert (ROOT / rel).exists()
     assert bundle["limitations"] == []
-    assert bundle["required_actions"] == []
+    assert bundle["required_actions"] == [
+        "Add focused behavioral tests before claiming runtime pass."
+    ]
     assert len(bundle["rows"]) == len(expected_keys)
     assert {row["atom_fqdn"] for row in bundle["rows"]} == expected_keys
 
     for idx, row in enumerate(bundle["rows"]):
         assert row["review_record_path"] == f"src/sciona/atoms/bio/alphafold/review_bundle.json#rows[{idx}]"
         assert row["source_path"] == row["atom_fqdn"].split("@", 1)[1]
-        assert row["review_status"] == "reviewed"
+        assert row["review_status"] == "reviewed_pending"
         assert row["semantic_verdict"] == "publishable_candidate"
         assert row["developer_semantic_verdict"] == "source_aligned_with_evidence"
-        assert row["trust_readiness"] == "ready_for_manifest_merge"
+        assert row["trust_readiness"] == "needs_followup"
         assert row["limitations"] == []
-        assert row["required_actions"] == []
+        assert row["required_actions"] == [
+            "Add a focused behavioral test before claiming runtime pass."
+        ]
+        assert row["runtime_status"] == "unknown"
         assert row["authoritative_sources"] == [
             "src/sciona/atoms/bio/alphafold/references.json",
             "src/sciona/atoms/bio/alphafold/cdg.json",

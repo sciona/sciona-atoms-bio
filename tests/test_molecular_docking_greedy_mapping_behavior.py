@@ -1,11 +1,11 @@
 from __future__ import annotations
 
 from sciona.atoms.bio.molecular_docking.greedy_mapping.atoms import (
-    assemblestaticmappingcontext,
-    initializefrontierfromstartnode,
-    rungreedymappingpipeline,
-    scoreandextendgreedycandidates,
-    validatecurrentmapping,
+    assemble_static_mapping_context,
+    initialize_frontier_from_start_node,
+    run_greedy_mapping_pipeline,
+    score_and_extend_greedy_candidates,
+    validate_current_mapping,
 )
 
 
@@ -72,7 +72,7 @@ def _build_context():
             "L2": {"L1"},
         }
     )
-    context = assemblestaticmappingcontext(
+    context = assemble_static_mapping_context(
         graph=graph,
         lattice_instance=LatticeInstance(lattice),
         previously_generated_subgraphs=({"nodes": ["legacy"]},),
@@ -96,7 +96,7 @@ def test_initializefrontierfromstartnode_assigns_first_open_lattice_node() -> No
     unmapping: dict[str, str] = {}
     unexpanded_nodes: set[str] = set()
 
-    state = initializefrontierfromstartnode(context, "A", mapping, unmapping, unexpanded_nodes)
+    state = initialize_frontier_from_start_node(context, "A", mapping, unmapping, unexpanded_nodes)
 
     assert state["mapping"] == {"A": "L0"}
     assert state["unmapping"] == {"L0": "A"}
@@ -109,7 +109,7 @@ def test_initializefrontierfromstartnode_assigns_first_open_lattice_node() -> No
 def test_scoreandextendgreedycandidates_scores_neighbors_and_prunes_invalid_nodes() -> None:
     _, _, context = _build_context()
 
-    state, candidate_scores = scoreandextendgreedycandidates(
+    state, candidate_scores = score_and_extend_greedy_candidates(
         mapping_context=context,
         considered_nodes=["B", "C", "D"],
         unexpanded_nodes={"A"},
@@ -130,17 +130,17 @@ def test_scoreandextendgreedycandidates_scores_neighbors_and_prunes_invalid_node
 def test_validatecurrentmapping_checks_inverse_consistency_and_lattice_edges() -> None:
     _, _, context = _build_context()
 
-    assert validatecurrentmapping(
+    assert validate_current_mapping(
         context,
         mapping={"A": "L0", "B": "L1"},
         unmapping={"L0": "A", "L1": "B"},
     ) is True
-    assert validatecurrentmapping(
+    assert validate_current_mapping(
         context,
         mapping={"A": "L0", "B": "L1"},
         unmapping={"L0": "A", "L1": "C"},
     ) is False
-    assert validatecurrentmapping(
+    assert validate_current_mapping(
         context,
         mapping={"A": "L0", "C": "L2"},
         unmapping={"L0": "A", "L2": "C"},
@@ -149,8 +149,8 @@ def test_validatecurrentmapping_checks_inverse_consistency_and_lattice_edges() -
 
 def test_rungreedymappingpipeline_prefers_valid_extension_and_falls_back_on_invalid_state() -> None:
     _, _, context = _build_context()
-    initialized_state = initializefrontierfromstartnode(context, "A", {}, {}, set())
-    valid_extended_state, _ = scoreandextendgreedycandidates(
+    initialized_state = initialize_frontier_from_start_node(context, "A", {}, {}, set())
+    valid_extended_state, _ = score_and_extend_greedy_candidates(
         mapping_context=context,
         considered_nodes=["B"],
         unexpanded_nodes=initialized_state["unexpanded_nodes"],
@@ -161,7 +161,7 @@ def test_rungreedymappingpipeline_prefers_valid_extension_and_falls_back_on_inva
         rank_nodes=True,
     )
 
-    generated_subgraph, final_state = rungreedymappingpipeline(
+    generated_subgraph, final_state = run_greedy_mapping_pipeline(
         mapping_context=context,
         starting_node="A",
         remove_invalid_placement_nodes=True,
@@ -174,7 +174,7 @@ def test_rungreedymappingpipeline_prefers_valid_extension_and_falls_back_on_inva
     assert final_state == valid_extended_state
     assert set(generated_subgraph.adj) == {"A", "B"}
 
-    fallback_subgraph, fallback_state = rungreedymappingpipeline(
+    fallback_subgraph, fallback_state = run_greedy_mapping_pipeline(
         mapping_context=context,
         starting_node="A",
         remove_invalid_placement_nodes=True,

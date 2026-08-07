@@ -46,7 +46,7 @@
       "review_semantic_verdict": "pass_with_limits",
       "review_developer_semantic_verdict": "pass_with_limits",
       "trust_readiness": "catalog_ready",
-      "source_path": "sciona/atoms/bio/chemical_descriptors/atoms.py:75",
+      "source_path": "sciona/atoms/bio/chemical_descriptors/atoms.py:69",
       "source_paths": [
         "src/sciona/atoms/bio/chemical_descriptors/atoms.py",
         "rdkit.Chem.rdmolfiles.MolFromSmiles"
@@ -71,7 +71,7 @@
       ],
       "acceptability_score": 88,
       "acceptability_band": "acceptable_with_limits_candidate",
-      "parity_coverage_level": "usage_equivalent",
+      "parity_coverage_level": "parity_or_usage_equivalent",
       "parity_test_status": "skip_without_rdkit",
       "parity_fixture_count": 1,
       "parity_case_count": 2,
@@ -97,7 +97,7 @@
       "review_semantic_verdict": "pass_with_limits",
       "review_developer_semantic_verdict": "pass_with_limits",
       "trust_readiness": "catalog_ready",
-      "source_path": "sciona/atoms/bio/chemical_descriptors/atoms.py:103",
+      "source_path": "sciona/atoms/bio/chemical_descriptors/atoms.py:96",
       "source_paths": [
         "src/sciona/atoms/bio/chemical_descriptors/atoms.py",
         "rdkit.Chem.Descriptors"
@@ -122,7 +122,7 @@
       ],
       "acceptability_score": 86,
       "acceptability_band": "acceptable_with_limits_candidate",
-      "parity_coverage_level": "usage_equivalent",
+      "parity_coverage_level": "parity_or_usage_equivalent",
       "parity_test_status": "skip_without_rdkit",
       "parity_fixture_count": 1,
       "parity_case_count": 3,
@@ -148,7 +148,7 @@
       "review_semantic_verdict": "pass_with_limits",
       "review_developer_semantic_verdict": "pass_with_limits",
       "trust_readiness": "catalog_ready",
-      "source_path": "sciona/atoms/bio/chemical_descriptors/atoms.py:134",
+      "source_path": "sciona/atoms/bio/chemical_descriptors/atoms.py:126",
       "source_paths": [
         "src/sciona/atoms/bio/chemical_descriptors/atoms.py",
         "rdkit.Chem.rdMolDescriptors.GetMorganFingerprintAsBitVect"
@@ -173,7 +173,7 @@
       ],
       "acceptability_score": 87,
       "acceptability_band": "acceptable_with_limits_candidate",
-      "parity_coverage_level": "usage_equivalent",
+      "parity_coverage_level": "parity_or_usage_equivalent",
       "parity_test_status": "skip_without_rdkit",
       "parity_fixture_count": 1,
       "parity_case_count": 2,
@@ -199,7 +199,7 @@
       "review_semantic_verdict": "pass_with_limits",
       "review_developer_semantic_verdict": "pass_with_limits",
       "trust_readiness": "catalog_ready",
-      "source_path": "sciona/atoms/bio/chemical_descriptors/atoms.py:157",
+      "source_path": "sciona/atoms/bio/chemical_descriptors/atoms.py:148",
       "source_paths": [
         "src/sciona/atoms/bio/chemical_descriptors/atoms.py",
         "rdkit.Chem.MACCSkeys.GenMACCSKeys"
@@ -224,7 +224,7 @@
       ],
       "acceptability_score": 88,
       "acceptability_band": "acceptable_with_limits_candidate",
-      "parity_coverage_level": "usage_equivalent",
+      "parity_coverage_level": "parity_or_usage_equivalent",
       "parity_test_status": "skip_without_rdkit",
       "parity_fixture_count": 1,
       "parity_case_count": 2,

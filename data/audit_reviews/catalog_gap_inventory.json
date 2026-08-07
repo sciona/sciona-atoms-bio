@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "bundle_id": "sciona.atoms.bio.catalog_gap_inventory.v1",
+  "provider_repo": "sciona-atoms-bio",
+  "family_batch": "catalog_gap_inventory",
+  "review_status": "pending",
+  "review_semantic_verdict": "unknown",
+  "review_developer_semantic_verdict": "unknown",
+  "trust_readiness": "unreviewed",
+  "limitations": [
+    "These rows are cataloged but do not yet have complete semantic and runtime audit evidence."
+  ],
+  "required_actions": [
+    "Complete semantic review and focused behavioral testing before claiming catalog readiness."
+  ],
+  "review_record_path": "data/audit_reviews/catalog_gap_inventory.json",
+  "rows": [
+    {
+      "atom_name": "sciona.atoms.graph_inference.connectome.calcium_lowpass_filter",
+      "source_paths": ["src/sciona/atoms/graph_inference/connectome/atoms.py"]
+    },
+    {
+      "atom_name": "sciona.atoms.graph_inference.connectome.fluorescence_hard_threshold",
+      "source_paths": ["src/sciona/atoms/graph_inference/connectome/atoms.py"]
+    },
+    {
+      "atom_name": "sciona.atoms.graph_inference.connectome.global_activity_sample_reweighting",
+      "source_paths": ["src/sciona/atoms/graph_inference/connectome/atoms.py"]
+    },
+    {
+      "atom_name": "sciona.atoms.graph_inference.connectome.score_matrix_normalization",
+      "source_paths": ["src/sciona/atoms/graph_inference/connectome/atoms.py"]
+    },
+    {
+      "atom_name": "sciona.atoms.graph_inference.connectome.temporal_precedence_directivity",
+      "source_paths": ["src/sciona/atoms/graph_inference/connectome/atoms.py"]
+    }
+  ]
+}

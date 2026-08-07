@@ -23,9 +23,9 @@ edge-preserving unit-disk embedding instead of adding spectral-layout edges.
 
 ## Remediated Quantum Solver Atoms
 
-- `sciona.atoms.bio.molecular_docking.quantum_solver.adiabaticquantumsampler`
-- `sciona.atoms.bio.molecular_docking.quantum_solver.quantumproblemdefinition`
-- `sciona.atoms.bio.molecular_docking.quantum_solver.solutionextraction`
+- `sciona.atoms.bio.molecular_docking.quantum_solver.adiabatic_quantum_sampler`
+- `sciona.atoms.bio.molecular_docking.quantum_solver.quantum_problem_definition`
+- `sciona.atoms.bio.molecular_docking.quantum_solver.solution_extraction`
 
 These rows now delegate to the optional Pulser/emulator backend lane documented
 in `docs/quantum_optional_dependencies.md`. Base imports remain lightweight;
@@ -40,11 +40,11 @@ Scope: `sciona.atoms.bio.molecular_docking.quantum_solver_d12`
 
 ## Remediated Quantum Solver D12 Atoms
 
-- `sciona.atoms.bio.molecular_docking.quantum_solver_d12.adiabaticpulseassembler`
-- `sciona.atoms.bio.molecular_docking.quantum_solver_d12.interactionboundscomputer`
-- `sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantumcircuitsampler`
-- `sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantumsolutionextractor`
-- `sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantumsolverorchestrator`
+- `sciona.atoms.bio.molecular_docking.quantum_solver_d12.adiabatic_pulse_assembler`
+- `sciona.atoms.bio.molecular_docking.quantum_solver_d12.interaction_bounds_computer`
+- `sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantum_circuit_sampler`
+- `sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantum_solution_extractor`
+- `sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantum_solver_orchestrator`
 
 These rows now build Pulser registers, derive interaction bounds from register
 geometry, assemble Rydberg/DMM adiabatic sequences, execute the requested

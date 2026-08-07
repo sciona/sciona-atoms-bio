@@ -32,17 +32,17 @@ REMEDIATED_CLASSICAL_FQDNS = {
 }
 
 QUANTUM_PUBREV005_FQDNS = {
-    "sciona.atoms.bio.molecular_docking.quantum_solver.adiabaticquantumsampler",
-    "sciona.atoms.bio.molecular_docking.quantum_solver.quantumproblemdefinition",
-    "sciona.atoms.bio.molecular_docking.quantum_solver.solutionextraction",
+    "sciona.atoms.bio.molecular_docking.quantum_solver.adiabatic_quantum_sampler",
+    "sciona.atoms.bio.molecular_docking.quantum_solver.quantum_problem_definition",
+    "sciona.atoms.bio.molecular_docking.quantum_solver.solution_extraction",
 }
 
 QUANTUM_PUBREV028_FQDNS = {
-    "sciona.atoms.bio.molecular_docking.quantum_solver_d12.adiabaticpulseassembler",
-    "sciona.atoms.bio.molecular_docking.quantum_solver_d12.interactionboundscomputer",
-    "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantumcircuitsampler",
-    "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantumsolutionextractor",
-    "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantumsolverorchestrator",
+    "sciona.atoms.bio.molecular_docking.quantum_solver_d12.adiabatic_pulse_assembler",
+    "sciona.atoms.bio.molecular_docking.quantum_solver_d12.interaction_bounds_computer",
+    "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantum_circuit_sampler",
+    "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantum_solution_extractor",
+    "sciona.atoms.bio.molecular_docking.quantum_solver_d12.quantum_solver_orchestrator",
 }
 
 
@@ -131,14 +131,26 @@ def test_molecular_docking_review_bundle_pubrev028_quantum_solver_d12_rows_are_r
     for fqdn in QUANTUM_PUBREV028_FQDNS:
         row = rows[fqdn]
         assert fqdn in remediation
-        assert row["review_status"] == "reviewed"
+        has_runtime_evidence = fqdn != (
+            "sciona.atoms.bio.molecular_docking.quantum_solver_d12."
+            "quantum_solver_orchestrator"
+        )
+        assert row["review_status"] == ("reviewed" if has_runtime_evidence else "reviewed_pending")
         assert row["semantic_verdict"] == "publishable_candidate"
         assert row["developer_semantic_verdict"] == "source_aligned_optional_pulser_backend"
-        assert row["trust_readiness"] == "ready_for_manifest_merge"
+        assert row["trust_readiness"] == (
+            "ready_for_manifest_merge" if has_runtime_evidence else "needs_followup"
+        )
         assert row["audit_batch"] == "pubrev-028-quantum-optional"
         assert row["audit_scope"] == "quantum_optional_dependency_remediation"
         assert row["limitations"]
-        assert row["required_actions"] == []
+        if has_runtime_evidence:
+            assert row["required_actions"] == []
+        else:
+            assert row["runtime_status"] == "unknown"
+            assert row["required_actions"] == [
+                "Add a focused behavioral test before claiming runtime pass."
+            ]
 
         source_rel, _, line_text = row["source_path"].partition(":")
         assert line_text

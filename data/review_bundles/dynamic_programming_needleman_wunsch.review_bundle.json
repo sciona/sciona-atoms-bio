@@ -3,5 +3,82 @@
   "verdict": "PASS",
   "risk_tier": "low",
   "rationale": "Automated verification passed. Numerical behavior matches upstream library expectations.",
-  "limitations": "Subject to standard machine precision and float limits."
+  "limitations": "Subject to standard machine precision and float limits.",
+  "schema_version": "1.0",
+  "bundle_id": "sciona.atoms.bioinformatics.dynamic_programming_needleman_wunsch.review_bundle.dynamic_programming_needleman_wunsch.legacy.v1",
+  "provider_repo": "sciona-atoms-bio",
+  "family_batch": "dynamic_programming_needleman_wunsch",
+  "review_status": "reviewed",
+  "review_semantic_verdict": "pass_with_limits",
+  "review_developer_semantic_verdict": "pass_with_limits",
+  "trust_readiness": "reviewed_with_limits",
+  "authoritative_sources": [
+    {
+      "kind": "local_wrapper",
+      "path": "src/sciona/atoms/bioinformatics/dynamic_programming_needleman_wunsch/atoms.py"
+    },
+    {
+      "kind": "local_wrapper",
+      "path": "src/sciona/atoms/bioinformatics/dynamic_programming_needleman_wunsch/witnesses.py"
+    },
+    {
+      "kind": "local_metadata",
+      "path": "src/sciona/atoms/bioinformatics/dynamic_programming_needleman_wunsch/references.json"
+    },
+    {
+      "kind": "local_metadata",
+      "path": "src/sciona/atoms/bioinformatics/dynamic_programming_needleman_wunsch/cdg.json"
+    }
+  ],
+  "review_record_path": "data/review_bundles/dynamic_programming_needleman_wunsch.review_bundle.json",
+  "rows": [
+    {
+      "atom_name": "sciona.atoms.bioinformatics.dynamic_programming_needleman_wunsch.fill_scoring_matrix",
+      "atom_key": "sciona.atoms.bioinformatics.dynamic_programming_needleman_wunsch.fill_scoring_matrix",
+      "review_status": "reviewed",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantic_verdict": "pass_with_limits",
+      "trust_readiness": "needs_followup",
+      "source_paths": [
+        "src/sciona/atoms/bioinformatics/dynamic_programming_needleman_wunsch/atoms.py",
+        "src/sciona/atoms/bioinformatics/dynamic_programming_needleman_wunsch/witnesses.py",
+        "src/sciona/atoms/bioinformatics/dynamic_programming_needleman_wunsch/references.json",
+        "src/sciona/atoms/bioinformatics/dynamic_programming_needleman_wunsch/cdg.json"
+      ],
+      "review_record_path": "data/review_bundles/dynamic_programming_needleman_wunsch.review_bundle.json",
+      "limitations": [
+        "Subject to standard machine precision and float limits."
+      ],
+      "required_actions": [
+        "Automated verification passed. Numerical behavior matches upstream library expectations.",
+        "Add a focused behavioral test before claiming runtime pass."
+      ],
+      "source_path": ":18",
+      "runtime_status": "unknown"
+    },
+    {
+      "atom_name": "sciona.atoms.bioinformatics.dynamic_programming_needleman_wunsch.execute_traceback",
+      "atom_key": "sciona.atoms.bioinformatics.dynamic_programming_needleman_wunsch.execute_traceback",
+      "review_status": "reviewed",
+      "review_semantic_verdict": "pass_with_limits",
+      "review_developer_semantic_verdict": "pass_with_limits",
+      "trust_readiness": "needs_followup",
+      "source_paths": [
+        "src/sciona/atoms/bioinformatics/dynamic_programming_needleman_wunsch/atoms.py",
+        "src/sciona/atoms/bioinformatics/dynamic_programming_needleman_wunsch/witnesses.py",
+        "src/sciona/atoms/bioinformatics/dynamic_programming_needleman_wunsch/references.json",
+        "src/sciona/atoms/bioinformatics/dynamic_programming_needleman_wunsch/cdg.json"
+      ],
+      "review_record_path": "data/review_bundles/dynamic_programming_needleman_wunsch.review_bundle.json",
+      "limitations": [
+        "Subject to standard machine precision and float limits."
+      ],
+      "required_actions": [
+        "Automated verification passed. Numerical behavior matches upstream library expectations.",
+        "Add a focused behavioral test before claiming runtime pass."
+      ],
+      "source_path": ":36",
+      "runtime_status": "unknown"
+    }
+  ]
 }

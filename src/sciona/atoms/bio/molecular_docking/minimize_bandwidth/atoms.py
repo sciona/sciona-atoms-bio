@@ -102,7 +102,7 @@ def aggregate_maximum_distance_as_bandwidth(weighted_distances: np.ndarray) -> f
 @icontract.require(lambda matrix: isinstance(matrix, np.ndarray), "matrix must be np.ndarray")
 @icontract.ensure(lambda result: isinstance(result, np.ndarray), "result must be np.ndarray")
 @icontract.ensure(lambda result: result is not None, "result must not be None")
-def validate_symmetric_input(matrix: np.ndarray) -> np.ndarray:
+def validate_symmetric_input_dense(matrix: np.ndarray) -> np.ndarray:
     """Verify the matrix is numerically symmetric within tolerance before any reordering logic proceeds.
 
     Args:
@@ -295,7 +295,7 @@ def compute_symmetric_bandwidth_reducing_order(sparse_matrix: np.ndarray) -> np.
 @icontract.require(lambda mat: isinstance(mat, np.ndarray), "mat must be np.ndarray")
 @icontract.ensure(lambda result: isinstance(result, np.ndarray), "result must be np.ndarray")
 @icontract.ensure(lambda result: result is not None, "result must not be None")
-def validate_symmetric_input(mat: np.ndarray) -> np.ndarray:
+def validate_symmetric_input_thresholded(mat: np.ndarray) -> np.ndarray:
     """Verify the input matrix is symmetric within tolerance and fail fast if the precondition is violated.
 
     Args:

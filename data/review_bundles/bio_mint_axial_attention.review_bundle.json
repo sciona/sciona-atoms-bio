@@ -86,7 +86,8 @@
         "Preserves upstream NotImplementedError behavior for self_attn_mask."
       ],
       "blocking_findings": [],
-      "required_actions": []
+      "required_actions": [],
+      "source_path": ":211"
     },
     {
       "atom_key": "sciona.atoms.bio.mint.axial_attention.rowselfattention",
@@ -136,7 +137,8 @@
         "Preserves upstream NotImplementedError behavior for self_attn_mask."
       ],
       "blocking_findings": [],
-      "required_actions": []
+      "required_actions": [],
+      "source_path": ":282"
     }
   ]
 }

@@ -116,8 +116,8 @@
       },
       "url": "https://arxiv.org/abs/2508.18147"
     },
-    "liao2017leakyNoisyOr": {
-      "ref_id": "liao2017leakyNoisyOr",
+    "liao2017dsb": {
+      "ref_id": "liao2017dsb",
       "type": "paper",
       "title": "Evaluate the Malignancy of Pulmonary Nodules Using the 3D Deep Leaky Noisy-or Network",
       "authors": [
@@ -412,9 +412,9 @@
       "type": "repository",
       "title": "SciPy",
       "authors": [
-        "SciPy Developers"
+        "The SciPy developers"
       ],
-      "year": null,
+      "year": 2026,
       "venue": "GitHub",
       "url": "https://github.com/scipy/scipy",
       "match_metadata": {

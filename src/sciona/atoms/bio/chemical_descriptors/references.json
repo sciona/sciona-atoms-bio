@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "atoms": {
-    "sciona.atoms.bio.chemical_descriptors.smiles_to_mol@sciona/atoms/bio/chemical_descriptors/atoms.py:75": {
+    "sciona.atoms.bio.chemical_descriptors.smiles_to_mol@sciona/atoms/bio/chemical_descriptors/atoms.py:69": {
       "references": [
         {
           "ref_id": "rdkitMolFromSmiles2026",
@@ -28,7 +28,7 @@
       ],
       "auto_attribution_runs": []
     },
-    "sciona.atoms.bio.chemical_descriptors.compute_descriptors@sciona/atoms/bio/chemical_descriptors/atoms.py:103": {
+    "sciona.atoms.bio.chemical_descriptors.compute_descriptors@sciona/atoms/bio/chemical_descriptors/atoms.py:96": {
       "references": [
         {
           "ref_id": "rdkitDescriptors2026",
@@ -55,7 +55,7 @@
       ],
       "auto_attribution_runs": []
     },
-    "sciona.atoms.bio.chemical_descriptors.morgan_fingerprint@sciona/atoms/bio/chemical_descriptors/atoms.py:134": {
+    "sciona.atoms.bio.chemical_descriptors.morgan_fingerprint@sciona/atoms/bio/chemical_descriptors/atoms.py:126": {
       "references": [
         {
           "ref_id": "rdkitMorgan2026",
@@ -82,7 +82,7 @@
       ],
       "auto_attribution_runs": []
     },
-    "sciona.atoms.bio.chemical_descriptors.maccs_keys@sciona/atoms/bio/chemical_descriptors/atoms.py:157": {
+    "sciona.atoms.bio.chemical_descriptors.maccs_keys@sciona/atoms/bio/chemical_descriptors/atoms.py:148": {
       "references": [
         {
           "ref_id": "rdkitMaccs2026",
